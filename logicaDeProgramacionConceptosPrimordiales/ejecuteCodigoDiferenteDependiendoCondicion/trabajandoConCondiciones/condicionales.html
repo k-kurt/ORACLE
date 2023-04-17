@@ -23,9 +23,10 @@
     
     var victorias=prompt("Informe la cantidad de victorias")
     var empates=prompt("ingrese la cantidad de empates")
-    var puntosAntAnio=28;
+    var puntosAntAnio=Math.round(Math.random()*100);
 
     puntoTotal=victorias*3+empates*1;
+    imprimir("puntos del año pasado: "+ puntosAntAnio);
 
     imprimir("los puntos del equipo son: " + puntoTotal);
 
@@ -33,9 +34,10 @@
         document.write("El equipo esta peor");
     }
     if(puntoTotal>puntosAntAnio){
-        documento.write("el quipo va mejor que el año pasado")
-    }else{
-        document.write("el equipo esta igual")
+        document.write("el quipo va mejor que el año pasado");
+    }
+    if (puntoTotal==puntosAntAnio) {
+        document.write("el equipo esta igual");
     }
 
      
