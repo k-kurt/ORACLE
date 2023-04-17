@@ -1,0 +1,19 @@
+<script>
+    function saltoLinea(){
+        document.write("<br><br><br>");
+    }
+
+    function imprimir(frase) {
+        document.write(frase);
+        saltoLinea();
+    }
+
+    function calcularImc(peso,altura,nombre) {
+        imc=peso/(altura*altura);
+        imprimir("el imc calculado de "+nombre+" es: "+imc);
+    }
+
+    calcularImc(130,1.76,"kevin");
+    calcularImc(100,1.60,"genesis");
+
+</script>

@@ -1,0 +1,43 @@
+
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+<html>
+    <h1>
+        PROGRAMA-CALCULAR PUNTOS DE UN EQUIPO DE FUTBOL
+    </h1>
+</html>
+
+
+
+<script>
+    function saltoLinea(){
+        document.write("<br><br><br>");
+    }
+
+    function imprimir(frase) {
+        document.write(frase);
+        saltoLinea();
+    }
+
+
+    
+    var victorias=prompt("Informe la cantidad de victorias")
+    var empates=prompt("ingrese la cantidad de empates")
+
+    puntoTotal=victorias*3+empates*1;
+
+    /* Si el programa nos concatena los numeros entonces ponemos ParseInt para que convierta en int al texto ya que javaScript
+    al utilizar solo var, no diferencia el numero ingresado en el prompt
+    o bien podemos multiplicar la variable por un numero asi lo toma como numero, asi lo hice yo y el profesor uso el parseInt
+
+
+        var victorias=parseIntprompt("Informe la cantidad de victorias")
+        var empates=parseIntprompt("ingrese la cantidad de empates")
+
+
+    */
+
+    imprimir("los puntos del equipo son: " + puntoTotal);
+
+    
+</script>
