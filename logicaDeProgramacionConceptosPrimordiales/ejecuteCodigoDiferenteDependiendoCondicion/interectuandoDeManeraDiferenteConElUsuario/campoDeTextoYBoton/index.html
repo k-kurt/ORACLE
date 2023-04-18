@@ -1,0 +1,24 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+<input />
+<button>verificar si acerto con el secreto</button>
+
+<script>
+
+    var secreto = 5;
+    var input = document.querySelector("input");
+
+
+    function verificar() {
+        if (secreto == parseInt(input.value)) {
+            alert("usted acerto");
+        } else {
+            alert("usted no acerto");
+        }
+    }
+
+    var button= document.querySelector("button");
+    button.onclick= verificar;
+
+
+</script>
