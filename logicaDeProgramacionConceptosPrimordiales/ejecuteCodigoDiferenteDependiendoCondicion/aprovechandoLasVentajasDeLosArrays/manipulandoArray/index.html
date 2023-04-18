@@ -1,0 +1,63 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+<input />
+<button>verificar si acerto con el secreto</button>
+
+<script>
+
+   
+
+
+   function aleatorio(){
+
+        return Math.round(Math.random()*10);
+   }
+
+
+   function sortearNumeros(cantidad) {
+    var secretos=[];
+    var contador=1;
+    while(contador<=cantidad){
+        numeroAleatorio=aleatorio();
+        secretos.push(numeroAleatorio);
+        contador++;
+    }
+
+    return secretos
+
+   }
+
+    var secretos = sortearNumeros(4);
+    
+
+    var input = document.querySelector("input");
+    input=focus();
+
+
+    function verificar() {
+
+        var encontro=false;
+        for(var posicion=1;posicion<secretos.length;posicion++){
+        if (secretos[posicion] == parseInt(input.value)) {
+            alert("usted acerto");       
+            encontro=true;
+            break;
+        }
+
+        }
+
+        if(encontro==false){
+            alert("Usted erro")
+        }
+
+        input.value="";
+        input=focus();
+
+
+    }
+
+    var button= document.querySelector("button");
+    button.onclick= verificar;
+
+
+</script>
