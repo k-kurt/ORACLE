@@ -1,0 +1,24 @@
+<!-- semaforo.html -->
+
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+function dibujarCuadrado(x,y,color){
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");
+    pincel.fillStyle=color;
+    pincel.fillRect(x,y,50,50);
+    //bordes
+    pincel.strokeStyle="black";
+    pincel.strokeRect(x,y,50,50);
+    
+}
+
+//llamamos a la funcion
+dibujarCuadrado(0,0,"red");
+dibujarCuadrado(0,50,"yellow");
+dibujarCuadrado(0,100,"green");
+
+    
+</script>
