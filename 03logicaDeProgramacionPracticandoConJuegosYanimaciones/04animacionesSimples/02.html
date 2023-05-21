@@ -27,12 +27,20 @@
 
         function limpiarPantalla(){
             //es una propiedad que limpia la pantalla
-            pincel.clearRect();
+            pincel.clearRect(0,0,600,400);
 
         }
 
+        var x=0;
 
-        setinterval(disenarCircunferencia(20,20,10))
+        function actualizarPantalla(){
+            limpiarPantalla();
+            disenarCircunferencia(x,20,10);
+            x++;
+        }
+
+
+        setInterval(actualizarPantalla,5);
 
 
 
