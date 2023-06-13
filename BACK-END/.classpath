@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="JAVA/Curso_JRE_y_JDK_Compile_y_Ejecute_Su_Primer_Programa"/>
+	<classpathentry kind="output" path="JAVA/Curso_JRE_y_JDK_Compile_y_Ejecute_Su_Primer_Programa"/>
+</classpath>
