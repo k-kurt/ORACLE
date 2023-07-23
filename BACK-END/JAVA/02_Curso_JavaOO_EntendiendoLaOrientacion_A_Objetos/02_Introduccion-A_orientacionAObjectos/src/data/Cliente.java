@@ -1,3 +1,5 @@
+package data;
+
 
 public class Cliente {
 
@@ -15,6 +17,9 @@ public class Cliente {
 		this.titutar = titutar;
 		this.documento = documento;
 		this.telefono = telefono;
+	}
+	public Cliente() {
+		// TODO Auto-generated constructor stub
 	}
 	public String getTitutar() {
 		return titutar;

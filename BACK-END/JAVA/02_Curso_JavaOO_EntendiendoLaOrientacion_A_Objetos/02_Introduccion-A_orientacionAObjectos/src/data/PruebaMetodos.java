@@ -1,3 +1,5 @@
+package data;
+
 
 public class PruebaMetodos {
 
@@ -12,7 +14,7 @@ public class PruebaMetodos {
 		micuenta.getRetirar(300);
 		
 		
-		Cuenta cuenta2=new Cuenta();
+		Cuenta cuenta2=new Cuenta(555);
 		
 		cuenta2.depositar(500);
 		

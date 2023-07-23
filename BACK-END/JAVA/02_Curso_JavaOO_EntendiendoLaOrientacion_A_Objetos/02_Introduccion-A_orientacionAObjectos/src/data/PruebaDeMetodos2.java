@@ -1,3 +1,5 @@
+package data;
+
 
 public class PruebaDeMetodos2 {
 
@@ -18,6 +20,10 @@ public class PruebaDeMetodos2 {
 		System.out.println(cuentaDeClaudio.titular);
 		System.out.println(claudio);
 		
+		
+		
+		//otra manera de acceder
+		//cuentaDeClaudio.titular=new Cliente();
 	}
 
 }

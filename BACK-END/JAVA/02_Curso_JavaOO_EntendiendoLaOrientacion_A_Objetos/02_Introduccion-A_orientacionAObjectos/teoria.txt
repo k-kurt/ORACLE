@@ -1,0 +1,22 @@
+									TERORIA
+
+
+
+
+-----------------------------ENCAPSUALAMIENTO-----------------------------------------------
+
+Los getters  ysetters dependen del negocio, en este caso del banco la agencia se define cuando
+se crea la cuenta, entonces al no necesitarse cambiar la agencia, lo definimos en el constructor
+
+
+			STATIC
+			
+la palabra reservada static significa que es de la clase, entonces para hacer el contador
+creamos la variable total con la palabra static, entonces cada vez que instanciamos la clase, 
+se contabiliza el contador.  
+
+
+Para acceder a un atributo statico debemos asigarles en los metodos getters y setters la 
+palabra static  
+Este gettotal nos sirve para mantener seguro nuestro codigo, solo podemos acceder al metodo get 
+y ya no podemos acceder atravez del Cuenta.total por que es un atributo privado

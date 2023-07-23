@@ -1,10 +1,61 @@
+package data;
+
 
 public class Cuenta {
 			
+	
+
 		double saldo;
 		int agencia;
 		int numero;
 		Cliente titular;
+		
+		
+		
+		
+		
+		public Cuenta() {
+			super();
+		}
+
+		public Cuenta(int agencia) {
+			super();
+		
+			if(agencia<=0) {
+				System.out.println("No se permite 0");
+
+				this.agencia = 1;
+			
+			}else {
+				this.agencia=agencia;
+			}
+			total++;
+			
+			System.out.println("Se van creando: "+ total+ " de cuentas.");
+		}
+
+		public Cliente getTitular() {
+			return titular;
+		}
+
+		public void setTitular(Cliente titular) {
+			this.titular = titular;
+		}
+
+		public int getAgencia() {
+			return agencia;
+		}
+
+	
+
+		public double getSaldo() {
+			return saldo;
+		}
+
+		public void setSaldo(double saldo) {
+			this.saldo = saldo;
+		}
+	
 		
 		
 	
@@ -49,6 +100,10 @@ public class Cuenta {
 		
 	}
 	
-	
+	public static int getTotal() {
+		return Cuenta.total;
+	}
+
+	private static int total;
 	
 }
