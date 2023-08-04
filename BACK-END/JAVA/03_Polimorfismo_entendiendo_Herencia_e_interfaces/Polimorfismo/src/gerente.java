@@ -18,8 +18,10 @@ public boolean iniciarSesion(String clave) {
 			
 }
 	
+
+//sobreescritura de metodo
 	public double getBonificacion(){
-		return super.getSalario();
+		return super.getSalario()+super.getBonificacion();
 	}
 	
 }

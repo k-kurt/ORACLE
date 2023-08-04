@@ -1,0 +1,48 @@
+-----------------------------------------------------------------------------------------------
+						TEORIA POLIMORFISMO
+						
+Es muy importante para tener un codigo limpio, donde podemos modificar 
+un solo metodo de la clase padre y asi en cascada nos cambiara solo el resultado
+
+
+		metodo padre						
+		
+
+	public double getBonificacion() {
+		//si tipo 1==1 es gerente
+		//si tipo==0 es funcionario
+		return this.salario*0.1;
+		
+	}
+	
+	
+	
+	metodo hijo
+	
+	
+	//sobreescritura de metodo
+	public double getBonificacion(){
+		return super.getSalario()+super.getBonificacion();
+	}
+	
+	
+	
+	
+	
+	
+	Modificadores de acceso
+
+Los modificadores de acceso o accesibilidad son algunas palabras claves utilizadas en el lenguaje Java para definir el nivel de accesibilidad que los elementos de una clase (atributos y métodos) e incluso la propia clase puede tener los mismos elementos de otra clase.
+
+Public
+
+Este es el modificador menos restrictivo de todos. De esta manera, cualquier componente puede acceder a los miembros de la clase, las clases y las interfaces.
+
+Protected
+
+Al usar este modificador de acceso, los miembros de la clase y las clases son accesibles para otros elementos siempre que estén dentro del mismo package o, si pertenecen a otros packages, siempre que tengan una relación extendida (herencia), es decir, las clases secundarias pueden acceder a los miembros de su clase principal (o clase de abuelos, etc.).
+
+Private
+
+Este es el modificador de acceso más restrictivo de todos. Solo se puede acceder a los miembros definidos como privados desde dentro de la clase y desde ningún otro lugar, independientemente del paquete o la herencia.
+	

@@ -36,7 +36,8 @@ public class Funcionario {
 		this.salario = salario;
 	}
 	
-	
+	//sobreescritura de metodo
+
 	public double getBonificacion() {
 		//si tipo 1==1 es gerente
 		//si tipo==0 es funcionario
