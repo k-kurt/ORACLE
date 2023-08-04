@@ -6,8 +6,10 @@ public class Funcionario {
 	private double salario;
 	private int tipo;
 	
-	
-	
+//	
+//	public Funcionario(String nombre, String documento,double salario, int tipo ) {
+//		super();
+//	}
 	
 	
 	public Funcionario() {
@@ -38,14 +40,8 @@ public class Funcionario {
 	public double getBonificacion() {
 		//si tipo 1==1 es gerente
 		//si tipo==0 es funcionario
-		if(this.tipo==1) {
-			return this.salario;
-			
-		}else if(this.tipo==0) {
-			return this.salario*0.1;
-		}else {
-		return salario;
-		}
+		return this.salario*0.1;
+		
 	}
 
 
