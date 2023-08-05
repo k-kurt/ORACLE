@@ -27,6 +27,66 @@ un solo metodo de la clase padre y asi en cascada nos cambiara solo el resultado
 	
 	
 	
+	//INTRODUCCION A POLIMORFISMO
+	
+	
+public class TestReferencia {
+
+	
+	
+	public static void main(String[] args) {
+		
+		//todo gerente es funcionario, hereda de funcionario
+		Funcionario funcioario=new gerente();
+		funcioario.setNombre("Diego");
+		
+		gerente gerente=new gerente();
+		gerente.setNombre("Jimena");
+		
+		funcioario.setSalario(2000);
+		gerente.setSalario(10000);
+		
+		
+	}
+	
+	
+	
+}
+	
+	
+	
+	
+	NO todo FUNCIONARIO es Gerentepor eso no compila el codigo y no cumple con la gerencia y el polimorfismo 
+	
+	
+	public class TestReferencia {
+
+	
+	
+	public static void main(String[] args) {
+		
+		//todo gerente es funcionario, hereda de funcionario
+		Funcionario funcioario=new gerente();
+		funcioario.setNombre("Diego");
+		
+		
+		//NO FUNCIONA EL POLIMORFISMO
+		gerente gerente=new Funcionario();
+		gerente.setNombre("Jimena");
+		
+		funcioario.setSalario(2000);
+		gerente.setSalario(10000);
+		
+		
+	}
+	
+	
+	
+}
+	
+	
+	
+	
 	
 	
 	
