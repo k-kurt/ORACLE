@@ -85,6 +85,33 @@ public class TestReferencia {
 }
 	
 	
+	/////////////////////////
+	
+	Cuando por parametro paso una clase o un objecto, eso significa que lo instanciamos
+	por lo tanto se registra como que lo llamamos y se dispara el metodo
+	
+	voy a ir sumando poco a poco en suma la bonificacion cada vez que resgistre un nuevo funcionario/
+	gerente
+	
+	
+	
+	public double registrarSalario(Funcionario funcionario) {
+		
+		
+		this.suma=funcionario.getBonificacion()+this.suma;
+		return suma;
+	}
+	
+	public double resgistrarSalario(gerente gerente) {
+		this.suma=gerente.getBonificacion()+this.suma;
+		return suma;
+		
+	}
+	
+	
+	
+	
+	
 	
 	
 	
