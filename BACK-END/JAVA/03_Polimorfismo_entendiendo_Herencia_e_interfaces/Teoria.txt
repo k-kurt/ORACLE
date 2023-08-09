@@ -174,7 +174,39 @@ public class ControlBonificacion{
 	
 }
 	
+	///////////////////////////////////
+		
+	Polimorfismo en metodos
 	
+	Una clase puede tener su propia regla de negocio basada en la de su clase padre, sobreescribiendo
+	el metodo
+	
+	
+	
+	@Override
+	public boolean saca(double valor){
+		
+		double comision=0.2;
+		return super.saca(valor+comision);
+		
+	}	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	///////////////////////////////////
 	
 	
