@@ -7,7 +7,7 @@ un solo metodo de la clase padre y asi en cascada nos cambiara solo el resultado
 
 		metodo padre						
 		
-
+ 
 	public double getBonificacion() {
 		//si tipo 1==1 es gerente
 		//si tipo==0 es funcionario
@@ -108,6 +108,145 @@ public class TestReferencia {
 		
 	}
 	
+	///////////////////////////////////////
+	
+	POLIMORFISMO EN LA CLASE CONTROLBONIFICACION
+	
+	
+	SI tuvieramos que crear siempre un nuevo tipo de Funcionario, tendriamos que crear muchos metodos
+	de RegistrarSalario por cada uno, ENTONCES la solucion es crear un solo metodo aceptando como parametro
+	un Funcionario que heredara a sus clases hijos el metodo RegistrarSalario 
+	
+	
+	----------de esto
+	
+	
+	
+public class ControlBonificacion{
+	
+	
+	
+	private double suma;
+	 
+	
+	public double registrarSalario(Funcionario funcionario) {
+		
+		
+		this.suma=funcionario.getBonificacion()+this.suma;
+		System.out.println("calculo actual: "+this.suma);
+		return this.suma;
+	}
+	
+	public double resgistrarSalario(gerente gerente) {
+		this.suma=gerente.getBonificacion()+this.suma;
+		System.out.println(this.suma);
+		return this.suma;
+		
+	}
+	
+	
+	
+}
+
+
+
+---------------a esto
+
+
+
+public class ControlBonificacion{
+	
+	
+	
+	private double suma;
+	 
+	
+	public double registrarSalario(Funcionario funcionario) {
+		
+		
+		this.suma=funcionario.getBonificacion()+this.suma;
+		System.out.println("calculo actual: "+this.suma);
+		return this.suma;
+	}
+
+	
+	
+	
+}
+	
+	
+	///////////////////////////////////
+	
+	
+	Sobreescritura de constructores 
+	
+	
+	Para tomar los parametros de una clase padre tenemos que usar la palabra clave 
+	Super en la clase hija, creando un constructor con los parametros de la clase padre
+	y pasando con el super ese parametro a la calse padre, el super esta adentro del constructor
+	
+	
+	
+	La clase PAdre:
+	
+	
+public class Cuenta {
+			
+	
+
+		double saldo;
+		int agencia;
+		int numero;
+		Cliente titular;
+		
+		
+		
+
+
+		public Cuenta(int agencia) {
+			super();
+		
+			if(agencia<=0) {
+				System.out.println("No se permite 0");
+
+				this.agencia = 1;
+			
+			}else {
+				this.agencia=agencia;
+			}
+			total++;
+			
+			System.out.println("Se van creando: "+ total+ " de cuentas.");
+		}
+		
+		
+		
+		
+		clase hijas:
+		
+		
+		
+public class CuentaCorriente extends Cuenta {
+
+	
+	public CuentaCorriente(int agencia) {
+		super(agencia);
+	}
+	
+	
+	
+}
+		
+		
+		
+		
+public class CuentaAhorro extends Cuenta {
+  public CuentaAhorro(int agencia) {
+		super(agencia);
+		// TODO Auto-generated constructor stub
+	}
+}
+		
 	
 	
 	
@@ -115,7 +254,7 @@ public class TestReferencia {
 	
 	
 	
-	
+	///////////////////////////////////
 	
 	Modificadores de acceso
 
