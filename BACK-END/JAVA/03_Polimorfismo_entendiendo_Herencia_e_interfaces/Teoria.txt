@@ -409,6 +409,15 @@ public abstract class Funcionario {
 	}
 	
 	
+
+
+/////////////////////////////////////////////////////////////
+
+	UNA CLASE ABSTRACTA 
 	
+puede tener  variables, campos y puede referenciar objectos no abstractos, puede tener constructor por defecto y constructores personalizados
+, tambien puede tener metodos reales, getters y setters. El unico cambio es que la clase no puede ser instanciada por si sola, sino que tiene
+que ser instanciada con una implementacion real, de una clase que extienda de esta clase abstracta   	
+
 
 	
