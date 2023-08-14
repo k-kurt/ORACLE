@@ -9,7 +9,7 @@ public class testControlBonificacion {
 		
 		
 		
-		Funcionario	funcionario=new Funcionario();
+		Funcionario	funcionario=new Contador();
 		funcionario.setSalario(200);
 		
 		

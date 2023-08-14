@@ -21,8 +21,11 @@ public boolean iniciarSesion(String clave) {
 
 //sobreescritura de metodo
 	public double getBonificacion(){
-		return super.getSalario()+super.getBonificacion();
+		System.out.println("EJECUTANDO DESDE GERENTE");
+		return super.getSalario()+this.getSalario()*0.05;
 	}
+
+
 	
 }
  

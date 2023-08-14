@@ -1,5 +1,5 @@
 
-public class Funcionario {
+public abstract class Funcionario {
 
 	private String nombre;
 	private String documento;
@@ -38,13 +38,7 @@ public class Funcionario {
 	
 	//sobreescritura de metodo
 
-	public double getBonificacion() {
-		//si tipo 1==1 es gerente
-		//si tipo==0 es funcionario
-		return this.salario*0.1;
-		
-	}
-
+	public abstract double getBonificacion();
 
 	public int getTipo() {
 		return tipo;

@@ -303,4 +303,112 @@ Al usar este modificador de acceso, los miembros de la clase y las clases son ac
 Private
 
 Este es el modificador de acceso más restrictivo de todos. Solo se puede acceder a los miembros definidos como privados desde dentro de la clase y desde ningún otro lugar, independientemente del paquete o la herencia.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/-------------------------------------------------------------------------------------------------------------------------------------------------/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+											CLASE ABSTRACTA
+							
+					Se trata de una clase abstracta como concepto por que por ejemplo la clase Funcionario, esta dentro de todas las clases
+					como gerente, contador, etc. Es que todos son Funcionarios.
+					Todos somos funcionarios en la empresa pero cada bonificacion va a ser defenida por cada tipo
+					de funcionario
+					
+
+
+
+///// clase abstracta 
+
+
+	
+public abstract class Funcionario {
+
+	private String nombre;
+	private String documento;
+	private double salario;
+	private int tipo;
+	
+//	
+//	public Funcionario(String nombre, String documento,double salario, int tipo ) {
+//		super();
+//	}
+	
+	
+	public Funcionario() {
+		super();
+	}
+	
+	
+	
+	
+	/----- 	se puede instanciar una clase abstracta con una clase fisica como gerente 
+	
+	
+	Funcionario	funcionario=new gerente();
+		funcionario.setSalario(200);
+		
+		La clase tiene que ser extends a la clase abstracta en este caso funcionario, donde gerente extiende de funcionario
+	
+	
+
+///////////////////////////////////////////////////
+/-------METODOS ABSTRACTO----------------------/
+
+
+	Cuando hacemos abstracto un metodo , las clases hijas deben implementar ese metodo sino ya no compila
+	Para hacer un metodo abstracto debemos dejarlo sin declarar un cuerpo, ya que necesitara un return
+	
+	
+	CLASE PADRE
+	
+	//sobreescritura de metodo
+
+	public abstract double getBonificacion();
+	
+	
+	en las clases hijas hay que implementar este metodo
+	
+	
+	
+	public double registrarSalario(Funcionario funcionario) {
+		
+		
+		this.suma=funcionario.getBonificacion()+this.suma;
+		System.out.println("calculo actual: "+this.suma);
+		return this.suma;
+	}
+	
+	
+	
+	@Override
+	public double getBonificacion() {
+		System.out.println("EJECUTANDO DESDE EL CONTADOR");
+		return 200;
+	}
+	
+	
+	
+//sobreescritura de metodo
+	public double getBonificacion(){
+		System.out.println("EJECUTANDO DESDE GERENTE");
+		return super.getSalario()+this.getSalario()*0.05;
+	}
+	
+	
+	
+
 	
