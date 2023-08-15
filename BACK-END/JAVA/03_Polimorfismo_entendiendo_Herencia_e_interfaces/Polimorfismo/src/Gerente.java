@@ -13,7 +13,7 @@ public class Gerente extends Funcionario {
 
     public double getBonificacion() {
         System.out.println("Llamando metodo del Gerente");
-        return super.getBonificacion() + super.getSalario();
+        return this.salario=super.salario + super.getSalario();
     }
 
     public boolean iniciarSesion(String clave) {

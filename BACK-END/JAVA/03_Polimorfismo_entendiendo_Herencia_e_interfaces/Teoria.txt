@@ -420,4 +420,14 @@ puede tener  variables, campos y puede referenciar objectos no abstractos, puede
 que ser instanciada con una implementacion real, de una clase que extienda de esta clase abstracta   	
 
 
-	
+
+
+
+
+/-------------------------------------------------------------------------------------------------------------------------------------------------/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+											HERENCIA MULTIPLE
+											
+											
+					
