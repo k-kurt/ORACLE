@@ -523,3 +523,14 @@ public abstract class Funcionario {
 				
 				
 				
+				
+/-------------------------------------------------------------------------------------------------------------------------------------------------/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+											CLASE UTIL
+											
+						Una clase util no le pertenece a nadie, se usa para cuando queremos utilizar codigo como motodos que sean utiles
+						que tienen cierta funcionalidad que permite no repetir codigo. Por ejemplo una clase util es cuando queres obtener
+						la fecha actual que se puede usar en varias partes del codigo
+				
+				
