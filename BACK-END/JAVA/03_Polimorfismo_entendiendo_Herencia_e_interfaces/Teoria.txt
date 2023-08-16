@@ -430,4 +430,96 @@ que ser instanciada con una implementacion real, de una clase que extienda de es
 											HERENCIA MULTIPLE
 											
 											
-					
+				Una clase no puede heredar de varias clases padres, solo de una, eso usar el extends 	
+				
+				
+				
+
+				
+				
+/-------------------------------------------------------------------------------------------------------------------------------------------------/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+											INTERFACE
+											
+				No es una relacion de familia pero es una caracteristica que idenfica y necesitas compartir y esa caracteristicas puedes enviar
+				como parametro a los metodos por que es una caracteristica que necesita implementar para autenticar 							
+				Una interface no puede tener metodos implementados, tiene que ser sin cuerpo el metodo. 	
+				Una Interface no puede tener constructor	
+				
+				
+				Todos los métodos de una interfaz son abstractos, los de una clase abstracta pueden no serlo.
+				Correcto, todos los métodos en la interfaz son siempre abstractos y siempre públicos.
+				En una clase abstracta podemos tener métodos concretos y abstractos.		
+				
+				La interface es abstracta hasta sus metodos pero no se escriben
+				
+				UNA INTERFAZ NO PUEDE EXTENDER DE UNA CLASE. UNA INTERFAZ PUEDE EXTENDER DE OTRA INTERFAZ
+				
+				
+				
+				/////////////////////
+				INTERFACE:
+				
+				
+	public interface Autenticable {
+
+
+    	public  void setClave(String clave);
+    
+    
+    	public  boolean iniciarSesion(String clave);
+
+	}
+				
+				
+				////////////////////
+				CLASE ABSTRACT
+				
+				
+				
+				
+public abstract class Funcionario {
+
+    private String nombre;
+    private String documento;
+    protected double salario;
+    private int tipo;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
+    public abstract double getBonificacion();
+}
+				
+				
+				
