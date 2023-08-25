@@ -1,0 +1,115 @@
+											Excepciones
+											
+											
+		Las excepciones tambien son objetos , que tiene su nombre y su mensaje.
+		Para entender la excepcion hay que comprender el mensaje de error
+		
+		
+		
+		
+					//nombre de la exception 	//el mensaje de que sucedio, a veces lo tira
+		java.lang.ArithmeticException: / by zero		
+	at flujo.metodo2(flujo.java:21)			// 
+	at flujo.metodo1(flujo.java:13)			//	la traza de la pila(stack trace)	 
+	at flujo.main(flujo.java:8)				//
+	
+	
+	
+	
+		Podemos avisarle a java donde creemos que puede haber una bomba, un error, con lads palabras claves 
+		
+		
+		Try{
+		}catch( ){
+		}
+		
+		try es intenta(intenta hacerlo)
+		
+		catch es atrapa(atrapa el error)
+		
+		
+		try no puede existir sin catch por si hay un error
+		
+		
+		
+		 try {
+		    	int num=0;
+			      int resultado=i/num;
+			      System.out.println(resultado);
+			      
+			} catch (ArithmeticException exception ) {
+				
+				System.out.println(exception.getMessage());
+				exception.printStackTrace();
+				
+			} 
+			
+			
+			
+			resultado:
+			
+			
+			
+			Inicio de main
+Inicio do metodo1
+Inicio de metodo2
+1
+/ by zero
+2
+java.lang.ArithmeticException: / by zero
+	at flujo.metodo2(flujo.java:22)
+	at flujo.metodo1(flujo.java:13)
+	at flujo.main(flujo.java:8)
+/ by zero
+java.lang.ArithmeticException: / by zero
+	at flujo.metodo2(flujo.java:22)
+	at flujo.metodo1(flujo.java:13)
+	at flujo.main(flujo.java:8)
+3
+/ by zero
+java.lang.ArithmeticException: / by zero
+	at flujo.metodo2(flujo.java:22)
+	at flujo.metodo1(flujo.java:13)
+	at flujo.main(flujo.java:8)
+4
+java.lang.ArithmeticException: / by zero
+/ by zero
+	at flujo.metodo2(flujo.java:22)
+	at flujo.metodo1(flujo.java:13)
+5
+/ by zero
+	at flujo.main(flujo.java:8)
+java.lang.ArithmeticException: / by zero
+	at flujo.metodo2(flujo.java:22)
+	at flujo.metodo1(flujo.java:13)
+	at flujo.main(flujo.java:8)
+Fin de metodo2
+Fin de metodo1
+Fin de main
+			
+			
+			
+			
+			muestrar otros resultado por que supo contener el error, mostrarlo y continuar ejecutando el codigo
+			
+			
+			
+			
+			Se puede poner varios catch o usar el operador O "|"
+			
+			
+			 try {
+		    	int num=0;
+			      int resultado=i/num;
+			      System.out.println(resultado);
+			      
+			} catch (ArithmeticException | NullPointerException exception ) {
+				System.out.println("Atrapo excepcion");
+				System.out.println(exception.getMessage());
+				exception.printStackTrace();
+				
+			}  
+			
+			
+			
+			
