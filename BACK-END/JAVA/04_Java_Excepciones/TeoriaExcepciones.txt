@@ -111,5 +111,313 @@ Fin de main
 			}  
 			
 			
+									VER QUE ATRAPA DISTINTOS EXCEPCIONES
+									
+									
+	
+	
+public class flujo {
+
+	public static void main(String[] args) {
+		System.out.println("Inicio de main");
+		metodo1();
+		System.out.println("Fin de main");
+	}
+
+	public static void metodo1() {
+		System.out.println("Inicio do metodo1");
+		metodo2();
+		System.out.println("Fin de metodo1");
+	}
+
+	public static void metodo2() {
+		System.out.println("Inicio de metodo2");
+		for (int i = 1; i <= 5; i++) {
+			System.out.println(i);
+			try {
+
+				if (i == 3) {
+
+					int num = 0;
+					int resultado = i / num;
+					System.out.println(resultado);
+				}
+				
+				String test=null;
+				System.out.println(test.toString());
+				
+				
+			} catch (ArithmeticException | NullPointerException exception) {
+				System.out.println("Atrapo excepcion");
+				System.out.println(exception.getMessage());
+				exception.printStackTrace();
+
+			}
+		}
+		System.out.println("Fin de metodo2");
+	}
+
+}
+
+
+
+
+
+												RESULTADO
+												
+												
+Inicio de main
+Inicio do metodo1
+Inicio de metodo2
+1
+Atrapo excepcion
+Cannot invoke "String.toString()" because "test" is null
+java.lang.NullPointerException: Cannot invoke "String.toString()" because "test" is null
+	at flujo.metodo2(flujo.java:30)
+	at flujo.metodo1(flujo.java:12)
+	at flujo.main(flujo.java:6)
+2
+Atrapo excepcion
+Cannot invoke "String.toString()" because "test" is null
+java.lang.NullPointerException: Cannot invoke "String.toString()" because "test" is null
+	at flujo.metodo2(flujo.java:30)
+	at flujo.metodo1(flujo.java:12)
+	at flujo.main(flujo.java:6)
+3
+Atrapo excepcion
+/ by zero
+java.lang.ArithmeticException: / by zero
+	at flujo.metodo2(flujo.java:25)
+	at flujo.metodo1(flujo.java:12)
+	at flujo.main(flujo.java:6)
+4
+Atrapo excepcion
+Cannot invoke "String.toString()" because "test" is null
+java.lang.NullPointerException: Cannot invoke "String.toString()" because "test" is null
+	at flujo.metodo2(flujo.java:30)
+	at flujo.metodo1(flujo.java:12)
+	at flujo.main(flujo.java:6)
+5
+Atrapo excepcion
+Cannot invoke "String.toString()" because "test" is null
+java.lang.NullPointerException: Cannot invoke "String.toString()" because "test" is null
+	at flujo.metodo2(flujo.java:30)
+	at flujo.metodo1(flujo.java:12)
+	at flujo.main(flujo.java:6)
+Fin de metodo2
+Fin de metodo1
+Fin de main
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+															CREANDO EXCEPCIONES
+															
+															
+															
+															
+															
+Al crear excepciones solo podemos extender de la clase Exception ya que si lo hace de Thtowable rompemos la norma de JAVA de que exista 2 tipos de
+errores, el que configuramos nosotros y lo que tira el JVM		
+	Para poder extender de la clase Exception directamente tenemos que declarar un try catch si o si y en el metodo declarar el throws Miexception{}
+Ya que si extendermos de exception es por estamos seguro que nuestro metodo tirara nuestra exception encambio con RintimeException puede ser que tire
+esa exception 						
+															
+															
+															
+															
+															
+	Cuenta cuenta=new Cuenta();
+	throw new ArithmeticException();
+	
+	//despues del throw no podes escribir nada mas
+	
+	
+															el throw significa lanzar
+									
+									
+									Resultado
+									
+Inicio de main
+Inicio do metodo1
+Inicio de metodo2
+Exception in thread "main" java.lang.ArithmeticException
+	at flujo.metodo2(flujo.java:18)
+	at flujo.metodo1(flujo.java:12)
+	at flujo.main(flujo.java:6)
+															
+				
+				
+				
+											CREAMOS Y EXPLOTAMOS NUESTRA BOMBA
+											
+											
+
+public class flujo {
+
+	public static void main(String[] args) {
+		System.out.println("Inicio de main");
+		metodo1();
+		System.out.println("Fin de main");
+	}
+
+	public static void metodo1() {
+		System.out.println("Inicio do metodo1");
+		metodo2();
+		System.out.println("Fin de metodo1");
+	}
+
+	public static void metodo2() {
+		System.out.println("Inicio de metodo2");
+		throw new Miexcepcion("Mi exception fue lanzadaaaaaaa");
+		
+		
+	}
+
+}
+
+
+
+
+
+										RESULTADO
+										
+					Inicio de main
+Inicio do metodo1
+Inicio de metodo2
+Exception in thread "main" Miexcepcion: Mi exception fue lanzadaaaaaaa
+	at flujo.metodo2(flujo.java:18)
+	at flujo.metodo1(flujo.java:12)
+	at flujo.main(flujo.java:6)
+										
+										
+										
+										CREAMOS EXCEPCION Y LA EJECUTAMOS
+										
+
+
+
+public class flujo {
+
+	public static void main(String[] args) {
+		System.out.println("Inicio de main");
+		metodo1();
+		System.out.println("Fin de main");
+	}
+
+	public static void metodo1() {
+		System.out.println("Inicio do metodo1");
+		try {
+			metodo2();
+			
+		} catch (Miexcepcion e) {
+			e.printStackTrace();
+		}
+		System.out.println("Fin de metodo1");
+	}
+
+	public static void metodo2() {
+		System.out.println("Inicio de metodo2");
+		throw new Miexcepcion("Mi exception fue lanzadaaaaaaa");
+		
+		
+	}
+
+}
+
+
+
+
+										RESULTADOS
+										
+										
+	Inicio de main
+Inicio do metodo1
+Inicio de metodo2
+Miexcepcion: Mi exception fue lanzadaaaaaaa
+	at flujo.metodo2(flujo.java:23)
+	at flujo.metodo1(flujo.java:13)
+	at flujo.main(flujo.java:6)
+Fin de metodo1
+Fin de main
+										
 			
 			
+			
+			
+			
+			
+			
+			
+										EJEMPLO DE HERENCIA DE EXCEPTION
+
+
+
+	
+public class Miexcepcion extends Exception {
+
+	
+	public Miexcepcion() {
+		super();
+	}
+	
+	
+	public Miexcepcion(String mensaje) {
+		super(mensaje);
+	}
+	
+	
+}
+	
+	
+	
+	
+	
+	
+	
+public class flujo {
+
+	public static void main(String[] args) {
+		System.out.println("Inicio de main");
+		metodo1();
+		System.out.println("Fin de main");
+	}
+
+	public static void metodo1() {
+		System.out.println("Inicio do metodo1");
+		try {
+			metodo2();
+			
+		} catch (Miexcepcion e) {
+			e.printStackTrace();
+		}
+		System.out.println("Fin de metodo1");
+	}
+
+	public static void metodo2()  throws Miexcepcion{
+		System.out.println("Inicio de metodo2");
+		throw new Miexcepcion("Mi exception fue lanzadaaaaaaa");
+		
+		
+	}
+
+}										
+										
+							
