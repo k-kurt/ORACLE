@@ -5,7 +5,12 @@ public class TestCuenta {
 		CuentaCorriente cc = new CuentaCorriente(1, 1);
 		CuentaAhorros ca = new CuentaAhorros(2, 3);
 		cc.deposita(2000);
-		cc.transfiere(1000, ca);
+		try {
+			cc.transfiere(1000, ca);
+		} catch (SaldoInsuficienteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		System.out.println(cc.getSaldo());
 		System.out.println(ca.getSaldo());

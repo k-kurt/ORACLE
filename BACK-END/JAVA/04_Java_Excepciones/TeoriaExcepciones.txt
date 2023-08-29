@@ -518,10 +518,30 @@ public class flujo {
 
 
 
+
+
+
+
+
+
+
+
 ---------------------------------------------------------Excepcion en el proyecto del banco de por que no pude sacar dinero-------------------------
 
 
-
+Creamos una exception en cual aplicamos en la clase Cuenta y sus metodos pero luego modificamos la exception, la volvimos Chedcked entonces extendia de
+Exception y tuvimos que agregar los try catch o en los metodos los throws de la exception creada
 
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+---------------------------------------------------------APLICACIONES DISTRIBUIDAS-------------------------
+		
+		Es un conjunto de aplicaciones que interactuan entre si para satisfacer las reglas del negocio

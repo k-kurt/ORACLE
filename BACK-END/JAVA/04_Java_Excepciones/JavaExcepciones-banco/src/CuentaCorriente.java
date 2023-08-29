@@ -8,7 +8,12 @@ public class CuentaCorriente extends Cuenta {
 	@Override
 	public void saca(double valor) {
 		double comision = 0.2;
-		super.saca(valor + comision);
+		try {
+			super.saca(valor + comision);
+		} catch (SaldoInsuficienteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

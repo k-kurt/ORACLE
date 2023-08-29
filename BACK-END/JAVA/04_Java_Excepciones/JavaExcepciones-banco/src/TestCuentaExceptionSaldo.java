@@ -8,7 +8,12 @@ public class TestCuentaExceptionSaldo {
 		
 		
 		cuenta.deposita(200);
-		cuenta.saca(210);
+		try {
+			cuenta.saca(210);
+		} catch (SaldoInsuficienteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 
 	}
