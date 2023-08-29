@@ -25,15 +25,14 @@ public abstract class Cuenta {
     
     
 
-    public boolean saca(double valor) {
-        if(this.saldo >= valor) {
-            this.saldo -= valor; 
-            return true;
-        } else {
-            return false;
-        }
+    public void saca(double valor) {
+          
+    	if(this.saldo<valor) {
+    		throw  new SaldoInsuficienteException("no tienes saldo");
+    	}
+    	this.saldo -= valor; 
     }
-
+          
     public boolean transfiere(double valor, Cuenta destino) {
         if(this.saldo >= valor) {
             this.saca(valor);

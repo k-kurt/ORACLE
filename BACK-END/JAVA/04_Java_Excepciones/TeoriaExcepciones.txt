@@ -420,4 +420,108 @@ public class flujo {
 
 }										
 										
-							
+
+
+
+
+
+
+
+
+
+										
+										UNCHECKED Y CHCKED
+										
+Uncheked no son verificadas por el compilador puede que lanze o puede que no lanze el compilador, en el caso del cheked si
+nos va  a obligar a tratar esa excepcion en el codigo cuando es lanzada sino no va a compilar										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+		Existe una gran jerarquía de clases que representan excepciones. Por ejemplo, ArithmeticException es hija de RuntimeException, que hereda de Exception, que a su vez es hija de la clase de excepciones más ancestral, Throwable. Conocer bien esta jerarquía significa saber cómo usar las excepciones en su aplicación.
+		
+		
+		Throwable es la clase que debe extenderse para poder lanzar un objeto en la pila (usando la palabra reservada throw)
+		
+		Es en la clase Throwable donde tenemos casi todo el código relacionado con las excepciones, incluyendo getMessage() e printStackTrace (). El resto de la jerarquía tiene solo algunas sobrecargas de constructores para comunicar mensajes específicos.
+		
+		La jerarquía que comenzó con la clase Throwable se divide en excepciones y errores. Las excepciones se utilizan en los códigos de aplicación. Los errores son utilizados exclusivamente por la máquina virtual.
+		
+		Las clases que heredan de Error se utilizan para informar errores en la máquina virtual. Los desarrolladores de aplicaciones no deben crear errores que hereden de Error.
+		
+		StackOverflowError es un error de máquina virtual para informar que la pila de ejecución no tiene más memoria.
+		
+		Las excepciones se dividen en dos categorías amplias: las que el compilador comprueba obligatoriamente y las que no.
+		
+		Los primeros se denominan checked y se crean por pertenecer a una jerarquía que no pasa RuntimeException.
+		
+		Los segundos están unchecked y se crean como descendientes de RuntimeException.				
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		////////////////////
+		
+		
+		
+		
+		
+public class flujo {
+
+	public static void main(String[] args) {
+		System.out.println("Inicio de main");
+		metodo1();
+		System.out.println("Fin de main");
+	}
+
+	public static void metodo1() {
+		System.out.println("Inicio do metodo1");
+		try {
+			metodo2();
+			
+		} catch (Miexcepcion e) {		//Exception
+			e.printStackTrace();
+		}
+		System.out.println("Fin de metodo1");
+	}
+
+	public static void metodo2()  throws Miexcepcion{
+		System.out.println("Inicio de metodo2");
+		throw new Miexcepcion("Mi exception fue lanzadaaaaaaa");
+		
+		
+	}
+
+}
+		
+		
+		Podemos directamente poner Exception pero es meejor ser mas especifico para el proximo programador 
+
+
+
+
+
+
+---------------------------------------------------------Excepcion en el proyecto del banco de por que no pude sacar dinero-------------------------
+
+
+
+
+		
+		
