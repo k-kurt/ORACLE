@@ -545,3 +545,54 @@ Exception y tuvimos que agregar los try catch o en los metodos los throws de la 
 ---------------------------------------------------------APLICACIONES DISTRIBUIDAS-------------------------
 		
 		Es un conjunto de aplicaciones que interactuan entre si para satisfacer las reglas del negocio
+		
+		
+		
+		
+		
+				
+---------------------------------------------------------Finally del try catch-------------------------
+		
+		
+		Como una conexion a base de datos necesitamos siempre cerrar la conexion, utilizando try catch 
+		no podriamos tener seguramente una buena seguridad ya que tenemos que repetir codigo y dependiendo 
+		de que no se borre la aplicacion de la exception. 
+		
+		
+		
+		public class TextConexion {
+
+	public static void main(String[] args) {
+		Conexion conexion=new Conexion();
+		try {
+			conexion.leerDatos();
+			conexion.cerrar();
+			
+		} catch (IllegalStateException e) {
+			// TODO: handle exception
+			e.getStackTrace();
+			conexion.cerrar();
+		}
+	}
+	
+	
+}
+
+
+se repite el metodo cerrar
+
+
+
+							
+							
+							
+							PARA SOLUCIONAR ESO ESTA EL FINALLY
+							
+							
+							
+Pase lo que pase siempre se va a ejecutar lo que este en finally. Finally es opcional 
+
+
+
+		
+		
