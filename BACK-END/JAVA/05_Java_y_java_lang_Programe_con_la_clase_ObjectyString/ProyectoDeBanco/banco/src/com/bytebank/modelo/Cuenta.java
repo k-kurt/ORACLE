@@ -1,9 +1,15 @@
 package com.bytebank.modelo;
 
-
+/**
+ * Probando la documentacion javadoc
+ * @version 1.0
+ * @author genesis
+ * 
+ *
+ */
 
 public abstract class Cuenta {
-
+	
     protected double saldo;
     private int agencia = 1;
     private int numero;
@@ -11,10 +17,19 @@ public abstract class Cuenta {
 
     private static int total;
     
+    
     public Cuenta() {
+    
     	
     }
     
+    
+    /**
+     * este constructor necesita 2 parametros agencia y numero para instanciar la clase
+     * Cuenta
+     * @param agencia
+     * @param numero
+     */
     public Cuenta( int agencia, int numero) {
         this.agencia = agencia;
         this.numero = numero;
@@ -27,6 +42,13 @@ public abstract class Cuenta {
     
     
 
+    
+    /**
+     * este metodo retira dinero de la cuenta y si ocurre un error 
+     * devuelve una exception
+     * @param valor
+     * @throws SaldoInsuficienteException
+     */
     public void saca(double valor) throws SaldoInsuficienteException {
           
     	if(this.saldo<valor) {

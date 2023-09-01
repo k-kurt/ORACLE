@@ -1,5 +1,8 @@
 package com.bytebank.test;
 
+import com.bytebank.modelo.Contador;
+import com.bytebank.modelo.Funcionario;
+
 public class TestFuncionario {
 
 	public static void main(String[] args) {

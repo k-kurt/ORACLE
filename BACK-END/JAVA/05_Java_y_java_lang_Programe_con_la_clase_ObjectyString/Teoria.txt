@@ -26,3 +26,93 @@
 			
 			
 			NOMBRE_DEL_SITE_AL_REVES.NOMBRE_DEL_PROYECTO
+			
+			
+			
+			
+
+
+
+
+
+
+
+
+
+
+
+			
+////////////////////////////////////////02.MODIFICADORES DE ACCESO/////////////////////////////////
+
+
+						DEFAULT
+						
+						dentro del mismo paquete
+						Es cuando no se declara el modificador de acceso
+						esta clase va a ser visible unicamente dentro de este paquete
+					
+			
+						PUBLIC 
+						
+						No importa donde estes, tu puedes entrar
+						
+						
+						PROTECTED 
+						
+						dentro del mismo paquete
+						Da permiso de acceso por herencia a las clases que esten fuera del paquete
+						
+						
+						
+						PRIVATE
+						
+						es el mas restrictivo de todos
+						No puedes acceder a el fuera de la clase
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+					
+					
+////////////////////////////////////////03.DOCUMENTACION JAVADOC/////////////////////////////////
+
+		Documentar el lenguaje humano y no maquina el funcionamiento del codigo 
+		
+		
+		Los comentarios de documentacion se hace de la siguiente manera
+		
+		/**
+		*
+		*/
+		
+		
+		se usan @ para sentenciar algo, como el autor, @author kevin
+		
+		
+/**
+ * 
+ * @author genesis
+ *
+ */
+ 
+ 
+ se pone el azul el bloque de comentario a diferencia del bloque de comentario normal que se pone 
+ en verde
+		
+	
+
+		Esta documentacion del codigo llamada javadoc esta dentro del codigo y lo podemos ver en 
+		el apartado javadoc de la consola
+
+												
+						
+		La idea del javadoc es hacer la documentacion publica, que cualquiera persona pueda leer
+		la documentacion sin leer el codigo				
+						
+						

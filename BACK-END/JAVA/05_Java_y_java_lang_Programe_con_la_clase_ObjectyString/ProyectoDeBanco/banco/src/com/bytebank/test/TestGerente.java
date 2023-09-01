@@ -1,5 +1,7 @@
 package com.bytebank.test;
 
+import com.bytebank.modelo.Gerente;
+
 public class TestGerente {
 
 	public static void main(String[] args) {
