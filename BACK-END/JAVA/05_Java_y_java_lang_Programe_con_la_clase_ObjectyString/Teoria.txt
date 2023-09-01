@@ -1,0 +1,28 @@
+			
+			
+			CONEVENCION ENTRE DESARROLLADORES
+			
+			La extension de los paquetes. 
+			
+			primero va la extension del pais
+			
+			ar
+			
+			luego, que tipo de insitucion es, compania u organizacion
+			
+			ar.com
+			
+			luego, el nombre de la institucion 
+			
+			
+			ar.com.bytebank
+			
+			luego, va el paquete que necesitemos crear
+			
+			ar.com.bytebank.modelo
+			
+			
+			
+			
+			
+			NOMBRE_DEL_SITE_AL_REVES.NOMBRE_DEL_PROYECTO
