@@ -141,4 +141,150 @@
 			
 			
 
+				
+////////////////////////////////////////04.Explorando String/////////////////////////////////
+
+
+
+Java.lang es java lenguaje, es la base de todo 
+
+
+El String nace y muere de la misma forma. No es modificado de ninguna manera
+
+
+String nombre="alura";
+	
+	//String nombre2=new String("Alura");//no es usada en el mundo real
+	
+	System.out.println("Antes de replace: " + nombre);
+	//nombre.replace("a", "A");
+	nombre.concat(" cursos online");
+	System.out.println("Despues de replace: " + nombre);
+	
+	
+	
+	nada funciono.
+	
+	
+	
+							UNA DE LAS MANERAS DE CAMBIAR ESO
+	
+	Como funiona Java, que ahce referencia a un lugar de la memoria, no a la variable
+	y el replace crea un nuevo String, devuelve un String, se lo asignamos a la variable
+	nombre  que ya teniamos y podemos mostrar con sus cambios
+	
+	
+	
+	package com.bytebank.test;
+
+public class TestString {
+
+	public static void main(String[] args) {
+		
+	String nombre="alura";
+	
+	//String nombre2=new String("Alura");//no es usada en el mundo real
+	
+	System.out.println("Antes de replace: " + nombre);
+	nombre=nombre.replace("a", "A");
+	nombre=nombre.concat(" cursos online");
+	System.out.println("Despues de replace: " + nombre);
+	
+	
+	}
+	
+}
+							
+							Todo String es inmutable. Asi como lo creas muere
+				
+	
+	
+	
+	///////////////
+	Metodos que vienen con la clase String
+
+package com.bytebank.test;
+
+public class TestString {
+
+	public static void main(String[] args) {
+		
+	String nombre="alura";
+	
+	//String nombre2=new String("Alura");//no es usada en el mundo real
+	
+	System.out.println("Antes de metodo: " + nombre);
+	nombre=nombre.replace("a", "A");
+	nombre=nombre.concat(" cursos online");
+	nombre=nombre.toUpperCase();//permite hacer todas las letras en mayusculas
+	nombre=nombre.toLowerCase();//permite hacer todas las letras en minisculas
+	char Char=nombre.charAt(3);
+	int indice=nombre.indexOf("e");
+	System.out.println("Despues de metodo: " + nombre);
+	System.out.println("Caracter encontrado: "+Char);
+	System.out.println("Indice encontrado: "+indice);
+	
+	}
+	
+}
+
+
+
+			RESULTADO
+			
+Antes de metodo: alura
+Despues de metodo: alura cursos online
+Caracter encontrado: r
+Indice encontrado: 18
+
+
+
+
+
+
+///////////////////////////
+ La clase StringBuilder
+PRÓXIMA ACTIVIDAD
+
+Vimos que la clase String es especial porque genera objetos inmutables. Esto se considera beneficioso cuando se piensa en el diseño, pero es malo cuando se piensa en el rendimiento (por eso debemos usar comillas dobles en la creación, ya que la JVM quiere solucionar los problemas de rendimiento con optimizaciones).
+
+Ahora hay un problema: imagina que necesitas crear un texto enorme y necesitas concatenar muchos String, por ejemplo:
+
+String texto = "Ayuda";
+texto = texto.concat("-");
+texto = texto.concat("me ");
+texto = texto.concat("subi ");
+texto = texto.concat("en el ");
+texto = texto.concat("omnibus ");
+texto = texto.concat("equivocado ");
+System.out.println(texto); COPIA EL CÓDIGO
+En este pequeño ejemplo ya hemos creado varios objetos, solo porque estamos concatenando algunos String. Esto no es bueno pensando en el rendimiento y para resolver esto existe la clase StringBuilder que ayuda a concatenar Strings de manera más eficiente.
+
+Vea el mismo código usando StringBuilder:
+
+StringBuilder builder = new StringBuilder("Ayuda");
+builder.append("-");
+builder.append("me ");
+builder.append("subi ");
+builder.append("en el ");
+builder.append("omnibus ");
+builder.append("equivocado ");
+String texto = builder.toString();
+System.out.println(texto);COPIA EL CÓDIGO
+StringBuilder es una clase común. Observe que usamos new para crear el objeto. Además, como el objeto es mutable, usamos la misma referencia, sin nuevas asignaciones.
+
+La interfaz CharSequence
+Ahora lo bueno es que la clase StringBuilder también implementa la interfaz CharSequence:
+
+public class StringBuilder implements CharSequence {
+CharSequence cs = new StringBuilder("También es una secuencia de caracteres");COPIA EL CÓDIGO
+Esto significa que algunos métodos de la clase String saben cómo trabajar con StringBuilder, por ejemplo:
+
+String nombre = "ALURA";
+CharSequence cs = new StringBuilder("al");
+
+nombre = nombre.replace("AL", cs);
+
+System.out.println(nombre);COPIA EL CÓDIGO
+Viceversa, la clase StringBuilder tiene métodos que reciben el tipo CharSequence. De esa forma podemos trabajar de forma compatible con ambas clases, basándonos en una interfaz común.
 	
