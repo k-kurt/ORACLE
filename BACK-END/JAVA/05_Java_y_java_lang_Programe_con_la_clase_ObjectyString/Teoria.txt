@@ -116,3 +116,29 @@
 		la documentacion sin leer el codigo				
 						
 						
+						
+						
+						
+						
+
+
+
+			
+////////////////////////////////////////03.ARCHIVOS JAR/////////////////////////////////
+
+
+
+			Exportamos el proyecto en extension JAR para que lo lea el sistema de java
+			
+			Es usado y compartido con otros programadores para que no vuelvan a escribir 
+			
+			el codigo
+			
+			
+			
+			Un conjunto de clases exportadas en un JAR son una libreria, siempre.
+			
+			
+			
+
+	
