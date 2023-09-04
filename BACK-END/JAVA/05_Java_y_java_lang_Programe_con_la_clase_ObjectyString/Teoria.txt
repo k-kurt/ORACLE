@@ -287,4 +287,139 @@ nombre = nombre.replace("AL", cs);
 
 System.out.println(nombre);COPIA EL CÓDIGO
 Viceversa, la clase StringBuilder tiene métodos que reciben el tipo CharSequence. De esa forma podemos trabajar de forma compatible con ambas clases, basándonos en una interfaz común.
+
+
+
+
+
+
+
+
+
+
+
+				
+////////////////////////////////////////05.CLASE OBJECT///////////////////////////////
+
+
+			Existe una superclase en Java que es Object, es una clase padre, la padre de todas 
+			y que hace a todo en java un objeto
+		
+		
+		
+		
+			//////////////////ESTAMOS REPITIENDO CODIGO 
+			
+			
+			
+			
+			package com.bytebank.test;
+
+public class TestString {
+
+	public static void main(String[] args) {
+		
+	String nombre="alura";
+	
+	//String nombre2=new String("Alura");//no es usada en el mundo real
+	
+	System.out.println("Antes de metodo: " + nombre);
+	nombre=nombre.replace("a", "A");
+	nombre=nombre.concat(" cursos online");
+	nombre=nombre.toUpperCase();//permite hacer todas las letras en mayusculas
+	nombre=nombre.toLowerCase();//permite hacer todas las letras en minisculas
+	char Char=nombre.charAt(3);
+	int indice=nombre.indexOf("e");
+	
+	
+	printLine( nombre);
+	printLine(Char);
+	printLine(indice);
+	printLine(new CeuntaAhorros(200,300);
+	}
+	
+	//AQUI, PARA MOSTRAR CADA INSTANCIA DEBERIAMOS CREAR UN METODO
+		public static void  printLine(int valor) {
+			System.out.println(valor);
+			}
+	
+		
+		public static void  printLine(String valor) {
+			System.out.println(valor);
+			}
+		
+		
+		public static void  printLine(char valor) {
+			System.out.println(valor);
+			}
+			
+			
+		public static void  printLine(CuentaAhorros valor) {
+			System.out.println(valor);
+			}
+	
+}
+
+
+
+
+
+				//LA SOLUCION
+				
+			la solucion es declarar como tipo de variable en el parametro del metodo
+			la clase Object, eso abarca todas las variables
+			
+			
+			
+			
+			
+			package com.bytebank.test;
+
+import com.bytebank.modelo.CuentaAhorros;
+
+public class TestString {
+
+	public static void main(String[] args) {
+		
+	String nombre="alura";
+	
+	//String nombre2=new String("Alura");//no es usada en el mundo real
+	
+	System.out.println("Antes de metodo: " + nombre);
+	nombre=nombre.replace("a", "A");
+	nombre=nombre.concat(" cursos online");
+	nombre=nombre.toUpperCase();//permite hacer todas las letras en mayusculas
+	nombre=nombre.toLowerCase();//permite hacer todas las letras en minisculas
+	char Char=nombre.charAt(3);
+	int indice=nombre.indexOf("e");
+	
+	Object cuenta=new CuentaAhorros(2, 22);
+	
+	printLine( nombre);
+	printLine(Char);
+	printLine(indice);
+	printLine(new CuentaAhorros(200,300));
+	
+	}
+	
+	
+	public static void  printLine(Object valor) {
+		System.out.println(valor);
+		}
+	
+		/*
+		 * public static void printLine(int valor) { System.out.println(valor); }
+		 * 
+		 * 
+		 * public static void printLine(String valor) { System.out.println(valor); }
+		 * 
+		 * 
+		 * public static void printLine(char valor) { System.out.println(valor); }
+		 * 
+		 * public static void printLine(CuentaAhorros valor) {
+		 * System.out.println(valor); }
+		 */
+	
+}
+
 	

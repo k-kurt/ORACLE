@@ -1,5 +1,7 @@
 package com.bytebank.test;
 
+import com.bytebank.modelo.CuentaAhorros;
+
 public class TestString {
 
 	public static void main(String[] args) {
@@ -15,10 +17,32 @@ public class TestString {
 	nombre=nombre.toLowerCase();//permite hacer todas las letras en minisculas
 	char Char=nombre.charAt(3);
 	int indice=nombre.indexOf("e");
-	System.out.println("Despues de metodo: " + nombre);
-	System.out.println("Caracter encontrado: "+Char);
-	System.out.println("Indice encontrado: "+indice);
+	
+	Object cuenta=new CuentaAhorros(2, 22);
+	
+	printLine( nombre);
+	printLine(Char);
+	printLine(indice);
+	printLine(new CuentaAhorros(200,300));
 	
 	}
+	
+	
+	public static void  printLine(Object valor) {
+		System.out.println(valor.toString());
+		}
+	
+		/*
+		 * public static void printLine(int valor) { System.out.println(valor); }
+		 * 
+		 * 
+		 * public static void printLine(String valor) { System.out.println(valor); }
+		 * 
+		 * 
+		 * public static void printLine(char valor) { System.out.println(valor); }
+		 * 
+		 * public static void printLine(CuentaAhorros valor) {
+		 * System.out.println(valor); }
+		 */
 	
 }
