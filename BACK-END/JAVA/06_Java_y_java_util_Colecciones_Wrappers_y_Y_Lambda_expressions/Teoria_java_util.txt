@@ -1,0 +1,113 @@
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////	
+								Paquetes en Java
+								
+								
+								
+								java.lang java.util  java.io
+								
+java.lang no es necesario importar por que es la base de todo el lenguaje
+
+java.util es java son llamados los utilitarios, son estructura de datos, son objectos que nos
+van a simplificar un poco la vida para realizar diferentes operaciones
+
+							
+					
+					
+					
+///////////////////////////////////////////////////////////////////////////////////////////////////////	
+								Arrays en Java
+									
+Siempre los array inician el indice en 0 y hay que declarar el tamanio del array sino
+no compila
+
+
+Por ejemplo
+
+
+
+
+
+
+package com.bytebank.test;
+
+public class TestMain {
+
+	public static void main(String[] args) {
+		
+		
+		 int[] edades=new int[5];
+		 edades[2]=30;
+		 
+		 System.out.println(edades[2]);
+		 
+		 for(int i=0;i<edades.length;i++) {
+			 
+			 System.out.println(edades[i]);//*
+		 }
+		 
+		 
+		
+	}
+	
+	
+}										
+										
+					*Si pongo la i sin edades[i] va a mostrar el recorrido del for
+					del 1 al 5 pero no sus valores			
+					
+					
+					Crear un array de tipo doble
+					
+					double[] precios = new double[5];
+					
+					
+					Existe otra alternativa menos utilizada pero igualmente correcta
+					double precios[] = new double[5];	
+					
+					
+					se puede saber el tamanio del array
+					
+					
+					int tamnioarray= edades.leng;
+					
+					system.out.line(tamanioarray);
+					
+					
+					
+					
+					
+					
+					
+					/////////////////////////////////////////////////////
+					
+Hasta ahora hemos visto la forma "clásica" de crear un objeto 
+array utilizando la palabra clave new, por ejemplo:
+										
+										
+															
+	int[] numeros = new int[6];
+	numeros[0] = 1;
+	numeros[1] = 2;
+	numeros[2] = 3;
+	numeros[3] = 4;
+	numeros[4] = 5;				
+										
+
+
+Sin embargo, también existe una forma literal. Literal, en este contexto, significa usar valores directamente,
+ menos burocrático, más directo. Vea la diferencia:			
+ 
+
+
+
+			int[] refs = {1,2,3,4,5};				
+			
+				
+			
+Usamos las llaves {} para indicar que es un array y los valores ya están		
+declarados dentro de las llaves.
+
+			
