@@ -110,4 +110,57 @@ Sin embargo, también existe una forma literal. Literal, en este contexto, signif
 Usamos las llaves {} para indicar que es un array y los valores ya están		
 declarados dentro de las llaves.
 
-			
+
+
+
+
+
+					/////////////////////////////////////////////////////
+					
+									CASTING
+									
+hacer que ub objeto se convierta en otro, que tenga sentido obviamente 
+
+
+		CuentaCorriente	corriente=new CuentaCorriente(23, 44);
+		
+		CuentaAhorros ca=new CuentaAhorros(2, 22);
+		
+		
+		Cuenta[] cuentas=new Cuenta[5];
+		
+		cuentas[1]=corriente;
+		cuentas[2]=ca;
+
+		
+		cuentas[0]=new CuentaCorriente(32, 12);
+		
+
+		//obtener una cuenta del array
+		
+		//CuentaCorriente cuenta=cuentas[1]; //no compila por que cuentas[1] hace referencia
+//		al array de tipo cuentas, que esta mas arriba y es mas absorbente, no es de tipo cuentaCorriente
+//			
+//		LA SOLUCION ES HACER CAST
+		
+		CuentaCorriente cuenta= (CuentaCorriente)cuentas[1]; 
+		//estoy diciendole a java que este objecto cuenta es una cuenta corriente entonces ahora si
+		//compila
+		System.out.println(cuenta);
+		
+		
+		
+									/////////////////////////////////////////////////////
+					QUE TENGA SENTIDO NOS REFERIMOS A ESTO
+					
+					
+					
+						CuentaAhorros cuenta= (CuentaAhorros)cuentas[1]; 
+						
+						
+						
+						tira una exception uncheck por que por mas que las dos sean cuentas y que tienen
+						a Cuenta como padre, las dos cuentaCorriente y cuentaAhorro son dos objectos diferentes
+						hay diferencias entre las dos entonces solo puede ser cast a cuentaCorriente por que
+						fue creada como cuentaCorriente
+								
