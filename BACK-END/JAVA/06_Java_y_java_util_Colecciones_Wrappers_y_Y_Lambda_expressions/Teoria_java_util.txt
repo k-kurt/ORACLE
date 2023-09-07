@@ -163,4 +163,21 @@ hacer que ub objeto se convierta en otro, que tenga sentido obviamente
 						a Cuenta como padre, las dos cuentaCorriente y cuentaAhorro son dos objectos diferentes
 						hay diferencias entre las dos entonces solo puede ser cast a cuentaCorriente por que
 						fue creada como cuentaCorriente
-								
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////	
+								Operaciones de Arrays en Java
+										
+										
+										
+										
