@@ -8,7 +8,7 @@ public class GuardaCuentas {
 	//guardarCeuntas.adiciona(cuenta);
 	//obtener.remover,etc.
 	
-	Cuenta[] cuenta=new Cuenta[10];
+	Object[] cuenta=new Object[10];
 
 	int indice=0;
 	

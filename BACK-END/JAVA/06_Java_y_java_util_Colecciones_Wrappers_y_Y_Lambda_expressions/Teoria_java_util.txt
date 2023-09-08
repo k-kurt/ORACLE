@@ -179,5 +179,148 @@ hacer que ub objeto se convierta en otro, que tenga sentido obviamente
 								Operaciones de Arrays en Java
 										
 										
+					
+public class GuardaCuentas {
+	
+	
+	//Crear un objeto para guardar muchas cuentas
+	//permitirnos agregar cuentas con un metodo
+	//guardarCeuntas.adiciona(cuenta);
+	//obtener.remover,etc.
+	
+	Cuenta[] cuenta=new Cuenta[10];
+
+	int indice=0;
+	
+	public void adicionar(Cuenta cc) {
+		// TODO Auto-generated method stub
+		
+		cuenta[indice]=cc;
+		indice++;
+		
+	}
+
+	public void obtener(int indice) {
+		// TODO Auto-generated method stub
+		
+		System.out.println(cuenta[indice]);
+		
+	}
+
+}
+					
+					
+					
+					
+					
+					
+					test 
+					
+					
+					package com.bytebank.test;
+
+import com.bytebank.modelo.Cuenta;
+import com.bytebank.modelo.CuentaAhorros;
+import com.bytebank.modelo.CuentaCorriente;
+import com.bytebank.modelo.GuardaCuentas;
+
+public class TestGuardaCuenta {
+
+	public static void main(String[] args) {
+		GuardaCuentas guardarCuenta=new GuardaCuentas();
+		
+		Cuenta cc=new CuentaCorriente(1, 2);
+		Cuenta ca=new CuentaAhorros(10, 20);
+		
+		//adicionar
+		guardarCuenta.adicionar(cc);
+		guardarCuenta.adicionar(ca);
+		
+		
+		//Obtener
+		guardarCuenta.obtener(0);
+		guardarCuenta.obtener(1);
+		
+		
+		
+		
+	}
+}
 										
 										
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////	
+								Paquete Java.util en Java
+										
+	ARRAYLIST
+	
+	se creo el array de tipo Object
+	
+	package com.bytebank.modelo;
+
+public class GuardaCuentas {
+	
+	
+	//Crear un objeto para guardar muchas cuentas
+	//permitirnos agregar cuentas con un metodo
+	//guardarCeuntas.adiciona(cuenta);
+	//obtener.remover,etc.
+	
+	Object[] cuenta=new Object[10];
+
+	int indice=0;
+	
+	public void adicionar(Cuenta cc) {
+		// TODO Auto-generated method stub
+		
+		cuenta[indice]=cc;
+		indice++;
+		
+	}
+
+	public void obtener(int indice) {
+		// TODO Auto-generated method stub
+		
+		System.out.println(cuenta[indice]);
+		
+	}
+
+}
+	
+	
+	
+	
+	
+	test
+	
+	
+	
+	
+	
+	package com.bytebank.test;
+
+import java.util.ArrayList;
+
+import com.bytebank.modelo.Cuenta;
+import com.bytebank.modelo.CuentaCorriente;
+
+public class TestArrayList {
+
+	
+	public static void main(String[] args) {
+		
+		ArrayList lista=new ArrayList();
+		
+		Cuenta cc=new CuentaCorriente(10, 20);
+		Cuenta c2=new CuentaCorriente(20, 30);
+		
+		
+		lista.add(cc);
+		lista.add(c2);
+		
+		Cuenta obtenerCuenta=(Cuenta) lista.get(0);
+		System.out.println(obtenerCuenta);
+	}
+	
+}
+	
