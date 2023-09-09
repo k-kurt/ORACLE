@@ -110,5 +110,19 @@ public abstract class Cuenta {
     	return cuenta;
     }
 
-   
+    
+//    public boolean esIgual(Cuenta cuenta) {
+//    	return this.agencia==cuenta.getAgencia() && this.numero==cuenta.getNumero();
+//    }
+    
+   @Override
+    public boolean equals(Object obj) {
+	   Cuenta cuenta=(Cuenta)obj;
+	   System.out.println("hola");
+	   return this.agencia==cuenta.getAgencia() && this.numero==cuenta.getNumero();
+	   
+    }
+    
+    
+    
 }

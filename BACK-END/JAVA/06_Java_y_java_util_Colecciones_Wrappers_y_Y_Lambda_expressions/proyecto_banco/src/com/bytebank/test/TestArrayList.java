@@ -14,10 +14,11 @@ public class TestArrayList {
 		
 		Cuenta cc=new CuentaCorriente(10, 20);
 		Cuenta c2=new CuentaCorriente(20, 30);
-		
+		Cuenta c3=new CuentaCorriente(20, 30);
 		
 		lista.add(cc);
 		lista.add(c2);
+		lista.add(c3);
 		
 		Cuenta obtenerCuenta=(Cuenta) lista.get(0);
 		
@@ -31,12 +32,18 @@ public class TestArrayList {
 			//imprime por cada cuenta : en la lista
 		}
 		
-		
+		//por referencia 
 		boolean contiene=lista.contains(c2);
 		if(contiene) {
-			System.out.println("Si");
+			System.out.println("Si, es igual por equals");
 		}
 		
+	
+		//por valores
+//		if(c2.esIgual(c3)) {
+//			System.out.println("Si, son iguales");
+//		}
+//		
 		
 		
 		

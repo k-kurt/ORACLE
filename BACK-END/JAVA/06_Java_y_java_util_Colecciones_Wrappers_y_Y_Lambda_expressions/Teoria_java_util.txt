@@ -423,3 +423,51 @@ Nos dice true o false si el arraylist ya contiene el elemento
 		}
 		
 		
+		
+		
+		
+		/////////////////////////////////////////////////////
+					
+									Metodo equals(Object obj)
+									
+									
+					No es del paquete java.util 
+					El metodo Contains utiliza internamente el metodo equals
+					
+					
+					
+					@Override
+    public boolean equals(Object obj) {
+	   Cuenta cuenta=(Cuenta)obj;
+	   System.out.println("hola");
+	   return this.agencia==cuenta.getAgencia() && this.numero==cuenta.getNumero();
+	   
+    }
+    
+    
+    
+    
+    	//por referencia 
+		boolean contiene=lista.contains(c2);
+		if(contiene) {
+			System.out.println("Si, es igual por equals");
+		}
+		
+		
+		
+		
+		
+		
+		
+		---------------------------------------------------------------------------------------------------------
+		///////////////////////////////////////////////////////////////////////////////////////////////////////	
+								LinkedList en Java
+								o lista enlazada	
+									
+				Esto ya no es array, es una estructura de datos pero tmabien es una lista.Es un conjunto de objetos en el que
+				cada objecto sabe cual es su objeto anterior. Cada obj se llama nodo, es un nodo de la lista enlazada
+				Beneficios:
+				Eliminar elementos o agregar elementos en orden especifico sin necesidad de recorrer todo el array
+				Contras:
+				Si tenemos que iterar la lista inpacta un poco en el performance
+				
