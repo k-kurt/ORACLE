@@ -254,6 +254,12 @@ public class TestGuardaCuenta {
 										
 	ARRAYLIST
 	
+	el metodo size() de un arraylist nos dice cuantos elementos tiene, no el tamnio de array
+	por que cuando usamos arrayList no nos interesa el tamanio
+	
+	
+	
+	
 	se creo el array de tipo Object
 	
 	package com.bytebank.modelo;
@@ -324,3 +330,96 @@ public class TestArrayList {
 	
 }
 	
+	
+	
+			
+					/////////////////////////////////////////////////////
+					
+									ArrayList<E>
+									
+Podemos definir una lista con ArrayList pero a la hora de mostrar esa lista, nos va a pedir cast
+ya que si definimos sin el valor generic <E> nos acepta add(agregar) pero no define que tipo espera
+recibir
+
+
+package com.bytebank.test;
+
+import java.util.ArrayList;
+
+import com.bytebank.modelo.Cuenta;
+import com.bytebank.modelo.CuentaCorriente;
+
+public class TestArrayList {
+
+	
+	public static void main(String[] args) {
+		
+		ArrayList<Cuenta> lista=new ArrayList<Cuenta>();
+		
+		Cuenta cc=new CuentaCorriente(10, 20);
+		Cuenta c2=new CuentaCorriente(20, 30);
+		
+		
+		lista.add(cc);
+		lista.add(c2);
+		
+		Cuenta obtenerCuenta=(Cuenta) lista.get(0);
+		
+		for(int i=0;i<lista.size();i++) {
+			
+		System.out.println(lista.get(i));
+		}
+		
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+			//imprime por cada cuenta : en la lista
+		}
+		
+		
+		
+	}
+	
+}
+
+
+
+
+
+
+ArrayList lista = new ArrayList(26); //capacidad inicial
+lista.add("RJ");
+lista.add("SP");
+//otros estados
+ArrayList nueva = new ArrayList(lista); //creando basada en la primera lista
+
+
+
+	/////////////////////////////////////////////////////
+					
+									ForEach
+									
+			Se usa cuando no necesitamos indices y trabajamos con objectos mayoritariamente				
+					Si vemos que todos son Cuentas 				
+									
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+			//imprime por cada cuenta : en la lista
+		}
+		
+		
+		
+		
+		/////////////////////////////////////////////////////
+					
+									Metodo contains()
+									
+Nos dice true o false si el arraylist ya contiene el elemento
+		
+		
+		
+		boolean contiene=lista.contains(c2);
+		if(contiene) {
+			System.out.println("Si");
+		}
+		
+		
