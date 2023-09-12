@@ -537,5 +537,77 @@ public class TestArrayList {
 		su propio hilo de ejecucion y hay una sola memoria HEAP, como todos quiere nactualizar en un mismo punto
 		afecta el perfomance y ya no se usa. Por que llega uno hace el proceso y despues el siguiente 										
 												
-										
+							public class TestArrayList {
+
+    public static void main(String[] args) {
+
+        //List<Cuenta> lista = new ArrayList<Cuenta>(); //usa array por debajo
+        //List<Cuenta> lista = new LinkedList<Cuenta>(); //lista linkada
+        List<Cuenta> lista = new Vector<Cuenta>(); //usa array por debajo, pero también es threadsafe
+
+        //otro código omitido
+        //...
+    }
+}
+
+
+
+
+
+
+	
+	---------------------------------------------------------------------------------------------------------
+		///////////////////////////////////////////////////////////////////////////////////////////////////////	
+		
+												COLECCIONES
+												
+												
+									
+
+			Tenga en cuenta que algunas líneas de código dejan de compilarse, justo los métodos que usan la posición, 
+			cómo remove(int pos) o get(int pos). Esto se debe a que solo las listas son secuencias y tienen un índice,
+			 pero hay otras colecciones que funcionan sin índice y por lo tanto no tienen estos métodos.
+
+			
+			
+			
+			
+				---------------------------------------------------------------------------------------------------------
+		///////////////////////////////////////////////////////////////////////////////////////////////////////	
+		
+												INTEGER
+No puede haber una lista de primitivo												
+												
+Es del paquete java.lang, 
+
+
+package com.bytebank.test;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class TestRepasoArray {
+
+	
+	public static void main(String[] args) {
+		
+		int[] numeros=new int[10];
+		
+		int numero=40;
+		Integer numeroObjecto=new Integer(40);
+		
+		List<Integer> lista=new LinkedList<Integer>();
+		
+		//primitivo!=object
+		lista.add(numero); //AutoBoxing
+		lista.add(new Integer(40));
+		lista.add(numeroObjecto);
+		
+		
+	}
+	
+	
+}
+ 												
+												
 				
