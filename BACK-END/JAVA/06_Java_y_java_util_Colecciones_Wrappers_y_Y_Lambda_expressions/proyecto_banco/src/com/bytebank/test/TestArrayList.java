@@ -3,6 +3,7 @@ package com.bytebank.test;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
 
 import com.bytebank.modelo.Cliente;
 import com.bytebank.modelo.Cuenta;
@@ -16,7 +17,10 @@ public class TestArrayList {
 		
 		//List<Cliente> listCliente=new LinkedList<>();
 		
-		List<Cuenta> lista=new LinkedList<>();
+		
+		//obligatorio					//no es obligatorio
+		//List<Cuenta> lista=new ArrayList<Cuenta>();
+		List<Cuenta> lista=new Vector<Cuenta>();
 		//ArrayList<Cuenta> lista=new ArrayList<>();
 		
 		Cuenta cc=new CuentaCorriente(10, 20);

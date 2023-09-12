@@ -492,6 +492,8 @@ public class TestArrayList {
 		SOLO CON INSTANCIAR LA INTERFAZ LIST Y LUEGO LA CLASE LINKEDLIST FUNCIONA IGUAL
 		AQUI LA IMPLEMENTACION DE LA LISTA YA NO ES PARA NADA IGUAL A LA QUE HICIMOS
 		A GUARDA REFERENCIAS POR QUE YA NO ESTAMOS USANDO ESA ESTRUCTURA DE DATOS, EL ARRAY ESTATICO 
+		AHORA USAMOS LISTA ENDEXADAS CON EL LINKENDLIST QUE GUARDA UNA REFERENCIA AL OBJETO Y CON UN
+		ATRIBUTO UNA REFERNECIA ENTRE ELLOS
 		
 		List<Cuenta> lista=new LinkedList<>();
 		//ArrayList<Cuenta> lista=new ArrayList<>();
@@ -530,5 +532,10 @@ public class TestArrayList {
 				
 	---------------------------------------------------------------------------------------------------------
 		///////////////////////////////////////////////////////////////////////////////////////////////////////	
+												VECTOR
+		El vector es thread safe, es un unico objecto para todas las pilas de ejecucion, como todo metodo tiene
+		su propio hilo de ejecucion y hay una sola memoria HEAP, como todos quiere nactualizar en un mismo punto
+		afecta el perfomance y ya no se usa. Por que llega uno hace el proceso y despues el siguiente 										
 												
+										
 				
