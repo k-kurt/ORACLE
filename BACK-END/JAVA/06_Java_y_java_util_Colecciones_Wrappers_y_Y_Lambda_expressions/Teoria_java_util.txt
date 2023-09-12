@@ -471,3 +471,64 @@ Nos dice true o false si el arraylist ya contiene el elemento
 				Contras:
 				Si tenemos que iterar la lista inpacta un poco en el performance
 				
+				
+				
+		package com.bytebank.test;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+import com.bytebank.modelo.Cliente;
+import com.bytebank.modelo.Cuenta;
+import com.bytebank.modelo.CuentaCorriente;
+
+public class TestArrayList {
+
+	
+	public static void main(String[] args) {
+		
+		
+		SOLO CON INSTANCIAR LA INTERFAZ LIST Y LUEGO LA CLASE LINKEDLIST FUNCIONA IGUAL
+		AQUI LA IMPLEMENTACION DE LA LISTA YA NO ES PARA NADA IGUAL A LA QUE HICIMOS
+		A GUARDA REFERENCIAS POR QUE YA NO ESTAMOS USANDO ESA ESTRUCTURA DE DATOS, EL ARRAY ESTATICO 
+		
+		List<Cuenta> lista=new LinkedList<>();
+		//ArrayList<Cuenta> lista=new ArrayList<>();
+		
+		Cuenta cc=new CuentaCorriente(10, 20);
+		Cuenta c2=new CuentaCorriente(20, 30);
+		Cuenta c3=new CuentaCorriente(20, 30);
+		
+		lista.add(cc);
+		lista.add(c2);
+		lista.add(c3);
+		
+		Cuenta obtenerCuenta=(Cuenta) lista.get(0);
+		
+		for(int i=0;i<lista.size();i++) {
+			
+		System.out.println(lista.get(i));
+		}
+		
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+			//imprime por cada cuenta : en la lista
+		}
+		
+		boolean contiene=lista.contains(c2);
+		if(contiene) {
+			System.out.println("Si, es igual por equals");
+		}
+
+	}
+	
+}
+				
+				
+				
+				
+	---------------------------------------------------------------------------------------------------------
+		///////////////////////////////////////////////////////////////////////////////////////////////////////	
+												
+				

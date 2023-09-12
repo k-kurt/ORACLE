@@ -1,7 +1,10 @@
 package com.bytebank.test;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
+import com.bytebank.modelo.Cliente;
 import com.bytebank.modelo.Cuenta;
 import com.bytebank.modelo.CuentaCorriente;
 
@@ -10,7 +13,11 @@ public class TestArrayList {
 	
 	public static void main(String[] args) {
 		
-		ArrayList<Cuenta> lista=new ArrayList<Cuenta>();
+		
+		//List<Cliente> listCliente=new LinkedList<>();
+		
+		List<Cuenta> lista=new LinkedList<>();
+		//ArrayList<Cuenta> lista=new ArrayList<>();
 		
 		Cuenta cc=new CuentaCorriente(10, 20);
 		Cuenta c2=new CuentaCorriente(20, 30);
