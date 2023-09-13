@@ -1094,7 +1094,8 @@ class OrdenadorPorNombreTitular implements Comparator<Cuenta>{
 
 
 ////////////////////////
-implementamos la interface y su metodo compareTo
+implementamos la interface y su metodo compareTo EN LA CLASE CUENTA PARA DAR EL ORDEN NATURAL 
+CUANDO UTILIZAMOS LA INSTANCIA DE UN SOLO PARAMETRO PASANDO SOLO LA LISTA
 
 
 
@@ -1237,3 +1238,263 @@ public int compareTo(Cuenta o) {
     
     
 }
+
+
+
+
+
+////////////////////resultado
+
+
+Estoy creando una cuenta 33
+Estoy creando una cuenta 44
+Estoy creando una cuenta 11
+Estoy creando una cuenta 22
+antes de ordenar
+Numero: 33 ,Agencia: 22, Titular: Diego
+Numero: 44 ,Agencia: 32, Titular: Renato
+Numero: 11 ,Agencia: 42, Titular: Liam
+Numero: 22 ,Agencia: 26, Titular: Noel
+despues de ordenar
+Numero: 33 ,Agencia: 22, Titular: Diego
+Numero: 44 ,Agencia: 32, Titular: Renato
+Numero: 11 ,Agencia: 42, Titular: Liam
+Numero: 22 ,Agencia: 26, Titular: Noel
+Antes de ordenar por nombre
+Numero: 33 ,Agencia: 22, Titular: Diego
+Numero: 44 ,Agencia: 32, Titular: Renato
+Numero: 11 ,Agencia: 42, Titular: Liam
+Numero: 22 ,Agencia: 26, Titular: Noel
+despues de ordenar por nombre
+Numero: 33 ,Agencia: 22, Titular: Diego
+Numero: 11 ,Agencia: 42, Titular: Liam
+Numero: 22 ,Agencia: 26, Titular: Noel
+Numero: 44 ,Agencia: 32, Titular: Renato
+despues de ordenar por orden natural
+Numero: 33 ,Agencia: 22, Titular: Diego
+Numero: 11 ,Agencia: 42, Titular: Liam
+Numero: 22 ,Agencia: 26, Titular: Noel
+Numero: 44 ,Agencia: 32, Titular: Renato
+
+
+
+
+
+
+					---------------------------------------------------------------------------------------------------------
+		///////////////////////////////////////////////////////////////////////////////////////////////////////	
+		
+												CLASE ANONIMA
+												
+												
+									
+					Es por que no implementamos o creamos una clase aparte para poder utilizar un metodo, que como una clase
+					es para identificar un ente, nos queda inutil solo instanciar una clase solo para utilizar un metodo, se
+					pierde la encensia del POO de Java
+					
+					Entonces intanciamos el metetodo directamente en el codigo dentro de los parametros de alguna clase, en su instancia
+					
+					Java crea la clase internamente 
+					
+					YA no hace falta crear las clases comentadas 
+					
+					
+					
+					package com.bytebank.test;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import com.bytebank.modelo.Cliente;
+import com.bytebank.modelo.Cuenta;
+import com.bytebank.modelo.CuentaAhorros;
+import com.bytebank.modelo.CuentaCorriente;
+
+public class TestOrdenarLista {
+
+	public static void main(String[] args) {
+
+//		Cuenta cc1 = new CuentaCorriente(22, 33);
+//		cc1.deposita(333.0);
+//
+//		Cuenta cc2 = new CuentaAhorros(22, 44);
+//		cc2.deposita(444.0);
+//
+//		Cuenta cc3 = new CuentaCorriente(22, 11);
+//		cc3.deposita(111.0);
+//
+//		Cuenta cc4 = new CuentaAhorros(22, 22);
+//		cc4.deposita(222.0);
+//
+//		List<Cuenta> lista = new ArrayList<>();
+//		lista.add(cc1);
+//		lista.add(cc2);
+//		lista.add(cc3);
+//		lista.add(cc4);
+
+		Cuenta cc1 = new CuentaCorriente(22, 33);
+		Cliente clienteCC1 = new Cliente();
+		clienteCC1.setNombre("Diego");
+		cc1.setTitular(clienteCC1);
+		cc1.deposita(333.0);
+
+		Cuenta cc2 = new CuentaAhorros(32, 44);
+		Cliente clienteCC2 = new Cliente();
+		clienteCC2.setNombre("Renato");
+		cc2.setTitular(clienteCC2);
+		cc2.deposita(444.0);
+
+		Cuenta cc3 = new CuentaCorriente(42, 11);
+		Cliente clienteCC3 = new Cliente();
+		clienteCC3.setNombre("Liam");
+		cc3.setTitular(clienteCC3);
+		cc3.deposita(111.0);
+
+		Cuenta cc4 = new CuentaAhorros(26, 22);
+		Cliente clienteCC4 = new Cliente();
+		clienteCC4.setNombre("Noel");
+		cc4.setTitular(clienteCC4);
+		cc4.deposita(222.0);
+
+		List<Cuenta> lista = new ArrayList<>();
+		lista.add(cc1);
+		lista.add(cc2);
+		lista.add(cc3);
+		lista.add(cc4);
+
+		System.out.println("antes de ordenar");
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+		}
+		
+		
+		//ORDENAR DESDE LA VERSION 8
+		
+		
+		
+		// Ordenar las cuentas
+		// cualquier clase hija de Cuenta
+		// Comparator <? extend Cuenta> c
+		// pide la implementacion de la clase, lo de arriba
+		//Comparator<Cuenta> comparator = new OrdenadorPorNumeroCuenta();//implementacion de la interfaz
+		//lista.sort(comparator);
+		
+		
+		//CLASE ANONIMA
+		//Instanciando directamente la implementacion de la interfaz
+		lista.sort(new Comparator<Cuenta>() {
+
+			@Override
+			public int compare(Cuenta o1, Cuenta o2) {
+				// TODO Auto-generated method stub
+				return Integer.compare(o1.getNumero(), o2.getNumero());
+				
+			}
+			
+		});
+
+		System.out.println("despues de ordenar");
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+		}
+
+		
+		System.out.println("Antes de ordenar por nombre");
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+		}
+//		Comparator<Cuenta> compartor=new OrdenadorPorNombreTitular();
+//		lista.sort(compartor);
+
+		
+		
+		
+		//ORDENAR D LA ANTIGUA FORMA
+		
+		//Collections.sort(lista, new OrdenadorPorNombreTitular());
+		
+		
+		
+		//CLASE ANONIMA
+		//como acepta el segundo parametro lo instanciamos ahi
+		Collections.sort(lista, new Comparator<Cuenta>() {
+
+			@Override
+			public int compare(Cuenta o1, Cuenta o2) {
+				// TODO Auto-generated method stub
+				return o1.getTitular().getNombre().compareTo(o2.getTitular().getNombre());
+				
+			}
+			
+		});
+		
+		
+		
+		
+		System.out.println("despues de ordenar por nombre");
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+		}
+		
+		
+		
+		//establecer ordenamiento por orden natural, implementando en la clase Cuenta la interfaz con su metodo 
+		Collections.sort(lista);
+		
+		
+		System.out.println("despues de ordenar por orden natural");
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+		}
+		
+		
+		
+		
+	}
+
+}
+//
+//class OrdenadorPorNumeroCuenta implements Comparator<Cuenta> {
+//
+//	@Override
+//	public int compare(Cuenta o1, Cuenta o2) {
+//		// TODO Auto-generated method stub
+//
+//		//Forma basica
+////		if (o1.getNumero() == o2.getNumero()) {
+////			return 0;// el 0
+////		} else if (o1.getNumero() > o2.getNumero()) {
+////			return 1;// un positivo
+////		} else {
+////
+////			return -1;// un negativo
+////		}
+//		
+//		//forma intermedia
+//		//return o1.getNumero()-o2.getNumero();
+//		
+//		//forma Wrapper
+//		return Integer.compare(o1.getNumero(), o2.getNumero());
+//		
+//		
+//	}
+//}
+//
+//
+//class OrdenadorPorNombreTitular implements Comparator<Cuenta>{
+//
+//	@Override
+//	public int compare(Cuenta o1, Cuenta o2) {
+//		
+//		//funciona internamente como el otro, devuelve -1,0,1 
+//		return o1.getTitular().getNombre().compareTo(o2.getTitular().getNombre());
+//					
+//	}
+//	
+//}
+					
+					
+					
+					

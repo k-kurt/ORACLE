@@ -10,8 +10,7 @@ import com.bytebank.modelo.Cuenta;
 import com.bytebank.modelo.CuentaAhorros;
 import com.bytebank.modelo.CuentaCorriente;
 
-public class TestOrdenarLista {
-
+public class TestLambda {
 	public static void main(String[] args) {
 
 //		Cuenta cc1 = new CuentaCorriente(22, 33);
@@ -145,44 +144,4 @@ public class TestOrdenarLista {
 		
 		
 	}
-
 }
-//
-//class OrdenadorPorNumeroCuenta implements Comparator<Cuenta> {
-//
-//	@Override
-//	public int compare(Cuenta o1, Cuenta o2) {
-//		// TODO Auto-generated method stub
-//
-//		//Forma basica
-////		if (o1.getNumero() == o2.getNumero()) {
-////			return 0;// el 0
-////		} else if (o1.getNumero() > o2.getNumero()) {
-////			return 1;// un positivo
-////		} else {
-////
-////			return -1;// un negativo
-////		}
-//		
-//		//forma intermedia
-//		//return o1.getNumero()-o2.getNumero();
-//		
-//		//forma Wrapper
-//		return Integer.compare(o1.getNumero(), o2.getNumero());
-//		
-//		
-//	}
-//}
-//
-//
-//class OrdenadorPorNombreTitular implements Comparator<Cuenta>{
-//
-//	@Override
-//	public int compare(Cuenta o1, Cuenta o2) {
-//		
-//		//funciona internamente como el otro, devuelve -1,0,1 
-//		return o1.getTitular().getNombre().compareTo(o2.getTitular().getNombre());
-//					
-//	}
-//	
-//}
