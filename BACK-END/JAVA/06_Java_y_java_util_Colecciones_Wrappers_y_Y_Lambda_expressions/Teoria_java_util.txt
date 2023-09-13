@@ -576,6 +576,7 @@ public class TestArrayList {
 		///////////////////////////////////////////////////////////////////////////////////////////////////////	
 		
 												INTEGER
+												
 No puede haber una lista de primitivo, el integer lo uso para crear un objeto de un primitivo como el int												
 												
 Es del paquete java.lang, Ya esta deprecado y para reemplzarlo la clase Integer ofrece sus metodos estaticos
@@ -594,7 +595,7 @@ public class TestRepasoArray {
 		int[] numeros=new int[10];
 		
 		int numero=40;
-		Integer numeroObjecto=new Integer(40);
+		Integer numeroObjecto=new Integer(40);//aparece Integer tachado en compilacion
 		
 		List<Integer> lista=new LinkedList<Integer>();
 		
@@ -721,5 +722,518 @@ ref = Integer.valueOf(valor);
 											
 						es un metodo que eesta supercargado entonces me permite cargar varios tipos de datos
 						
-							
+							//Convierte en los primitivos pedidos del objeto Integer
+				//retornar el valor en byte
+				byte byteInteger=numeroObjecto.byteValue();
+
+				//retornar el valor en double
+				double doubleInteger=numeroObjecto.doubleValue();
+
+				//retornar el valor en float
+				float floatInteger=numeroObjecto.floatValue();
 				
+				
+				
+				
+				
+				
+					---------------------------------------------------------------------------------------------------------
+		///////////////////////////////////////////////////////////////////////////////////////////////////////	
+		
+												ORDENANDO LISTA
+												
+La clase String ya tiene su propio metodo que nos permite ahorra la logica de ordenar por nombre
+
+
+
+
+
+
+
+package com.bytebank.test;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+import com.bytebank.modelo.Cliente;
+import com.bytebank.modelo.Cuenta;
+import com.bytebank.modelo.CuentaAhorros;
+import com.bytebank.modelo.CuentaCorriente;
+
+public class TestOrdenarLista {
+
+	public static void main(String[] args) {
+
+//		Cuenta cc1 = new CuentaCorriente(22, 33);
+//		cc1.deposita(333.0);
+//
+//		Cuenta cc2 = new CuentaAhorros(22, 44);
+//		cc2.deposita(444.0);
+//
+//		Cuenta cc3 = new CuentaCorriente(22, 11);
+//		cc3.deposita(111.0);
+//
+//		Cuenta cc4 = new CuentaAhorros(22, 22);
+//		cc4.deposita(222.0);
+//
+//		List<Cuenta> lista = new ArrayList<>();
+//		lista.add(cc1);
+//		lista.add(cc2);
+//		lista.add(cc3);
+//		lista.add(cc4);
+
+		Cuenta cc1 = new CuentaCorriente(22, 33);
+		Cliente clienteCC1 = new Cliente();
+		clienteCC1.setNombre("Diego");
+		cc1.setTitular(clienteCC1);
+		cc1.deposita(333.0);
+
+		Cuenta cc2 = new CuentaAhorros(22, 44);
+		Cliente clienteCC2 = new Cliente();
+		clienteCC2.setNombre("Renato");
+		cc2.setTitular(clienteCC2);
+		cc2.deposita(444.0);
+
+		Cuenta cc3 = new CuentaCorriente(22, 11);
+		Cliente clienteCC3 = new Cliente();
+		clienteCC3.setNombre("Liam");
+		cc3.setTitular(clienteCC3);
+		cc3.deposita(111.0);
+
+		Cuenta cc4 = new CuentaAhorros(22, 22);
+		Cliente clienteCC4 = new Cliente();
+		clienteCC4.setNombre("Noel");
+		cc4.setTitular(clienteCC4);
+		cc4.deposita(222.0);
+
+		List<Cuenta> lista = new ArrayList<>();
+		lista.add(cc1);
+		lista.add(cc2);
+		lista.add(cc3);
+		lista.add(cc4);
+
+		System.out.println("antes de ordenar");
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+		}
+
+		// Ordenar las cuentas
+		// cualquier clase hija de Cuenta
+		// Comparator <? extend Cuenta> c
+		// pide la implementacion de la clase, lo de arriba
+		Comparator<Cuenta> comparator = new OrdenadorPorNumeroCuenta();
+		lista.sort(comparator);
+
+		System.out.println("despues de ordenar");
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+		}
+
+		
+		System.out.println("Antes de ordenar por nombre");
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+		}
+		Comparator<Cuenta> compartor=new OrdenadorPorNombreTitular();
+		lista.sort(compartor);
+
+		System.out.println("despues de ordenar por nombre");
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+		}
+		
+		
+	}
+
+}
+
+class OrdenadorPorNumeroCuenta implements Comparator<Cuenta> {
+
+	@Override
+	public int compare(Cuenta o1, Cuenta o2) {
+		// TODO Auto-generated method stub
+
+		if (o1.getNumero() == o2.getNumero()) {
+			return 0;// el 0
+		} else if (o1.getNumero() > o2.getNumero()) {
+			return 1;// un positivo
+		} else {
+
+			return -1;// un negativo
+		}
+	}
+}
+
+
+class OrdenadorPorNombreTitular implements Comparator<Cuenta>{
+
+	@Override
+	public int compare(Cuenta o1, Cuenta o2) {
+		
+		//funciona internamente como el otro, devuelve -1,0,1 
+		return o1.getTitular().getNombre().compareTo(o2.getTitular().getNombre());
+					
+	}
+	
+}
+
+
+
+												
+				
+				//////////////////////////////////////////////////////////////////////////////////
+				haciendo lo mismo pero de diferente formas
+				
+				class OrdenadorPorNumeroCuenta implements Comparator<Cuenta> {
+
+	@Override
+	public int compare(Cuenta o1, Cuenta o2) {
+		// TODO Auto-generated method stub
+
+		//Forma basica
+//		if (o1.getNumero() == o2.getNumero()) {
+//			return 0;// el 0
+//		} else if (o1.getNumero() > o2.getNumero()) {
+//			return 1;// un positivo
+//		} else {
+//
+//			return -1;// un negativo
+//		}
+		
+		//forma intermedia
+		//return o1.getNumero()-o2.getNumero();
+		
+		//forma Wrapper
+		return Integer.compare(o1.getNumero(), o2.getNumero());
+		
+		
+	}
+}
+				
+				
+				
+				
+						
+					---------------------------------------------------------------------------------------------------------
+		///////////////////////////////////////////////////////////////////////////////////////////////////////	
+		
+												INTERFAZ FUNCIONAL 
+												
+												
+								Es cuando tiene un solo metodo que aplicar y se declara directamente sin asiganar la instancia 
+								a una variable
+								
+								//Comparator<Cuenta> compartor=new OrdenadorPorNombreTitular();
+								lista.sort(new OrdenadorPorNombreTitular());
+								
+								
+								
+								
+								
+								package com.bytebank.test;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import com.bytebank.modelo.Cliente;
+import com.bytebank.modelo.Cuenta;
+import com.bytebank.modelo.CuentaAhorros;
+import com.bytebank.modelo.CuentaCorriente;
+
+public class TestOrdenarLista {
+
+	public static void main(String[] args) {
+
+//		Cuenta cc1 = new CuentaCorriente(22, 33);
+//		cc1.deposita(333.0);
+//
+//		Cuenta cc2 = new CuentaAhorros(22, 44);
+//		cc2.deposita(444.0);
+//
+//		Cuenta cc3 = new CuentaCorriente(22, 11);
+//		cc3.deposita(111.0);
+//
+//		Cuenta cc4 = new CuentaAhorros(22, 22);
+//		cc4.deposita(222.0);
+//
+//		List<Cuenta> lista = new ArrayList<>();
+//		lista.add(cc1);
+//		lista.add(cc2);
+//		lista.add(cc3);
+//		lista.add(cc4);
+
+		Cuenta cc1 = new CuentaCorriente(22, 33);
+		Cliente clienteCC1 = new Cliente();
+		clienteCC1.setNombre("Diego");
+		cc1.setTitular(clienteCC1);
+		cc1.deposita(333.0);
+
+		Cuenta cc2 = new CuentaAhorros(32, 44);
+		Cliente clienteCC2 = new Cliente();
+		clienteCC2.setNombre("Renato");
+		cc2.setTitular(clienteCC2);
+		cc2.deposita(444.0);
+
+		Cuenta cc3 = new CuentaCorriente(42, 11);
+		Cliente clienteCC3 = new Cliente();
+		clienteCC3.setNombre("Liam");
+		cc3.setTitular(clienteCC3);
+		cc3.deposita(111.0);
+
+		Cuenta cc4 = new CuentaAhorros(26, 22);
+		Cliente clienteCC4 = new Cliente();
+		clienteCC4.setNombre("Noel");
+		cc4.setTitular(clienteCC4);
+		cc4.deposita(222.0);
+
+		List<Cuenta> lista = new ArrayList<>();
+		lista.add(cc1);
+		lista.add(cc2);
+		lista.add(cc3);
+		lista.add(cc4);
+
+		System.out.println("antes de ordenar");
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+		}
+		//ORDENAR DESDE LA VERSION 8
+		// Ordenar las cuentas
+		// cualquier clase hija de Cuenta
+		// Comparator <? extend Cuenta> c
+		// pide la implementacion de la clase, lo de arriba
+		Comparator<Cuenta> comparator = new OrdenadorPorNumeroCuenta();
+		lista.sort(comparator);
+
+		System.out.println("despues de ordenar");
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+		}
+
+		
+		System.out.println("Antes de ordenar por nombre");
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+		}
+//		Comparator<Cuenta> compartor=new OrdenadorPorNombreTitular();
+//		lista.sort(compartor);
+
+		
+		
+		
+		//ORDENAR D LA ANTIGUA FORMA
+		
+		Collections.sort(lista, new OrdenadorPorNombreTitular());
+		//establecer ordenamiento por orden natural
+		
+		
+		
+		System.out.println("despues de ordenar por nombre");
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+		}
+		
+		
+		Collections.sort(lista);
+		
+		
+		System.out.println("despues de ordenar por orden natural");
+		for (Cuenta cuenta : lista) {
+			System.out.println(cuenta);
+		}
+		
+		
+		
+		
+	}
+
+}
+
+class OrdenadorPorNumeroCuenta implements Comparator<Cuenta> {
+
+	@Override
+	public int compare(Cuenta o1, Cuenta o2) {
+		// TODO Auto-generated method stub
+
+		//Forma basica
+//		if (o1.getNumero() == o2.getNumero()) {
+//			return 0;// el 0
+//		} else if (o1.getNumero() > o2.getNumero()) {
+//			return 1;// un positivo
+//		} else {
+//
+//			return -1;// un negativo
+//		}
+		
+		//forma intermedia
+		//return o1.getNumero()-o2.getNumero();
+		
+		//forma Wrapper
+		return Integer.compare(o1.getNumero(), o2.getNumero());
+		
+		
+	}
+}
+
+
+class OrdenadorPorNombreTitular implements Comparator<Cuenta>{
+
+	@Override
+	public int compare(Cuenta o1, Cuenta o2) {
+		
+		//funciona internamente como el otro, devuelve -1,0,1 
+		return o1.getTitular().getNombre().compareTo(o2.getTitular().getNombre());
+					
+	}
+	
+}
+
+
+
+
+////////////////////////
+implementamos la interface y su metodo compareTo
+
+
+
+package com.bytebank.modelo;
+
+/**
+ * Probando la documentacion javadoc
+ * @version 1.0
+ * @author genesis
+ * 
+ *
+ */
+
+public abstract class Cuenta implements Comparable<Cuenta>{
+	
+    protected double saldo;
+    private int agencia = 1;
+    private int numero;
+    private Cliente titular = new Cliente();
+
+    private static int total;
+    
+    
+    public Cuenta() {
+    
+    	
+    }
+    
+    
+    /**
+     * este constructor necesita 2 parametros agencia y numero para instanciar la clase
+     * Cuenta
+     * @param agencia
+     * @param numero
+     */
+    public Cuenta( int agencia, int numero) {
+        this.agencia = agencia;
+        this.numero = numero;
+        System.out.println("Estoy creando una cuenta " + this.numero);
+
+        Cuenta.total ++;
+    }
+    
+    public abstract void deposita(double valor);
+    
+    
+
+    
+    /**
+     * este metodo retira dinero de la cuenta y si ocurre un error 
+     * devuelve una exception
+     * @param valor
+     * @throws SaldoInsuficienteException
+     */
+    public void saca(double valor) throws SaldoInsuficienteException {
+          
+    	if(this.saldo<valor) {
+    		throw  new SaldoInsuficienteException("no tienes saldo");
+    	}
+    	this.saldo -= valor; 
+    }
+          
+    public boolean transfiere(double valor, Cuenta destino) throws SaldoInsuficienteException {
+        if(this.saldo >= valor) {
+            this.saca(valor);
+            destino.deposita(valor);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public int getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(int agencia) {
+        if (agencia > 0) {
+            this.agencia = agencia;
+        }
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        if (numero > 0) {
+            this.numero = numero;
+        }
+    }
+
+    public Cliente getTitular() {
+        return titular;
+    }
+
+    public void setTitular(Cliente titular) {
+        this.titular = titular;
+    }
+
+    public static int getTotal() {
+        return Cuenta.total;
+    }
+    @Override
+    public String toString() {
+    
+    	String cuenta="Numero: "+this.numero+" ,Agencia: "+this.agencia+", Titular: "+this.titular.getNombre();
+    	
+    	return cuenta;
+    }
+
+    
+//    public boolean esIgual(Cuenta cuenta) {
+//    	return this.agencia==cuenta.getAgencia() && this.numero==cuenta.getNumero();
+//    }
+    
+   @Override
+    public boolean equals(Object obj) {
+	   Cuenta cuenta=(Cuenta)obj;
+	   System.out.println("hola");
+	   return this.agencia==cuenta.getAgencia() && this.numero==cuenta.getNumero();
+	   
+    }
+    
+   
+   
+   @Override
+public int compareTo(Cuenta o) {
+	// TODO Auto-generated method stub
+	
+	   //orden natural: Numero Agencia   
+	   //return Integer.compare(this.agencia, o.getAgencia());
+	   //Orden natural"saldo
+	   return Double.compare(this.saldo, o.getSaldo());
+}
+    
+    
+}
