@@ -13,24 +13,6 @@ import com.bytebank.modelo.CuentaCorriente;
 public class TestLambda {
 	public static void main(String[] args) {
 
-//		Cuenta cc1 = new CuentaCorriente(22, 33);
-//		cc1.deposita(333.0);
-//
-//		Cuenta cc2 = new CuentaAhorros(22, 44);
-//		cc2.deposita(444.0);
-//
-//		Cuenta cc3 = new CuentaCorriente(22, 11);
-//		cc3.deposita(111.0);
-//
-//		Cuenta cc4 = new CuentaAhorros(22, 22);
-//		cc4.deposita(222.0);
-//
-//		List<Cuenta> lista = new ArrayList<>();
-//		lista.add(cc1);
-//		lista.add(cc2);
-//		lista.add(cc3);
-//		lista.add(cc4);
-
 		Cuenta cc1 = new CuentaCorriente(22, 33);
 		Cliente clienteCC1 = new Cliente();
 		clienteCC1.setNombre("Diego");
@@ -71,25 +53,38 @@ public class TestLambda {
 		
 		
 		
-		// Ordenar las cuentas
-		// cualquier clase hija de Cuenta
-		// Comparator <? extend Cuenta> c
-		// pide la implementacion de la clase, lo de arriba
-		//Comparator<Cuenta> comparator = new OrdenadorPorNumeroCuenta();//implementacion de la interfaz
-		//lista.sort(comparator);
+		//EXPRESION LAMBDA
+		//me quedo con los parametros y la logica
+//		lista.sort((Cuenta o1, Cuenta o2) ->{
+//				// TODO Auto-generated method stub
+//				return Integer.compare(o1.getNumero(), o2.getNumero());
+//				
+//			}
+//		
+//		);
 		
-		//Instanciando directamente la implementacion de la interfaz
-		lista.sort(new Comparator<Cuenta>() {
-
-			@Override
-			public int compare(Cuenta o1, Cuenta o2) {
-				// TODO Auto-generated method stub
-				return Integer.compare(o1.getNumero(), o2.getNumero());
-				
-			}
-			
-		});
-
+		//quitamos las llaves
+//		lista.sort((Cuenta o1, Cuenta o2) ->
+//			// TODO Auto-generated method stub
+//			return Integer.compare(o1.getNumero(), o2.getNumero());	
+//	);
+		
+		
+		
+//quitamos el return
+		//si usamos las llaves necesitamos el return por el contexto, el compare ya retorna un entero
+//		lista.sort((Cuenta o1, Cuenta o2) ->
+//		Integer.compare(o1.getNumero(), o2.getNumero());	
+//	);
+		
+		
+		
+		//el punto y coma sale sobrando
+		lista.sort((Cuenta o1, Cuenta o2) ->Integer.compare(o1.getNumero(), o2.getNumero())	
+	);
+		
+		
+		
 		System.out.println("despues de ordenar");
 		for (Cuenta cuenta : lista) {
 			System.out.println(cuenta);
@@ -112,24 +107,47 @@ public class TestLambda {
 		
 		
 		//como acepta el segundo parametro lo instanciamos ahi
-		Collections.sort(lista, new Comparator<Cuenta>() {
-
-			@Override
-			public int compare(Cuenta o1, Cuenta o2) {
-				// TODO Auto-generated method stub
-				return o1.getTitular().getNombre().compareTo(o2.getTitular().getNombre());
-				
-			}
-			
-		});
+//		Collections.sort(lista, new Comparator<Cuenta>() {
+//
+//			@Override
+//			public int compare(Cuenta o1, Cuenta o2) {
+//				// TODO Auto-generated method stub
+//				return o1.getTitular().getNombre().compareTo(o2.getTitular().getNombre());
+//				
+//			}
+//			
+//		});
 		//establecer ordenamiento por orden natural
+		
+
+		//lambda de lo de arriba		
+//		Collections.sort(lista, (c1, c2)->{
+//			return c1.getTitular().getNombre().compareTo(c2.getTitular().getNombre());
+//		});
+		//c1 y c2 ya sabe que son de tipo lista
+		
+		Collections.sort(lista, (c1, c2)->c1.getTitular().getNombre().compareTo(c2.getTitular().getNombre())
+		);
+		
 		
 		
 		
 		System.out.println("despues de ordenar por nombre");
-		for (Cuenta cuenta : lista) {
-			System.out.println(cuenta);
-		}
+//		for (Cuenta cuenta : lista) {
+//			System.out.println(cuenta);
+//		}
+//		
+		//LAMBDA DE FOREACH
+		//el foreach tambien acepta lambda
+//		lista.forEach((Cuenta cuenta) ->{
+//			System.out.println(cuenta);
+//		});
+		
+		
+		//YA sabe que es una Cuenta, no hace falta declarar
+		lista.forEach( cuenta ->System.out.println(cuenta));
+		
+		
 		
 		
 		Collections.sort(lista);
