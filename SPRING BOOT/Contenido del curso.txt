@@ -1,0 +1,5 @@
+Crea aplicaciones web Java modernas con Spring Boot. Aprende a programar desde acceder a la base de datos, con MySQL y JPA, hasta publicar una API REST, todo con el framework más popular del mundo Java.
+
+La Formación de Java y Spring Boot Alura es una guía de aprendizaje completa para comenzar una carrera exitosa en programación web Java. El prerrequisito es la Formación Java o sólidos conocimientos en el lenguaje Java y el paradigma Orientado a Objetos.
+
+Spring Framework es actualmente el framework más utilizado en el mercado y se te presentará su poder. El mercado está muy centrado en las APIs, principalmente el mercado Java, por lo que veremos cómo crear una API basada en principios REST, con capas de seguridad, usando Spring Boot y JWT.

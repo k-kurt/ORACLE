@@ -1,0 +1,63 @@
+---------------------------------------------------------
+/////////////////////////////////////////////////////////
+DEFINICIONES
+
+
+	Entidad
+son las tablas
+
+	tabla
+compuestas por columnas, las columnas son campos y 
+las filas son los registros.
+
+	al crear bbdd
+definir cuantos campos tendremos y que tipos de datos
+
+	tipos de campos
+tenemos:
+
+	texto
+char,varchar ,tet...
+
+	numerico
+int, bigint, smallint,float,bool...
+	
+	fechas
+date, datetime,timestamp...
+
+	indice
+nos ayuda a localizar un registro, es un numero
+
+	calve primaria
+es opcional, es un campo donde ningun registro se puede repetir, con el objectivo de que haya integrad con los datos
+
+	clave primaria compuesta
+ es la combinacion de 2 campos, entonces la combinacion de estos 2 campos no se puede repetir en ningun otro registro de nuestra tabla
+EJ: tengo el numero DNI y el numero del registro de identificacion tributaria y la combinacion de estos 2 no se puede repetir en niguna otra linea de mi tabla
+
+
+	Clave externa(foranea)
+Al tener muchas tablas de datos una bbdd, para poder relacionarlas usamos las calves externas para poder establecer una relacion y hacer una bbdd relacional
+Es un campo que permite relacionar nuestras tablas entre si
+EJ: si tengo mis clientes en una tabla y tengo mis productos en otra tabla entonces mi clave externa puede ser el numero de mi identificacion tributaria tanto en mi tabla producto como en mi tabla clientes entonces no puedo vender un producto con un numero de identificacion tributaria que no se encuentre en mi registro cliente entonces ese cliente debe estar registrado para poder venderle ese producto
+
+	esquemas
+facilitan la agrupacion de tablas por temas
+
+	View(vista)
+consultas de n tablas al mismo tiempo
+altocosto de procesamiento
+podemos unir tablas a traves de un join
+podemos crear filtros 
+todo esto atraves de una consulta(Query)
+
+	procedures(procedimientos)
+logica estructura con lenguaje nativo del mismo SQL(if, while, for...)
+podemos crear funciones
+hay funciones propias de sql, rango de fechas, quitar espacios, cambiar misnusculas por mayusculas...
+
+	trigger(disparador)
+avisos autoamticos cuando hay tipo de cambio en la base de datos o en la tabla
+ejecuta una funcion o precedimiento cuando la condicion del trigger es satisfecha
+
+	
