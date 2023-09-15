@@ -68,3 +68,271 @@ por si cambia en el archivo que se llama "my" te dice la ruta donde encontrar la
 	creando bbdd con asistente
 cuando creamos la bbdd elegimos el charset utf8 y el collation utf8_general_ci ya que el espaniol usa caracteres especiales esta es la mejor opcion
 usa comillas simples para el nombre de la tabla por que a veces tiene espacio el nombre entonces genera conflicto
+
+	por lineas de comando
+
+Microsoft Windows [Versión 10.0.19045.3448]
+(c) Microsoft Corporation. Todos los derechos reservados.
+
+C:\Users\genesis>cd /
+
+C:\>cd program files
+
+C:\Program Files>cd mysql
+
+C:\Program Files\MySQL>dir
+ El volumen de la unidad C no tiene etiqueta.
+ El número de serie del volumen es: 7C47-3AF8
+
+ Directorio de C:\Program Files\MySQL
+
+06/06/2023  19:18    <DIR>          .
+06/06/2023  19:18    <DIR>          ..
+06/06/2023  19:18    <DIR>          Connector ODBC 8.0
+06/06/2023  19:18    <DIR>          MySQL Server 8.0
+13/06/2023  14:29    <DIR>          MySQL Workbench 8.0
+06/06/2023  19:15    <DIR>          MySQL Workbench 8.0 CE
+               0 archivos              0 bytes
+               6 dirs  159.923.888.128 bytes libres
+
+C:\Program Files\MySQL>cd mysql server 8.0
+
+C:\Program Files\MySQL\MySQL Server 8.0>dir
+ El volumen de la unidad C no tiene etiqueta.
+ El número de serie del volumen es: 7C47-3AF8
+
+ Directorio de C:\Program Files\MySQL\MySQL Server 8.0
+
+06/06/2023  19:18    <DIR>          .
+06/06/2023  19:18    <DIR>          ..
+06/06/2023  19:18    <DIR>          bin
+06/06/2023  19:18    <DIR>          docs
+06/06/2023  19:18    <DIR>          etc
+06/06/2023  19:18    <DIR>          include
+06/06/2023  19:18    <DIR>          lib
+16/03/2023  17:22           284.945 LICENSE
+16/03/2023  17:22           121.462 LICENSE.router
+16/03/2023  17:22               666 README
+16/03/2023  17:22               679 README.router
+06/06/2023  19:18    <DIR>          share
+               4 archivos        407.752 bytes
+               8 dirs  159.924.097.024 bytes libres
+
+C:\Program Files\MySQL\MySQL Server 8.0>cd bin
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>dir
+ El volumen de la unidad C no tiene etiqueta.
+ El número de serie del volumen es: 7C47-3AF8
+
+ Directorio de C:\Program Files\MySQL\MySQL Server 8.0\bin
+
+06/06/2023  19:18    <DIR>          .
+06/06/2023  19:18    <DIR>          ..
+13/03/2023  11:32            15.872 comerr64.dll
+16/03/2023  18:42           233.472 fido2.dll
+16/03/2023  18:42            54.418 fido2.lib
+13/03/2023  11:32           390.144 gssapi64.dll
+16/03/2023  18:43           797.184 harness-library.dll
+16/03/2023  12:56         6.422.120 ibd2sdi.exe
+16/03/2023  12:56         6.411.888 innochecksum.exe
+08/12/2021  12:30           269.312 jemalloc.dll
+13/03/2023  11:32            64.000 k5sprt64.dll
+13/03/2023  11:32         1.223.168 krb5_64.dll
+13/03/2023  11:32           112.128 krbcc64.dll
+08/02/2023  13:00         3.445.760 libcrypto-1_1-x64.dll
+19/11/2021  20:03         1.839.616 libmecab.dll
+16/03/2023  18:24         6.142.464 libprotobuf-debug.dll
+16/03/2023  18:23         1.390.592 libprotobuf-lite-debug.dll
+16/03/2023  18:41           598.528 libprotobuf-lite.dll
+16/03/2023  18:41           943.314 libprotobuf-lite.lib
+16/03/2023  18:42         2.844.672 libprotobuf.dll
+16/03/2023  18:42         3.976.168 libprotobuf.lib
+28/02/2023  21:50           110.592 libsasl.dll
+08/02/2023  13:00           690.176 libssl-1_1-x64.dll
+16/03/2023  12:56         6.353.528 lz4_decompress.exe
+16/03/2023  12:56         6.661.232 myisamchk.exe
+16/03/2023  12:56         6.504.560 myisamlog.exe
+16/03/2023  12:56         6.566.512 myisampack.exe
+16/03/2023  12:56         6.545.016 myisam_ftdump.exe
+16/03/2023  12:56         7.331.432 mysql.exe
+16/03/2023  12:56         7.218.288 mysqladmin.exe
+16/03/2023  12:56         7.572.592 mysqlbinlog.exe
+16/03/2023  12:56         7.224.432 mysqlcheck.exe
+16/03/2023  12:57        54.940.776 mysqld.exe
+16/03/2023  12:57         7.290.480 mysqldump.exe
+16/03/2023  18:22             7.881 mysqldumpslow.pl
+16/03/2023  18:22            28.776 mysqld_multi.pl
+16/03/2023  12:57            42.112 mysqlharness_stdx.dll
+16/03/2023  12:57            71.800 mysqlharness_tls.dll
+16/03/2023  12:57         7.211.120 mysqlimport.exe
+16/03/2023  12:57         7.725.680 mysqlpump.exe
+16/03/2023  12:57         7.736.944 mysqlrouter.exe
+16/03/2023  12:57            72.336 mysqlrouter_connection_pool.dll
+16/03/2023  12:57            97.944 mysqlrouter_destination_status.dll
+16/03/2023  12:57           272.504 mysqlrouter_http.dll
+16/03/2023  12:57           115.352 mysqlrouter_http_auth_backend.dll
+16/03/2023  12:57            38.544 mysqlrouter_http_auth_realm.dll
+16/03/2023  12:57         6.273.672 mysqlrouter_io_component.dll
+16/03/2023  12:57         6.313.600 mysqlrouter_keyring.exe
+16/03/2023  12:57         7.517.304 mysqlrouter_lib.dll
+16/03/2023  12:57         8.069.264 mysqlrouter_metadata_cache.dll
+16/03/2023  12:57         6.284.928 mysqlrouter_passwd.exe
+16/03/2023  12:57         6.269.064 mysqlrouter_plugin_info.exe
+16/03/2023  12:57         7.296.640 mysqlrouter_routing.dll
+16/03/2023  12:57         7.207.536 mysqlshow.exe
+16/03/2023  12:57         7.227.504 mysqlslap.exe
+16/03/2023  12:57         6.301.312 mysql_config_editor.exe
+16/03/2023  12:57         7.300.744 mysql_migrate_keyring.exe
+16/03/2023  12:57         7.205.520 mysql_secure_installation.exe
+16/03/2023  12:57         6.326.912 mysql_ssl_rsa_setup.exe
+16/03/2023  12:57         6.233.728 mysql_tzinfo_to_sql.exe
+16/03/2023  12:57         7.304.824 mysql_upgrade.exe
+16/03/2023  12:57         6.286.976 my_print_defaults.exe
+16/03/2023  12:57         7.174.760 perror.exe
+28/02/2023  21:50            47.104 saslSCRAM.dll
+13/03/2023  11:32            48.128 xpprof64.dll
+16/03/2023  12:58         6.253.176 zlib_decompress.exe
+              64 archivos    308.548.125 bytes
+               2 dirs  159.923.433.472 bytes libres
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>dir mysql.exe
+ El volumen de la unidad C no tiene etiqueta.
+ El número de serie del volumen es: 7C47-3AF8
+
+ Directorio de C:\Program Files\MySQL\MySQL Server 8.0\bin
+
+16/03/2023  12:56         7.331.432 mysql.exe
+               1 archivos      7.331.432 bytes
+               0 dirs  159.923.412.992 bytes libres
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -h localhost -u root -p
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 8.0.33 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database jugos;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from city;
+ERROR 1046 (3D000): No database selected
+mysql> use world;
+Database changed
+mysql> select * from city;
++------+------------------------------------+-------------+------------------------+------------+
+| ID   | Name                               | CountryCode | District               | Population |
++------+------------------------------------+-------------+------------------------+------------+
+|    1 | Kabul                              | AFG         | Kabol                  |    1780000 |
+|    2 | Qandahar                           | AFG         | Qandahar               |     237500 |
+|    3 | Herat                              | AFG         | Herat                  |     186800 |
+|    4 | Mazar-e-Sharif                     | AFG         | Balkh                  |     127800 |
+|    5 | Amsterdam                          | NLD         | Noord-Holland          |     731200 |
+|    6 | Rotterdam                          | NLD         | Zuid-Holland           |     593321 |
+|    7 | Haag                               | NLD         | Zuid-Holland           |     440900 |
+
+mysql> EXIT
+bye
+
+
+
+	numeros enteros
+unsigned: sin signo(+/-)
+
+tipo		valorEnBytes	menorValor(signed)	menorValor(unsigned*)	mayorValor(signed)	mayorValor(unsigned)
+
+TINYINT		1		-128			0			127			255
+SMALLINT 	2		-32768			0			32767			65535
+MEDIUMINT	3		-8388608		0			8388607			16777215
+INT		4		-2147483648		0			2147483647		4194967295
+BIGINT		8		-2E63			0			2E63(-1)		2E64(-1)
+
+
+	numeros decimales
+si necesitamos precision usamos double sino tanta presicion float ya que redondea para llegar a las 4 unidadess despues de la coma
+
+tipo		precisionEnbytes		tipo
+FLOAT		4				simple
+DOUBLE		8				doble
+
+coma flotante
+EJ: si delcaramos un float(6,4)	 e incluso el numero 7600009 el valor almacenado sera 760001
+
+
+tipo		cantidadDeDigitos
+DECIMAL O	65
+NUMERIC	
+
+en un numero fijo, si declaramos decimal(5,3) solo podremos alamacenar desde -99999 hasta 99999
+
+	bit
+tipo cantidadDebits
+BIT	64
+
+EJ: bit(1) puede ser 0 o 1 
+bit(3) puede ser 000,001,010,011,100,101,110,111
+
+
+	atributos de los campos numericos
+zerofill ocupa mas espacio por que rellena el dato con ceros, en ocaciones es necesario usarlo, el auto increment podemos definir de cuanto en cuanto
+
+signed o unsigned: con signo o sin signo
+zerofill; llena los espacios con cero. EJ: int(5); si almacenamos 54, el campo va a quedar 00054
+
+	fecha y hora
+date: 1000-01=01 hasta 9999-12-31
+datatime:1000-01-01 00:00:00 hasta 9999-12-31 23:59:59
+timestamp: 1970-01-01 00:00:01 UTC hasta 2038-01-19 UTC
+time:-838:59:59 y 839:59:59
+year: 1901 hasta 2155
+
+	String
+char: cadena de caracteres con valor fijo de 0 a 255 EJ: char(4)="aa"->"**aa"
+varchar: cadena de caracteres con valor variable de 0 a 255 EJ: varchar(4)="aa"->"aa"
+binary: cadena de caracteres con valor fijo de 0 a 255(con numeros binarios-bits)
+varbinary: cadena de caracteres variables de 0 a 255(con numeros binarios-bits)
+blob: binarios largos->tinyblob, mediumblob,longblob
+text; textolargo-> tinytext, mediumtext,longtext
+enum: definir opciones en una lista predefinida->
+talla enum('pequenio','medio','grtande')
+
+	campos espaciales(gps)
+geometry->area
+linestring->linea
+point->punto
+polygon->area
+	
+	creando la primera tabla
+En el caso de guardar un dni y este tiene ceros en un principio y no queremos que se borren esos ceros, lo declaramos como varchar a ese campo, si lo hacemos con int esos ceros se borraran.
+create table tbclientes(dni varchar(20), nombre varchar(150), direccion1 varchar(150), direccion2 varchar(150), barrio varchar(50), ciudad varchar(50),
+estado varchar(50), cp varchar(10), edad smallint, sexo varchar(1), limite_credito float, volumen_compra float, primera_compra bit(1));
+
+	creando la tabla con el asistente 
+decalramos como float el precio sin definir los lugares de la coma pero cuando mostremos el resultado podemos definir eso luego
+dejamos el charset y collation como por defecto
+EJ: el codigo que genera el asistente
+CREATE TABLE `jugos`.`tbproductos` (
+  `producto` VARCHAR(20) NULL,
+  `nombre` VARCHAR(150) NULL,
+  `emvase` VARCHAR(50) NULL,
+  `volumen` VARCHAR(20) NULL,
+  `sabor` VARCHAR(50) NULL,
+  `precio` FLOAT NULL);
+
+
+	tabla vendedores
+CREATE TABLE TABLA_DE_VENDEDORES (
+    MATRICULA varchar(5), 
+    NOMBRE varchar(100), 
+    PORCENTAJE_COMISION float);
+
+	eliminando tablas
+Es un proceso peligroso, delicado, podrias estar eliminando informacion importante,en ocasciones como es una bbdd relacional no podemos eleminar una tabla por que sql no nos deja por esta relacion que puede existir entre tablas 
+drop table tbclientes3;

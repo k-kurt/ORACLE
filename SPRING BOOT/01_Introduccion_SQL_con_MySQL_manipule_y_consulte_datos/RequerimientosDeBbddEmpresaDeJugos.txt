@@ -1,0 +1,5 @@
+al conversar con las personas del área de registros de clientes, ellos nos mencionaron que la información más importante de almacenar con respecto al cliente es su DNI, que sería su número de identificación, el nombre completo, la dirección, la edad, el sexo, el límite de crédito, el volumen mínimo de jugo que pueden comprar y si ya realizaron la primera compra.
+
+
+	tabla con nuestros productos que queremos vender
+Y hablando con los usuarios, entonces ellos nos dicen que necesitamos un campo para el código del producto, el nombre del producto, el envase, el tamaño, el sabor y el precio de este producto.
