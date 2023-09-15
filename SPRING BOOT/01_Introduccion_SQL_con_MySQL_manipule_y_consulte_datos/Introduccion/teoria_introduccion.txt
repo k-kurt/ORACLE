@@ -60,4 +60,11 @@ hay funciones propias de sql, rango de fechas, quitar espacios, cambiar misnuscu
 avisos autoamticos cuando hay tipo de cambio en la base de datos o en la tabla
 ejecuta una funcion o precedimiento cuando la condicion del trigger es satisfecha
 
-	
+	alojamiento de la base de datos
+Se encuentra en el siguiente directorio
+C:\ProgramData\MySQL\MySQL Server 8.0\Data
+por si cambia en el archivo que se llama "my" te dice la ruta donde encontrar las bases de datos
+
+	creando bbdd con asistente
+cuando creamos la bbdd elegimos el charset utf8 y el collation utf8_general_ci ya que el espaniol usa caracteres especiales esta es la mejor opcion
+usa comillas simples para el nombre de la tabla por que a veces tiene espacio el nombre entonces genera conflicto
