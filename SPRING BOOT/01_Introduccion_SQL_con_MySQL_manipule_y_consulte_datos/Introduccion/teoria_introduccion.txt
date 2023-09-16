@@ -336,3 +336,29 @@ CREATE TABLE TABLA_DE_VENDEDORES (
 	eliminando tablas
 Es un proceso peligroso, delicado, podrias estar eliminando informacion importante,en ocasciones como es una bbdd relacional no podemos eleminar una tabla por que sql no nos deja por esta relacion que puede existir entre tablas 
 drop table tbclientes3;
+
+
+	Insertando registros en la tabla
+use jugos;
+insert into tbproductos(producto,nombre,envase,volumen,sabor,precio) values('773912','clean','botella pet','1 litro','naranja',8.01);
+select * from tbproductos;
+insert into tabla_de_vendedores(matricula,nombre,porcentaje_comision) values('00233','joan geraldo de la fonseca',10);
+select * from tabla_de_vendedores;
+INSERT INTO TABLA_DE_VENDEDORES
+(MATRICULA, NOMBRE, PORCENTAJE_COMISION)
+VALUES
+('00233', 'Joan Geraldo de la Fonseca', 0.10);
+	
+	Insertando multiples registros
+use jugos;
+insert into tbproductos(producto,nombre,envase,volumen,sabor,precio) values('838819','clean','botella pet','1.5 litro','naranja',12.01);
+
+insert into tbproductos(producto,nombre,envase,volumen,sabor,precio) values('1037797','clean','botella pet','2 litro','naranja',16.01);
+
+insert into tbproductos(producto,nombre,envase,volumen,sabor,precio) values('812829','clean','lata','350 ml','naranja',2.81);
+select * from tbproductos;
+	
+	alterar registros con una tabla
+SELECT * FROM jugos.tbproductos;
+UPDATE tbproductos SET precio=28.51 where producto='695594';
+UPDATE tbproductos SET sabor='Lima/limon',precio=4.90 where producto='1041119';

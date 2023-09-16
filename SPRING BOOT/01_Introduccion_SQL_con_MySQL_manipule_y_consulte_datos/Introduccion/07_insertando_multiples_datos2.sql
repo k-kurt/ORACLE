@@ -1,0 +1,18 @@
+INSERT INTO TABLA_DE_VENDEDORES
+(MATRICULA, NOMBRE, PORCENTAJE_COMISION)
+VALUES
+('00235', 'mario almeida silva', 0.08);
+INSERT INTO TABLA_DE_VENDEDORES
+(MATRICULA, NOMBRE, PORCENTAJE_COMISION)
+VALUES
+('00236', 'claudia morais', 0.08);
+
+INSERT INTO tbproductos(
+producto, nombre, envase, volumen, sabor,
+precio) VALUES ('695594', 'Festival de Sabores', 'Botella PET',
+'1.5 Litros', 'Asaí', 18.51);
+
+INSERT INTO tbproductos(
+producto, nombre, envase, volumen, sabor,
+precio) VALUES ('1041119', 'Línea Citrus', 'Botella de Vidrio',
+'700 ml', 'Lima', 4.90);
