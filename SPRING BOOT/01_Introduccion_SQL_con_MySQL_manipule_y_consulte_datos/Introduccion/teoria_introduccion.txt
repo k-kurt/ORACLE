@@ -415,4 +415,66 @@ fecha_nacimiento) values(
 select * from tbclientes;
 
 
-		
+
+		Conociendo la sentencia SELECT
+select * from tbcliente;
+select dni, nombre,direccion1,direccion2,barrio,ciudad,estado,cp,fecha_nacimiento,edad,sexo,limite_credito, volumen_compra,primera_compra 
+from tbcliente where dni='5648641702';
+select dni, nombre from tbcliente;
+-- podemos ponerlos en cualquier orden y lo muestra como lo ponemos 	 
+select nombre, dni from tbcliente;
+-- podemos renombar momentaneamente el nombre de la columna  
+select nombre as nombreCliente, dni as Identificacion from tbcliente;
+-- podemos liminar el resultado 
+select nombre, dni from tbcliente limit 6; 
+
+
+		Filtrando registros
+mostrar un valor especifico dentro de un campo
+select * from tbproducto;
+select * from tbproducto where sabor='maracuya';
+select * from tbproducto where sabor='maracuya';
+update tbproducto set sabor='citrico' where sabor='limon';
+select * from tbproducto where sabor='limon';
+select * from tbproducto where sabor='citrico';
+
+
+	filtrando usando mayor que menor que y diferente
+select * from tbcliente;
+select * from tbcliente where edad>27;
+select * from tbcliente where edad<=27;
+select * from tbcliente where edad!=29;
+-- creo que son iguales
+select * from tbcliente where edad<>29;
+-- mysql ordena alfabeticamente entonces al ver si hay un nombre mayor, lo hace desde de la letra que pasemos
+select * from tbcliente where nombre>'luis silva';
+
+select * from tbproducto;
+-- como es flotante y redonde puede que no entre el numero en la comparacion
+select * from tbproducto where precio_lista=28.51;
+-- si sale ahora
+select * from tbproducto where precio_lista>28.51;
+-- condicion adicional para poder detectarlo
+select * from tbproducto where PRECIO_LISTA between 28.49 and 28.52;
+
+
+
+		Filtrando fechas
+select * from tbcliente;
+-- consultar fechas
+select * from tbcliente where FECHA_NACIMIENTO='1995-01-13';
+select * from tbcliente where FECHA_NACIMIENTO<'1995-01-13';
+select * from tbcliente where FECHA_NACIMIENTO>='1995-01-13';
+-- filtro unicamente con el anio
+select * from tbcliente where year(fecha_nacimiento)=1995;
+-- por dia, enviar regalo
+select * from tbcliente where day(FECHA_NACIMIENTO) =20;
+
+
+		filtros compuesto
+select * from tbproducto;
+select * from tbproducto where PRECIO_LISTA between 28.49 and 28.52;
+select * from tbproducto where envase='lata' or envase='botella pet';
+select * from tbproducto where PRECIO_LISTA>=15 and PRECIO_LISTA<=25;
+select * from tbproducto where (PRECIO_LISTA>=15 and PRECIO_LISTA<=25) or ( envase='lata' or envase='botella pet');
+select * from tbproducto where (PRECIO_LISTA>=15 and tamano='1 litro') or ( envase='lata' or envase='botella pet');
