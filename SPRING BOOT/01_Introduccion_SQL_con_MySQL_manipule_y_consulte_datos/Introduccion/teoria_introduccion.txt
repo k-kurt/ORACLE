@@ -348,6 +348,7 @@ INSERT INTO TABLA_DE_VENDEDORES
 (MATRICULA, NOMBRE, PORCENTAJE_COMISION)
 VALUES
 ('00233', 'Joan Geraldo de la Fonseca', 0.10);
+
 	
 	Insertando multiples registros
 use jugos;
@@ -358,7 +359,60 @@ insert into tbproductos(producto,nombre,envase,volumen,sabor,precio) values('103
 insert into tbproductos(producto,nombre,envase,volumen,sabor,precio) values('812829','clean','lata','350 ml','naranja',2.81);
 select * from tbproductos;
 	
+
 	alterar registros con una tabla
 SELECT * FROM jugos.tbproductos;
 UPDATE tbproductos SET precio=28.51 where producto='695594';
 UPDATE tbproductos SET sabor='Lima/limon',precio=4.90 where producto='1041119';
+
+
+	Excluyendo registros
+o eliminarlos
+DELETE se refiere propiamente a los registro en cambio el DROP se refiere a algo mas importante, como una columna o tabla 
+Tengo que poner un filtro a la hora de eliminar ya que si lo dejamos sin filtro eliminamos la tabla o base de datos
+select * from tbproductos;
+delete from tbproductos where producto='773912';
+
+
+	Incluyendo clave primaria
+la llave primaria es para que ningun registro se repita en la columna donde aplicamos esa llave
+INSERT INTO tbproductos
+(producto, nombre,envase,volumen,sabor,precio)
+VALUES
+('773912', 'clean','botella pet','1 litro','naranja',0.01);
+select * from tbproductos;
+alter table tbproductos add primary key(producto);
+EJ: el mensaje que nos tira cuando queremos agregar de nuevo el registro con los mismo datos
+0	26	01:32:48	INSERT INTO tbproductos
+ (producto, nombre,envase,volumen,sabor,precio)
+ VALUES
+ ('773912', 'clean','botella pet','1 litro','naranja',0.01)	Error Code: 1062. Duplicate entry '773912' for key 'tbproductos.PRIMARY'	0.000 sec
+
+
+	Manipulando fechas y campos logicos
+la fecha se pone anio, mes, dia
+
+use jugos;
+alter table tbclientes add primary key (dni);
+-- modificando tabla, agregando una columna 
+alter table tbclientes add column(fecha_nacimiento date);
+insert into tbclientes(dni,
+nombre ,
+direccion1,
+direccion2 ,
+barrio ,
+ciudad ,
+estado ,
+cp ,
+edad,
+sexo ,
+limite_credito ,
+volumen_compra ,
+primera_compra,
+fecha_nacimiento) values(
+'12345678','pedro el escamoso','calle del sol, 25','','los laureles','CDMX','mexico','65794',55,'M',1000000,2000,0,'1971-05-25'
+);
+select * from tbclientes;
+
+
+		
