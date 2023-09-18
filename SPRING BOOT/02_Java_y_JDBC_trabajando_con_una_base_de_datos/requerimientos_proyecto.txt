@@ -1,0 +1,9 @@
+ Nosotros vamos a estar desarrollando una aplicación que maneja el control de stock de una tienda y lo primero que vamos a estar haciendo es crear nuestra base de datos. Y para crear la base de datos acá desde la consola, el comando que vamos a estar escribiendo acá es create database, y vamos a poner el nombre control_de_stock.
+
+
+	tabla productos
+va a representar todos los productos que tengamos en stock
+
+	Conexion
+Para la conexion entre la base de datos y el programa java, usaremos una libreria creada por mysql, estas librerias son llamadas drivers. Si conectamos sql server, tenemos el driver sql server. Al conectar distintas bbdd por EJ: para mysql tiene su metodo MySqlConnector.getConnection() y para QSL Server tenemos SqlServerConnectionProvider.connect(). Para solucionar este problema de caundo tenemos que usar distintos gestores de bbdd, usamos el driver JDBC con su metodo DriverManger.getConnection() y simplica los metodos de los demas gestores. 
+Para tener el driver JDCB podemos instalar manuealmente el driver en el proyecto o utilizar maven para traer ese driver

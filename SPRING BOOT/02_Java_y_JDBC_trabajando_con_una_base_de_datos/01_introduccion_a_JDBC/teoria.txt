@@ -1,0 +1,102 @@
+para usar mysql en cmd (en este caso en macos) 
+vamos a la ruta
+/usr/local/mysql/bin/mysql -u root -p
+pide password
+enter password:
+mysql> crate database control_de_stock;
+mysql> use control_de_stock;
+Database canged
+mysql> create table  producto(
+	id INT AUTO_INCREMENT,
+	nombre VARCHAR(50) NOT NULL,
+	descripcion VARCHAR(255),
+	cantidad INT NOT NULL DEFAULT 0,
+	PRIMARY KEY(id)
+	)Engine=InnoDB;
+//ese comando Engine=InnoDB es para que la base de datos acepte operaciones en la tansaccion 
+Query ok, 0rows affected (0,01 sec)
+
+mysql> select * from productos;
+Empty set (0,00 sec)
+
+mysql> insert into producto(nombre, descripcion, cantidad) values ('mesa', 'mesa de 4 lugares', 10);
+
+Query ok...
+ mysql> select * from productos;
+//muestra la tabla
+
+
+
+		Conexion
+Para la conexion entre la base de datos y el programa java, usaremos una libreria creada por mysql, estas librerias son llamadas drivers. Si conectamos sql server, tenemos el driver sql server. Al conectar distintas bbdd por EJ: para mysql tiene su metodo MySqlConnector.getConnection() y para QSL Server tenemos SqlServerConnectionProvider.connect(). Para solucionar este problema  de caundo tenemos que usar distintos gestores de bbdd Java tiene una interfazde abstraccion , usamos el driver JDBC con su metodo DriverManger.getConnection() y simplica los metodos de los demas gestores. 
+
+el URL para conectar a la base de datos desde JAVA
+jdbc:mysql://localhost:3306/base_de_pruebas?{}
+//el ?{} son los parametros adicionales 
+
+		En el pom
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.alura</groupId>
+  <artifactId>control-de-stock</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Control de stock</name>
+  <description>proyecto para trabajar con base de datos con JDCB</description>
+<properties>
+	<java.version>11</java.version>
+</properties>
+
+<dependencies>
+	<dependency>
+	<groupId>mysql</groupId>
+	<artifactId>mysql-connector-java</artifactId>
+	<version>8.0.26</version>	
+</dependency>
+</dependencies>
+
+
+<build>
+	<plugins>
+		<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<version>3.7.0</version>
+		<configuration>
+			<source>${java.version}</source>
+			<target>${java.version}</target>
+			<optimize>true</optimize>	
+		</configuration>
+		</plugin>
+	</plugins>
+</build>
+</project>
+
+
+
+		en al clase de conexion
+package com.alura.tests;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class PruebaConexion {
+	public static void main(String[] args) throws SQLException {
+		
+		Connection con= DriverManager.getConnection(
+				"jdbc:mysql://localhost/control_de_stock?useTimeZone=true&serverTimeZone=UTC",
+				"root",
+				"kevin");
+		System.out.println("cerrando la conexion");
+		con.close();
+	}
+}
+
+
+Para acceder a una base de datos necesitamos del driver de conexión;
+Un driver es simplemente una librería .jar.
+JDBC significa Java DataBase Connectivity;
+El JDBC define una capa de abstracción entre la aplicación y el driver de la base de datos.
+Esta capa es compuesta de interfaces que el driver implementa.
+Para abrir una conexión con la base de datos debemos utilizar el método getConnection de la clase DriverManager;
+El método getConnection recibe tres parámetros. Son ellos la URL de conexión JDBC, el usuario y la contraseña.
