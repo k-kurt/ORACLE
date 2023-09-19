@@ -88,6 +88,8 @@ public class PruebaConexion {
 				"root",
 				"kevin");
 		System.out.println("cerrando la conexion");
+		
+		//siempre hay que cerrar la conexion a la bbdd por recursos
 		con.close();
 	}
 }
@@ -100,3 +102,11 @@ El JDBC define una capa de abstracción entre la aplicación y el driver de la b
 Esta capa es compuesta de interfaces que el driver implementa.
 Para abrir una conexión con la base de datos debemos utilizar el método getConnection de la clase DriverManager;
 El método getConnection recibe tres parámetros. Son ellos la URL de conexión JDBC, el usuario y la contraseña.
+
+
+	Consultas a Base de Datos
+El comando select y los otros que existen en sql son considerados como STATEMENT en java entonces creamos una variable con la instancia de la clase Statement con esta varible declarada del tipo Statement, que nos devuelve el resultado como un objeto del tipo statement,  la conexion realizada antes, 
+
+de la conexion realizada antes creamos un statement con su metodo createStatement() esta instancia es del tipo statement 
+
+entonces con esa instancia/variable podemos hacer las consultas 
