@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import com.alura.jdbc.controller.CategoriaController;
 import com.alura.jdbc.controller.ProductoController;
@@ -50,16 +51,26 @@ public class ControlDeStockFrame extends JFrame {
 
     private void configurarTablaDeContenido(Container container) {
         tabla = new JTable();
-
+        
+       
+        
         modelo = (DefaultTableModel) tabla.getModel();
         modelo.addColumn("Identificador del Producto");
         modelo.addColumn("Nombre del Producto");
-        modelo.addColumn("Descripción del Producto");
+        modelo.addColumn("Descripcion del Producto");
+        modelo.addColumn("Cantidad");
+//        
+//        JTableHeader header = tabla.getTableHeader();
+//        header.getColumnModel().getColumn(0).setHeaderValue("ID");
+//        header.getColumnModel().getColumn(1).setHeaderValue("Nombre");
+//        header.getColumnModel().getColumn(2).setHeaderValue("Descripci�n");
+//        header.getColumnModel().getColumn(3).setHeaderValue("Cantidad");
 
         cargarTabla();
 
         tabla.setBounds(10, 205, 760, 280);
-
+      
+        
         botonEliminar = new JButton("Eliminar");
         botonModificar = new JButton("Modificar");
         botonReporte = new JButton("Ver Reporte");
@@ -79,9 +90,9 @@ public class ControlDeStockFrame extends JFrame {
 
     private void configurarCamposDelFormulario(Container container) {
         labelNombre = new JLabel("Nombre del Producto");
-        labelDescripcion = new JLabel("Descripción del Producto");
+        labelDescripcion = new JLabel("Descripcion del Producto");
         labelCantidad = new JLabel("Cantidad");
-        labelCategoria = new JLabel("Categoría del Producto");
+        labelCategoria = new JLabel("Categoria del Producto");
 
         labelNombre.setBounds(10, 10, 240, 15);
         labelDescripcion.setBounds(10, 50, 240, 15);
@@ -96,7 +107,7 @@ public class ControlDeStockFrame extends JFrame {
         textoDescripcion = new JTextField();
         textoCantidad = new JTextField();
         comboCategoria = new JComboBox<>();
-        comboCategoria.addItem("Elige una Categoría");
+        comboCategoria.addItem("Elige una Categoria");
 
         // TODO
         var categorias = this.categoriaController.listar();
@@ -211,16 +222,16 @@ public class ControlDeStockFrame extends JFrame {
     private void cargarTabla() {
     	try {
         var productos = this.productoController.listar();
-    	}catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
         try {
-            // TODO
-            // productos.forEach(producto -> modelo.addRow(new Object[] { "id", "nombre",
-            // "descripcion" }));
+            productos.forEach(producto -> modelo.addRow(new Object[] { producto.get("id"), producto.get("nombre"),
+            producto.get("descripcion"), producto.get("cantidad")}));
         } catch (Exception e) {
             throw e;
         }
+    	}catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+        
     }
 
     private void guardar() {

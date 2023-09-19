@@ -13,7 +13,7 @@ public class PruebaConexion {
                 "root",
                 "kevin");
 
-        System.out.println("Cerrando la conexión");
+        System.out.println("Cerrando la conexion");
 
         con.close();
     }
