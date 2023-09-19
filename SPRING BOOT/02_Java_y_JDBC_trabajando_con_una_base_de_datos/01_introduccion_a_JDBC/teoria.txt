@@ -110,3 +110,16 @@ El comando select y los otros que existen en sql son considerados como STATEMENT
 de la conexion realizada antes creamos un statement con su metodo createStatement() esta instancia es del tipo statement 
 
 entonces con esa instancia/variable podemos hacer las consultas 
+
+  
+	        Statement statement= con.createStatement();
+	        //
+	        //este devuelve un boolean true cuando devuelve un listado, en las otras sentencias que 
+	        //no devuelven un listado, devuelve un false
+	        boolean result=statement.execute("SELECT id, nombre, descripcion, cantidad FROM productos");
+		
+	        System.out.println(result);
+
+
+PAra poder obtener el resultado de ese statement utilizamos Resultset, en le propio statement hacemos statement.getResulset() este metodo nos devuelve un objeto de tipo Resultset
+
