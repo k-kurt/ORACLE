@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.alura.jdbc.factory.ConnectionFactory;
 import com.alura.jdbc.pruebas.PruebaConexion;
 
 public class ProductoController {
@@ -23,14 +24,9 @@ public class ProductoController {
 	}
 
 	public List<Map<String, String>> listar() throws SQLException  {
-			//creamos una instancia del driver para conectar a mysql o cualquier bbdd
-		 Connection con = DriverManager.getConnection(
-	                "jdbc:mysql://localhost/control_de_stock?useTimeZone=true&serverTimeZone=UTC",
-	                "root",
-	                "kevin");
-
-	        System.out.println("Cerrando la conexion");
-
+			
+			//instanciamos la clase Crea conexion y el metodo de ella recuperaConexion()
+			Connection con=new ConnectionFactory().recuperaConexion();
 	        
 	        
 	        Statement statement= con.createStatement();
