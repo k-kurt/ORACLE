@@ -7,3 +7,7 @@ va a representar todos los productos que tengamos en stock
 	Conexion
 Para la conexion entre la base de datos y el programa java, usaremos una libreria creada por mysql, estas librerias son llamadas drivers. Si conectamos sql server, tenemos el driver sql server. Al conectar distintas bbdd por EJ: para mysql tiene su metodo MySqlConnector.getConnection() y para QSL Server tenemos SqlServerConnectionProvider.connect(). Para solucionar este problema de caundo tenemos que usar distintos gestores de bbdd, usamos el driver JDBC con su metodo DriverManger.getConnection() y simplica los metodos de los demas gestores. 
 Para tener el driver JDCB podemos instalar manuealmente el driver en el proyecto o utilizar maven para traer ese driver
+
+
+	Disenio del sistema
+El proyecto que nos paso el profe, esta hecho con Swing, el dice que no es muy utilizado ya este tipo de programa, ahora se hace con maven y tipo aplicacion web mas que de escritorio
