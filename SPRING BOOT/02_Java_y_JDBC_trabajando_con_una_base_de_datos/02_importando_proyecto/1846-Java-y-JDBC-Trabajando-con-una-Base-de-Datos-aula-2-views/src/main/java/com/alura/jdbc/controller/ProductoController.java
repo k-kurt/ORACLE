@@ -1,7 +1,6 @@
 package com.alura.jdbc.controller;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.alura.jdbc.factory.ConnectionFactory;
-import com.alura.jdbc.pruebas.PruebaConexion;
 
 public class ProductoController {
 
@@ -19,9 +17,44 @@ public class ProductoController {
 		// TODO
 	}
 
-	public void eliminar(Integer id) {
+	
+	
+//	public void eliminar(Integer id) throws SQLException {
+//		// TODO
+//		
+//		//creamos la conexion 
+//		Connection con=new ConnectionFactory().recuperaConexion();
+//		Statement statement= con.createStatement();
+	
+	//statement.execute("delete from productos where id="+id);
+	
+	//para saber si realmente se elimino vamos a usar un metodo que devuelve un int
+	//devuelve cuantas filas fueron modificadas en el statement 
+	//en este caso va a ser 1
+//	int updateCount = statement.getUpdateCount
+
+//	}
+	
+	
+	public int eliminar(Integer id) throws SQLException {
 		// TODO
+		
+		//creamos la conexion 
+		Connection con=new ConnectionFactory().recuperaConexion();
+		Statement statement= con.createStatement();
+		
+		statement.execute("delete from productos where id="+id);
+		
+		//para saber si realmente se elimino vamos a usar un metodo que devuelve un int
+		//devuelve cuantas filas fueron modificadas en el statement 
+		//en este caso va a ser 1
+		//como queremos mostrarlo en el formulario lo devolvemos para usarlo
+		return statement.getUpdateCount();
+		
+		
+		
 	}
+	
 
 	public List<Map<String, String>> listar() throws SQLException  {
 			

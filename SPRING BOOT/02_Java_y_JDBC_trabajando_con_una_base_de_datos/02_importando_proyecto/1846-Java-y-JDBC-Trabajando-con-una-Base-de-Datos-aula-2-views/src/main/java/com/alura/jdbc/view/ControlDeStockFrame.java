@@ -214,11 +214,30 @@ public class ControlDeStockFrame extends JFrame {
                 	Integer id = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 0).toString());
                 	
                 	
-                    this.productoController.eliminar(id);
+                	
+                	int cantidadEliminada;
+                	try {
+						 cantidadEliminada=this.productoController.eliminar(id);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						throw new RuntimeException(e);
+					}
+                	
+                	
+                	
+//                    try {
+//						this.productoController.eliminar(id);
+//					} catch (SQLException e) {
+//						// TODO Auto-generated catch block
+//						throw new RuntimeException(e);
+//					}
+                	
+                	
+                	
 
                     modelo.removeRow(tabla.getSelectedRow());
 
-                    JOptionPane.showMessageDialog(this, "Item eliminado con Exito!");
+                    JOptionPane.showMessageDialog(this, cantidadEliminada+ " Item eliminado con Exito!");
                 }, () -> JOptionPane.showMessageDialog(this, "Por favor, elije un item"));
     }
 

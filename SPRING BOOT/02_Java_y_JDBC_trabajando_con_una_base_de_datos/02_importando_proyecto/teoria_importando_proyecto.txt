@@ -110,6 +110,8 @@ public class ControlDeStockFrame extends JFrame {
 
 			ELIMINAR UN REGISTRO
 			
+Igual que lo anterior hay metodos eliminar privado y publico, hay que ir viendo cada uno
+			
 CONSULTA A CHATGPT
 El código que has proporcionado parece estar escrito en Java y se utiliza para obtener el valor de una celda en una tabla (posiblemente una JTable) y luego asignarlo a una variable de tipo `Integer` llamada `id`. Aquí está desglosado paso a paso:
 
