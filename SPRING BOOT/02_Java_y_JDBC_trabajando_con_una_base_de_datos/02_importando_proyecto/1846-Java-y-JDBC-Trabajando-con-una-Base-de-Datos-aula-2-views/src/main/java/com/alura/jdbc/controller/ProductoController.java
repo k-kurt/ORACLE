@@ -38,7 +38,7 @@ public class ProductoController {
 	        //el array donde guardamos los elementos para agregarlos a la lista del view
 	        List<Map<String, String>> resultado = new ArrayList<>();
 	        
-	        //obtenemos el resultado de la consulta query
+	        //obtenemos el resultado de la consulta query, que es un listado
 	        ResultSet resulset= statement.getResultSet();
 	        //leemos ese resultado, con este next() leemos el resultado tras otro
 	        while (resulset.next()) {
@@ -61,9 +61,27 @@ public class ProductoController {
 		
 		return resultado;
 	}
-
-    public void guardar(Object producto) {
-		// TODO
+	
+	//aqui esperamos el objecto array producto
+    public void guardar(Map<String, String> producto) throws SQLException {
+	
+    	Connection con=new ConnectionFactory().recuperaConexion();
+    	
+    	Statement statement=con.createStatement();
+    	
+    	//como el insert no devuelve una lista como el select no nos sirve si devuelve el true o el false
+    	//entonces devolvemos la constante del Resulset que es return_generated_keys, que devuelve los id autogerados
+    	statement.execute ("Insert into productos(nombre, descripcion, cantidad) "
+    	+ " values('" +producto.get("nombre")+ "', '"
+    	+producto.get("descripcion")+"',"+producto.get("cantidad")+")", Statement.RETURN_GENERATED_KEYS);
+    	
+    	ResultSet resultset=statement.getGeneratedKeys();
+    	
+    	while(resultset.next()) {
+    		System.out.println(String.format("Fue insertado el producto de ID %d", resultset.getInt(1)));
+    	}
+    	
+    	
 	}
 
 }

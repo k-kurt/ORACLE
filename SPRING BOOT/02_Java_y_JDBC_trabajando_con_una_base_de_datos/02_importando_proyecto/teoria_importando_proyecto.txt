@@ -18,7 +18,122 @@ public class ConnectionFactory {
 		 return DriverManager.getConnection(
 	                "jdbc:mysql://localhost/control_de_stock?useTimeZone=true&serverTimeZone=UTC",
 	                "root",
-	                "kevin");
+	                "kevin"); 
 	}
 
 }
+
+
+
+		GUARDAR DATOS DESDE EL FORMULARIO
+		
+Para guardar datos desde el formulario, en la clase view donde tenemos el formulario, creamos un 
+array hasmap donde guardamos cada elemento de la columna(combre, descripcion, cantidad) lo guardamos
+en un hasmap que llamamos producto, y este lo pasamos como parametro al metodo public guardar de la clase
+ProductoController ya que la calse view COntrolDeStockFame tiene su metodo guardar pero es privado.
+
+
+public class ProductoController {
+
+	//aqui esperamos el objecto array producto
+    public void guardar(Map<String, String> producto) throws SQLException {
+	
+    	Connection con=new ConnectionFactory().recuperaConexion();
+    	
+    	Statement statement=con.createStatement();
+    	
+    	//como el insert no devuelve una lista como el select no nos sirve si devuelve el true o el false
+    	//entonces devolvemos la constante del Resulset que es return_generated_keys, que devuelve los id autogerados
+    	statement.execute ("Insert into productos(nombre, descripcion, cantidad) "
+    	+ " values('" +producto.get("nombre")+ "', '"
+    	+producto.get("descripcion")+"',"+producto.get("cantidad")+")", Statement.RETURN_GENERATED_KEYS);
+    	
+    	ResultSet resultset=statement.getGeneratedKeys();
+    	
+    	while(resultset.next()) {
+    		System.out.println(String.format("Fue insertado el producto de ID %d", resultset.getInt(1)));
+    	}
+    	
+    	
+	}
+
+}
+
+
+
+
+public class ControlDeStockFrame extends JFrame {
+
+    private void guardar() {
+        if (textoNombre.getText().isBlank() || textoDescripcion.getText().isBlank()) {
+            JOptionPane.showMessageDialog(this, "Los campos Nombre y Descripcion son requeridos.");
+            return;
+        }
+
+        Integer cantidadInt;
+
+        try {
+            cantidadInt = Integer.parseInt(textoCantidad.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, String
+                    .format("El campo cantidad debe ser numÃ©rico dentro del rango %d y %d.", 0, Integer.MAX_VALUE));
+            return;
+        }
+
+        // TODO
+        //creamos un hasmap que enviamos como objeto al metodo guardar
+        var producto = new HashMap<String, String>();
+        //vamos guardando en el array producto
+        producto.put("nombre", textoNombre.getText());
+        producto.put("descripcion", textoDescripcion.getText());
+        //como es un int hacemos un cast
+        producto.put("cantidad", String.valueOf(textoCantidad.getText()));
+        
+        var categoria = comboCategoria.getSelectedItem();
+        
+        //aqui pasamos el array producto
+        try {
+			this.productoController.guardar(producto);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+
+        JOptionPane.showMessageDialog(this, "Registrado con Ã©xito!");
+
+        this.limpiarFormulario();
+    }
+
+
+
+
+			ELIMINAR UN REGISTRO
+			
+CONSULTA A CHATGPT
+El código que has proporcionado parece estar escrito en Java y se utiliza para obtener el valor de una celda en una tabla (posiblemente una JTable) y luego asignarlo a una variable de tipo `Integer` llamada `id`. Aquí está desglosado paso a paso:
+
+1. `tabla.getSelectedRow()`: Esto probablemente obtiene la fila seleccionada en la tabla. La variable `tabla` es probablemente una instancia de una tabla, como una `JTable` en Java Swing. `getSelectedRow()` devuelve el índice de la fila seleccionada. Ten en cuenta que las filas en una tabla generalmente se numeran desde 0.
+
+2. `modelo.getValueAt(fila, 0)`: Esto parece ser una llamada a un modelo de tabla (posiblemente `DefaultTableModel` o una clase similar) para obtener el valor en la celda de la fila seleccionada (`fila`) y la columna 0. La columna 0 generalmente se refiere a la primera columna en la tabla. Esto devuelve un valor genérico, que luego se debe convertir a `Integer`.
+
+3. `(Integer)`: Esto es una conversión de tipo. El valor obtenido de `modelo.getValueAt(...)` se convierte explícitamente a un objeto `Integer`. Esto se hace utilizando la conversión de tipo `(Integer)`.
+
+4. `id`: Finalmente, el valor convertido se asigna a la variable `id`, que es de tipo `Integer`. Esto significa que `id` ahora contiene el valor de la celda en la fila seleccionada y la primera columna de la tabla como un objeto `Integer`.
+
+En resumen, este código extrae el valor de una celda específica en una tabla y lo almacena en una variable `Integer` llamada `id`. Es importante destacar que este código puede lanzar excepciones si la fila seleccionada o la columna 0 no existen o si el valor en esa celda no se puede convertir a un objeto `Integer`. Por lo tanto, es posible que desees incluir manejo de excepciones o verificar la validez de los datos antes de ejecutar este código en una aplicación real.
+
+POR QUE USA .TOSTRING() AL FINAL, EXPLICACION DE CHATGPT
+En el código que proporcionaste:
+
+```java
+Integer id = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 0).toString());
+```
+
+Se utiliza `.toString()` al final para convertir el valor obtenido de la celda de la tabla en una representación de cadena (`String`) antes de intentar convertirlo a un objeto `Integer`. Esto se hace por las siguientes razones:
+
+1. **Valor genérico**: El método `getValueAt` de un modelo de tabla generalmente devuelve un valor genérico (`Object`) que puede representar cualquier tipo de dato. Para convertirlo en un `Integer`, primero debes convertirlo en una cadena, ya que `Integer.valueOf(...)` espera una cadena que contenga una representación válida de un número entero.
+
+2. **Seguridad contra excepciones**: Si el valor en la celda no es realmente un número o no se puede convertir directamente a un `Integer`, entonces `Integer.valueOf(...)` lanzaría una excepción `NumberFormatException`. Al llamar a `.toString()` primero, se puede evitar esta excepción, ya que `toString()` siempre generará una cadena, incluso si el valor original es nulo. De esta manera, puedes manejar la conversión de forma más segura y controlada, por ejemplo, verificando si la cadena es nula o no es un número antes de intentar convertirla a `Integer`.
+
+Entonces, en resumen, se utiliza `.toString()` para asegurarse de que el valor obtenido de la celda de la tabla se convierta primero en una cadena antes de intentar convertirlo a un `Integer`, lo que ayuda a evitar excepciones y a manejar mejor la conversión.

@@ -5,6 +5,7 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Optional;
 
 import javax.swing.JButton;
@@ -209,13 +210,15 @@ public class ControlDeStockFrame extends JFrame {
 
         Optional.ofNullable(modelo.getValueAt(tabla.getSelectedRow(), tabla.getSelectedColumn()))
                 .ifPresentOrElse(fila -> {
-                    Integer id = (Integer) modelo.getValueAt(tabla.getSelectedRow(), 0);
-
+                    //Integer id = (Integer) modelo.getValueAt(tabla.getSelectedRow(), 0);
+                	Integer id = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 0).toString());
+                	
+                	
                     this.productoController.eliminar(id);
 
                     modelo.removeRow(tabla.getSelectedRow());
 
-                    JOptionPane.showMessageDialog(this, "Item eliminado con éxito!");
+                    JOptionPane.showMessageDialog(this, "Item eliminado con Exito!");
                 }, () -> JOptionPane.showMessageDialog(this, "Por favor, elije un item"));
     }
 
@@ -236,7 +239,7 @@ public class ControlDeStockFrame extends JFrame {
 
     private void guardar() {
         if (textoNombre.getText().isBlank() || textoDescripcion.getText().isBlank()) {
-            JOptionPane.showMessageDialog(this, "Los campos Nombre y Descripción son requeridos.");
+            JOptionPane.showMessageDialog(this, "Los campos Nombre y Descripcion son requeridos.");
             return;
         }
 
@@ -246,15 +249,29 @@ public class ControlDeStockFrame extends JFrame {
             cantidadInt = Integer.parseInt(textoCantidad.getText());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, String
-                    .format("El campo cantidad debe ser numérico dentro del rango %d y %d.", 0, Integer.MAX_VALUE));
+                    .format("El campo cantidad debe ser numerico dentro del rango %d y %d.", 0, Integer.MAX_VALUE));
             return;
         }
 
         // TODO
-        var producto = new Object[] { textoNombre.getText(), textoDescripcion.getText(), cantidadInt };
+        //creamos un hasmap que enviamos como objeto al metodo guardar
+        var producto = new HashMap<String, String>();
+        //vamos guardando en el array producto
+        producto.put("nombre", textoNombre.getText());
+        producto.put("descripcion", textoDescripcion.getText());
+        //como es un int hacemos un cast
+        producto.put("cantidad", String.valueOf(textoCantidad.getText()));
+        
         var categoria = comboCategoria.getSelectedItem();
-
-        this.productoController.guardar(producto);
+        
+        //aqui pasamos el array producto
+        try {
+			this.productoController.guardar(producto);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 
         JOptionPane.showMessageDialog(this, "Registrado con éxito!");
 
