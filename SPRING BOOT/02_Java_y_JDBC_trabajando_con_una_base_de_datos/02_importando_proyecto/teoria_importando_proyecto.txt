@@ -139,3 +139,101 @@ Se utiliza `.toString()` al final para convertir el valor obtenido de la celda d
 2. **Seguridad contra excepciones**: Si el valor en la celda no es realmente un número o no se puede convertir directamente a un `Integer`, entonces `Integer.valueOf(...)` lanzaría una excepción `NumberFormatException`. Al llamar a `.toString()` primero, se puede evitar esta excepción, ya que `toString()` siempre generará una cadena, incluso si el valor original es nulo. De esta manera, puedes manejar la conversión de forma más segura y controlada, por ejemplo, verificando si la cadena es nula o no es un número antes de intentar convertirla a `Integer`.
 
 Entonces, en resumen, se utiliza `.toString()` para asegurarse de que el valor obtenido de la celda de la tabla se convierta primero en una cadena antes de intentar convertirlo a un `Integer`, lo que ayuda a evitar excepciones y a manejar mejor la conversión.
+
+
+
+		MODIFICANDO UN REGISTRO
+		
+// Clase ProductoController
+public int modificar(String nombre, String descripcion, Integer cantidad, Integer id) throws SQLException {
+    ConnectionFactory factory = new ConnectionFactory();
+    Connection con = factory.recuperaConexion();
+    Statement statement = con.createStatement();
+    statement.execute("UPDATE PRODUCTO SET "
+            + " NOMBRE = '" + nombre + "'"
+            + ", DESCRIPCION = '" + descripcion + "'"
+            + ", CANTIDAD = " + cantidad
+            + " WHERE ID = " + id);
+
+    int updateCount = statement.getUpdateCount();
+
+    con.close();   
+
+    return updateCount;
+}
+// Clase ControlDeStockFrame
+private void modificar() {
+    if (tieneFilaElegida()) {
+        JOptionPane.showMessageDialog(this, "Por favor, elije un item");
+        return;
+    }
+
+    Optional.ofNullable(modelo.getValueAt(tabla.getSelectedRow(), tabla.getSelectedColumn()))
+            .ifPresentOrElse(fila -> {
+                Integer id = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 0).toString());
+                String nombre = (String) modelo.getValueAt(tabla.getSelectedRow(), 1);
+                String descripcion = (String) modelo.getValueAt(tabla.getSelectedRow(), 2);
+                Integer cantidad = Integer.valueOf(modelo.getValueAt(tabla.getSelectedRow(), 3).toString());
+
+                int filasModificadas;
+
+                try {
+                    filasModificadas = this.productoController.modificar(nombre, descripcion, cantidad, id);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    throw new RuntimeException(e);
+                }
+
+                JOptionPane.showMessageDialog(this, String.format("%d item modificado con éxito!", filasModificadas));
+            }, () -> JOptionPane.showMessageDialog(this, "Por favor, elije un item"));
+            
+            	 
+}
+
+
+
+
+
+
+
+            	 Evitando SQL Injection utilizando PreparedStatement
+            	 
+  El JDBC tiene una yuda para permitir que nuestros campos de texto de nuestro formulario no haga que sea vulnerable a la base de datos
+  EL JDBC tiene una opcion para validar la informacion de la query. Esta forma es preparar el statement en lugar de crearlo. cuando lo creamos pasamos los valores del query, estuvimos trabajando con la interfaz statement
+  Como esta todo cojntatenado los valores y la sentencia sql, al instanciar pasabamos todo junto
+  pero ahora en lugar de crear un statement vamos a estar preaparando el statement 
+  
+  
+  
+    	Connection con=new ConnectionFactory().recuperaConexion();
+    	
+    	
+    	//como el insert no devuelve una lista como el select no nos sirve si devuelve el true o el false
+    	//entonces devolvemos la constante del Resulset que es return_generated_keys, que devuelve los id autogerados
+    	//ESTO ERA VUNERABLE
+    	//Statement statement=con.createStatement();
+//    	statement.execute ("Insert into productos(nombre, descripcion, cantidad) "
+//    	+ " values('" +producto.get("nombre")+ "', '"
+//    	+producto.get("descripcion")+"',"+producto.get("cantidad")+")", Statement.RETURN_GENERATED_KEYS);
+
+    	//ESTO YA NO ES VUNERABLE
+    	PreparedStatement statement=con.prepareStatement("Insert into productos(nombre, descripcion, cantidad) "
+    	    	+ " values(?,?,?)", Statement.RETURN_GENERATED_KEYS);
+    	
+    	statement.setString(1, producto.get("nombre"));
+    	statement.setString(2, producto.get("descripcion"));
+    	statement.setInt(3, Integer.valueOf(producto.get("cantidad")));
+    	
+    	
+    	
+    	statement.execute();
+    	
+    	
+    	
+    	
+    	
+    			Tomando el control de la transacción
+    			
+   Crear un producto y agregar una regla de negocio a ella
+  
+   
