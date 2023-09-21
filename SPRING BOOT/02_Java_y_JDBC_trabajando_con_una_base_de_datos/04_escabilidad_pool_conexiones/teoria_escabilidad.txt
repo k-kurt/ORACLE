@@ -1,0 +1,31 @@
+					
+					
+					
+					 Creando un pool de conexiones
+El pool de conexiones nos permite tener multiples peticiones en la bbdd
+importamos por maven la dependencia del C3P0
+tambien importamos el mchance que nos permite agregar mas  detalles del datasource via log de la aplicacion
+en la consola
+  
+  
+  
+		<dependency>
+			<groupId>com.mchange</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.5.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.mchange</groupId>
+			<artifactId>mchange-commons-java</artifactId>
+			<version>0.2.20</version>
+		</dependency>
+
+	</dependencies>
+	
+	
+	
+	Desde la clase ConnectionFactory vamos a configurar para que el connection factory no cree la conexion
+	sino que utilice las conexiones desde el pool de conexiones
+	No cambio nada en el programa, no se rompio, solo cambiamos 2 dependencias y una clase
+	Ahora en lugar de dejar al JDBC que haga la conexion, lo tomamos desde el pool 

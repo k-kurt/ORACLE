@@ -11,3 +11,10 @@ Para tener el driver JDCB podemos instalar manuealmente el driver en el proyecto
 
 	Disenio del sistema
 El proyecto que nos paso el profe, esta hecho con Swing, el dice que no es muy utilizado ya este tipo de programa, ahora se hace con maven y tipo aplicacion web mas que de escritorio
+
+
+	Peticiones a la bbdd
+
+para no tener que hacer una fila de consultas a la base de datos, ni saturar la base de datos, vamos a implementar un interventor que es 
+la interfaz Datasource, que se va a comuniar entre el ConnectionFactory y el JDBC, dentro del Datasource vamos a tener la depencia 
+pool de conexiones C3PO que es la mas conocida del mercado
