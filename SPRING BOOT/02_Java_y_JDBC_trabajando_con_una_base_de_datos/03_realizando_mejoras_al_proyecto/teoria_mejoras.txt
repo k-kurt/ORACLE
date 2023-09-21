@@ -1,0 +1,214 @@
+							
+							
+							
+							06 Tomando el control de la transacción
+							
+Vamos a poner un limite de 50 cantidad de un mismo producto por registro y si pasa esos 50, lo dividimos en 2
+lo primero es extraer los valores del map de producto para variables por que la vamos a estar iterando y 
+creamos otra varaible para senialar el valor maximo que el campo cantidad puede tener por cada registro
+
+
+
+//aqui esperamos el objecto array producto
+    public void guardar(Map<String, String> producto) throws SQLException {
+    	String nombre = producto.get("nombre");
+    	String descripcion = producto.get("descripcion");
+    	Integer cantidad = Integer.valueOf(producto.get("cantidad"));
+    	Integer maximoCantidad=50;
+    	
+    	
+    	Connection con=new ConnectionFactory().recuperaConexion();
+    	PreparedStatement statement=con.prepareStatement("Insert into productos(nombre, descripcion, cantidad) "
+    	    	+ " values(?,?,?)", Statement.RETURN_GENERATED_KEYS);
+    	
+    	
+    	do {
+    		
+    		int cantidadParaGuardar=Math.min(cantidad, maximoCantidad);
+    		
+    		ejecutaRegistro(nombre, descripcion, cantidadParaGuardar, statement);
+    		
+    		cantidad-= maximoCantidad;
+    		
+    	}while(cantidad>0);
+    	
+    	con.close();
+	}
+
+	private void ejecutaRegistro(String nombre, String descripcion, Integer cantidad, PreparedStatement statement)
+			throws SQLException {
+		statement.setString(1, nombre);
+		statement.setString(2, descripcion);
+		statement.setInt(3, cantidad);
+    	
+    	
+    	
+    	statement.execute();
+
+    	
+    	
+    	ResultSet resultset=statement.getGeneratedKeys();
+    	
+    	while(resultset.next()) {
+    		System.out.println(String.format("Fue insertado el producto de ID %d", resultset.getInt(1)));
+    	}
+	}
+
+}
+
+
+
+Si, ocurre esa exception cuando estamos cargando los datos en 2 partes como lo definimos, una parte se guarda
+y la otra no, entonces tenemos que tomar el control de la transaccion
+PUDIMOS SOLUCIONAR ESE ERROR pero generamos otro, que no aparece el registro en la tabla, el JDBC ya no tiene esa 
+responsabilidad asi que lo haremos nosotros
+
+
+	
+	//aqui esperamos el objecto array producto
+    public void guardar(Map<String, String> producto) throws SQLException {
+    	String nombre = producto.get("nombre");
+    	String descripcion = producto.get("descripcion");
+    	Integer cantidad = Integer.valueOf(producto.get("cantidad"));
+    	Integer maximoCantidad=50;
+    	
+    	
+    	ConnectionFactory factory=new ConnectionFactory();
+    	Connection con=factory.recuperaConexion();
+    	//definimos que la conexion no va a tener mas el control de la transacccion sino nosotros
+    	con.setAutoCommit(false);
+    	
+    	
+    	PreparedStatement statement=con.prepareStatement("Insert into productos(nombre, descripcion, cantidad) "
+    	    	+ " values(?,?,?)", Statement.RETURN_GENERATED_KEYS);
+    	
+    	
+    	do {
+    		
+    		int cantidadParaGuardar=Math.min(cantidad, maximoCantidad);
+    		
+    		ejecutaRegistro(nombre, descripcion, cantidadParaGuardar, statement);
+    		
+    		cantidad-= maximoCantidad;
+    		
+    	}while(cantidad>0);
+    	
+    	con.close();
+	}
+
+	private void ejecutaRegistro(String nombre, String descripcion, Integer cantidad, PreparedStatement statement)
+			throws SQLException {
+		
+//		if(cantidad<50) {
+//			throw new RuntimeException("Ocurrio un error");
+//		}
+		
+		statement.setString(1, nombre);
+		statement.setString(2, descripcion);
+		statement.setInt(3, cantidad);
+    	
+    	
+    	
+    	statement.execute();
+
+    	
+    	
+    	ResultSet resultset=statement.getGeneratedKeys();
+    	
+    	while(resultset.next()) {
+    		System.out.println(String.format("Fue insertado el producto de ID %d", resultset.getInt(1)));
+    	}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+								08 Manejando el commit y el rollback
+
+SI tenemos que ahcer tranferencia entre 2 cuentas y pasa lo mismo que en este caso hicimos, la tranferencia de 
+de informacion no puede perderse, se tiene que revertir en la base de datos si algo no sucedio, o devolverse la plata
+a la cuenta origen si no se pudo concretar la transferencia
+	LA SOLUCION
+cuando trabajamos con el control manueal tenemos que colocar explicitamente el comando de commit en el codigo
+el comando con.commit();
+
+
+
+//aqui esperamos el objecto array producto
+    public void guardar(Map<String, String> producto) throws SQLException {
+    	String nombre = producto.get("nombre");
+    	String descripcion = producto.get("descripcion");
+    	Integer cantidad = Integer.valueOf(producto.get("cantidad"));
+    	Integer maximoCantidad=50;
+    	
+    	
+    	ConnectionFactory factory=new ConnectionFactory();
+    	Connection con=factory.recuperaConexion();
+    	//definimos que la conexion no va a tener mas el control de la transacccion sino nosotros
+    	con.setAutoCommit(false);
+    	
+    	
+    	PreparedStatement statement=con.prepareStatement("Insert into productos(nombre, descripcion, cantidad) "
+    	    	+ " values(?,?,?)", Statement.RETURN_GENERATED_KEYS);
+    	
+    	
+    	//hacemos un rollback en el try catch
+    	try {
+    	do {
+    		
+    		int cantidadParaGuardar=Math.min(cantidad, maximoCantidad);
+    		
+    		ejecutaRegistro(nombre, descripcion, cantidadParaGuardar, statement);
+    		
+    		cantidad-= maximoCantidad;
+    		
+    	}while(cantidad>0);
+    	
+    	//aqui agregamos el commit
+    	con.commit();
+    	System.out.println("COMMIT");
+    	}catch(Exception e) {
+    		//aqui esta el rollback
+    		con.rollback();
+    		System.out.println("ROLLBACK");
+    		
+    	}
+    	
+    	con.close();
+	}
+
+	private void ejecutaRegistro(String nombre, String descripcion, Integer cantidad, PreparedStatement statement)
+			throws SQLException {
+		
+//		if(cantidad<50) {
+//			throw new RuntimeException("Ocurrio un error");
+//		}
+		
+		statement.setString(1, nombre);
+		statement.setString(2, descripcion);
+		statement.setInt(3, cantidad);
+    	
+    	
+    	
+    	statement.execute();
+
+    	
+    	
+    	ResultSet resultset=statement.getGeneratedKeys();
+    	
+    	while(resultset.next()) {
+    		System.out.println(String.format("Fue insertado el producto de ID %d", resultset.getInt(1)));
+    	}
+	}
+
+}
