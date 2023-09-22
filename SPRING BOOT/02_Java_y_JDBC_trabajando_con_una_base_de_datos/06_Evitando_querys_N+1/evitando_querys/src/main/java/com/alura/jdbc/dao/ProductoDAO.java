@@ -70,7 +70,7 @@ public class ProductoDAO {
 	
 		try (con) {
 		final PreparedStatement statement = con.prepareStatement(
-					"Insert into productos(nombre, descripcion, cantidad) " + " values(?,?,?)",
+					"Insert into productos(nombre, descripcion, cantidad, categoria_id) " + " values(?,?,?,?)",
 					Statement.RETURN_GENERATED_KEYS);
 
 			try (statement) {
@@ -89,7 +89,7 @@ public class ProductoDAO {
 		statement.setString(1, producto.getNombre());
 		statement.setString(2, producto.getDescripcion());
 		statement.setInt(3, producto.getCantidad());
-
+		statement.setInt(4, producto.getCategoriaId());
 		statement.execute();
 
 		// VERSION 9
@@ -136,12 +136,52 @@ public class ProductoDAO {
 				}
 				}
 			}
-				return resultado;
+				
 			}catch(SQLException e) {
 				throw new RuntimeException(e);
 			}
+		return resultado;
 	
 }
+
+
+	public List<Producto> listar(Integer categoriaId) {
+		// TODO Auto-generated method stub
+		List<Producto> resultado = new ArrayList<>();
+		ConnectionFactory factory = new ConnectionFactory();
+		final Connection con = factory.recuperaConexion();
+
+		try (con) {
+
+			final PreparedStatement statement = con
+					.prepareStatement("SELECT id, nombre, descripcion, cantidad FROM productos where categoria_id = ?");
+
+			try (statement) {
+				statement.setInt(1, categoriaId);
+
+				statement.execute();
+				
+				final ResultSet resulset = statement.getResultSet();
+
+				try(resulset){
+				while (resulset.next()) {
+					
+					Producto fila = new Producto(resulset.getInt("id"),
+							resulset.getString("nombre"),
+							resulset.getString("descripcion"),
+							resulset.getInt("cantidad"));
+			
+					resultado.add(fila);
+				}
+				}
+			}
+				
+			}catch(SQLException e) {
+				throw new RuntimeException(e);
+			}
+		return resultado; 
+		
+	}
 		
 }
 		

@@ -12,6 +12,7 @@ import java.util.Map;
 
 import com.alura.jdbc.dao.ProductoDAO;
 import com.alura.jdbc.factory.ConnectionFactory;
+import com.alura.jdbc.modelo.Categoria;
 import com.alura.jdbc.modelo.Producto;
 
 public class ProductoController {
@@ -31,29 +32,6 @@ public class ProductoController {
 	    return productoDAO.modificar(nombre, descripcion, cantidad, id);
 	
 	
-//	public int modificar(String nombre, String descripcion, Integer cantidad, Integer id) throws SQLException {
-//		ConnectionFactory factory = new ConnectionFactory();
-//		final Connection con = factory.recuperaConexion();
-//		try (con) {
-//
-//			final PreparedStatement statement = con.prepareStatement(
-//
-//					"UPDATE productos SET " + " nombre = ?" + ", descripcion = ?" + ", cantidad = ?" + " WHERE id = ?");
-//			try (statement) {
-//
-//				statement.setString(1, nombre);
-//				statement.setString(1, descripcion);
-//				statement.setInt(3, cantidad);
-//				statement.setInt(4, id);
-//
-//				statement.execute();
-//
-//				int updateCount = statement.getUpdateCount();
-//
-//				return updateCount;
-//			}
-//		}
-//	}
 
 	}
 	
@@ -62,42 +40,22 @@ public class ProductoController {
 	    return productoDAO.eliminar(id);
 	
 	
-	
-//	public int eliminar(Integer id) throws SQLException {
-//		// TODO
-//
-//		final Connection con = new ConnectionFactory().recuperaConexion();
-//		try (con) {
-//
-//			final PreparedStatement statement = con.prepareStatement("delete from productos where id=?");
-//			try (statement) {
-//
-//				statement.setInt(1, id);
-//				statement.execute();
-//
-//				int updateCount = statement.getUpdateCount();
-//
-//				return updateCount;
-//
-//			}
-//		}
-//
-//	}
 
 	    
 	}   
 	    
 	public List<Producto> listar() {
-
-		
 		return productoDAO.listar();
-
+	}
+	//pasamos la Categoria categoria para buscar los elementos por categoria
+	public List<Producto> listar(Categoria categoria){
+		return productoDAO.listar(categoria.getId());
 	}
 
-
-	public void guardar(Producto producto) {
-
+	public void guardar(Producto producto, Integer categoriaId) {
 				
+		
+				producto.setCategoriaId(categoriaId);
 				productoDAO.guardar(producto);
 		
 		
