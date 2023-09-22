@@ -111,3 +111,26 @@ public class Producto {
 		}
 
 	}
+	
+	
+	
+	
+	
+	
+	
+							 DAO con INSERT del producto
+							 
+
+Entiendo tu duda y es bastante válida. La razón por la cual se utiliza una clase como ProductoController en lugar de llamar los métodos directamente desde ControlDeStockFrame tiene que ver con el principio de responsabilidad única en la programación orientada a objetos.
+
+La clase ControlDeStockFrame probablemente está diseñada para manejar la interfaz de usuario y la interacción con el usuario. Si agregamos lógica de persistencia de datos (como guardar, eliminar, listar y modificar) directamente en esta clase, estaríamos mezclando responsabilidades. Esto puede hacer que el código sea más difícil de mantener y de entender.
+
+Por otro lado, la clase ProductoController actúa como un intermediario entre la interfaz de usuario (ControlDeStockFrame) y la lógica de persistencia de datos (PersistenciaProducto). Esto permite que cada clase tenga una única responsabilidad, lo que hace que el código sea más modular y fácil de mantener.
+
+Por ejemplo, si en el futuro necesitas cambiar la forma en que se guarda un producto, solo necesitarías modificar la clase PersistenciaProducto. La clase ControlDeStockFrame y ProductoController no necesitarían ser modificadas, ya que su responsabilidad es manejar la interacción con el usuario y coordinar las acciones entre la interfaz de usuario y la lógica de persistencia de datos, respectivamente.
+
+Espero que esto aclare tu duda. Recuerda que estos son principios generales de diseño de software y pueden haber casos específicos donde se justifique una estructura de código diferente.
+
+Espero haber ayudado y buenos estudios! Mucho éxito en todo lo que te propongas y si tienes alguna duda aquí estaremos para apoyarte.							 
+							 
+							 
