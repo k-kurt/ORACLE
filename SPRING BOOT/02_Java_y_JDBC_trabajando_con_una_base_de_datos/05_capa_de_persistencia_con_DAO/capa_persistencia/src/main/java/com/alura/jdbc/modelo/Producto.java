@@ -10,6 +10,14 @@ public class Producto {
 		
 	}
 	
+	public Producto(int id,String nombre, String descripcion , int cantidad) {
+		// TODO Auto-generated constructor stub
+		this.id=id;
+		this.nombre=nombre;
+		this.descripcion=descripcion;
+		this.cantidad=cantidad;
+	}
+
 	private Integer id;
 	private String nombre;
 	private String descripcion;
@@ -38,6 +46,9 @@ public class Producto {
 	public void setId(int id) {
 		// TODO Auto-generated method stub
 		this.id=id;
+	}
+	public Integer getId() {
+		return id;
 	}
 	@Override
 	public String toString() {
