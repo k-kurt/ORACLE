@@ -1,0 +1,113 @@
+
+
+
+
+
+				 Creando el modelo producto
+				 
+estamos representando los parametros como variables sueltas sin representacion del producto como en la base de datos
+por eso vamos a crear un objeto/modelo del producto
+
+
+package com.alura.jdbc.modelo;
+
+public class Producto {
+
+	public Producto(String nombre, String descripcion , Integer cantidad) {
+		// TODO Auto-generated constructor stub
+		this.nombre=nombre;
+		this.descripcion=descripcion;
+		this.cantidad=cantidad;
+		
+	}
+	
+	private Integer id;
+	private String nombre;
+	private String descripcion;
+	private Integer cantidad;
+	
+	
+	
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public Integer getCantidad() {
+		return cantidad;
+	}
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
+	public void setId(int id) {
+		// TODO Auto-generated method stub
+		this.id=id;
+	}
+	@Override
+	public String toString() {
+		return String.format(
+				"{id: ,%s, nombre: , %s, descripcion: ,%s, cantidad: ,%d}",
+				this.id, this.nombre, this.descripcion, this.cantidad);
+	}
+
+}
+
+
+
+
+
+
+
+
+// public void guardar(Map<String, String> producto) throws SQLException {
+	public void guardar(Producto producto) throws SQLException {
+//		String nombre = producto.get("nombre");
+//		String descripcion = producto.get("descripcion");
+//		Integer cantidad = Integer.valueOf(producto.get("cantidad"));
+
+		ConnectionFactory factory = new ConnectionFactory();
+		final Connection con = factory.recuperaConexion();
+		try (con) {
+			con.setAutoCommit(false);
+
+			final PreparedStatement statement = con.prepareStatement(
+					"Insert into productos(nombre, descripcion, cantidad) " + " values(?,?,?)",
+					Statement.RETURN_GENERATED_KEYS);
+
+			try (statement) {
+				ejecutaRegistro(producto, statement);
+				con.commit();
+			} catch (Exception e) {
+				con.rollback();
+			}
+		}
+
+	}
+
+	private void ejecutaRegistro(Producto producto, PreparedStatement statement) throws SQLException {
+
+		statement.setString(1, producto.getNombre());
+		statement.setString(2, producto.getDescripcion());
+		statement.setInt(3, producto.getCantidad());
+
+		statement.execute();
+
+		// VERSION 9
+		final ResultSet resultset = statement.getGeneratedKeys();
+		try (resultset) {
+
+			while (resultset.next()) {
+				producto.setId(resultset.getInt(1));
+				System.out.println(String.format("Fue insertado el producto %s",producto.toString()));
+			}
+
+		}
+
+	}

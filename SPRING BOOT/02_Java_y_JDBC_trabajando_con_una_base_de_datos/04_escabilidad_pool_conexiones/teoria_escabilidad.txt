@@ -2,6 +2,9 @@
 					
 					
 					 Creando un pool de conexiones
+					 
+Para ver las conexiones a la bbdd usamos en al consola show processlist;  tiene que estar ejecutando mysql
+					 
 El pool de conexiones nos permite tener multiples peticiones en la bbdd
 importamos por maven la dependencia del C3P0
 tambien importamos el mchance que nos permite agregar mas  detalles del datasource via log de la aplicacion
