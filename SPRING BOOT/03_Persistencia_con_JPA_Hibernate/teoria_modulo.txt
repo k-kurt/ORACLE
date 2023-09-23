@@ -73,6 +73,8 @@
 						Hibernate y JPA
 
 
+La implementacion son hibernate, eclipseLink,openjpa y la escificaion es JPA. Apra poder utilizar JPA debemos implementar uno de estas 
+implementaciones, no se puede usar JPA puro por que es una capa de abstraccion
 
 
 Transcripción

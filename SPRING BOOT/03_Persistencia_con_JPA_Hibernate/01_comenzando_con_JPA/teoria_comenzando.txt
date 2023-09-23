@@ -1,0 +1,47 @@
+				
+				
+							Creando un projecto con JPA
+							
+							
+En el maven configuramos la version de java que vamos a utilizar, por defecto eclipse configura la 
+version 5 de java
+la setemoa a la 11
+
+	<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
+            <configuration>
+                <release>11</release>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
+<dependencies>
+	
+	
+	la dependencia del hibernate
+    
+    
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-entitymanager</artifactId>
+        <version>5.6.14.Final</version>
+    </dependency>
+
+
+	la dependencia de la base de datos
+
+    <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>2.1.214</version>
+    </dependency>
+</dependencies>			
+
+
+Para solucionar el problema que nos sale con la cruz roja cuando terminamos de implementar las dependencias
+vamos a proyecto, clic derecho, vamen, update proyecto y se corrige ese error

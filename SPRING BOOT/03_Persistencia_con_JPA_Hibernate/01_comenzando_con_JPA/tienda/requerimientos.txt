@@ -1,0 +1,3 @@
+Vamos a realizar un pequenio proyecto donde vamos a almacenar 
+productos, estos productos van  a tener un nombre, una descripcion, un precio y una categoria
+sus relaciones entre productos y la categoria
