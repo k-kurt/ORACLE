@@ -1,0 +1,185 @@
+									
+									
+									Lo que aprendimos en esta aula:
+
+En esta lección, aprendiste:
+
+Cómo escribir una clase DAO usando JPA;
+Cómo asignar atributos de tipo Enum en una entidad;
+Cómo mapear una relación entre entidades.
+									
+									02 Organizando el codigo
+									
+					Transcripción
+[00:00] Hola. En el video anterior, nosotros creamos la clase RegistroDeProducto que fue la clase donde instanciamos nuestro primer producto, configuramos sus atributos y luego instanciamos el EntityManager que es el que nos permite manejar las transacciones y los estados para hacer persistido en la base de datos.
+
+[00:19] Adicionalmente creamos dos propiedades en el archivo peresistence.xml, una propiedad que nos permitía ver la operación que estaba siendo realizada en la base de datos y la otra propiedad creaba las tablas y las columnas de forma automática por nosotros.
+
+[00:34] Ahora, nosotros vamos a organizar un poco este código creando una clase DAO para la entidad producto, recordando que el DAO simplemente tiene la responsabilidad de dar acceso a la base de datos, o sea para guardar, actualizar, eliminar o para consulta de una entidad.
+
+[00:54] Y vamos a crear una otra clase que es una clase utilitaria para asignar la responsabilidad de creación del EntityManager. Vamos a comenzar. En la carpeta tienda vamos a crear una nueva clase. Esa clase se va a llamar producto DAO, va a estar dentro del paquete DAO. Damos finalizar.
+
+[01:22] Entonces esta clase va a tener los métodos de consulta, así como de guardar o actualizar un registro. Para eso tiene que utilizar el EntityManager, por lo que se lo vamos a pasar como atributo hacer un atributo privado del tipo EntityManager.
+
+[01:44] Lo vamos a llamar em, tenemos que importar el EntityManager y lo vamos a pasarlo como parámetro en el constructor. Entonces vamos en el constructor con parámetro EntityManager y ahora sí podemos comenzar a construir nuestros métodos de acceso.
+
+[02:04] El primer método va a ser el método guardar. Es un método público que no retorna nada, guardar, recibe una entidad del tipo producto. El nombre va a ser producto y vamos a utilizar el método persist del entityManager. Nos está solicitando una entidad que va a ser el producto.
+
+[02:33] Ya con eso tenemos nuestro primer método creado, está todo funcionando correctamente, importamos la clase producto y vamos a ir a nuestra clase main donde vamos a instanciar ese Dao para poder reemplazar el método de persistencia.
+
+[02:58] Vamos a llamar productoDao, usamos la palabra clave new, ProductoDao y nos va a solicitar primero que importemos el producto y segundo que pasemos un parámetro que va a ser el EntityManager.
+
+[03:16] Con eso, nosotros podríamos enviar la parte de iniciar la transacción y de cerrar la transacción así como el commit, podríamos colocarla dentro del método guardar, pero ahí tendríamos que duplicar el código en los diferentes métodos.
+
+[03:34] Entonces, para visitar duplicación de código, simplemente vamos a iniciar las transacciones, vamos a realizar las diferentes operaciones. La primera operación que vamos a usar acá es la de guardar productoDao, vamos a llamar el método guardar que lo acabamos de crear y vamos a enviar el producto que va a ser el celular.
+
+[03:56] Iniciamos la transacción. Realizamos la persistencia, lo enviamos ese valor a la base de datos y cerramos la conexión. Lo siguiente sin asignar la responsabilidad de crear el Entitymanager, para eso vamos a crear otra clase. Vamos a ir a nuevo, clase. Esa clase se va a llamar JPAUtils y va a estar dentro del paquete utils.
+
+[04:30] Vamos a colocarlo en el utils. Presionamos finalizar. Lo primero que tenemos que hacer es crear el factory, con el createEntityManagerFactory, que es el atributo que nos va a permitir crear el EntityManager. Vamos a crear un atributo estático. Va a ser del tipo EntityManagerFactory. Lo vamos a llamar FACTORY.
+
+[05:05] Tenemos que importar esa clase, y recordando lo que habíamos visto en la clase anterior, esto proviene de la clase persistence, un método estático que sería createEntityManagerFactory, nos va a solicitar el nombre de esa base datos que nosotros la llamamos tienda.
+
+[05:28] Recordando en la clase del archivo persistence, nosotros habíamos colocado el nombre para esta base datos tienda, que está aquí. Si ustedes le colocaran otro nombre, tiene que ser el nombre que le asignaron a la unidad de persistencia.
+
+[05:46] Entonces de vuelta en la clase utilitaria, ya tenemos el Factory, que nos va a permitir crear el EntityManagerFactory. Nosotros ahora vamos a quedar un método, que va a ser público y va a retornar un EntityManager, ese lo vamos a llamar getEntityManager.
+
+[06:10] Entonces, con ese método, ese método también va a ser estático, vamos a importar la clase EntityManager, vamos aquí "Ctrl + V", importamos de aquí cometí un error. EntityManager. Ahora sí.
+
+[06:44] Ahora tenemos que retornar el valor. Va a ser return FACTORY y va a ser create EntityManager. Ya con eso, aquí importamos. Está todo creado. Ahora sí tenemos nuestro método estático creado que nos va a permitir crear el EntityManager.
+
+[07:13] Volvemos a la clase main, vamos a eliminar esta línea de acá y esta de acá la vamos a reemplazar por el método estático que cremos de la clase JPAUtils.getEntityManager.
+
+[07:31] Entonces, ya con eso, nosotros hemos simplificado nuestro código un poco más, un poco más elegante y creamos la clase Dao que es donde vamos a tener todos los métodos de consulta. En la siguiente clase, nosotros vamos a hablar un poco sobre los relacionamientos entre la clase producto y las categorías de ese producto.
+
+					
+					
+					
+					
+					
+									03
+								Mas mapeamentos
+								
+								
+Transcripción
+[00:00] Hola. Continuando con el desarrollo de nuestra aplicación, hasta este punto ya nosotros tenemos nuestro código organizado y hemos realizado la primera persistencia para un producto.
+
+[00:09] Ahora el cliente nos solicitó agregar dos nuevas propiedades para ese producto, que sería la fecha de registro y la categoría a la que pertenece ese producto. Entonces, para eso nosotros vamos a ir a la clase producto, nuestra aplicación y vamos a agregar esa propiedad.
+
+[00:27] Propiedad va a ser private, vamos a colocar aquí LocaDate, que va a ser el tipo, fechaDeRegistro va a ser el nombre del atributo y vamos a un asignar el valor de una vez.
+
+[00:44] El método estático LocalDate.now, entonces con eso nosotros aseguramos que al ser instanciado el producto se esté guardando la fecha actual en la que se está instanciando.
+
+[00:57] El tipo que va a ser guardado en la base de datos va a ser el tipo date o Time stamp, dependiendo de la base de datos. Y la siguiente propiedad que nosotros vamos a agregar en la clase producto va hacer la categoría. Esa categoría va a ser privada y no va a ser un elemento del tipo de string ni del tipo entero, sino va a ser del tipo categoría.
+
+[01:23] Ese atributo se va a llamar categoría. Entonces el cliente nos mencionó que tenemos unos elementos, unas categorías limitadas, nosotros vamos a tener software, vamos a tener libros y vamos a tener celulares.
+
+[01:35] Entonces para eso es recomendable cuando nosotros tenemos elementos limitados conocidos, es recomendable utilizar el numerador, entonces nosotros vamos a construir el enumerador a partir de esa categoría dentro del paquete modelo.
+
+[01:51] Vamos a finalizar acá, ya tenemos nuestro enumerador creado y ahora vamos a agregar los elementos de ese enumerador. Los elementos van a ser como ya mencionamos SOFTWARES, LIBROS y CELULARES. Ya tenemos nuestra categoría configurada.
+
+[02:10] Vamos a guardar acá y de vuelta en la clase producto nosotros podríamos haber colocado aquí un string pero eso permitiría múltiples opciones para el usuario que está guardando, los elementos del producto y eso permitiría que él se equivoque y daría paso a errores, entonces para evitar eso nosotros nos mantenemos con el enumerador.
+
+[02:33] Pero usando el numerador como ya nosotros habíamos mencionado, a la hora de guardar en la base de datos, el nombre va a ser un elemento de tipo varchar la descripción va a ser varchar, el precio de hacer un elemento del tipo decimal y el id va a ser un elemento de tipo entero.
+
+[02:48] Pero esta categoría no pertenece a ninguna de esas conocidas. Entonces nosotros vamos a colocar acá constructor para pasar esos parámetros nuevos. Vamos a ir a fuentes, generar constructor y vamos a desmarcar el id y la fecha de registro.
+
+[03:10] Ya que el id es generado automáticamente en la base de datos y la fecha de registro y que nosotros le asignamos un valor. Generamos ese constructor guardamos aquí los cambios, nos aseguramos que hayamos guardado aquí la categoría y nos está generando un error, ya que nosotros hemos generado un constructor como parámetro.
+
+[03:31] Vamos a instanciar ese producto nuevamente con los nuevos parámetros, entonces sería producto celular y aquí vamos a instanciar un producto con el nombre que sería “Samsung”, la descripción que sería teléfono usado, el precio que se tira un elemento del tipo bigDecimal y el precio sería 1000.
+
+[04:04] Y por último, nos está faltando la categoría. La categoría va a ser categoría.CELULARES. Guardamos, faltando un punto y coma acá y ya con eso tenemos instanciado nuestro producto. Entonces vamos a ejecutar esta aplicación para ver que se está guardando en la base de datos.
+
+[04:28] He creado la tabla producto, tenemos el id que ese tipo entero y la categoría es del tipo integer o del tipo entero. Entonces el valor que se está guardando para esa categoría es el elemento en el que se encontraría esta categoría si estuviese un arreglo entonces en este caso se está guardando, nosotros estamos guardando celulares, él está guardando el número 3.
+
+[04:56] Esto daría paso a errores ya que si se alteran las posiciones, si nosotros ahora colocamos los celulares acá arriba esos números ahora pasarían a ser 1, 2 aquí 3. Pero anteriormente nosotros habíamos guardado el número 3 como celular y ahora el número 3 pertenece a la clase LIBROS.
+
+[05:18] Entonces por eso no es recomendable guardar los números o un valor numérico en la base de datos ya que estos pueden ser alterados. Entonces, para nosotros darle más significancia a lo que está haciendo persistir, nosotros vamos a guardar la palabra como string. Para eso, nosotros aquí vamos a guardar y vamos a ir a la clase producto donde usar una anotación de JPA que es la anotación @Enumerate.
+
+[05:53] Esa anotación tiene un parámetro (EnumType) del tipo string. Ella una serie de valores y nosotros vamos a usar el string, que nos va a permitir guardar la palabra que está siendo registrada en el enumerador.
+
+[06:15] Guardamos ese enumerador, importamos la clase y vamos a ejecutar de nuevo nuestra aplicación. Si nosotros ejecutamos la aplicación nuevamente vemos que se creó la tabla producto, el id es de tipo entero y la categoría de esta es del tipo varchar. Eso quiere decir que él guardo la palabra y no la posición en la que se encuentra en ese arreglo.
+
+[06:45] Vemos la descripción que también es varchar, la fecha de registro que es el tipo date y el nombre varchar y el precio numérico. Entonces, con esto concluimos la parte de la solicitud de ese cliente de agregar las nuevas propiedades y en la siguiente parte nosotros vamos a continuar con los mapeamentos y vamos a hacer una extensión de la categoría para convertirlo a una tabla.																
+
+
+
+
+
+
+										Mapeando relacionamientos #1
+										
+						Transcripción
+[00:00] Hola. En el video anterior, nosotros hicimos el mapeamento para las dos nuevas propiedades que se agregaron en la clase producto. Nosotros agregamos el atributo fecha de registro y el atributo categoría y dentro de esta categoría nosotros teníamos tres elementos que eran SOFTWARE, los LIBROS y los CELULARES.
+
+[00:19] Sin embargo, estos elementos eran limitados dentro de una clase del tipo de enumerador. Esto presenta el problema de que si el cliente quisiera agregar nuevas categorías o eliminar alguna de esas categorías existentes, él va a tener que llamar de nuevo a los desarrolladores, gastar de nuevo en recursos y hacer un nuevo deploy. Eso va a representar también una pérdida de tiempo.
+
+[00:44] Entonces para darle más flexibilidad al proyecto nosotros vamos a eliminar ese numerador y vamos a crear una nueva entidad que va a ser la entidad categoría, lo que nos va a permitir guardar esta elemento de la categoría en la base de datos y permitir que el cliente almacene diversos elementos dentro de la categoría.
+
+[01:07] Entonces ahora si nosotros vemos el diagrama, nosotros vamos a tener la tabla productos y vamos a tener la tabla categoría. Y entre esas dos tablas va a existir una relación. Esos elementos van a estar relacionados por el id, por el identificador, ya que vamos a tener el id para la tabla productos, vamos a tener el id para la tabla categoría.
+
+[01:29] Dentro de la tabla producto, nosotros ahora vamos a tener el id de esa categoría lo que vamos a llamar una llave extranjera. Es que es el identificador que se encuentra dentro de la tabla de categoría. Entonces nosotros vamos a tener nuestra tabla producto con los atributos, id, nombre, descripción precio y el id de la categoría además de la fecha de registro.
+
+[01:54] Entonces siempre que nosotros tenemos la relación entre dos entidades o dos tablas nosotros vamos a estar utilizando una nueva anotación de JPA que es la anotación many to one o one to one, dependiendo del tipo de tipo de relación existente entre esas entidades.
+
+[02:13] En este caso, nosotros vamos a tener que muchos productos están relacionados con una única categoría. Ese caso es equivalente a un profesor que tiene muchos estudiantes. Entonces, nosotros vamos a ir a nuestra clase categoría. Esa clase categoría ya no va a ser un enumerador, sino que va a ser una entidad.
+
+[02:36] Entonces, al igual que la habíamos hecho con la clase producto, vamos a colocar la anotación @Entity, vamos a colocar la anotación @Table ya que esa tabla va a tener un nombre de “categorías” en la base de datos. Vamos a eliminar estos elementos acá y vamos a agregar dos atributos para esa categoría que van a ser el id y va a tener un nombre.
+
+[03:15] Ya con eso tenemos los dos atributos, solamente tenemos que agregar las anotaciones para el id que va a ser la anotación @Id y la anotación @GeneratedValue. La estrategia, como ya habíamos mencionado, va ser GenerationType.IDENTITY.
+
+[03:49] Vamos a hacer todas las importaciones. Vamos a importar el Id de JPA, vamos a importar GeneratedValue y vamos a agregar los getters y los setters para esta nueva categoría. Vamos a agregar getters y setters y vamos a crear un constructor para la clase categoría.
+
+[04:16] Generamos un constructor, únicamente vamos a pasarle como parámetro el nombre y ya con esto nosotros tenemos la entidad categoría creada. Guardamos, ahora en nuestra clase producto nosotros ya no vamos a tener más un elemento de tipo enumerador.
+
+[04:38] Como habíamos mencionado en el diagrama, nosotros vamos a tener una relación de muchos productos, vamos a tener una única categoría. Nosotros vamos a usar la anotación @ManyToOne, que es muchos productos tienen una única categoría.
+
+[05:01] Vamos a importar esa anotación de JPA y ya con esto se encuentra realizada la relación entre la entidad producto y la entidad categoría. Esto le va a permitir al cliente agregar diversos elementos de categorías que van a estar relacionados con la clase producto.
+
+[05:22] Ahora en nuestra clase RegistroDeProducto nosotros tenemos que instanciar esa categoría que se va a llamar celulares. Vamos a crear un new Celulares y vamos a pasarle el nombre que va a ser celulares.
+
+[05:45] Importamos y aquí no es celulars, aquí es categoría. Y aquí vamos a pasar esta entidad como parámetro, que sería celulares. Entonces, con eso tenemos todo funcionando, vamos a guardar y vamos a ejecutar esta aplicación para ver si está funcionando correctamente.
+
+[06:12] Aquí genera un error. ¿Cuál es el error? Vamos a ver cuál es el error. El error dice causado por hibernateTransientPropertyValue. ¿Qué es lo que está pasando? Nosotros estamos intentando guardar un elemento que es transient.
+
+[06:28] Hasta ahora, nosotros todavía no hemos guardado el valor de esa categoría dentro de la base datos. Como nosotros habíamos mencionado, los elementos de la tabla producto están siendo guardados en la base de datos. Y nosotros queríamos guardar los elementos de la categoría en la base de datos, por lo que nosotros tenemos que realizar el mismo proceso que hicimos para los productos con la tabla categoría.
+
+[06:51] Entonces en la siguiente parte nosotros vamos a realizar el DAO para las categorías y vamos a ver cómo se hace esta configuración de que nosotros podamos guardar una entidad, sería la entidad categoría CELULARES, dentro del producto celular.				
+
+
+
+
+
+						06 Mapeando relacionamientos #2
+						
+			Transcripción
+[00:00] En el video anterior, nosotros habíamos recibido una excepción que era la excepción decía TransientPropertyValue. Esa excepción lo que significa es que nosotros estábamos intentando pasar como parámetro un elemento que aún no ha sido guardado dentro de la base de datos.
+
+[00:17] En el video anterior nosotros creamos la nuestra nueva entidad, que es la entidad categoría, instanciamos esa categoría con el nombre de celulares y la intentamos pasar como parámetro dentro de la entidad producto.
+
+[00:32] Nosotros habíamos construido un relacionamiento del tipo ManyToOne en la clase producto. Luego de que nosotros hicimos ese mapeamento, intentamos realizar la persistencia para ese producto y nosotros recibimos el error.
+
+[00:49] Para corregirlo tenemos que construir un DAO para la categoría y luego de haber construido el DAO, del mismo modo que hicimos con los productos, tenemos que guardar esa entidad que sería la entidad categoría con el nombre celular y luego de eso es que nosotros podemos guardar el producto.
+
+[01:07] Entonces, para realizar eso, nosotros vamos a copiar ese producto DAO, lo vamos a pegar acá, vamos a colocar el nombre CategoriaDao, vamos a acceder a esa clase. Y aquí donde dice producto vamos a cambiarlo por categoría y todo lo que diga producto lo vamos a cambiar acá por categoría.
+
+[01:40] Importamos la clase y ya tenemos el DAO para la categoría. Con esto, nosotros podemos usar el método, el método guardar para persistir esa entidad. Entonces, ahora de vuelta en nuestra clase main nosotros vamos a instanciar esa categoriaDao que es la que nos va a permitir llamar al método guardar y hacer la persistencia de esa nueva categoría categoría.
+
+[02:10] Entonces, new CategoriaDao y vamos a pasar el entityManager. Entonces, como nosotros habíamos mencionado anteriormente, nosotros mantenemos la conexión antes de los DAO para poder evitar la duplicación de código.
+
+[02:31] Entonces nosotros iniciamos la conexión, realizamos todas las transacciones que nosotros deseamos crear en nuestro programa Y por último, nosotros cerramos esa conexión. Entonces, luego de que nosotros instanciamos la categoriaDao, nosotros ahora podemos guardar esa entidad, la entidad celulares.
+
+[02:53] Entonces, vamos a llamar categoriaDao, vamos a llamar el método guardar y vamos a pasar la entidad celulares, dentro de ese elemento. Ahora sí guardamos y si podemos ejecutar nuestra aplicación. Ahora, dentro del registro, nosotros vemos que creó la tabla categoría, creó la tabla producto.
+
+[03:17] Hizo una alteración dentro de la tabla productos agregando esa llave extranjera que como habíamos mencionado en el diagrama, es agregar el identificador de la tabla categorías dentro de la tabla producto.
+
+[03:32] Entonces, si revisamos aquí que crea en la tabla, él tiene el id como tipo entero, tenemos el nombre que es varchar para la tabla categoría y dentro de la tabla producto tenemos el id del tipo entero, la descripción variar, la fecha de tipo date, el nombre varchar, el precio del tipo numérico y tenemos la categoría.
+
+[03:56] En el video anterior nosotros hemos visto que este elemento era de tipo varchar. Ahora es el tipo bigInt. Eso es porque él está guardando el elemento del id de la tabla extranjera o de la tabla externa.
+
+[04:14] Él luego realizó los inserts tanto para la tabla categoría, y en secuencia realizó el insert o guardó los elementos para la tabla producto. Entonces, repasando todo lo que fue realizado en este curso, nosotros creamos la entidad categoría del mismo modo que teníamos la entidad producto.
+
+[04:38] Agregamos los atributos para esa entidad. Eran el id y el nombre. Le damos la relación entre la tabla productos y la tabla categoría, colocamos la cardinalidad, que va a ser tipo ManyToOne, recordando que muchos productos tienen una única.
+
+[05:00] Creamos el DAO para esa nueva categoría, que es la que nos va a permitir guardar la entidad dentro de la entidad producto. Y por último, luego de haber instanciado el Dao, tanto para el producto como para la categoría, nosotros guardamos en el orden correcto la categoría y luego el Dao.
+
+[05:27] Entonces, con eso tenemos todo sobre los mapeamentos de las relaciones y en la siguiente parte vamos a hablar sobre las transacciones y los estados.		

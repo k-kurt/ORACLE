@@ -1,0 +1,312 @@
+								
+							Archivo persistence.xml
+							
+							
+Las propiedades que se utilizan en este archivo son estándar y específicas para la configuración de JPA y Hibernate. No se copian de ningún lugar, sino que se escriben de acuerdo a las necesidades de la aplicación. Por ejemplo, "javax.persistence.jdbc.driver" es la propiedad que especifica el controlador JDBC que se utilizará, y su valor depende del tipo de base de datos que estés utilizando.
+
+Las propiedades que se mencionan en el video, como "javax.persistence.jdbc.driver", "javax.persistence.jdbc.url", "javax.persistence.jdbc.user", "javax.persistence.jdbc.password" y "hibernate.dialect", son todas propiedades estándar utilizadas para configurar la conexión a la base de datos y el comportamiento de Hibernate.
+
+En el caso del video, se está utilizando la base de datos H2, por lo que el valor de "javax.persistence.jdbc.driver" es "org.h2.Driver" y el de "hibernate.dialect" es "org.hibernate.dialect.H2Dialect". Si estuvieras utilizando MySQL, por ejemplo, los valores serían "com.mysql.jdbc.Driver" y "org.hibernate.dialect.MySQLDialect", respectivamente.
+
+Estos valores no se sacan del archivo POM, aunque es cierto que pueden parecerse a los group id de las dependencias que se incluyen en el POM. Pero son cosas diferentes: el archivo POM se utiliza para configurar el proyecto y sus dependencias, mientras que el archivo persistence.xml se utiliza para configurar la persistencia de los datos.					
+							
+							
+				Transcripci�n
+[00:00] Hola. Continuando con el desarrollo de nuestro curso, en esta parte vamos a comenzar a configurar la base de datos, nosotros seleccionamos la base de datos h2. Ustedes pueden seleccionar la base de datos de su preferencia como MySQL o Postgre o cualquier base de datos de memoria.
+
+[00:14] Nosotros seleccionamos h2, ya que nos permite crear de forma autom�tica las tablas y las columnas, as� como los elementos existentes en la base de datos de forma m�s r�pida y enfocarnos �nicamente a lo que ser�a JPA y Hibernate.
+
+[00:32] Entonces, para esto nosotros tenemos que crear un archivo llamado persistence.xml, donde van a estar las diferentes unidades de persistencia y las propiedades para esa base de datos.
+
+[00:43] Entonces vamos a ir a la carpeta tienda, van a ir a la parte de recursos, van a seleccionar nuevo y van a crear una nueva carpeta, esa carpeta tiene que tener como nombre META-INF. Tiene que ser ese nombre en may�scula, ya que es el nombre que se busca dentro de la aplicaci�n por default.
+
+[01:09] Seleccionan finalizar y seleccionan esa carpeta. Dentro de esa carpeta, van a seleccionar archivo, nuevo y van a seleccionar otro. Van a seleccionar archivo XML y van a crear, colocarle el nombre persistence.xml. Tiene que ser ese nombre exacto ya que nuevamente es el nombre que es buscado dentro de la configuraci�n en el proyecto.
+
+[01:38] Seleccionamos finalizar y ya tenemos previamente una tag o una etiqueta que indica la versi�n con la que vamos a estar trabajando, y el codificado del teclado. Lo voy a colocar ac�, una tag que ya ten�a previamente copiada, la vamos a proveer en el proyecto.
+
+[01:57] Esta es la tag de persistencia donde van a ir todas las unidades de persistencia y dentro de las unidades de persistencia, las propiedades de la base de datos. Nos estar�a indicando que precisamente est� faltando dentro una etiqueta, una tag que es la persistence-unit.
+
+[02:16] Esta tag es la que corresponde a la base de datos con la que estamos trabajando. Entonces por cada base de datos que nosotros estemos usando, vamos a tener una unidad de persistencia. El nombre para nuestra base de datos nosotros elegimos tienda pero pueden colocarle el nombre que tenga m�s l�gica con su proyecto, y en este caso el nombre que mejor se adhiere es tienda.
+
+[02:41] Lo siguiente que tenemos que colocar es el tipo de transacciones, c�mo se van a manejar esas transacciones a lo largo del proyecto. Entonces vamos a hacer transaction-type. Entonces, tenemos dos valores posibles para el transaction-type que es �JTA�.
+
+[03:00] Este valor es cuando nosotros estamos utilizando un servidor externo que maneja todas esas transacciones de forma autom�tica por nosotros. O, en el caso de nuestro proyecto, nosotros vamos a estar manejando todas las transacciones, nosotros vamos a utilizar el caso de �RESOURCE_LOCAL�.
+
+[03:22] Es cuando nosotros usamos una aplicaci�n en Stand alone donde vamos a indicarle cu�l es el momento de la transici�n que estamos. Y todo lo que es RESOURCE_LOCAL. Entonces, dentro de la unidad de persistencia nosotros vamos a tener una tag de propiedades. Y dentro de esas propiedades vamos a tener diversas propiedades individuales.
+
+[03:45] La primera propiedad que vamos a tener para nuestra base de datos es el driver o el controlador, que son las caracter�sticas del software que nos permiten conectar nuestra base de datos con la aplicaci�n. La encargada de hacer todas esto va a ser JPA entonces tenemos que colocar ya ex persistence.jvc. Y vamos a colocar aqu� driver. Va a ser la primera propiedad que vamos a configurar.
+
+[04:13] El valor para esa propiedad va a ser organizaci�n.h2.Driver. La siguiente propiedad est� relacionada con la ruta donde se va a encontrar esa base de datos. Tambi�n va a ser controlada por JPA. JDBC. Y va a ser la ruta URL. Entonces la ruta va a ser �jdbc:h2:mem:tienda.�
+
+[04:55] Por �ltimo, est�n faltando dos propiedades b�sicas, que ser�a el usuario y la contrase�a con la que nosotros vamos a acceder a esa base de datos. Entonces ser�a propiedad. Property, aqu� tenemos que eliminar esto. Voy a colocar name. Nuevamente ser�a �javax.persistence.jdbc.user� Y vamos a colocar el usuario con el que nos vamos a registrar en la base de datos.
+
+[05:29] Y el valor va a ser por default para la base de datos h2: �sa�. La �ltima propiedad faltante ser�a la contrase�a. Entonces ser�a �javax.persistence.jdbc.password�. Por default para la base de datos h2 tenemos el password vac�o.
+
+[06:01] Se puede configurar una contrase�a para su base de datos. Y lo �ltimo que estar�a faltando ser�a el dialecto. Entonces el dialecto se refiere a las caracter�sticas internas de c�mo se comunica esa base de datos con nuestra aplicaci�n, ya que ustedes pueden tener un booleano que sea del tipo verdadero o falso, true false, o 1-0.
+
+[06:20] Vamos a colocar esa �ltima propiedad que va a ser de hibernate.dialect. El valor para esa propiedad va a ser �org.hibernate.dialect.H2Dialect�. Con esto estamos indicando cu�les van a ser las caracter�sticas particulares de nuestra base de datos.
+
+[06:57] Entonces, para MySQL va a existir un dialecto y para Postgre va a existir otro. Entonces, por �ltimo, lo que vamos a hacer es guardar todas estas configuraciones y a lo largo de nuestro del proyecto vamos a ir agregando m�s propiedades dentro de nuestro archivo de persistence que le van a dar otras caracter�sticas a la hora de ver los resultados.
+
+[07:20] Entonces eso es todo por ahora y nosotros ya creamos nuestras dependencias y configuramos la base de datos. En el siguiente proyecto vamos a comenzar a crear nuestro modelo de entidades.			
+
+
+
+
+
+
+								 04 Mapeando una entidad #1
+								 
+								 
+			Transcripción
+[00:00] Hola y continuando con el desarrollo de nuestro curso. En esta parte nosotros vamos a comenzar a elaborar el modelo que vamos a persistir en nuestra base de datos, entonces nosotros fuimos a tener en nuestra base de datos una tabla que va a representar en nuestro listado de productos y dentro de esa tabla van a existir unas ciertas propiedades como el Id, el nombre, la descripción y el precio.
+
+[00:25] Ese id va a ser el tipo bigint. El nombre va a ser del tipo varchar, la descripción también va a ser del tipo varchar, porque ambos son textos y el precio va a ser del tipo decimal. Entonces nosotros tenemos que darle una interpretación en el código para modelar esa tabla que se encuentra en la base de datos, modelarla en nuestra API, en el proyecto.
+
+[00:52] Entonces para eso, nosotros vamos a construir una clase y vamos a ver cómo Hibernate realiza un mapamiento o cómo hace la búsqueda de cada uno de los elementos para transformarlos en elementos de la base de datos. Para comenzar este curso, lo primero que tenemos que hacer es crear nuestra clase, para eso vamos a ir a la carpeta principal donde vamos a hacer clic derecho, seleccionar nuevo y vamos a crear una nueva clase.
+
+[01:22] El nombre de esa clase se va a llamar producto, tiene que ser un nombre que tenga lógica y con lo que nosotros estamos haciendo en la base de datos. Nosotros tenemos un listado de productos. Nosotros vamos a guardar esta primera clase en un paquete que va a ser com.latam.alura.tienda.
+
+[01:44] Como es parte del modelo con el que vamos a representar nuestra base de datos, vamos a colocar esto dentro de la carpeta modelo. Seleccionamos finalizar y ya con esto tenemos nuestra clase creada. Entonces vemos que creó un paquete que siempre va a estar dentro de la clase modelo y creó la clase que sería la clase producto.
+
+[02:18] Entonces Hibernate él reconoce, lo que serían las entidades, entonces él va a buscar las diversas entidades y esas entidades están representadas por clase en nuestro programa. Entonces, inicialmente de este modo, él nos va a reconocer esa clase, para nosotros indicarle que esta va a ser una de las entidades que debe realizar el mapeamiento, nosotros tenemos las anotaciones.
+
+[02:35] Entonces una de las anotaciones es la anotación @Entity. Si nosotros pasamos el mouse acá, vemos que él puede importar esa anotación de Java-persistence o de hibernate-annotation. Entonces, como nosotros queremos permanecer ágiles y dinámicos, nosotros tenemos que mantenernos con la especificación y no con la implementación.
+
+[03:04] Si nosotros nos mantenemos con la implementación que sería Hibernate a la hora de cambiar Hibernate por alguna otra implementación, por algún otro framework, sería muy difícil, ya que tendríamos que cambiar varios elementos dentro de nuestro proyecto. Entonces nosotros, vamos a seleccionar java-persistence.
+
+[03:22] Y para la mayoría de las cosas vamos a estar seleccionando JPA, que es Java-persistence para, como habíamos mencionado, mantenernos dentro de la especificación.
+
+[03:33] Entonces, como habíamos mencionado antes, Hibernate y JPA, ellos realizan un mapeamento de los elementos existentes en nuestra clase para compararlos con el modelo en la base de datos, entonces por default Hibernate entiende y JPA, entiende que el nombre de la clase es el mismo nombre que existe para la tabla.
+
+[03:58] En nuestro caso no lo es. El nombre de esta clase es la clase producto y la clase en la base de datos es productos en plural. Entonces para nosotros es indicar esa diferencia vamos a usar otra anotación que va a ser @Table. Y esa anotación, va a pedir un parámetro a ser @Table(name=”productos”).
+
+[04:25] Vamos a realizar la importación de JPA también como hemos mencionado y ya con eso nosotros tenemos nuestra clase, vamos a guardarlo, nuestro modelo inicial de entidad elaborado. Ahora está faltando crear los diferentes atributos que van a representar cada una de las columnas en la base de datos.
+
+[04:47] Entonces nosotros teníamos cuatro columnas, era el id, el nombre, la descripción y el precio, entonces vamos a agregar esos elementos. Tenemos un elemento de tipo privado, va a ser del tipo long y va a ser el id. Luego tenemos el nombre que también va a ser de tipo privado, el string. Vamos a tener la descripción, también va a ser un string del tipo privado y por último, vamos a tener un precio.
+
+[05:25] Más adelante nosotros vamos a ir hoy a ver más atributos. Pero por ahora nos vamos a mantener con estos elementos. Y aquí el precio. Aquí voy a importar la clase BigDecimal.
+
+[05:48] Y ya con esto tengo los cuatro primeros atributos y el mapeamiento de la entidad. Entonces ahora les voy a mostrar cómo identificar cuál va a ser el id que va a representar cada una de las filas en la base de datos y qué pasa con la manera de generar ese identificador, ese id.					 				
+
+
+				
+				
+				
+				
+											
+											Mapeando una entidad #2
+											
+											
+		Transcripción
+[00:00] Hola, continuando con el desarrollo de nuestra entidad, de la entidad producto, ahora vamos a proceder a la parte del id. El id es un elemento existente en las tablas que representa la unicidad de cada una de esas filas, para nosotros indicarle a nuestro proyecto cuál va a ser el id o el identificador de cada una de esas filas, nosotros tenemos otra anotación, es la anotación @Id también de JPA.
+
+[00:28] Importamos la clase de JPA, y es identificador, la responsabilidad de generar ese identificador va a ser siempre de la base de datos. Entonces, para nosotros indicarle que la responsabilidad no pertenece al usuario, sino a la base de datos, tenemos otra anotación que sería la anotación @GeneratedValue y tenemos que pasarle un parámetro, el parámetro de la estrategia de generación que se escribe de esta forma.
+
+[01:00] Strategy=GenerationType. Entonces el tipo de generación para esta base de datos sería la identity. Eso va a depender de la base de datos y eso lo pueden encontrar dentro de la documentación de cada una de las bases de datos. El caso particular de h2 es identity, generalmente se usa identity.
+
+[01:23] Pero puede ser que eso varía para sequency o podrían dejarlo como automático. Nosotros en este caso vamos a usar identity y lo vamos a importar de JPA. Entonces, ya con eso tenemos nuestro id configura para representar la llave primaria en nuestra tabla.
+
+[01:46] Entonces como habíamos mencionado el mapeamento en Hibernate se realiza de forma automática. Él considera que el nombre de la clase tiene que ser igual al nombre de la tabla. Pero si no es así, nosotros tenemos que usar una anotación para indicar que hay una diferencia en esa tabla.
+
+[02:05] Lo mismo pasa con los atributos. Si nosotros tenemos un atributo que sea diferente tenemos que utilizar la anotación @Column pasando el parámetro name, igual y pasaríamos el nombre correcto de la tabla. Digamos que sean nombres, pasaríamos nombres. Siempre tienen que ser el mismo valor para poder realizar el mapeamento. Si no, generaría un error.
+
+[02:29] En este caso podrían dejar con el mismo nombre, pero sería redundante y como es el mismo nombre nosotros vamos a eliminar esta anotación, solamente para que lo sepan. Lo último que está faltando por ahora, es generar los getters y setters para poder trabajar con los valores de cada uno de esos atributos.
+
+[02:52] Entonces, con clic derecho vamos a hacer clic derecho en el panel, vamos a ir a source y vamos a ir donde dice generar getters y setters. Vamos a seleccionarlos todos y los generamos. Ya con eso tenemos nuestra entidad previamente configurada. Vamos a comenzar a trabajar con ella.
+
+[03:14] Solamente nos está faltando un último mapeamento, vamos a guardar esto acá. En nuestra clase de persistence, nosotros tenemos que realizar otro mapeamento para Hibernate. En este caso, no tendríamos que hacerlo, pero si ustedes están utilizando otro framework, probablemente tengas que realizar ese mapeamento.
+
+[03:36] Y el mapeamento para indicar cuáles son las entidades que van a ser mapeadas en la base de datos es la anotación @Class. Entonces, con esa anotación, ustedes van a indicar dónde se encuentra, dónde está la ruta de las entidades que van a ser mapeadas. En este caso sería com.latam.alura.tienda y la entidad que va a ser mapeada sería producto.
+
+[04:08] Entonces, si ustedes mapean una de las de las entidades tendrían que mapear todas las entidades, no podrían mapear una y otra no. Hibernate, por default, si ustedes no colocan esta etiqueta, él mapea todas las entidades que tengan la anotación @Entity.
+
+[04:30] Si la clase no tiene esa anotación, ella va a ser desconsiderada a la hora de realizar este mapeamento. Así que vamos a guardar esto. Eso sería todo en la parte de creación de entidad. Más adelante nosotros vamos a ir agregando más propiedades, vamos a agregar más atributos y vamos a explicar cómo eso se comporta dentro de nuestro proyecto.																	
+
+
+
+
+
+
+
+
+
+
+										08 Persistiendo una entidad #1
+										
+										
+	Transcripción
+[00:00] Hola. En este punto ya nosotros hemos creado las características básicas de nuestro proyecto, agregamos a las dependencias la dependencia de Hibernate con JPA, agregamos de la dependencia de la base de datos h2, configuramos esta base datos con el archivo persistence.xml, donde configuramos las propiedades básicas de la base de datos, como son contraseña, usuario, los controladores.
+
+[00:23] Y por último agregamos nuestra primera entidad para la tabla producto, donde colocamos los atributos básicos. Ahora nosotros vamos a hacer nuestro primer modelo de persistencia, que nos va a permitir guardar o registrar estos valores en la base de datos.
+
+[00:43] Para eso nosotros vamos a las características básicas de JPA, vamos a crear un entityManager íbamos instanciar también nuestro primer producto. Vamos a comenzar en el panel de la izquierda, vamos a ir a la carpeta tienda, seleccionamos clic derecho, vamos a nuevo, nueva clase, y a esa clase le voy a poner RegistroDeProducto.
+
+[01:07] El paquete no va a ser modelo sino prueba, es que aquí vamos a hacer todas las pruebas para nuestras transacciones y vamos a seleccionar la opción de clase main.
+
+[01:18] Seleccionamos finalizar y ya con esto tenemos generada nuestra primera clase main, donde vamos a registrar toda las clases. Ahora falta instanciar nuestro primer producto. Para eso colocamos producto, indicar el tipo, vamos a colocar el nombre de esa instancia que va a ser celular y vamos a llamar la palabra clave nuevo producto.
+
+[01:42] Ya con eso tenemos instanciado nuestro primer producto, importamos la clase y falta configurar las propiedades de los valores de esos atributos. Entonces para eso colocamos el nombre de la entidad que es celular, llamamos el setNombre y vamos a colocar aquí “Samsung”.
+
+[02:06] La siguiente propiedad que tenemos que configurar es la descripción, vamos a suponer que esa tienda vende teléfonos usados. Entonces, vamos a colocar acá “teléfono usado”. Y por último está faltando el precio. Entonces, tenemos que colocar el setter para el precio: setPrecio.
+
+[02:30] Como el precio tenía el tipo bigDecimal tenemos que instanciar un bigDecimal aquí adentro, bigDecimal. El valor para ese precio va a ser “1000”. Importamos y ya tenemos nuestro primer producto instanciado. Entonces ahora nosotros vamos a ir a la parte donde instanciamos el gerenciador de entidades que es el que nos va a permitir realizar todas las operaciones con la base de datos.
+
+[03:06] Entonces recordando que en JDBC nosotros teníamos una clase. Era la clase connection que nos permitía conectar con la base de datos. Luego de eso nosotros hacíamos las consultas en el lenguaje SQL, lenguaje especial de consultas en base de datos y por último teníamos que cerrar la conexión.
+
+[03:30] Nosotros con JPA tenemos algo bastante similar, que es el EntityManager. El EntityManager es el encargado de realizar todas esas operaciones. Entonces cada vez que nosotros queramos guardar, seleccionar algún elemento de la base de datos, nosotros lo vamos a hacer a través de esta interfase.
+
+[03:52] Nosotros tenemos que colocarle un nombre a este interfase que va hacer em y generalmente nosotros instanciamos con la palabra clave new, pero como esta es una interfase, ella va a recibir valores de otras claves. Ninguna interfaz en Java se instancia a partir de la palabra clave new.
+
+[04:11] Entonces pensando en esto se creó una otra clase, que es la clase EntityManagerFactory que nos permite crear una clase que va a ser guardada dentro de esa interfase. A este EntityManagerFactory le vamos a llamar Factory. Y este es parte de un patrón de diseño que nos permite crear valores o diferentes clases que pueden ser almacenadas dentro de esta interfase.
+
+[04:52] Para esto, nosotros no vamos a usar la palabra clave new, sino vamos a utilizar un método estático que fue creado y que él utiliza el valor de la base de datos que fue colocada en nuestro archivo persistence.xml.
+
+[05:09] Aquí en nosotros tenemos nuestra base de datos y el valor para esa base de datos es el nombre tienda, nosotros lo habíamos colocado. Nosotros vamos a utilizar ese valor. Para eso, nosotros vamos a usar la clase persistence y el método estático createEntityManagerFactory.
+
+[05:28] Él nos está pidiendo el nombre de una entidad y el nombre de esa entidad, como habíamos mencionado, sería el valor de tienda. Y ya con esto importamos el entityManagerFactory de JPA colocamos punto y coma, y ya con esto tenemos nuestra clase creada, instanciada, que es con la que vamos a crear nuestro EntityManager.
+
+[05:54] Entonces, a partir de ese factory vamos a llamar el método createEntityManager. Y este va a ser el que va a realmente instanciar una clase que es del tipo EntityManager. Vamos a importar aquí este EntityManager y todo este proceso se hacía antiguamente de forma manual.
+
+[06:15] Ahora fueron creadas estas dos clases, el EntityManagerFactory y el createEntityManagerFactory que realiza estas operaciones por nosotros. Ahora, a partir del entityManager yo puedo comenzar a realizar mi primera persistencia. Entonces, esa persistencia me va a permitir guardar el valor de este producto en la base de datos para persistir.
+
+[06:40] Aquí voy a colocar el valor de la entidad. Sería celular. Ya con esto puedo aceptar por primera vez la clase, a ver si está funcionando correctamente. Está generando un registro. El registro no genera ningún error, entonces aparentemente todo está funcionando correctamente.
+
+[07:07] La siguiente parte, voy a ver cómo agregar en este registro más detalles de las operaciones que se están ejecutando, y voy a ver si en efecto ese valor de celular se está guardando en la base de datos.
+
+
+
+
+
+
+													
+													09 Persistiendo una entidad #2
+													
+													
+Transcripción
+[00:00] Hola. En el video anterior, nosotros creamos nuestra clase main donde instanciamos un primer producto, configuramos los valores para sus atributos e instanciamos el EntityManager, que es el encargado de realizar todas las operaciones de select, de update, de actualizar o de remover uno o más valores dentro de la tabla.
+
+[00:21] Entonces nosotros ejecutamos esa aplicación y vimos que efectivamente nos mostró un registro en la consola. Luego de que nosotros obtuvimos ese registro nosotros aún no sabemos si el valor fue agregado en la base de datos. Entonces, para eso nosotros vamos a utilizar otra propiedad de Hibernate que nos va a permitir la operación que se está realizando en la base de datos.
+
+[00:48] En el archivo de persistencia.xml, voy a agregar una nueva etiqueta de propiedades. Esa propiedad va a ser de hibernate y va a llamarse “hibernate.show_sql”, value=”true”, indicando que nosotros queremos que esta propiedad está activa.
+
+[01:10] Vamos a ejecutar esta aplicación de nuevo y vemos que no se realizó ninguna operación en la base de datos. Eso es porque el EntityManager fue instanciado, nosotros ahora tenemos un valor para nuestro gerenciador, pero nosotros no le hemos indicado que debe comenzar las transacciones.
+
+[01:30] Por eso nosotros vamos a llamar el EntityManager, vamos a obtener las transacciones y vamos a indicarle que las operaciones van a comenzar con el método begin.
+
+[01:42] Ya con esto, nosotros realizamos nuestra persistencia y por último vamos a realizar un commit. Vamos a obtener la transacción, getTransaction() y vamos a realizar un commit. Entonces, ese commit lo que hace es enviar los valores que fueron configurados para esta instancia los envía para la base datos.
+
+[02:13] Por último vamos a cerrar y ahora vamos a ejecutar esta aplicación para ver si ahora sí está funcionando adecuadamente. Ahí genera el registro y genera un error. El error dice que la tabla de productos no fue encontrada.
+
+[02:34] Entonces dice”la base de datos se encuentra vacía”. Eso es porque nosotros hicimos las configuraciones de la base de datos, pero nosotros no creamos esa base de datos- Entonces nosotros vamos a utilizar otra propiedad de Hibernate, que va a construir esa base de datos y todas las columnas pertenecientes a ella.
+
+[02:53] Vamos a crear el id, el nombre, la descripción y el precio. Entonces vamos al archivo de persistencia.xml, vamos agregar una nueva propiedad y la propiedad va a ser de hibernate.hbm2ddl.auto. Nosotros tenemos algunos valores para esta propiedad. El primer valor es create.
+
+[03:22] Este valor indica que va a crear la base de datos, que va a crear las tablas, las columnas, va a insertar los valores y después de que haya finalizado la aplicación él va a dejar esos valores en la base de datos. Ellos van a permanecer ahí diferentemente que la aplicación esté corriendo o no.
+
+[03:40] Vamos a tener create-drop, él va a crear la base de datos, va a agregar los valores y una vez que haya finalizado la aplicación va a eliminar todos los valores tanto de las tablas como de la base de datos. Vamos a tener otro valor que es validate, que no crea ni actualiza valores.
+
+[04:04] Él simplemente verifica que los valores sean correctos, que existan esos valores, pero no hace, no agrega nuevos valores dentro de la base datos, solamente para consulta. Y tenemos “update”, que él crea la tabla en caso de que no exista y en caso de que exista él realiza las operaciones y si está faltando un nuevo elemento, él lo crea.
+
+[04:27] Luego de que finaliza la aplicación, estos valores permanecen dentro de la base de datos. Ese va a ser el valor que nosotros vamos a dejar para la construcción, vamos a ejecutar esta aplicación nuevamente y vemos que efectivamente él creó la conexión, conexión lo tenía de JDBC, eso fue cuando nosotros iniciamos la transacción, él creó la tabla producto con el id, la descripción, el nombre, el precio y realizó el insert cuando nosotros hicimos el commit.
+
+[05:08] Eso fue nuestro primer intento de persistencia. Más adelante vamos a tener esto un poco más elegante, vamos a organizar este código un poco mejor, un poco más limpio y vamos a ver diferentes modelos de transacción.
+
+[05:22] Hasta ahora, nosotros simplemente vimos cómo guardar un elemento, pero más adelante vamos a ver cómo actualizar ese elemento, cómo removerlo y cómo realizar consultas dentro de la base de datos.
+
+
+
+
+
+
+								12 Haga lo que hicimos en aula: mapeando entidades
+								
+Luego de haber agregado las dependencias debemos configurar la base de datos con JPA a través del archivo persistence.xml.
+
+En la carpeta “resources” tendremos que crear una carpeta con nombre META-INF y dentro de ella crear el archivo persistence.xml los nombres deben tener ese exacto formato ya que es como son buscados internamente por JPA
+
+Dentro del archivo persistence.xml vamos a colocar las siguientes propiedades:
+
+Inicialmente
+
+<persistence version="2.2"
+    xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+
+<persistence-unit name="tienda" transaction-type="RESOURCE_LOCAL">
+<class>br.com.alura.loja.modelo.Produto</class><!--opcional-->
+        <properties>
+<property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+    <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:tienda"/>
+    <property name="javax.persistence.jdbc.user" value="sa"/>
+    <property name="javax.persistence.jdbc.password" value=""/>
+
+<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+<property name="hibernate.hbm2ddl.auto" value="update"/>        
+        </properties>
+    </persistence-unit>
+</persistence>
+
+
+
+Luego de haber creado el archivo persistence.xml, crearemos la primera entidad dentro del package <<com.latam.alura.tienda.modelo>> con el nombre <<Producto>>
+
+@Entity
+@Table(name="productos")
+public class Producto{
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
+
+    private String nombre;
+    private String descripcion;
+    private BigDecimal precio;
+
+    public Long getId() {    return id;}
+
+    public void setId(Long id) {    this.id = id;}
+
+    public String getNombre() {    return nombre;}
+
+    public void setNombre(String nombre) {this.nombre = nombre;}
+
+    public String getDescripcion() {return descripcion;}
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+}
+
+    public BigDecimal getPrecio() {return precio;}
+
+    public void setPrecio(BigDecimal precio) {this.precio = precio;}
+}
+
+
+
+Y por último vamos a crear una clase main donde vamos a instanciar el modelo <<Producto>> y el <<EntityManager> que nos va a permitir comunicarnos con la base de datos
+
+public class RegistroDeProducto {
+
+    public static void main(String[] args) {
+
+        Produto celular = new Produto();
+celular.setNombre("Xiaomi Redmi");
+celular.setDescripcion("Producto usado");
+celular.setPrecio(new BigDecimal("800"));
+
+EntityManagerFactory factory = Persistence.
+createEntityManagerFactory("tienda");
+
+EntityManager em = factory.createEntityManager();
+em.getTransaction().begin();
+em.persist(celular);
+em.getTransaction().commit();
+em.close();
+
+}
+}
+
+
+													
+									
