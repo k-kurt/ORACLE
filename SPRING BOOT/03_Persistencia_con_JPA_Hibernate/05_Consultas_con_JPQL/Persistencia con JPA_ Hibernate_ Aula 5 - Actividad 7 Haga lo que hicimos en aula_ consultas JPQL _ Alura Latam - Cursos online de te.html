@@ -1,0 +1,1182 @@
+
+<!-- saved from url=(0072)https://app.aluracursos.com/course/persistencia-jpa-hibernate/task/83633 -->
+<html lang="pt-BR" data-product="alura_espanhol" style="scroll-behavior: smooth;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" type="text/css" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/clipper.6.css">
+<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/back-to-t.css">
+<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/videoShor.css">
+<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/modal.5da.css">
+<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/modalCour.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+	
+
+	
+		
+
+
+
+
+    
+        
+        
+            <!-- Google Tag Manager -->
+            <script type="text/javascript" async="" src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/js"></script><script async="" src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/anal.descarga"></script><script type="text/javascript" async="" src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/js(1)"></script><script async="" src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/gtm..descarga"></script><script>
+                ;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayerAlura','GTM-PFCN2KV');
+            </script>
+            <!-- End Google Tag Manager -->
+        
+    
+
+
+    <script>
+        let dataLayerAluraTest = window.dataLayerAluraTest || [];
+        let dataLayerAlura = window.dataLayerAlura || [];
+        dataLayerAlura.push({
+            'event': 'virtual_page_view',
+            'page_category': 'Aula',
+            
+            
+            
+                
+                    
+                    
+                        
+                        'user_id': '576082',
+                        'plan': 'Oracle Next Education F2 T5',
+                        'type': 'B2B',
+                        'company_id':'5013',
+                        'first_purchase_date': '2023-03-28',
+                        'last_purchase_date': '2023-03-28',
+                        'expiration_date': '2023-10-04',
+                        'email': 'b7a5de8d38d6e9c501dc677df972f9557de039ce9e8dc8976e0d6c048a508798'
+                    
+                
+            
+        });
+    </script>
+
+
+
+
+
+	
+
+	<title>Persistencia con JPA: Hibernate: Aula 5 - Actividad 7 Haga lo que hicimos en aula: consultas JPQL | Alura Latam - Cursos online de tecnologia</title>
+	
+	<link rel="shortcut icon" href="https://app.aluracursos.com/assets/images/aluraespanhol/favicon.ico">
+	
+	<link href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/video-js..css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/silvermin.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/prettify..css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/github.75.css">
+
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/base.f643.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/formatted.css">
+	
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/container.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/classPage.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/menuSetti.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/taskProgr.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/taskMessa.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/alternati.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/taskFeedb.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/markdown..css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/finishSec.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/phrase.6d.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/hqexplana.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/openquest.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/textconte.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/video.e82.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/singlecho.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/music.8fe.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/multiplec.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/videodial.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/fillinthe.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/speakingp.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/pronuncia.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/repetitio.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/genericVi.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/projectSu.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/sortBlock.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/extraCont.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/taskConte.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/taskButto.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/alert.ec6.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/markdownE.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/audioPlay.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/notes.867.css">
+	
+	
+	
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/successMe.css">
+
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/dark-mode.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/tas(1).css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/theater-m.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/autoplay-.css">
+	<link rel="stylesheet" href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/linkSubmi.css">
+
+	
+	
+	<style type="text/css">
+		.task:before, .video-js .vjs-play-progress {
+			background-color: #2A7AE4;
+		}
+
+
+	</style>
+
+	<!-- Remove cookie banner from hubspot -->
+	<style>
+		div#hs-eu-cookie-confirmation {
+			display: none;
+		}
+	</style>
+
+	</head>
+
+
+
+
+<body class="darkmode ">
+<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/avat.descarga"></script>
+
+
+
+
+	
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+	<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFCN2KV"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+<section class="task  
+" data-allow-answer="true" data-task-section-exam="false" data-task-type="textcontent" data-task-id="83633" data-author-id="576082" data-course-code="persistencia-jpa-hibernate" data-section-name="Consultas con JPQL" data-section-id="11374" data-section-number="5" data-domain="app.aluracursos.com" data-hasfeedbackanswer="false" data-url-prefix="/" data-already-seen-task="true" data-course-name="Persistencia con JPA: Hibernate" data-category-name="Programación" data-subcategory-name="Java" data-workload="8" data-teachers="jose viera">
+
+	<section class="task-body">
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+<header class="task-body-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container">
+
+        
+            
+            <button title="" aria-label="" type="button" class="theatermode openMenu-button task-menu-button
+                    " id="menu-button-header">
+            </button>
+        
+
+        <h1 class="task-body-header-title">
+            
+            
+            <svg class="task-body-header-title-svg" aria-label="Actividad de Sin respuesta del estudiante">
+                <use xlink:href="/assets/images/classPage/icon-menu-icons.svg#DO_AFTER_ME"></use>
+            </svg>
+            <small>07</small>
+            <span class="task-body-header-title-text"> Haga lo que hicimos en aula: consultas JPQL</span>
+        </h1>
+        
+            <div class="task-body-header-actions">
+                <a href="https://app.aluracursos.com/course/persistencia-jpa-hibernate/task/83633/next" aria-hidden="true" class="task-actions-button task-actions-button-next task-submit bootcamp-primary-button-theme" style="background-color: #2A7AE4">Próxima Actividad</a>
+            </div>
+        
+
+
+        
+            
+
+
+
+
+
+
+
+<div class="theater-video settings">
+	<button type="button" class="settings-button" aria-label="Configuraciones">
+		<svg class="settings-button-icon">
+			<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MENU_SETTINGS"></use>
+		</svg>
+	</button>
+	<div class="settings-box">
+		<ul class="settings-box-list">
+			
+				<li class="settings-box-item settings-box-item-darkmode">
+					<button class="dark-mode-action">
+						Modo nocturno
+					</button>
+				</li>
+			
+			
+				
+				
+				
+				
+					
+						<li class="settings-box-item settings-box-item-suggestion"><a href="https://app.aluracursos.com/suggestions/new/persistencia-jpa-hibernate/83633/question">Sugerir alteración</a></li>
+					
+				
+			
+			
+		</ul>
+		<span class="settings-box-title"></span>
+	</div>
+</div>
+
+        
+    </div>
+</header>
+		<div class="task-body__wrapper">
+			
+
+
+
+<section class="class-notes">
+    <div class="class-notes-content">
+        <h2 class="class-notes-title">Mi cuaderno del curso (beta)</h2>
+        <p class="class-notes-description">Este es su cuaderno de anotaciones aquí en Alura Latam. Todo su contenido es visible apenas para tí.<a href="https://suporte.alura.com.br/article/308-meu-caderno-como-funciona" class="class-notes-faq-link">FAQ</a></p>
+        <textarea name="text" id="courseNotebook-text" class="class-notes-text" cols="30" rows="10" maxlength="60000"></textarea>
+        <div class="class-notes-save-wrapper">
+            <span>
+                <p class="class-notes-saved-text" aria-hidden="true" style="display: none">Notas guardadas</p>
+                <p class="class-notes-limit-text" aria-hidden="true" style="display: none">¡No se pudo guardar! ¡Límite de caracteres alcanzado ({max})!</p>
+            </span>
+            <span class="class-notes-save-button-wrapper">
+                <button class="class-notes-save-button" data-save-text="Guardar cuaderno" data-saving-text="Guardandando">
+                   Guardar cuaderno</button>
+            </span>
+        </div>
+        <button class="class-notes-close-button"></button>
+    </div>
+</section>
+			<main class="task-body-main container" data-should-warn="false">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		
+
+
+
+
+
+<section id="task-content" class="textContent">
+	
+	<div class="container">
+		
+
+
+
+
+
+
+
+<div class="video settings">
+	<button type="button" class="settings-button" aria-label="Configuraciones">
+		<svg class="settings-button-icon">
+			<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MENU_SETTINGS"></use>
+		</svg>
+	</button>
+	<div class="settings-box">
+		<ul class="settings-box-list">
+			
+				<li class="settings-box-item settings-box-item-darkmode">
+					<button class="dark-mode-action">
+						Modo nocturno
+					</button>
+				</li>
+			
+			
+				
+				
+				
+				
+					
+						<li class="settings-box-item settings-box-item-suggestion"><a href="https://app.aluracursos.com/suggestions/new/persistencia-jpa-hibernate/83633/question">Sugerir alteración</a></li>
+					
+				
+			
+			
+		</ul>
+		<span class="settings-box-title"></span>
+	</div>
+</div>
+
+		<div class="formattedText" data-external-links="">
+			<p>Finalizamos el curso realizando diversas consultas, se agregaron algunos métodos dentro de la clase DAO que nos permiten obtener registros existentes en la base de datos según un conjunto de condiciones de filtrado, para esto utilizamos el lenguaje JPQL (Java Persistence Query Language). </p>
+<p><strong>Los métodos en el curso nos permiten:</strong></p>
+<ul><li>consultar un elemento con determinado Id;</li><li>consultar todos los registros en la base de datos;</li><li>consultar por el nombre de la entidad (producto);</li><li>consultar por el nombre de la entidad la cual está relacionada(categoría);</li><li>consultar un único atributo en la clase java o columna en la base de datos a partir del nombre.</li></ul>
+<ul><li>Dejo aquí el fragmento del código:</li></ul>
+<pre class="prettyprint"><code class="hljs language-typescript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ProductoDao</span> {
+    
+    <span class="hljs-keyword">private</span> <span class="hljs-title class_">EntityManager</span> em;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-title class_">ProductoDao</span>(<span class="hljs-title class_">EntityManager</span> em) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">em</span> = em;
+    }
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> <span class="hljs-title function_">guardar</span>(<span class="hljs-params">Producto producto</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">em</span>.<span class="hljs-title function_">persist</span>(producto);
+    }	
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> <span class="hljs-title function_">actualizar</span>(<span class="hljs-params">Producto producto</span>) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">em</span>.<span class="hljs-title function_">merge</span>(producto);
+    }	
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> <span class="hljs-title function_">remover</span>(<span class="hljs-params">Producto producto</span>) {
+        categoria=<span class="hljs-variable language_">this</span>.<span class="hljs-property">em</span>.<span class="hljs-title function_">merge</span>(producto);
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">em</span>.<span class="hljs-title function_">remove</span>(producto);
+    }
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-title class_">Producto</span> <span class="hljs-title function_">consultaPorId</span>(<span class="hljs-params">Long id</span>) {
+        <span class="hljs-keyword">return</span> em.<span class="hljs-title function_">find</span>(<span class="hljs-title class_">Producto</span>.<span class="hljs-property">class</span>, id);
+    }
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-title class_">List</span>&lt;<span class="hljs-title class_">Producto</span>&gt; <span class="hljs-title function_">consultarTodos</span>(<span class="hljs-params"></span>){
+        <span class="hljs-title class_">String</span> jqpl= <span class="hljs-string">"SELECT P FROM Producto AS P"</span>;
+        <span class="hljs-keyword">return</span> em.<span class="hljs-title function_">createQuery</span>(jqpl,<span class="hljs-title class_">Producto</span>.<span class="hljs-property">class</span>).<span class="hljs-title function_">getResultList</span>();
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-title class_">List</span>&lt;<span class="hljs-title class_">Producto</span>&gt; <span class="hljs-title function_">consultaPorNombre</span>(<span class="hljs-params"><span class="hljs-built_in">String</span> nombre</span>){
+        <span class="hljs-title class_">String</span> jpql =<span class="hljs-string">" SELECT P FROM Producto AS P WHERE P.nombre=:nombre "</span>;
+        <span class="hljs-keyword">return</span> em.<span class="hljs-title function_">createQuery</span>(jpql,<span class="hljs-title class_">Producto</span>.<span class="hljs-property">class</span>).<span class="hljs-title function_">setParameter</span>(<span class="hljs-string">"nombre"</span>, nombre).<span class="hljs-title function_">getResultList</span>();
+    }
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-title class_">List</span>&lt;<span class="hljs-title class_">Producto</span>&gt; <span class="hljs-title function_">consultaPorNombreDeCategoria</span>(<span class="hljs-params"><span class="hljs-built_in">String</span> nombre</span>){
+        <span class="hljs-title class_">String</span> jpql=<span class="hljs-string">"SELECT p FROM Producto AS p WHERE p.categoria.nombre=:nombre"</span>;
+        <span class="hljs-keyword">return</span> em.<span class="hljs-title function_">createQuery</span>(jpql,<span class="hljs-title class_">Producto</span>.<span class="hljs-property">class</span>).<span class="hljs-title function_">setParameter</span>(<span class="hljs-string">"nombre"</span>, nombre).<span class="hljs-title function_">getResultList</span>();
+    }
+     
+    <span class="hljs-keyword">public</span> <span class="hljs-title class_">BigDecimal</span> <span class="hljs-title function_">consultarPrecioPorNombreDeProducto</span>(<span class="hljs-params"><span class="hljs-built_in">String</span> nombre</span>) {
+        <span class="hljs-title class_">String</span> jpql=<span class="hljs-string">"SELECT P.precio FROM Producto AS P WHERE P.nombre=:nombre"</span>;
+        <span class="hljs-keyword">return</span> em.<span class="hljs-title function_">createQuery</span>(jpql,<span class="hljs-title class_">BigDecimal</span>.<span class="hljs-property">class</span>).<span class="hljs-title function_">setParameter</span>(<span class="hljs-string">"nombre"</span>, nombre).<span class="hljs-title function_">getSingleResult</span>();
+    }
+}
+</code><button type="button" class="clipit">Copia el código</button></pre>
+		</div>
+		<div class="task-actions">
+			
+
+
+
+
+
+
+    
+        
+        <a href="https://app.aluracursos.com/forum/curso-persistencia-jpa-hibernate/exercicio-haga-lo-que-hicimos-en-aula-consultas-jpql/83633/novo" class=" task-actions-button task-actions-button-forum bootcamp-secondary-button-theme" target="_blank">
+            
+                
+                
+                    Discutir en el Foro
+                
+            
+        </a>
+    
+
+
+
+			
+				
+					<button class="task-actions-button task-actions-button-answer task-body-actions-button task-actions-button-showOpinion bootcamp-primary-button-theme">Ver opinión del instructor</button>
+				
+				
+			
+		</div>
+		
+			
+
+
+
+
+
+<section id="task-feedback" class="task-feedback" aria-hidden="true">
+	<section class="task-feedback-banner">
+		<div class="container">
+			<h3 class="task-feedback-banner-title">
+				Opinión del instructor
+			</h3>
+		</div>
+		
+
+
+
+
+
+
+
+<div class="video settings">
+	<button type="button" class="settings-button" aria-label="Configuraciones">
+		<svg class="settings-button-icon">
+			<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MENU_SETTINGS"></use>
+		</svg>
+	</button>
+	<div class="settings-box">
+		<ul class="settings-box-list">
+			
+				<li class="settings-box-item settings-box-item-darkmode">
+					<button class="dark-mode-action">
+						Modo nocturno
+					</button>
+				</li>
+			
+			
+				
+				
+				
+				
+					
+						<li class="settings-box-item settings-box-item-suggestion"><a href="https://app.aluracursos.com/suggestions/new/persistencia-jpa-hibernate/83633/opinion">Sugerir alteración</a></li>
+					
+				
+			
+			
+		</ul>
+		<span class="settings-box-title"></span>
+	</div>
+</div>
+
+	</section>
+	
+				<div class="formattedText" data-external-links="">
+					<p>Continúe con sus estudios, y si tiene alguna pregunta, ¡no dude en usar nuestro foro!</p>
+				</div>
+			
+</section>
+		
+	</div>
+</section>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+				
+					
+
+
+
+
+
+
+	
+	
+		<section class="task-actions">
+			<div class="container">
+				
+
+
+
+
+
+
+    
+        
+        <a href="https://app.aluracursos.com/forum/curso-persistencia-jpa-hibernate/exercicio-haga-lo-que-hicimos-en-aula-consultas-jpql/83633/novo" class=" task-actions-button task-actions-button-forum bootcamp-secondary-button-theme" target="_blank">
+            
+                
+                
+                    Discutir en el Foro
+                
+            
+        </a>
+    
+
+
+
+				
+				
+				
+				
+					<a href="https://app.aluracursos.com/course/persistencia-jpa-hibernate/task/83633/next" style="background-color: #2A7AE4" class="task-actions-button task-body-actions-button task-actions-button-next bootcamp-next-button bootcamp-primary-button-theme">Próxima Actividad</a>
+				
+			</div>
+		</section>
+	
+
+
+				
+				
+			</main>
+		</div>
+	</section>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<button title="Abrir menú/Cerrar menú" aria-label="Abrir menú/Cerrar menú" type="button" class="openMenu-button task-body-button ">
+</button>
+
+<aside class="task-menu task-menu-iframe" style="position: fixed; transform: translateY(0px);">
+	<section class="task-menu-header">
+		<button title="Cerrar menú" aria-label="Cerrar menú" type="button" class="openMenu-button task-menu-button "></button>
+		<div class="task-menu-header-info">
+			<a class="task-menu-header-info-title" href="https://app.aluracursos.com/course/persistencia-jpa-hibernate" title="Ir para la página del curso">
+				
+					
+					
+						<img src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/persisten.svg" alt="ícone Persistencia con JPA: Hibernate" class="task-menu-header-info-title-icon " width="37.5px" height="37.5px">
+					
+				
+				<h2 class="task-menu-header-info-title-text">Persistencia con JPA: Hibernate</h2>
+			</a>
+			
+				<div class="task-menu-header-info-progress">
+					
+					<span class="task-menu-header-info-progress-percentage ">100%</span>
+					
+						
+						
+						
+							
+						
+					
+					<span class="task-menu-header-info-progress-bar" style="background-image: linear-gradient(to right, #9de482, #9de482 100%, transparent 100%);"></span>
+				</div>
+			
+
+		</div>
+	</section>
+	
+		<form class="task-menu-header-search" target="_blank" action="https://app.aluracursos.com/search/course/persistencia-jpa-hibernate" method="get">
+			<label class="task-menu-header-search-title" for="query">Buscar en este curso</label>
+			<input class="task-menu-header-search-input" name="query" id="query" type="text" required="">
+			<button class="task-menu-header-search-button">Buscar <img aria-hidden="true" class="task-menu-header-search-button-img" src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/icon-new-.svg"></button>
+		</form>
+	
+	
+	<section class="task-menu-section sr-only">
+		<div class="task-menu-section-title">
+			<span class="task-menu-section-title-number ">Aula<strong>05</strong>
+				<span>de 05</span>
+			</span>
+			<h3 class="task-menu-section-title-text">
+				Consultas con JPQL
+			</h3>
+		</div>
+	</section>
+	<section class="task-menu-sections">
+		<h2 class="task-menu-sections-title">
+			Clase actual
+		</h2>
+		<select class="task-menu-sections-select" onchange="location.href=&#39;/course/persistencia-jpa-hibernate/section/&#39;+this.value+&#39;/tasks&#39;;">
+			
+				<option value="11370">01. Comenzando con JPA</option>
+			
+				<option value="11371">02. Configuraciones y EntityManager</option>
+			
+				<option value="11372">03. Mapeando entidades</option>
+			
+				<option value="11373">04. Ciclo de vida de una entidad</option>
+			
+				<option value="11374" selected="">05. Consultas con JPQL</option>
+			
+		</select>
+	</section>
+	<nav class="task-menu-nav">
+		<h2 class="task-menu-nav-title">
+			Actividades
+			<span>7 de 10</span>
+		</h2>
+		<ul class="task-menu-nav-list">
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/persistencia-jpa-hibernate/task/83642" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Explicación completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">01</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Proyecto del aula anterior">
+							Proyecto del aula anterior
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/persistencia-jpa-hibernate/task/83608" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Video completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">02</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Consultando entidades">
+							Consultando entidades
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para el Vídeo">10min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/persistencia-jpa-hibernate/task/83609" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Video completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">03</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Consultando con filtros">
+							Consultando con filtros
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para el Vídeo">09min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/persistencia-jpa-hibernate/task/83626" class="task-menu-nav-item-link task-menu-nav-item-link-SINGLE_CHOICE">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Única opción completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#SINGLE_CHOICE"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">04</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Consultas con JPQL">
+							Consultas con JPQL
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/persistencia-jpa-hibernate/task/83610" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Video completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">05</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Limitando datos de una consulta">
+							Limitando datos de una consulta
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para el Vídeo">07min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/persistencia-jpa-hibernate/task/83627" class="task-menu-nav-item-link task-menu-nav-item-link-SINGLE_CHOICE">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Única opción completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#SINGLE_CHOICE"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">06</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Cargando parte de la entidad">
+							Cargando parte de la entidad
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item task-menu-nav-item--selected">
+					<a href="https://app.aluracursos.com/course/persistencia-jpa-hibernate/task/83633" class="task-menu-nav-item-link task-menu-nav-item-link-TEXT_CONTENT">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Sin respuesta del estudiante completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#DO_AFTER_ME"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">07</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Haga lo que hicimos en aula: consultas JPQL">
+							Haga lo que hicimos en aula: consultas JPQL
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/persistencia-jpa-hibernate/task/83643" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Explicación completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">08</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Proyecto final">
+							Proyecto final
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/persistencia-jpa-hibernate/task/83638" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Explicación completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#WHAT_WE_LEARNED"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">09</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Lo que aprendimos">
+							Lo que aprendimos
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/persistencia-jpa-hibernate/task/83611" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Video completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">10</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Conclusión">
+							Conclusión
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para el Vídeo">05min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+			
+		</ul>
+	</nav>
+	<section class="task-menu-others">
+		<h2 class="task-menu-others-title ">
+			Otros Links
+		</h2>
+		
+			<a class="task-menu-others-link task-menu-others-link-discord" href="https://discord.gg/23xvmadfSa" target="_blank">
+				Discord Alura
+			</a>
+		
+		
+			
+			<a href="https://app.aluracursos.com/forum/curso-persistencia-jpa-hibernate/todos" class="task-menu-others-link task-menu-others-link-forum" title="Ir para el foro do curso" target="_blank">
+				
+					
+					
+					
+						Foro del curso
+					
+				
+			</a>
+		
+		<a href="https://app.aluracursos.com/dashboard" class="task-menu-others-link task-menu-others-link-curso" title="Ir para la página principal">Volver al Dashboard</a>
+		
+		<section class="task-container-flex ">
+			
+				<div class="task-group-border ">
+					<button class="task-edit-mode settings-box-item-darkmode">Modo nocturno</button>
+				</div>
+			
+		</section>
+	</section>
+	<section class="task-menu-footer">
+		<a class="task-menu-footer-user" href="https://app.aluracursos.com/user/sboboda1997" title="Ir para su página de usuario">
+			<img src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/k-kurt.png" alt="Gravatar de Kevin Sboboda" class="task-menu-footer-img" width="40px" height="40px">
+			
+				<p class="task-menu-footer-detalhes">
+					<span class="task-menu-footer-detalhes-nome">Kevin Sboboda</span>
+					<span class="task-menu-footer-detalhes-xp">
+						70.2k xp
+					</span>
+				</p>
+			
+			<input type="hidden" value="">
+			<input type="hidden" value="">
+		</a>
+		<a href="https://app.aluracursos.com/dashboard" class="task-menu-footer-logo">
+			<img src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/icon-menu.svg" alt="Logo da Alura Latam" class="task-menu-footer-logo-image" width="19px" height="32px" title="Ir para la página principal">
+		</a>
+	</section>
+</aside>
+
+
+
+
+    
+
+</section><div class="full-screen__panel" style="display: none;">
+				<img id="full-screen__image" class="full-screen__image" src="https://app.aluracursos.com/course/persistencia-jpa-hibernate/task/83633" alt="">
+				<div class="full-screen__actions">
+				<button class="button buttonAction partitura-download">Anterior</button><button class="button buttonAction partitura-download">Sair</button><button class="button buttonAction partitura-download">Próximo</button></div> 
+			</div>
+
+
+
+
+
+
+
+
+
+
+	
+
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/jque.descarga"></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/butt.descarga"></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/sect.descarga" async=""></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/subm.descarga"></script>
+
+    <script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/puri.descarga"></script>
+
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/care.descarga" async=""></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/keyd.descarga" async=""></script>
+
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/high.descarga" async=""></script>
+	<script src="https://app.aluracursos.com/assets/external-libs/highlightjs/highlight.init.5870d8cf.js" async=""></script>
+
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/prev.descarga" async=""></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/asse.descarga" async=""></script>
+
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/menu.descarga"></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/aria.descarga"></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/Proj.descarga"></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/Link.descarga"></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/clas.descarga"></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/phra.descarga"></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/feed.descarga"></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/Extr.descarga"></script>
+	
+	
+
+	
+	
+	
+	
+	
+
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/part.descarga"></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/audi.descarga"></script>
+	<script src="https://app.aluracursos.com/assets/js/classPage/audioPlayer.38483a63.js"></script>
+
+		
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/Vide.descarga"></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/Mark.descarga"></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/clip.descarga"></script>
+	<script src="https://app.aluracursos.com/assets/js/gnarus/task/Clipper.5c96d26f.js"></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/scro.descarga"></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/shor.descarga"></script>
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/Moda.descarga"></script>
+    
+
+
+	<script>
+		new VideoTranscription();
+		new MarkdownProcessing("https://app.aluracursos.com").onLoad();
+		new Clipper("Copia el código", "Código copiado", "No se pudo copiar el código");
+		window.addEventListener('load', () => new BackToTopButton().init());
+		new ModalAndAlertHandler('persistencia-jpa-hibernate').setupListeners();
+	</script>
+
+
+
+	
+
+	<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/dark.descarga"></script>
+
+	
+		
+
+
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-42101548-21', 'aluracursos.com');
+
+    
+        ga('set', 'userId', '576082');
+    
+
+    ga('require', 'displayfeatures');
+    
+    ga('send', 'pageview');
+    
+    
+</script>
+	
+
+	<script>new DarkModeToggler().refreshListener()</script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/uploadIma.css" rel="stylesheet">
+
+<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/Uplo.descarga"></script>
+<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/Imag.descarga"></script>
+
+<script src="https://app.aluracursos.com/assets/external-libs/marked.min.c69e14e8.js"></script>
+
+<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/enab.descarga"></script>
+
+<script>
+    var IMAGE_UPLOAD_MESSAGES = {
+        imageUploadMessageInit: `Adjunte archivos arrastrándolos y soltándolos`,
+        imageUploadMessageDragEnter: `Suelta la imagen para subir`,
+        imageUploadMessageDrop: `Subiendo la imagen #images_names#`,
+        imageUploadMessageProgress: `Subiendo la imagen #images_names#: #progress#%`,
+        imageUploadMessageUploaded: `¡Imagen enviada con éxito!`,
+        imageUploadMessageSizeUnits: `MB`,
+        imageUploadMessageTag: `![Ingrese aquí la descripción de esta imagen para ayudar con la accesibilidad](#url#) `
+    }
+</script>
+
+
+    
+        <link href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/hackedito.css" rel="stylesheet">
+        <link href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/hac(1).css" rel="stylesheet">
+        <link href="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/github.75.css" rel="stylesheet">
+
+        <script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/hack.descarga"></script>
+        <script src="https://app.aluracursos.com/assets/external-libs/hackeditor/hackeditor.custom.b88c034d.js"></script>
+        <script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/high.descarga"></script>
+        <script>
+            const setupEditorsOnPage = (e) => {
+                const toolbarActionsHints = {
+                    toggleHeadingActionHint: `Encabezado`,
+                    toggleBoldActionHint: `Negrito`,
+                    toggleItalicActionHint: `Cursiva`,
+                    toggleOrderedListActionHint: `Lista ordenada`,
+                    toggleUnorderedListActionHint: `Lista desordenada`,
+                    togglePreviewActionHint: `Alternar vista previa`,
+                    drawTableActionHint: `Insertar tabla`,
+                    drawCodeActionHint: `Insertar bloque de código`,
+                    drawLinkActionHint: `Insertar enlace`,
+                    drawImageActionHint: `Insertar imagen`,
+                    drawUploadedImageActionHint: `Carga de imagen`,
+                    undoActionHint: `Deshacer`,
+                    redoActionHint: `Rehacer`
+                }
+
+                const imageUploadErrors = {
+                    imageErrorLimit: `¡Solo puede insertar 5 imágenes a la vez!`,
+                    imageFileNotAllowed: `El archivo filename no está permitido, ¡solo imágenes!`,
+                    imageVeryLarge: `El archivo filename supera el límite de 2 MB.`,
+                    imageMaliciousFile: `El archivo filename contiene contenido malicioso.`
+                }
+
+                window.editors = window.editors || [];
+
+                const editorsElements = window.editors.map(ed => ed.element.id);
+
+                const textAreaEditors = Array.from(document.querySelectorAll('.hackeditor > textarea'));
+                textAreaEditors
+                    .filter(e => e.closest('.taskForms') == null)
+                    .filter(e => editorsElements.length == 0 ? true : !editorsElements.includes(e.id))
+                    .forEach(editorTextArea => {
+                        const editor = setupHackEditor({
+                            editorOptions: {
+                                element: editorTextArea,
+                                initialValue: editorTextArea.innerText,
+                                syncPreview: true,
+                                maxHeight: "300px",
+                                toolbarActionsHints,
+                                imageUploadMessages: IMAGE_UPLOAD_MESSAGES,
+                                imageUploadErrors,
+                                imageUploadClient: new ImagesClient(
+                                    'https://www.gnarususercontent.com.br/images',
+                                    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MTc4MDcxMzMsImtleSI6IjRiYWRlNDg1LTFjYjYtNDYzNy1iMTRlLWIxYTY2MzRhZDYyNyJ9.VHSsMMu_Qmm9G5HbJD9jA86B2hddM07XRbObvZRh0Ns',
+                                    6,
+                                    576082
+                                ),
+                                allowImageUpload: editorTextArea.dataset.allowImageUpload
+                            },
+                            extensions: {
+                                DOMPurify,
+                                marked,
+                                hljs
+                            }
+                        });
+
+                        window.editors.push({
+                            instance: editor,
+                            element: editorTextArea,
+                        });
+
+                        enableForumButtons();
+                });
+            }
+
+            window.addEventListener('DOMContentLoaded', setupEditorsOnPage);
+            document.addEventListener('change', setupEditorsOnPage);
+        </script>
+    
+    
+
+<script src="./Persistencia con JPA_ Hibernate_ Aula 5 - Actividad 7 Haga lo que hicimos en aula_ consultas JPQL _ Alura Latam - Cursos online de te_files/Ifra.descarga"></script>
+
+
+
+<button class="back-to-top" type="button" style="display: none;"><span class="back-to-top__text">Voltar ao topo</span></button></body></html>
