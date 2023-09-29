@@ -1,0 +1,182 @@
+													
+													
+													
+													02 Enviando datos
+													
+													
+Transcripción
+[00:00] ¿Qué tal? Bienvenidos a su segunda clase de su curso de Spring Boot 3 desarrollando un API Rest. Hasta el momento hemos visto cómo crear un Hello World usando Spring MVC, ya creamos nuestro controller y podemos imprimir Hello world cuando llamamos al endpoint Hello.
+
+[00:16] Desde ahora ya vamos a comenzar de por sí a desarrollar digamos un proyecto más profesional. El Hello world fue solo para validar la idea y aprender más o menos cómo generar el proyecto Sprin, cómo hacer un setup lo más básico posible para usar MVC, y ahora vamos a ver algo cercano a lo que se podrían encontrar en el mundo laboral.
+
+[00:35] Por ejemplo, normalmente ustedes han encontrado con una UI. El equipo desarrollo de UX van a crear una UI y les van a decir: “Bueno, necesitamos este formulario de registro de médico”, por ejemplo. Entonces para esto aquí hay dos frentes.
+
+[00:53] El primero es el front end, que ya dijimos que no lo vamos a abarcar por el momento, y el segundo sería el back end, que es lo que estamos haciendo ahorita en el API. Y la idea ahora es hacer la comunicación entre el front end, que sería través de esta pantalla que ven aquí del nuevo perfil del médico, cómo enviar los datos que nosotros pongamos en este formulario hacia nuestro API, hacia el back end. Y eso es lo que vamos a descubrir ahora.
+
+[01:20] Nuevamente, como no vamos a realizar una aplicación front end en este caso, vamos a usar Insomnia, que es una herramienta similar a Postman, para los que son familiarizados con Postman, para simular los requests que nuestro cliente de front end podría realizar a nuestro API.
+
+[01:39] Entonces lo que vamos a hacer ahora es abrir nuestro browser y buscar por insomnia.rest y vemos que eso es un framework, es una herramienta para testear API, específicamente lo que estamos haciendo nosotros ahora, desarrollado por Kong, que es una empresa americana, que desarrolla gateways y básicamente software.
+
+[02:00] Vemos todas las funcionalidades que Insomnia puede tener aquí. Vemos que es ampliamente usado por Netflix, en Nasdaq, RedBull, por Facebook, entonces sí es una herramienta ya probada por el mercado, es una herramienta muy buena que tiene plugines open source, típico de la empresa Kong, y vemos aquí que también tiene algunos tutoriales, cómo puedes testear API.
+
+[02:23] Sin más que decir, entonces vamos a instalar Insomnia en este computador y obviamente la versión gratuita, que es para nosotros, fines de estudiantes vamos a descargar y en unos minutos ya voy a tener instalado esto en mi computador. Ustedes también lo van a poder tener. Y bien, ya finalizamos la instalación aquí en mi computador.
+
+[02:49] Si tengo un computador Windows, la instalación será diferente que aquí en mi caso que fue una Mac, y ya tenemos Insomnia abierto, aquí ya tenemos el programa instalado abierto. Entonces vamos a explorar un poco cómo es que funciona esto.
+
+[03:03] Vemos que tenemos aquí bien similar, muy parecido a Postman, que tenemos para seleccionar el tipo de request que queremos hacer: get, post, put, patch, delete, options, entonces nada nuevo hasta ahí. Lo que vamos a hacer ahora es crear una nueva librería.
+
+[03:21] Para esto Insomnia nos pide que registremos una organización, vamos a hacer este setup también en un segundo plano. Yo lo voy a hacer aquí y después vamos a iniciar propiamente con la creación, librería de requests. Pues bien, ya realicé el proceso de registro en Insomnia.
+
+[04:10] Y ahora yo tengo ya un proyecto personal creado aquí. Lo que voy a hacer ahora es simplemente comenzar a configurar mi proyecto, por ejemplo, tengo aquí las configuraciones del proyecto, dice que mi proyecto personal, que es lo que yo estoy desarrollando ahora para este curso y voy a agregarle aquí lo que es un nuevo request.
+
+[04:30] Para eso le voy a dar clic a button create, request collection y le voy a poner aquí voll med requests porque son los requests que yo voy a usar para hacer mis interacciones con Insomnia y API. Ya tengo aquí en mi libreta creada y lo que voy a hacer ahora es crear un nuevo HTTP request.
+
+[04:54] Entonces voy aquí en nuevo, me crea aquí get new request, porque por defecto es un get y vamos a intentar probar un post contra nuestro API. Si recuerdan, el endpoint de nuestro API era http://localhost:8080/, y si queremos registrar un médico pónganle médico.
+
+[05:22] Y como es un post tenemos que es el método post porque estamos enviando los datos. Si tú envías datos estás haciendo un post, si actualizas, un put, si obtienes, un get. Es lo básico de Rest. Para esto vamos a iniciar nuestro servidor porque no está iniciado, entonces salimos de aquí.
+
+[05:40] Ejecutamos con el botón play, vemos que está haciendo el build, está iniciando la aplicación. Agrandamos esto un poco y ya está, la aplicación ya inició. Obviamente no hemos implementado este endpoint de médicos aún pero vamos a tener nuestro request ya listo, ya vamos a dispararlo aunque sea para ver que la conexión entre Insomnia y nuestro API sea exitosa.
+
+[06:06] Entonces lo que voy a hacer ahora es en el body, hay una parte del body que es básicamente el cuerpo de nuestros requests. Recuerden que los postRequest incluyen una parte del cuerpo que puede ser en formato JSON, formato XML, texto, etcétera. Con esto lo incluimos dentro del request y podemos enviar los datos. Adivinen qué.
+
+[06:27] Necesitamos enviar datos hacia nuestro back end. Son los datos de registro del médico. Entonces vamos a agregarle aquí un body y seleccionamos JSON aquí en la parte del body. Entonces, aquí podemos crear un objeto en JSON.
+
+[06:46] Yo ya tengo uno aquí creado que son los datos del médico con los datos básicos que necesitamos: nombre, email, documento, especialidad, la dirección y bueno, dentro de la dirección tenemos también la calle, distrito, ciudad, número y complemento. Vamos a copiar esto y lo vamos a pegar aquí.
+
+[07:07] Entonces ya tenemos nuestro JSON creado. Este es el cuerpo JSON que va a llegar o debería llegar a mi endpoint de médicos aquí en mi controller. Entonces si yo lo envío, vamos a ver que me da un 404 not found en el path médicos. ¿Qué quiere decir esto? En efecto me request no fue exitoso porque no lo encontró, pero la conexión entre mi cliente que es Insomnia y el API que estoy construyendo fue exitosa, solo que el path no está disponible aun porque obviamente no le hemos creado.
+
+[07:45] Entonces ya sabemos cómo crear nuestro request en Insomnia. Yo aquí por fines didácticos lo que voy a hacer es renombrar esto a registrar médicos, porque rename request puede confundirse con otros requests que vamos a crear posteriormente.
+
+[08:04] Entonces ya tenemos allí registrar médicos en este path que va a ser médicos, y con este que normalmente se llama payload. El body que enviamos normalmente de request post, se llama payload también. Se escribe payload pero se pronuncia payload. Es el término más común que ustedes van a encontrar en otras documentaciones, en otras cuentas.
+
+[08:28] Entonces bien, por ahora ya finalizamos por este video, ya tenemos el setup de Insomnia, en el próximo video ya vamos a verlo desde el otro lado, desde el punto de vista del API, cómo vamos a recibir estos datos y qué es lo que vamos a hacer con ellos para que persista. Nos vemos.													
+
+
+
+
+
+
+				
+																		03 Recibiendo datos
+																		
+Transcripción
+[00:00] Bien. Ya tenemos configurado Insomnia, ya nuestro cliente está listo para mandar request contra nuestro API. Vamos a ver por el lado del API qué es lo que tenemos que hacer aquí. Si recuerdan la clase pasada, lo que hicimos primero, ¿qué fue? Tenemos que crear el controller para recibir el nuevo request que está en el punto de aquí, en el path de aquí médicos.
+
+[00:22] ¿Para eso qué tenemos que hacer? Crear un MedicoController. Entonces vamos aquí a new, java class y vamos a decirle MedicoController. ¿Por qué MedicoController? Porque vamos a guardar médicos en este caso. Es una clase. La creamos. Aún no la vamos a agregar a Git.
+
+[00:40] Y aquí, ¿qué es lo segundo que tenemos que hacer para decirle a spring, que esos es un controller? Correcto. RestController, lo dejaremos aquí. Y si queremos mapear el path médicos en este controller, ¿qué es lo otro que tenemos que hacer? Agregar el RequestMapping, esto de aquí.
+
+[01:01] Y entre paréntesis el path que queremos mapear, en este caso, “/médicos”. Y bien, en un inicio, esto sería todo el setup que deberíamos hacer para mapear un endpoint. Pero eso no es todo. ¿Por qué? Porque necesitamos un método dónde hacer el handling, atrapar este request que está llegando.
+
+[01:25] Tenemos el Controller, tenemos médicos, pero hasta ahora no hay nada que pueda procesar este endpoint. Para eso creemos un public. Por ahora vamos a dejarlo como un void, registrarMedico. Sin parámetros por el momento. Y como ya ustedes se imaginan, si yo quiero mapear un request del tipo post como el que tengo aquí, ¿qué tengo que hacer aquí? Exacto.
+
+[01:53] La notación PostMapping. Y automáticamente yo ya tengo el PostMapping de registrarMedicos aquí. No está haciendo nada por el momento pero como yo quiero validar que mi request está siendo exitoso, lo que yo voy a hacer aquí es usar un System.out.println y voy a imprimir aquí: “El request llega correctamente”.
+
+[02:19] Okay, vamos a guardar, guardamos aquí. Esperamos que recargue nuestro servidor porque estamos con Spring DevTools, vemos que ya recargó y vamos a hacer la prueba, enviamos y recibimos un 200. Okay, 200 significa que nuestro request fue exitoso Entonces sí llegó al endpoint, hizo el mapeo correctamente y vemos aquí que el request llega correctamente.
+
+[02:46] Entonces ya tenemos la comunicación entre nuestro cliente, que en este caso es Insomnia, recuerden, puede ser una aplicación front end, incluso mobile, puede ser Postman, lo que ustedes quieran pero ya estamos consiguiendo esta comunicación entre el cliente y el API, nuestro back end, ya estamos por buen camino. Pero sin embargo hay algo que estamos olvidando aquí y son los datos, lo que de verdad nos importa.
+
+[03:15] Nosotros queremos guardar estos datos en nuestro API. ¿Cómo podemos recibir estos datos? Pues bien. Aquí en registrarMedico lo que tenemos que hacer es agregar un parámetro a este método que le diga los datos que están siendo enviados desde el cliente. Entonces por ahora yo lo voy a declarar todo como un string porque lo que tenemos aquí es un JSON, que puede ser tranquilamente un string JSON.
+
+[03:43] Entonces le voy a poner aquí string parámetro. Entonces este parámetro es lo que debería llegar de este JSON hacia mí método registrarMedico, entonces segundo yo voy a imprimir ese parámetro para validar que los datos estén llegando correctamente. Nuevamente guardo. Espero a que Spring DevTools haga su trabajo de reiniciar el servidor por mí. Y vemos que ya fue hecho.
+
+[04:17] Volvemos a Insomnia y damos a enviar. Nuevamente vemos que nos retorna un 200. Vemos que el request llega correctamente, pero aquí tenemos null en parámetro. Entonces por alguna razón, estos datos no están siendo enviados como este parámetro.
+
+[04:42] Aquí hay un problema y es que así como tú le dices a Spring, Spring por si acaso este es un controller, al momento que cargas el contexto, considéralo como un controller. El Spring por si acaso, el end point de este Controller va a ser médicos. Spring por si acaso este método va agarrar un post. No le hemos dicho a Spring que este parámetro es el body del request.
+
+[05:08] Y para eso, típico de Spring, tenemos que usar una notación llamada requestBody. Es la de aquí, se la agregamos y ahora Spring debería ser capaz de reconocer este parámetro, porque ya le estamos diciendo por si acaso eso es el body que está llegando de nuestro request.
+
+[05:30] Entonces vamos a limpiar aquí en la terminal, venimos aquí y vamos a enviar nuevamente el request. Vemos que da un 200, y en efecto, si ustedes pueden ver aquí, ya tenemos que request llega correctamente y miren lo que está aquí abajo. Tenemos el mismo JSON que nosotros enviamos aquí a nivel del request.
+
+[05:54] Entonces hasta ahora ya tenemos dos puntos cubiertos. El primero, crear nuestro cliente; el segundo, obtener los datos que nuestro cliente ha enviado y ya tenerlos a nivel del API de nuestro back end. Ahora, por ejemplo, ¿qué sucedería si yo quiero trabajar solamente a nivel del nombre del Médico? En este caso, yo quiero validar que el médico no existe por lo tanto necesito el nombre para buscar en alguna base datos y ver si el médico existe o no.
+
+[06:25] En ese caso, si trabajas con un string tendrías que hacer un tipo de substring para extraer este valor de campo nombre y extraer aquí el valor que tiene ese campo que sería Rodrigo López en este caso.
+
+[06:48] Eso no es lo más recomendable porque trabajar con string, aparte que performáticamente no es óptimo porque los strings no se modifican, recuerdan son siempre mutables, entonces la máquina virtual de Java tendría que constantemente crear nuevos objetos en la memoria.
+
+[07:04] También es tedioso nivel de programación. En el siguiente video, vamos a ver ya una forma más optimizada, más recomendada, de tratar con objetos que están llegando a nuestro API de modo que yo podría decir algo así como “imprímeme el nombre que está llegando en este parámetro”, por ejemplo, tratarlo ya a nivel de objetos. Nos vemos en el siguiente video.
+
+
+																		
+																		
+																		
+																				06 DTO Java Record #1
+																				
+Transcripción
+[00:00] Bien. Ya tenemos nuestros parámetros ya recibidos aquí en nuestro back end, nuestro API. Y la pregunta hora es cómo podemos acceder directamente a un campo específico dentro del body, dentro del payload que estamos recibiendo.
+
+[00:18] Por ejemplo, a mí se me ocurre que si lo que yo hago es ponerle el nombre del campo que yo quiero recibir aquí, por ejemplo, si yo quiero recibir el nombre puede ser que si yo le pongo nombre automáticamente Spring, me lo van a mapear y me va a imprimir aquí solo el nombre Entonces vamos a guardar para ver qué es lo que sale.
+
+[00:41] Esperamos un poco a que recargue nuestro servidor y lanzamos el request nuevamente aquí, lanzamos nuevamente 200 éxito pero insistimos en el mismo problema. Imprime el JSON completo. ¿Esto es por qué? Porque Spring no es adivino como para saber que queremos acceder a este parámetro.
+
+[01:04] Lo único que hicimos fue básicamente cambiar el nombre del parámetro que estábamos recibiendo como body. Entonces vamos a regresar a parámetro y vamos a explorar otras formas de obtener esto, pero ya a nivel de objeto, cómo podemos tratar como objeto, estamos con Java. Tenemos que pensar siempre en objetos.
+
+[01:25] Para eso es lo que yo voy a hacer es crear aquí un récord. Si no están familiarizados con record, son básicamente un tipo de objeto de Java, inmutable, que te permite crear dinámicamente o rápidamente campos solamente para llenarlos y en tiempo de compilación y lo que va a hacer Java es generarte una clase propiamente dicha con el constructor, getter, setters y lo que fuera necesario.
+
+[01:55] Para esto entonces lo que vamos a hacer aquí es crear un record llamado DatosMedico. DatosRegistroMedico, porque estos son los otros datos que usamos para el registro de médico y seleccionamos record. Entonces en este record lo que va entre los paréntesis son los parámetros que necesitamos, por ejemplo yo sé que necesito nombre que es tipo string, y perfecto, el DatosRegistroMedico va a recibir este parámetro aquí.
+
+[02:21] Vamos a nuestro payload para ver qué necesitamos. Necesitamos nombre, email, documento. Entramos aquí a nombre string email, string documento. Y tenemos especialidad. Pero especialidad si vemos el modelo que recibimos del departamento de UX, vemos que es un dropdown.
+
+[02:45] En nuestra clínica por regla de negocio vamos a tener cuatro especialidades, que son pediatría, ortopedia, cardiología y ginecología. Entonces esto es un claro caso de 1 en 1. Vamos a usar 1 en 1 para esto. Entonces le vamos a dar aquí especialidad y vemos que nos va a fallar porque no tenemos pues ningún objeto llamado especialidad.
+
+[03:12] Entonces le vamos a dar crear especialidad, pero lo que vamos a hacer ahora es poner todo esto dentro de un paquete, que sea el paquete médico. ¿Por qué? Porque estamos hablando ahora propiamente de datos de registro de un médico y para tener cierto orden en nuestro proyecto vamos a crearlo.
+
+[03:32] Entonces le damos okay, tenemos nuestro paquete médico, datos registro médico ya lo movió y vamos a crear aquí un ENAM. New Java class, especialidad tipo ENAM y listo. ¿Qué vamos a hacer ahora? Vamos a escribir las especialidades que tengo que son ortopedia, cardiología, ginecología y pediatría. Vamos a revisar que esté bien escrito.
+
+[04:08] Entonces nuestro ENAM ya está creado, venimos aquí, importamos nuestro ENAM que es de aquí y ya tenemos esto listo. ¿Qué más necesitamos para registrar nuestro médico? La dirección Pero dirección vemos que lleva como un objeto y yo no lo voy a crear dentro del paquete médico porque yo asumo que los pacientes también necesitan ir a una dirección, por regla del negocio.
+
+[04:37] Entonces lo que voy a hacer aquí es exactamente igual, voy a crear otro récord llamado DatosDirección. Entonces le doy aquí, creamos, no lo voy a agregar aun. ¿Y en la dirección qué tenemos? Tenemos calle, distrito, entonces vamos a tener que agregar un String calle, String distrito, String ciudad. Vamos a ponerle un entero al número y un complemento.
+
+[05:26] Por el momento voy a manejar todo con string, solo para tenerlo mucho más simplificado y no preocuparme por el tipo de dato que estamos recibiendo, validación ya lo vamos a ver después. Entonces ya tengo mis datos de dirección aquí: calle, distrito, ciudad, número y complemento.
+
+[05:41] Y al igual que cualquier otro objeto, aquí lo que voy a ponerle es un DatosDirección. Entonces con esto ya tengo todo mi récord creado. Recuerden, este record está disponible en las últimas versiones de Java, lo que hace básicamente es crear una clase normal como la que conocen, pero ya cuando compilamos el código.
+
+[06:06] Eso es solo para simplificar y no tener que escribir nuevamente el mismo código. Ahora regresamos al control y vamos a cambiar el tipo de dato que estamos esperando aquí. Y le decimos ahora: “quiero un DatosRegistroMedico como parámetro”. Y le vamos a cambiar el nombre a datosRegistroMedico para que sea mucho más entendible. Recuerden que su código tiene que ser siempre legible.
+
+[06:31] Voy a borrar también esto de aquí, porque ya no lo necesitamos y vamos a ver ahora qué es lo que sale. Esperamos a que cargue nuestro servidor nuevamente. Vemos que ya cargó y vamos a limpiar esto. Vamos a ver ahora qué es lo que sale aquí.
+
+[06:49] Le damos a enviar y recibimos un bad request aquí. Entonces esto es bueno. ¿Por qué? Porque está llegando el request aquí, vemos que aquí Spring consigue resolver, pero nos está diciendo aquí que no puede deserializar el valor del tipo especialidad de ortopedia. Y es el mismo error, que nos está dando aquí en la consola, porque estamos devolviendo el error tal cual el servidor nos lo está dando.
+
+[07:17] No estamos haciendo ningún tratamiento en la respuesta todavía. ¿Cuál es el problema aquí? Bueno, tengo especialidad ortopedia, pero en nuestro enum, que lo tenemos aquí, está en mayúsculas, porque los enum por buena práctica siempre van en mayúscula.
+
+[07:34] Entonces aquí tienen dos opciones, la primera puede ser coordinar con el equipo que está desarrollando el front end, para que les envíe este tipo de datos siempre en mayúscula, y la otra que no la vamos a aplicar, pero para que la sepan, puede ser ponerle el nombre aquí.
+
+[07:52] Crear un constructor para el enum, de modo que automáticamente puede hacer el mapeo entre el parámetro y el valor. No lo vamos a hacer por ahora porque sería complicarnos demasiado. Lo que vamos a hacer es el camino más fácil, que es cambiar esto por mayúsculas.
+
+[08:07] Nuevamente ahora ortopedia está en mayúscula. Vamos a enviar Y tenemos nuevamente otro bad request. ¿Y qué es lo que tenemos aquí? ¿Qué error tenemos ahora? El error es que no hemos guardado aun. No olviden guardar para que automáticamente web tools se dispare y nos reinicie nuestro servidor nuevamente.
+
+[08:32] Entonces enviamos nuevamente, tenemos el bad request y vemos qué es lo que nos está diciendo ahora: invalid utf-8 start byte.						
+
+
+
+
+
+																				07 DTO Java Record #2
+																				
+																				
+Transcripción
+[00:00] Entonces vamos a realizar el payload y vemos que aquí tenemos un error. Lo que vamos a hacer es, ahora ya no está apareciendo con error. Tenemos ya ortopedia mayúscula. Vamos a enviarlo ahora y vemos aquí te da un 200, 200 que es éxito. Aquí como puedes ver tienes el dato registro médico con un formato digamos de llave valor.
+
+[00:23] Nombre Rodrigo López, el email Rodrigo.lopez@voll.med y todos los datos que hemos enviado aquí desde nuestro front end, desde nuestro cliente, pero por ejemplo, ¿qué pasaría si yo no le envío calle, no le voy a enviar calle? Vamos a ver qué pasa. Me da 200, igual. Veo aquí y vemos que simplemente en calle si es que no recibe el parámetro a diferencia de en el primer caso ahora imprime null, porque simplemente el objeto string de calle está vacío.
+
+[00:58] No hay nada más que ver por ahora. Tienen que practicar mucho este mapeo de parámetros y el mapeo en los récords. Tenemos por ahora 2 DTO. Este tipo de patrón que estamos usando se llama patrón DTO, Data Transfer Object, que es básicamente usar a nivel de controller un objeto como intermediario para que mapee la información que nos llega desde nuestro cliente hacia nuestro API.
+
+[01:30] Por ejemplo, si yo le envío también algo que no está esperando mi API, si le envío, no sé, algo como tipo de sangre, entonces simplemente no va a ser recibido ni procesado aquí porque mi DTO, mi Data Transfer Object, no tiene mapeado ese parámetro. Entonces, este es un patrón muy utilizado.
+
+[01:50] Solo antes de irnos, DatosDirección, voy a hacer exactamente lo mismo que hice con datos med, voy a crear aquí un nuevo paquete llamado dirección, porque también va a ser usado por el paciente, entonces lo voy a mover a ese nuevo paquete, le doy okay.
+
+[02:05] Y tenemos nuestro paquete dirección, nuestro paquete médico, con los DatosRegistroMedico y la especialidad. Tienen alguna duda, pueden dejarla en el foro. Lo que viene a continuación son las validaciones.
+
+[02:18] Si volvemos aquí a nuestras reglas de negocio, bueno, en las consideraciones que debemos tener son que recibamos solo letras, no pueden llegar vacíos, dentro de él tiene que ser valores dentro de enum, aquí solo números Entonces, tenemos ese tipo de situaciones que las vamos a ver en la siguiente clase. Nos vemos.
+
+
+
+
+
+							
+																					En esta clase, aprendiste a:
+Mapear solicitudes POST en una clase Controller;
+Enviar solicitudes POST a la API usando Insomnia;
+Enviar datos a la API en formato JSON;
+Utilizar la anotación @RequestBody para recibir datos del cuerpo de la solicitud en un parámetro en el Controller;
+Use el padrón DTO (Data Transfer Object), a través de Java Records, para representar los datos recibidos en una solicitud POST.																				

@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://www.aluracursos.com/blog/que-es-maven -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0"><title>¿Qué es Maven? | Alura Cursos Online</title><meta name="description" content=" Al desarrollar un proyecto de programación tenemos que utilizar, muchas veces, librerías externas al código actual para poder utilizar funciones que fueron "><link rel="amphtml" href="https://www.aluracursos.com/blog/que-es-maven--amp"><link rel="canonical" href="https://www.aluracursos.com/blog/que-es-maven"><link rel="icon" href="https://www.aluracursos.com/assets/favicon.1686744883.ico"><link rel="preconnect" href="https://fonts.googleapis.com/"><link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin=""><link href="./queEsMaven_files/css2" rel="stylesheet"><link rel="stylesheet" href="./queEsMaven_files/titulos.1692056005.css"><link rel="stylesheet" href="./queEsMaven_files/artigos.1692056005.css"><link rel="stylesheet" href="./queEsMaven_files/highlight.1686744883.css"><meta property="og:locale" content="pt_BR"><meta property="og:description" content=" Al desarrollar un proyecto de programación tenemos que utilizar, muchas veces, librerías externas al código actual para poder utilizar funciones que fueron "><meta property="og:title" content="¿Qué es Maven? | Alura Cursos Online"><meta property="og:site_name" content="Alura"><meta property="og:url" content="https://www.aluracursos.com/blog/que-es-maven"><meta property="og:image" content="https://www.aluracursos.com/blog/assets/que-es-maven/portada.png"><meta property="og:image:alt" content="Alura logo"><meta property="fb:app_id" content="0"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#2A7AE4"><meta name="google-site-verification" content="e-ieHUO1JHyNyCZv0Z8Nu-R3ECPykHiNHHEhPdF35Bk"><meta name="thumbnail" content="https://www.aluracursos.com/blog/assets/que-es-maven/portada.png"> <script type="text/javascript" async="" src="./queEsMaven_files/gtqukryqvi.js.descarga"></script><script type="text/javascript" async="" src="./queEsMaven_files/insight.min.js.descarga"></script><script async="" src="./queEsMaven_files/fbevents.js.descarga"></script><script src="./queEsMaven_files/all.min.js.descarga"></script><script async="" src="./queEsMaven_files/qukryqvi.js.descarga"></script><script>;
+                (function(w, d, s, l, i) {
+                    w[l] = w[l] || [];
+                    w[l].push({
+                        'gtm.start': new Date().getTime(),
+                        event: 'gtm.js'
+                    });
+                    var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s),
+                        dl = l != 'dataLayer' ? '&l=' + l : '';
+                    j.async = true;
+                    j.src =
+                        'https://load.stape.alura.com.br/qukryqvi.js?id=' + i + dl;
+                    f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'dataLayerAlura', 'GTM-PFCN2KV');</script> <script>! function(a) {
+                    var b, c = "soclminer-jssdk",
+                        d = a.getElementsByTagName("script")[0];
+                    a.getElementById(c) || (b = a.createElement("script"), b.src = "https://plugins.soclminer.com.br/v3/sdk/all.min.js", d.parentNode.insertBefore(b, d))
+                }(document), window.soclInit = function() {
+                    socl.start("49a525fa-18fe-4032-ab66-f63315c9b1a6")
+                };</script> <script>window.setTimeout(function() {
+                    var e = /(smcid|smid_|smpid_|smpushoptin_|smtp|soclId|onsiteview_).*/g;
+
+                    function t(e) {
+                        for (var t = e + "=", i = decodeURIComponent(document.cookie).split(";"), o = 0; o < i.length; o++) {
+                            for (var a = i[o];
+                                " " == a.charAt(0);) a = a.substring(1);
+                            if (0 == a.indexOf(t)) return a.substring(t.length, a.length)
+                        }
+                        return ""
+                    }
+
+                    function i(e, i, o) {
+                        var a = "",
+                            n = new Date;
+                        n.setTime(n.getTime() + 864e5 * o);
+                        var r = t(e);
+                        if ("" == r) a = e + "=" + i + ";path=/;expires=" + n.toGMTString() + ";domain=" + /\..*/.exec(window.location.host)[0];
+                        else {
+                            var s = JSON.parse(r),
+                                c = JSON.parse(i),
+                                m = Object.assign(s, c);
+                            a = e + "=" + JSON.stringify(m) + ";path=/;expires=" + n.toGMTString() + ";domain=" + /\..*/.exec(window.location.host)[0]
+                        }
+                        document.cookie = a
+                    }
+                    var o = {};
+                    try {
+                        for (var a = 0, n = localStorage.length; a < n; a++) {
+                            var r = localStorage.key(a);
+                            r.match(e) && (o[r] = localStorage[r])
+                        }
+                    } catch (e) {
+                        o = {}
+                    }
+                    var s = {};
+                    try {
+                        var c = document.cookie.match(/(^|;) ?(smClosedOnSite_.*?|smClickOnSite_.*?|pagesview_.*?|onsiteview_.*?|onsiteview_.*?|onsiteview_.*?|smViewOnSite|smClickOnSite|smViewedPushOptin|smClosedPushOptin|smpushoptin_.*?)=([^;]*)(;|$)/g);
+                        c && (s = c.map(function(e) {
+                            return [e.match(/(^|;) ?.*=/)[0].replace(/^; /, "").replace(/=$/, ""), e.match(/=.*/)[0].replace(/;$/, "").replace(/^=/, "")]
+                        }).reduce(function(e, t) {
+                            return e[t[0]] = t[1], e
+                        }, {}))
+                    } catch (e) {
+                        s = {}
+                    }
+                    i("smDataLocalStorageCart", JSON.stringify(o), 2), i("smDataCookieCart", JSON.stringify(s), 2),
+                        function(e) {
+                            var i = JSON.parse(t(e));
+                            if (i)
+                                for (var o in i) localStorage.getItem(o) || localStorage.setItem(o, i[o])
+                        }("smDataLocalStorageCart")
+                }, 2e3);</script> <meta name="facebook-domain-verification" content="54emxndk85ngaqiydseadej06vtuvf">
+ <script async="" src="./queEsMaven_files/js"></script> <script>window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                gtag('js', new Date());
+                gtag('config', 'AW-586829347');</script> <script async="" src="./queEsMaven_files/analytics.js.descarga"></script> <script>var userId = (document.cookie.match('alura.userId=([^;]+)') || [null, null])[1];
+                window.ga = window.ga || function() {
+                    (ga.q = ga.q || []).push(arguments)
+                };
+                ga.l = +new Date;
+
+                                    ga(
+                        'create',
+                        'UA-42101548-21',
+                        'aluracursos.com',
+                        'tracker0', {
+                            'siteSpeedSampleRate': 50
+                        }
+                    );
+
+                    if (userId) ga('tracker0.set', 'userId', userId);
+
+                    ga('tracker0.require', 'displayfeatures');
+                    ga('tracker0.send', 'pageview');</script> <meta http-equiv="origin-trial" content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"></head><body class=""> <script async="" src="./queEsMaven_files/avatarOnError.1686744883.js.descarga"></script> <noscript><iframe
+src="https://www.googletagmanager.com/ns.html?id=GTM-PFCN2KV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>! function(f, b, e, v, n, t, s) {
+                        if (f.fbq) return;
+                        n = f.fbq = function() {
+                            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                        };
+                        if (!f._fbq) f._fbq = n;
+                        n.push = n;
+                        n.loaded = !0;
+                        n.version = '2.0';
+                        n.queue = [];
+                        t = b.createElement(e);
+                        t.async = !0;
+                        t.src = v;
+                        s = b.getElementsByTagName(e)[0];
+                        s.parentNode.insertBefore(t, s)
+                    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+                    fbq('init', '762861727832007');
+                    fbq('track', 'PageView');</script> <script>! function(f, b, e, v, n, t, s) {
+                    if (f.fbq) return;
+                    n = f.fbq = function() {
+                        n.callMethod ?
+                            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    };
+                    if (!f._fbq) f._fbq = n;
+                    n.push = n;
+                    n.loaded = !0;
+                    n.version = '2.0';
+                    n.queue = [];
+                    t = b.createElement(e);
+                    t.async = !0;
+                    t.src = v;
+                    s = b.getElementsByTagName(e)[0];
+                    s.parentNode.insertBefore(t, s)
+                }(window, document, 'script',
+                    'https://connect.facebook.net/en_US/fbevents.js');
+                fbq('init', '821937559664816');
+                fbq('track', 'PageView');</script> <noscript><img
+height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=821937559664816&ev=PageView&noscript=1" /></noscript> <script src="./queEsMaven_files/courseIconFallback.1686744883.js.descarga"></script>  <script type="application/ld+json">{
+      "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https://www.aluracursos.com",
+          "name": "Alura Latam"
+        }
+      }   
+              ,{
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "https://www.aluracursos.com/blog",
+            "name": "Artigos"
+          }
+        }
+              ,{
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "https://www.aluracursos.com/blog/que-es-maven",
+            "name": "¿Qué es Maven?"
+          }
+        }
+            ]
+    }</script> <link rel="stylesheet" href="./queEsMaven_files/headerGeral.1686744883.css"><link rel="stylesheet" href="./queEsMaven_files/dia-do-programador.css"><link rel="stylesheet" href="./queEsMaven_files/countdown.1686744883.css"><header class="header"><div class="container"><nav class="header__nav">
+<a href="https://www.aluracursos.com/" class="header__nav__link header__nav__link--logo">
+<img class="header__nav__link__logo" alt="Alura" src="./queEsMaven_files/alura-logo.1686744883.svg">
+</a><div class="header__nav__wrapper header__nav__wrapper--ctas"><div class="header-utilitario-busca" aria-label="Busca">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15">
+<g fill="none" fill-rule="evenodd" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(1 1)">
+<path d="M13.637 12.86l-3.526-3.527"></path>
+<circle cx="5.667" cy="5.667" r="5.667"></circle>
+</g>
+</svg></div>
+<a href="https://app.aluracursos.com/loginForm?urlAfterLogin=https://app.aluracursos.com/dashboard" class="header__nav__link header__nav__link--entrar">Iniciar Sesión</a>
+<a href="https://www.aluracursos.com/planos-cursos-online" class="header__nav__link header__nav__link--cta">Nuestros Planes</a></div><div class="header-barraBusca__wrapper"><div class="header-barraBusca"><div class="container"><form action="https://www.aluracursos.com/busca" class="header-barraBusca-form">
+<label for="header-barraBusca-form-campoBusca">¿Cuál curso estás buscando?</label>
+<input type="search" id="header-barraBusca-form-campoBusca" name="query" class="header-barraBusca-form-serch-input" placeholder="¿Cuál curso estás buscando?" required="">
+<button class="header-barraBusca-form-submit" type="submit"></button></form></div></div></div><div class="nav__courses__wrapper header__nav__wrapper header__nav__wrapper--menu"><div class="nav__courses__link header-navegacao-cursos">
+<svg class="header-navegacao-cursos-icone" xmlns:xlink="http://www.w3.org/1999/xlink">
+<use xlink:href="/svg,1605191409/header#icon-header-icon-arrow"></use>
+</svg>
+<span>Todos los</span>
+<span>Cursos</span></div>
+<a href="https://www.aluracursos.com/formaciones" class="nav__courses__link">
+<span>Formaciones</span>
+</a><a href="https://www.aluracursos.com/cursos" class="nav__courses__link">
+<span>Cursos</span>
+</a><a href="https://www.aluracursos.com/empresas" class="nav__courses__link">
+<span>Para </span>
+<span>Empresas</span>
+</a></div></nav></div><div class="--border-header-top"><div class="container"><ul class="header-navegacao-cursos-lista"><li class="header-cursos-lista-categoria ">
+<a href="https://www.aluracursos.com/cursos-online-programacao" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Programación</span></div>
+</a><div class="header-color--link" style="color: #00c86f;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.aluracursos.com/cursos-online-front-end" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Front End</span></div>
+</a><div class="header-color--link" style="color: #6bd1ff;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.aluracursos.com/cursos-online-data-science" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Data Science</span></div>
+</a><div class="header-color--link" style="color: #9cd33b;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.aluracursos.com/cursos-online-devops" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>DevOps</span></div>
+</a><div class="header-color--link" style="color: #f16165;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.aluracursos.com/cursos-online-inovacao-gestao" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Innovación y Gestión</span></div>
+</a><div class="header-color--link" style="color: #ff8c2a;"></div></li></ul></div></div></header><div class="artigos-topo"><div class="container">
+<a href="https://www.aluracursos.com/blog" class="artigos-topo__label">
+Artículos de Tecnología
+</a></div></div> <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.aluracursos.com/blog/que-es-maven"
+  },
+  "headline": "¿Qué es Maven?",
+  "description": "",
+  "image": "https://www.aluracursos.com/blog/assets/que-es-maven/portada.png",
+  "datePublished": "2023-02-03",
+      "author": {
+        "@type": "Organization",
+    "name": "Alura Latam",
+    "url": "https://www.aluracursos.com",
+    "logo": {
+      "@type": "ImageObject",
+    "url": "https://www.alura.com.br/assets/api/share/alura.jpg",
+      "height" : 60, 
+      "width" : 600,
+      "sameAs":["https://www.youtube.com/alura",
+               "https://www.facebook.com/AluraCursosOnline/",
+               "https://twitter.com/aluraonline",
+               "https://www.instagram.com/aluraonline/",
+               "https://play.google.com/store/apps/details?id=br.com.alura.mobi&hl=pt_BR&gl=US",
+               "https://apps.apple.com/br/app/alura-cursos-online/id1225776635"],
+      "contactPoint":{
+      "@type":"ContactPoint",
+     "email":"contato@alura.com.br",
+     "contactType":"customer support"
+     }},
+   "publisher": {
+    "@type": "Organization",
+    "name": "Alura Latam",
+    "url": "https://www.aluracursos.com",
+       "reviewedBy": {
+     "@type": "Person",
+     "name": "Brenda Souza",
+     "image": "https://cursos.alura.com.br/assets/images/forum/avatar_b.png"
+   }
+     }}}</script> <div class="cosmos-container cosmos-header"><h1>¿Qué es Maven?</h1><div class="cosmos-header-info"><div class="cosmos-author">
+<img class="cosmos-author-img" src="./queEsMaven_files/avatar_b.png" alt="Brenda Souza"><div class="cosmos-author-name">Brenda Souza</div>
+<time class="cosmos-author-date" datetime="2023-02-03 12:41">03/02/2023</time></div><link rel="stylesheet" href="./queEsMaven_files/cosmos-related-item.1692046561.css"></div></div><div class="cosmos-container cosmos-content">
+<img src="./queEsMaven_files/portada.png" alt="img-capa" loading="lazy" class="cosmos-image"><p>Al desarrollar un proyecto de programación tenemos que utilizar, muchas veces, librerías externas al código actual para poder utilizar funciones que fueron creadas por otras personas y que es posible utilizar, haciendo referencia a su autor, ahorrando tiempo de desarrollo.</p><p><strong>Con Java esto no es diferente,</strong> el lenguaje utiliza estas librerías con paquetes insertados en su proyecto Java, estos paquetes provienen de un origen conocido para que el proceso de importación sea posible. Generalmente, la librería se descarga y luego se importa al proyecto.</p><p>Sin embargo, dependiendo de la complejidad del proyecto, es necesario utilizar diferentes bibliotecas, lo que puede presentar un problema con la versión y/o compatibilidad con el código, esto pensado en un proyecto grande. Ahora resulta inviable realizar la importación y verificación de cada biblioteca manualmente.</p><p><strong>Aquí llega Maven</strong>, una herramienta de gestión de dependencias que se creó en Java para ayudar con los proyectos creados en este lenguaje.</p><h4><strong>Sobre Maven (breve historia)</strong></h4><p>Para contar la historia que llevó a su creación, podemos mencionar dos herramientas hechas en Java: Apache Ant y Apache Ivy.</p><p><a href="https://ant.apache.org/" target="_blank" rel="noopener">Apache Ant</a> : una herramienta de automatización de compilación en el desarrollo de aplicaciones, en otras palabras, ayuda al desarrollador a compilar los archivos del proyecto en el orden correcto según la dependencia entre los archivos. Este proyecto es software libre con licencia Apache.</p><p><a href="https://ant.apache.org/ivy/" target="_blank" rel="noopener">Apache Ivy</a> : herramienta administradora de paquetes transitivos, Ivy es una subparte de Apache Ant y tiene su funcionalidad enfocada en resolver las dependencias de un proyecto y también de los repositorios JAR, sobre todo asiste en la integración y publicación de artefactos de los proyectos que están utilizando. También es un proyecto de software libre, bajo la misma licencia de Apache.</p><p><a href="https://maven.apache.org/" target="_blank" rel="noopener">Apache Maven</a> es una herramienta de gestión y comprensión de proyectos así como Apache Ant (ambas en Java) pero tiene diferentes conceptos y funcionalidades, en especial podemos hablar de la base de Maven que el Modelo de Objeto de Proyecto, el modelo organiza toda la información del proyecto en un solo archivo: pom.xml.</p><p>Esta es la manera en que Maven realiza la construcción del proyecto, es decir, como dependencias son requeridas, POM se actualiza. El proyecto Maven puede poseer módulos y cada módulo puede tener su respectivo POM sin perder la organización y jerarquía del proyecto principal. También es posible realizar la construcción de informes y documentación con la herramienta.</p><p>Además, también es posible tener plugins que son fases individuales del proyecto. El ciclo de vida de la construcción de un proyecto también es un concepto muy importante en Maven, pero hablaremos de ello más tarde.</p><h4><strong>Instalación de Maven</strong></h4><p>En principio tenemos como requisito previo la instalación de JDK, especialmente en la versión 1.7 o superior. Después de obtener el JDK, independientemente del sistema operativo que esté utilizando, podemos continuar con la instalación de Maven. Si tienes dudas sobre cómo instalar JDK, tenemos una sugerencia de lectura que te puede ayudar: <a href="https://www.alura.com.br/artigos/me-primeiro-programa-em-java">Mi primer programa en Java</a>.</p><p>Acerca de <a href="https://maven.apache.org/index.html" target="_blank" rel="noopener">Maven</a>, el propio sitio web siempre sugiere descargar la última versión, pero también es posible utilizar versiones anteriores. En particular, se sugiere de antemano toda la versión 3 ya que es una versión estable de esta herramienta.</p><h5><strong>Instalación de Maven en Windows</strong></h5><p>Para instalar Maven en Windows solo tiene que acceder a este <a href="https://maven.apache.org/download.cgi" target="_blank" rel="noopener">link</a> para poder descargarlo. Puede descargar el archivo binario o el código fuente como desee.  En este artículo, vamos a utilizar la versión 3.8.7 en su formato binario.</p>
+<img src="./queEsMaven_files/img-01.png" alt="Lista de opciones de descarga de Maven presentes en la página de descarga de Maven. Está marcada la opción &#39;Binario zip Archive&#39; con el enlace &#39;apache-Maven-3.8.7-bin.zip&#39;." loading="lazy" class="cosmos-image"><p>Al finalizar la descarga del archivo, simplemente extraiga o descomprima la carpeta y almacene la carpeta en algún directorio de su máquina.</p>
+<img src="./queEsMaven_files/img-02.png" alt="Lista de carpetas y archivos obtenidos al extraer el archivo zip o tar de Maven. Carpetas presentes: bin, boot, conf y lib. Archivos presentes: LICENSE, NOTICE y README.md." loading="lazy" class="cosmos-image"><p>Note que en la carpeta resultante hay un archivo ejecutable titulado <code>mvn</code>, es el ejecutable de Maven. Con este archivo y directorio puedes gestionar Maven y sus proyectos como quieras, pero siempre tendrás que volver a este directorio para poder hacerlo.</p><p>Para poder usar Maven desde cualquier directorio de su máquina, debemos configurarlo como una variable de entorno. Para eso, sigue estos pasos:</p><ul><li><p>Abrimos el explorador de archivos de Windows.</p></li><li><p>Seleccionamos la sección titulada 'Esta Computadora'.</p></li><li><p>Damos clic derecho y seleccionamos Propiedades.</p></li><li><p>Después de esto aparece una nueva pantalla y en ella seleccionamos la opción de 'Configuración avanzada del sistema'.</p></li><li><p>Además, seleccionamos la sección 'Avanzado' y luego hacemos clic en el botón 'Variables de entornos...'.</p></li><li><p>Añadimos el directorio <code>C:/*/apache-Maven-3.8.7</code> al final de la lista de directorios denominada <code>M2_HOME</code>, para indicar cuál es.</p></li></ul><p>Y, como se agregó como variable de entorno, también es necesario agregar su directorio bin a la variable PATH (variable de Windows que guarda los directorios de los archivos ejecutables del sistema):</p><ul><li>Sin embargo en la parte de la variable de entorno, seleccionamos la variable 'PATH' y presionamos el botón 'Editar'.</li><li>Seleccionamos el botón 'Nuevo'.</li><li>Hemos añadido el directorio <code>C:/*/apache-Maven-3.8.7/bin</code> de Maven a la lista de directorios de PATH.</li><li>Pulsamos Ok para finalizar la edición de PATH.</li><li>Damos clic en Ok para finalizar la sección de variables de entorno.</li></ul><p>Finalmente, ejecutamos este comando para verificar su versión Maven en la máquina: <code>mvn -version</code>.</p><p>No mencionamos el JDK por nada, como dije anteriormente, Maven fue hecho en Java y para poder usarlo tenemos que tener el kit de desarrollo de Java presente en la máquina. Y el JDK definido como variable de entorno, puede usar Java desde cualquier directorio.</p><p>Los pasos para definir esta variable son los mismos que se realizaron para agregar la variable Maven, la diferencia es que el directorio utilizado es la ruta de la carpeta JDK.</p><h5><strong>Instalación de Maven en Linux</strong></h5><p>Para instalar Maven en Linux tenemos que descargar el archivo a través de la terminal de comandos. En este ejemplo, vamos a usar el archivo binario, pero puede usar el código fuente. Usemos la versión 3.8.7 en binario pero esta vez en formato <code>.tar</code>:</p>
+<img src="./queEsMaven_files/img-03.png" alt="Lista de opciones de descarga de Maven presentes en la página de descarga de Maven. Está marcada la opción &#39;Binario zip Archive&#39; con el enlace &#39;apache-Maven-3.8.7-bin.tar.gz&#39;." loading="lazy" class="cosmos-image"><p>Sigamos los pasos para instalar Maven:</p><pre><code class="hljs"> wget https://dlcdn.apache.org/maven/maven-3/3.8.7/binaries/apache-maven-3.8.7-bin.tar.gz
+ tar -xvf apache-Maven-3.8.7-bin.tar.gz</code></pre><p>Tenga en cuenta que este enlace se obtiene copiando el enlace en el archivo seleccionado en la <a href="https://maven.apache.org/download.cgi" target="_blank" rel="noopener">página oficial</a> de Maven.</p><p>Ahora, definamos una variable de entorno para Maven accediendo al archivo <code>$home/.profile</code> y agregando este nombre de variable e información de directorio, guardamos y cerramos el archivo:</p><pre><code class="hljs">M2_HOME='/opt/apache-Maven-3.8.7' 
+PATH="$M2_HOME/bin:$PATH" 
+export PATH</code></pre><p>Finalmente, ejecutamos este comando para verificar su versión Maven en la máquina: <code>mvn -version</code>.</p><h5><strong>Instalación de Maven en MacOS</strong></h5><p>Instalar Maven en MacOS funciona de manera similar a instalarlo en Linux, ya que estos son sistemas operativos basados en Unix, otro sistema operativo. Si puede usar el mismo archivo y formato, la exportación .tar se realiza de la misma manera. También usamos la versión 3.8.7 de Maven.</p><p>Lo que cambia es que en la parte de establecer una variable de entorno, debemos ir a la configuración del perfil o ejecutar <code>$ source .bash_profile</code> para abrir el archivo que contiene las variables, para definir Maven como una variable.</p><p>Al abrir el archivo <code>.bash_profile</code>, agregamos esta información, guardamos y cerramos el archivo:</p><pre><code class="hljs">export M2_HOME='/opt/apache-Maven-3.8.7' 
+PATH="$M2_HOME/bin:$PATH" 
+export PATH</code></pre><p>Para verificar Maven en la máquina, haga lo mismo que en Linux: <code>mvn -version</code>.</p><h5><strong>Ciclo de Vida de Construcción</strong></h5><p>El concepto de Ciclo de Vida de Construcción es el concepto central de Maven, es la base para realizar el <em>Build</em> (traducción libre: Construcción) del proyecto Maven. Es donde utilizamos la idea de meta (o fase) para cada tarea que deseamos realizar, podemos tener más de meta en un comando, Maven ejecutará todas las metas secuencialmente.</p><p>Seguimos esta estructura para ejecutar metas en Maven con este comando (todos los comandos Maven son iguales para todos los sistemas operativos):</p><pre><code class="hljs">mvn [nombre de la meta 01] [nombre de la meta 02] [nombre de la meta 03]</code></pre><p>Un comando puede tener uno o más objetivos, Maven se ejecutará según la secuencia definida.</p><p>Tenemos tres comandos principales de construcción:</p><ul><li><p><em>default</em>: traducido del inglés 'estándar', es el comando que hace el <em>deploy</em> del proyecto, es decir, la implementación del proyecto en algún ambiente.</p></li><li><p><em>clean</em>: es el comando que limpia el proyecto, limpia la caché y otros datos generados por el proyecto;</p></li><li><p><em>site</em>: este es el comando que realiza la creación de la página web de su proyecto, que puede ser utilizada como documentación, por ejemplo. Este comando se utiliza luego de definir la estructura, el diseño y el dominio del sitio, esto se explica <a href="https://maven.apache.org/guides/mini/guide-site.html" target="_blank" rel="noopener">aquí</a>.</p></li></ul><p>Cada comando tiene una serie de comandos que se ejecutan para obtener el resultado final esperado, se puede ver el ejemplo del comando <em>default</em> en este <a href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#a-build-Lifecycle-is-made-of-phases" target="_blank" rel="noopener">link</a>.</p><p>Otros comandos importantes para el desarrollo de proyectos son:</p><ul><li><em>install</em>: esta orden instala el proyecto en su repositorio local, añadiendo todas las dependencias especificadas en pom.xml del proyecto.</li><li><em>package</em>: este comando coloca el código compilado del proyecto en un paquete, es decir, en un formato que se puede distribuir para su uso. Existen diversos formatos, pero los más utilizados son JAR y WAR.</li><li><em>test</em>: este comando realiza las pruebas unitarias definidas en la carpeta src/test de su proyecto.</li></ul><p>También es posible realizar estos objetivos a través de <a href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#plugins" target="_blank" rel="noopener">plugins</a>, que son artefactos que brindan etapas a Maven, para que las tareas se puedan realizar de esta manera.</p><p>Estos comandos también se pueden realizar a través de IDE, como Intellij y Eclipse, pero a veces hay un problema de compatibilidad y los comandos no se ejecutan de esa manera. Por eso, siempre es bueno saber cómo hacerlo según la documentación oficial, en este caso, cómo hacerlo a través del terminal.</p><h5><strong>El archivo pom.xml</strong></h5><p>El archivo POM es la base de un proyecto Maven, en este archivo tenemos toda la información sobre el proyecto y las dependencias que son importantes para la ejecución del proyecto. Es un archivo que puede y debe actualizarse según sea necesario, simplemente realizando la actualización del proyecto a través de Maven (vía terminal o IDE, lo que prefiera).</p><p>El ejemplo utilizado es una tienda de pendientes artesanales implementada en Java, donde tenemos una clase Producto con unos atributos: id, nombre, cantidad (inventario) y precio unitario. Para ello tenemos configurado el archivo pom.xml con la información importante del proyecto:</p>
+<img src="./queEsMaven_files/img-04.png" alt="Archivo pom.xml de Maven donde se marcan cuatro bloques de código, respectivamente: encabezado, información del proyecto Maven, dependencias y plugins." loading="lazy" class="cosmos-image"><p>El encabezado del proyecto puede parecer confuso, pero se puede entender de la siguiente manera: el elemento project tiene el atributo xsi con este <em>namespace</em>, y xsi tiene un esquema definido; finalmente, el elemento debe ser validado según el esquema especificado.  Este es un patrón para archivos XML.</p><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">project</span> 
+    <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://maven.apache.org/POM/4.0.0"</span> 
+    <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span> 
+    <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://maven.apache.org/POM/4.0.0.0. https://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></code></pre><p>Ahora, vayamos a la información del proyecto, es decir, características que definen el proyecto no solo a nivel Build, pero también pensemos en la distribución del proyecto.</p><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">groupid</span>&gt;</span>com.alura.Latam<span class="hljs-tag">&lt;/<span class="hljs-name">groupid</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>store<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">versión</span>&gt;</span>0.0.1-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">versión</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>store<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Description</span>&gt;</span>store of handmade earrings<span class="hljs-tag">&lt;/<span class="hljs-name">Description</span>&gt;</span></code></pre><p>Comencemos con la información necesaria sobre el proyecto:</p><ul><li><em>project</em>: es la etiqueta raíz que agrupa la información del proyecto.</li><li><em>modelVersion</em>: se refiere al modelo POM compatible con Maven, por lo que siempre se define como 4.0.0 Pues es la actual versión de POM compatible y que tiene soporte para Maven.</li><li><em>groupid</em>: se refiere al grupo/empresa al que está asociado al proyecto.</li><li>artifactId: se refiere al nombre de su proyecto, la identificación del proyecto.</li><li>versión: se refiere a la versión actual del proyecto (según su <code>groupid</code>), pues en proyectos grandes acaba ocurriendo diferentes versiones, cada versión con dependencias específicas, entonces el POM lo considera eso también.</li><li><code>name</code>: nombre, según la definición en <code>artifactId</code>.</li><li><code>description</code>: descripción del proyecto en un texto breve.</li></ul><p>Tenga en cuenta que puedes agregar más de una dependencia al proyecto. Maven tiene un <a href="https://mvnrepository.com/" target="_blank" rel="noopener">repositorio con dependencias</a> disponible para agregar al proyecto. Cada dependencia tiene una o más subsecuentes, y en caso de que el desarrollador desee no utilizar alguna de sus posteriores es posible realizar la exclusión utilizando la etiqueta <a href="https://maven.apache.org/pom.html#exclusions" target="_blank" rel="noopener">exclusions</a>.</p><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">groupid</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">groupid</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">versión</span>&gt;</span>4.12<span class="hljs-tag">&lt;/<span class="hljs-name">versión</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">Scope</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">groupid</span>&gt;</span>com.thoughtworks.Xstream<span class="hljs-tag">&lt;/<span class="hljs-name">groupid</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>xstream<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">versión</span>&gt;</span>1.4.14<span class="hljs-tag">&lt;/<span class="hljs-name">versión</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span></code></pre><p>En este ejemplo tenemos dos dependencias: JUnit y XStream. <a href="https://junit.org/junit5/" target="_blank" rel="noopener">JUnit</a> es un framework creado para la ejecución de pruebas unitarias de un proyecto Java. Ya el <a href="https://x-stream.github.io/" target="_blank" rel="noopener">XStream</a> es una biblioteca construida en Java para realizar la serialización de objetos a XML y viceversa.</p><p>Podemos ver cómo se utilizan estas dependencias en el proyecto, en este caso nos centraremos en el uso de JUnit. Para utilizar JUnit tenemos que utilizar la anotación <code>@Test</code> para indicar que el método creado se usará para pruebas. En este caso, tenemos una clase <code>ProductService</code> con dos métodos: un método para verificar si el producto tiene atributos nulos, y otro método para agregar el producto a una lista de productos de la tienda.</p><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.alura.Latam.service;
+
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-keyword">import</span> com.alura.Latam.model.Product;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProductService</span> </span>{
+    List&lt;Product&gt; listProducts = <span class="hljs-keyword">new</span> ArrayList&lt;Product&gt;();
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Boolean <span class="hljs-title">checkProduct</span><span class="hljs-params">(Product product)</span> </span>{
+        <span class="hljs-keyword">if</span>( product.getId() != <span class="hljs-number">0</span> 
+                &amp;&amp; product.getName() != <span class="hljs-keyword">null</span> &amp;&amp; product.getName() != <span class="hljs-string">"
+                &amp;&amp; product.getUnitPrice() != 0 ){               
+                Return true;
+            }
+        Return false;
+    }   
+    public Boolean addProduct(Product product) {
+        if(checkProduct(product)) {
+            listProducts.add(product);
+            Return true;
+        }   
+        Return false;
+    }
+}</span></code></pre><p>Dado los métodos, ahora vamos a la carpeta <code>src/test/java</code> que se encarga de todos los archivos Java relacionados con las pruebas del proyecto. En esta carpeta tenemos la clase <code>ProductValidator</code> con métodos para agregar un producto nulo y otro <strong>no</strong> nulo:</p><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.alura.Latam.test;
+<span class="hljs-keyword">import</span> org.junit.Test;
+<span class="hljs-keyword">import</span> com.alura.Latam.model.Product;
+<span class="hljs-keyword">import</span> com.alura.Latam.service.ProductService;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProductValidator</span> </span>{
+    ProductService productService = <span class="hljs-keyword">new</span> ProductService();
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addProductNotNull</span><span class="hljs-params">()</span> </span>{
+        Product example = <span class="hljs-keyword">new</span> Product(<span class="hljs-number">1</span>,<span class="hljs-string">"Golden Earring"</span>, <span class="hljs-number">30</span>, <span class="hljs-number">7.5</span>);
+        productService.addProduct(example);
+    }
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addProductNull</span><span class="hljs-params">()</span> </span>{
+        Product example2 = <span class="hljs-keyword">new</span> Product();
+        productService.addProduct(example2);
+    }
+}</code></pre><p>En ambos métodos creamos objetos de <code>Product</code> con valores fijos. Como el ejemplo es una tienda de pendientes, el primer método addProductNotNull() crea un producto descrito como 'pendiente dorada' (en inglés) e intenta agregar el producto; el segundo método crea un producto nulo. Con los métodos definidos, podemos ejecutar las pruebas utilizando el comando Maven <code>mvn test</code> .</p><p>Teniendo en cuenta lo que se ha implementado, el resultado esperado es que ambas pruebas se completen con éxito, como indica la interfaz de pruebas del IDE:</p>
+<img src="./queEsMaven_files/img-05.png" alt="Consola de JUnit. Tiene el encabezado con: 2/2 Runs, 0 Errores y 0 Fallos. Debajo del encabezado tiene la descripción de la clase de prueba y los métodos ejecutados, con el tiempo de ejecución: clase ProductValidator (0,002s), método addProductNull (0,001s) y método addProductNotNull (0,001s)." loading="lazy" class="cosmos-image"><p>Además, tenemos información similar a la información de nuestro proyecto, con el atributo adicional Scope que hace referencia al alcance del proyecto, en el caso de JUnit, el alcance es de pruebas. Cada dependencia también tiene sus propias dependencias, por lo que puede ver las dependencias posteriores junto a ellas:</p>
+<img src="./queEsMaven_files/img-06.png" alt="Carpetas y archivos del proyecto Maven. Se resaltan las dependencias añadidas vía pom.xml: junit-4.12.jar, hamcrest-core-1.3.jar, xstream-1.4.14.jar, xmlpull-1.1.3.1. jar y xpp3_min-1.1.4c.jar. " loading="lazy" class="cosmos-image"><p>El concepto de dependencias es algo sólido en el desarrollo de proyectos que puede quitarle la preocupación al desarrollador de tener que descargar manualmente todo lo que necesita.</p><p>Maven descarga lo que se necesita y, además, actualiza la versión de dependencia simplemente cambiando el valor asociado a la versión y actualiza el proyecto con el comando <code>mvn clean install</code>, y ya está actualizado sin que la persona tenga ese esfuerzo manual. Al final, su proyecto tiene todos los JAR necesarios para su ejecución.</p><p>Por último, tenemos el último bloque del archivo que se refiere a los <strong>plugins</strong> utilizados en el proyecto.</p><pre><code class="hljs xml">   <span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.10.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">source</span>&gt;</span>11<span class="hljs-tag">&lt;/<span class="hljs-name">source</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">target</span>&gt;</span>11<span class="hljs-tag">&lt;/<span class="hljs-name">target</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span></code></pre><p>Tenga en cuenta que este archivo se cierra después de la etiqueta '<code>&lt;build&gt;</code>', con el '<code>&lt;/project&gt;</code>'. La parte de build almacena los plugins que usa el proyecto de acuerdo con la definición del desarrollador.</p><p>En nuestro ejemplo tenemos el <a href="https://maven.apache.org/plugins/maven-compiler-plugin/" target="_blank" rel="noopener">plugin de compilación de Maven</a> y tiene la función de compilar todos los archivos fuente del proyecto. Tenga en cuenta que también tiene <code>groupId</code> y <code>artifactId</code> según los elementos anteriores, y también tiene su versión de uso.</p><p>El último detalle es la etiqueta de configuración: en ella hemos definido la versión de Java - en este caso Java 11 - que compilará los archivos fuente del proyecto y archivos target (los generados por el proyecto).</p><h5><strong>Plugins</strong></h5><p>En principio el concepto de plugin es un código utilizado para mejorar proyectos de software. Y el propio Maven dice que su fuente está basada en plugins, no es extraño que en la documentación oficial existe una <a href="https://maven.apache.org/plugins/index.html" target="_blank" rel="noopener">lista de plugins disponibles</a>.</p><p>Maven difierencia los plugins entre los de <em>build</em>: que se centran en el <em>build</em> del proyecto y se especifican en la etiqueta <code>&lt;build&gt;</code> del archivo pom.xml y los plugins de reporte que se utilizan durante la generación del sitio a través de Maven (¿recuerdas el comando? <code>mvn site</code>), estos están definidos en la etiqueta <code>&lt;Reporting&gt;</code> del pom.xml.</p><p>Son los plugins que nos ayudan a realizar tareas de construcción y configuración de proyectos. Target en el proyecto es el directorio de build, por lo que los targets de un plugin son tareas de build realizadas para componer la configuración y compilación del proyecto. Recuerde que cada plugin sigue esta sintaxis para ejecutar mediante comando:</p><pre><code class="hljs">mvn [nombre del complemento]:[target]</code></pre><p>Un ejemplo genial de Plugin es <a href="https://maven.apache.org/archetype/maven-archetype-plugin/" target="_blank" rel="noopener">Archetype</a> con su target create, que genera un prototipo de un proyecto Maven a partir de un modelo existente, un arquetipo. Puede usar el plugin a través del comando:</p><pre><code class="hljs">mvn archetype:create</code></pre><p>Después de este comando, Archetype solicita información de su proyecto como el tipo de proyecto y la información inicial que vimos en la sección sobre pom.xml para finalizar la generación de toda la estructura con sus correspondientes carpetas.</p><p>En comparación con Apache Ant, el valor predeterminado al usar targets es diferente. En Ant, se crea un <em>target</em> que llama a <em>javac,</em> mientras que en Maven usamos un target existente.</p><p>En Ant, es el usuario quien ejecuta los comandos en el archivo build.xml como lenguaje de programación, mientras que Maven tiene pom.xml como una estructura bien definida donde el build se crea con esa estructura y declaraciones, algo más autónomo.</p><p>Por último, cabe señalar que estas tareas terminan generando archivos compilados del proyecto y todos ellos se almacenan en la carpeta target, sin necesidad de una configuración previa y un manual realizado por el desarrollador.</p><h4>Integración con lenguajes y frameworks</h4><p>Maven se usa principalmente en proyectos Java, pero también se utiliza mucho para proyectos realizados con el framework Spring, un ecosistema hecho en Java con varios segmentos esenciales para el desarrollo de proyectos. El archivo POM junto con la administración de dependencias es una estructura conveniente para administrar un proyecto que utiliza Spring.</p><p>Por último, aunque Maven se ha hecho en Java y muchos proyectos Java siguen usándolo, también lo usan otros lenguajes como: C#, Ruby, Scala, y otros.</p><h5><strong>Conclusión</strong></h5><p>En este artículo vimos la historia de Maven, cómo instalar, cómo utilizar el archivo de Build hecho en XML llamado POM, que utiliza el Modelo de Objeto del Proyecto para estructurar en XML las informaciones y dependencias esenciales para el proyecto.</p><p>Hemos visto sobre el Ciclo de Vida de Construcción que Maven utiliza para administrar el proyecto utilizando tareas fragmentadas para que esas tareas - también vistas como fases - sean independientes entre sí.</p><p>Además, también hemos visto cómo Maven se diferencia de las herramientas anteriores, mostrando una mejora significativa en la gestión de paquetes y automatización de proyectos; en particular, hemos visto que con Maven es posible generar la documentación del proyecto directo a través del comando mvn site.</p><p>Maven es muy utilizado en el entorno Java, por lo que también hemos visto que además de proyectos puramente en Java, Maven también está presente en proyectos Java con Spring, un framework en Java que plantea distintos segmentos para el desarrollo de proyectos.</p>
+<img src="./queEsMaven_files/img-bre.png" alt="Una persona de pelo largo negro y piel negra clara, ojos marrones oscuros y boca roja oscura. Lleva una camiseta blanca." loading="lazy" class="cosmos-image"><p><a href="https://cursos.alura.com.br/user/brenda-alexandra"><strong>Brenda Souza</strong></a></p><p>Scuba Alura LATAM. Soy estudiante de Tecnología de la Información en la Universidad Federal de Rio Grande do Norte, en Natal (Brasil). Me enfoco en lenguajes Java y Python, con áreas de interés como BackEnd, Data Science e Inteligencia Artificial. También soy desarrolladora BackEnd.</p></div><div class="cosmos-container cosmos-header"></div><div class="artigos-topo"><div class="container"><a href="https://www.aluracursos.com/blog" class="artigos-topo__label">
+Artículos de Tecnología
+</a></div></div><link rel="stylesheet" href="./queEsMaven_files/planosPagamentoOld.1692056005.css"><section class="planos-pagamento" id="planos-cursos-online"><h2 class="planos-pagamento__titulo">
+En Alura encontrarás variados cursos sobre . ¡Comienza ahora!</h2><div class="container"><div class="planos-pagamento__planos "><div class="animation-trigger --animate"></div><div class="planos-pagamento__plano planos-pagamento__plano--semestral " data-payment-plan="" data-payment-plan-price="49,90"><div class="planos-pagamento__header"><h3 class="planos-pagamento__nome">
+Semestral</h3></div><ul class="planos-pagamento__vantagens"><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span class="planos-pagamento__label">247 cursos</span><div class="planos-pagamento__legenda-tooltip"><p class="planos-pagamento__legenda-descricao">Cursos de Programación, Front End, Data Science, Innovación y Gestión.</p></div></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Videos y actividades 100% en Español</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Certificado de participación</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Estudia las 24 horas, los 7 días de la semana</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Foro y comunidad exclusiva  para resolver tus dudas</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Acceso a todo el contenido de la plataforma por 6 meses</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li></ul><div class="planos-pagamento__precos "><div class="planos-pagamento__preco-total">
+<span class="planos-pagamento__valor-parcela">US$49,90</span></div><div class="planos-pagamento__preco-vista">
+<span class="planos-pagamento__label-vista">un solo pago de</span>
+<span class="planos-pagamento__valor-vista">US$49,90</span></div></div><a class="planos-pagamento__cta" href="https://www.aluracursos.com/compra/semestral/">
+¡QUIERO EMPEZAR A ESTUDIAR!
+</a><p id="myBtn" class="button-open-modal">Paga en moneda local en los siguientes países</p></div><div class="planos-pagamento__plano planos-pagamento__plano--anual planos-pagamento__plano--best" data-payment-plan="" data-payment-plan-price="79,90"><div class="planos-pagamento__header"><h3 class="planos-pagamento__nome">
+Anual</h3></div><ul class="planos-pagamento__vantagens"><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span class="planos-pagamento__label">247 cursos</span><div class="planos-pagamento__legenda-tooltip"><p class="planos-pagamento__legenda-descricao">Cursos de Programación, Front End, Data Science, Innovación y Gestión.</p></div></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Videos y actividades 100% en Español</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Certificado de participación</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Estudia las 24 horas, los 7 días de la semana</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Foro y comunidad exclusiva  para resolver tus dudas</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Acceso a todo el contenido de la plataforma por 12 meses</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li></ul><div class="planos-pagamento__precos "><div class="planos-pagamento__preco-total">
+<span class="planos-pagamento__valor-parcela">US$79,90</span></div><div class="planos-pagamento__preco-vista">
+<span class="planos-pagamento__label-vista">un solo pago de</span>
+<span class="planos-pagamento__valor-vista">US$79,90</span></div></div><a class="planos-pagamento__cta" href="https://www.aluracursos.com/compra/anual/">
+¡QUIERO EMPEZAR A ESTUDIAR!
+</a><p id="myBtn" class="button-open-modal">Paga en moneda local en los siguientes países</p></div><div class="planos-pagamento__plano planos-pagamento__plano--bootcampsds2 " data-payment-plan="" data-payment-plan-price="119,90"><div class="planos-pagamento__header"><h3 class="planos-pagamento__nome">
+Bootcamp Data Science 2</h3></div><ul class="planos-pagamento__vantagens"><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span class="planos-pagamento__label">247 cursos</span><div class="planos-pagamento__legenda-tooltip"><p class="planos-pagamento__legenda-descricao">Cursos de Programación, Front End, Data Science, Innovación y Gestión.</p></div></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Videos y actividades 100% en Español</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Certificado de participación</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Estudia las 24 horas, los 7 días de la semana</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Foro y comunidad exclusiva  para resolver tus dudas</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span class="planos-pagamento__label">Acceso a la Formación - Python para análisis de datos - Bootcamp DS2</span><div class="planos-pagamento__legenda-tooltip"><p class="planos-pagamento__legenda-descricao">Aprende como trabajar con Python a través de las principales bibliotecas enfocadas en Data Science.</p></div></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Acceso a todo el contenido de la plataforma por 12 meses</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li></ul><div class="planos-pagamento__precos "><div class="planos-pagamento__preco-total">
+<span class="planos-pagamento__valor-parcela">US$119,90</span></div><div class="planos-pagamento__preco-vista">
+<span class="planos-pagamento__label-vista">un solo pago de</span>
+<span class="planos-pagamento__valor-vista">US$119,90</span></div></div><a class="planos-pagamento__cta" href="https://www.aluracursos.com/compra/bootcampsds2/">
+¡QUIERO EMPEZAR A ESTUDIAR!
+</a><p id="myBtn" class="button-open-modal">Paga en moneda local en los siguientes países</p></div></div></div><div id="modal-currency" class="modal-currency"><div class="modal-currency-content"><div><p class="modal-currency-title">Puedes realizar el pago de tus <span style="font-weight: bold">planes</span> en moneda local en los siguientes países:</p><div class="modal-table-currency-wrapper"><table class="modal-table"><tbody><tr><th style="background-color: #0076BA">País</th><th><img class="modal-currency-flags" src="./queEsMaven_files/argentina.1686744883.svg"></th><th><img class="modal-currency-flags" src="./queEsMaven_files/bolivia.1686744883.svg"></th><th><img class="modal-currency-flags" src="./queEsMaven_files/chile.1686744883.svg"></th><th><img class="modal-currency-flags" src="./queEsMaven_files/colombia.1686744883.svg"></th><th><img class="modal-currency-flags" src="./queEsMaven_files/ecuador.1686744883.svg"></th><th><img class="modal-currency-flags" src="./queEsMaven_files/peru.1686744883.svg"></th><th><img class="modal-currency-flags" src="./queEsMaven_files/mexico.1686744883.svg"></th><th><img class="modal-currency-flags" src="./queEsMaven_files/uruguay.1686744883.svg"></th></tr><tr><td class="modal-table-title">Plan Semestral</td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>39181.34</span>
+<span>ARS</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>369.04</span>
+<span>BOB</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>47638.00</span>
+<span>CLP</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>214394.72</span>
+<span>COP</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>49.90</span>
+<span>USD</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>200.35</span>
+<span>PEN</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>923.66</span>
+<span>MXN</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>2016.81</span>
+<span>UYU</span></div></td></tr><tr><td class="modal-table-title">Plan Anual</td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>62737.25</span>
+<span>ARS</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>590.90</span>
+<span>BOB</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>76278.09</span>
+<span>CLP</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>343289.35</span>
+<span>COP</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>79.90</span>
+<span>USD</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>320.80</span>
+<span>PEN</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>1478.97</span>
+<span>MXN</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>3229.32</span>
+<span>UYU</span></div></td></tr><tr><td class="modal-table-title">Plan Bootcamp Data Science 2</td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>94145.14</span>
+<span>ARS</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>886.73</span>
+<span>BOB</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>114464.87</span>
+<span>CLP</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>515148.85</span>
+<span>COP</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>119.90</span>
+<span>USD</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>481.41</span>
+<span>PEN</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>2219.38</span>
+<span>MXN</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>4846.01</span>
+<span>UYU</span></div></td></tr></tbody></table></div></div>
+<span style="color: #abb0b5; float: right; font-size: 9px;">*valores aproximados calculados en función a la tasa de cambio</span></div></div><div class="planosPagamento-vantagens"><div class="container"><div class="planosPagamento-vantagens-vantagem acesso">
+<img src="./queEsMaven_files/icon-plan-calendar.1686744883.svg"><p>Acceso a todos<br>los cursos</p></div><div class="planosPagamento-vantagens-vantagem horas">
+<img src="./queEsMaven_files/icon-plan-moon.1686744883.svg"><p>Estudia las 24 horas,<br>dónde y cuándo quieras</p></div><div class="planosPagamento-vantagens-vantagem novos">
+<img src="./queEsMaven_files/icon-plan-reload.1686744883.svg"><p>Nuevos cursos<br>cada semana</p></div></div></div></section> <script src="./queEsMaven_files/planosPagamentoOld.1686744883.js.descarga"></script> <script src="./queEsMaven_files/openModal.1686744883.js.descarga"></script> <link rel="stylesheet" href="./queEsMaven_files/footer.1686744883.css"><footer class="footer"><div class="container"><div class="footer-navegue"><h2 class="footer-navegacao-titulo">Navegación</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link"><a href="https://www.aluracursos.com/planos-cursos-online" gtm-data="footer_primeira_secao_053">Planes</a></li><li class="footer-navegue-lista-link"><a href="https://www.aluracursos.com/instrutores" gtm-data="footer_primeira_secao_056">Instructores</a></li><li class="footer-navegue-lista-link"><a href="https://www.aluracursos.com/blog" gtm-data="footer_primeira_secao_059">Blog</a></li><li class="footer-navegue-lista-link"><a href="https://www.aluracursos.com/politica-de-privacidade" gtm-data="footer_primeira_secao_061">Política de privacidad</a></li><li class="footer-navegue-lista-link"><a href="https://www.aluracursos.com/termos-de-uso" gtm-data="footer_primeira_secao_062">Términos de uso</a></li><li class="footer-navegue-lista-link"><a href="https://www.aluracursos.com/sobre" gtm-data="footer_primeira_secao_063">Sobre nosotros</a></li><li class="footer-navegue-lista-link"><a href="https://soporte.aluracursos.com/es-LA/support/home" gtm-data="footer_primeira_secao_064">Preguntas frecuentes</a></li></ul><h2 class="footer-navegacao-titulo">¡CONTÁCTANOS!</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link"><a href="https://www.aluracursos.com/contato">¡Quiero entrar en contacto!</a></li></ul><h2 class="footer-navegacao-titulo">Blog</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link">
+<a href="https://www.aluracursos.com/blog/programacao">
+Programación							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.aluracursos.com/blog/front-end">
+Front End							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.aluracursos.com/blog/data-science">
+Data Science							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.aluracursos.com/blog/inovacao-gestao">
+Innovación y Gestión							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.aluracursos.com/blog/devops">
+DevOps							</a></li></ul></div><div class="footer-card-hotLinks social-mobile"><p class="footer-navegue-lista-link --description">
+<span class="footer-empresa-item">AOVS Sistemas de Informática S.A</span>
+<span class="footer-empresa-item">CNPJ 05.555.382/0001-33</span></p><h2 class="footer-card-hotLinks-titulo">SÍGUENOS EN NUESTRAS REDES SOCIALES</h2><div class="footer-card-hotLinks-info footer-card-redes">
+<a href="https://www.youtube.com/channel/UCAy2irhcjZsOv1sWojOm_XQ/featured" gtm-data="footer_primeira_secao_065" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="YouTube da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-youtube"><use xlink:href="/svg,1686744883/footer#icon-footer-youtube"></use></svg>
+<span>YouTube</span>
+</a>
+<a href="https://www.facebook.com/aluracursoslatam/" gtm-data="footer_primeira_secao_066" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Facebook da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-facebook"><use xlink:href="/svg,1686744883/footer#icon-footer-facebook"></use></svg>
+<span>Facebook</span>
+</a>
+<a href="https://instagram.com/aluralatam" class="footer-card-hotLinks-link" gtm-data="footer_primeira_secao_073" target="_blank" rel="noopener" title="Instagram da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use xlink:href="/svg,1686744883/footer#icon-footer-instagram"></use></svg>
+<span>Instagram</span>
+</a>
+<a href="https://www.linkedin.com/company/alura-latam/" class="footer-card-hotLinks-link" gtm-data="footer_primeira_secao_073" target="_blank" rel="noopener" title="Linkedin da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use xlink:href="/svg,1686744883/footer#icon-footer-linkedin"></use></svg>
+<span>Linkedin</span>
+</a>
+<a href="https://wa.me/+573175685241" class="footer-card-hotLinks-link" gtm-data="footer_primeira_secao_073" target="_blank" rel="noopener" title="Whatsapp da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use xlink:href="/svg,1686744883/footer#icon-footer-whatsapp"></use></svg>
+<span>Whatsapp</span>
+</a></div></div><div class="footer-column footer-column-cards"><link rel="stylesheet" href="./queEsMaven_files/activeCampaignNewsletterForm.1686744883.css"><div class="newsletter"><h2 class="newsletter-titulo">NOVEDADES Y LANZAMIENTOS</h2><form id="newsletter-form__activecampaign" class="newsletter-form" action="https://www.aluracursos.com/api/activecampaign" method="POST"><input type="hidden" name="list" value="14">
+<input type="hidden" name="ac_tag" value="">
+<input type="hidden" name="ac_tag_id" value="">
+<input type="hidden" name="retorno" value="/newsletter-cadastrado"><label for="email-newsletter">Email</label>
+<input type="email" name="email" class="newsletter-input" placeholder="Su email" id="email-newsletter"><button type="submit" class="newsletter-button buttonForm">Recibir</button>
+<span class="newsletter-message-error newsletter-message-error--disabled">Não foi possível assinar a newsletter</span><input type="hidden" name="full_url" value="https://www.aluracursos.com/blog/que-es-maven"><input type="hidden" name="user_agent" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"><input type="hidden" name="referral" value="https://app.aluracursos.com/"></form></div> <script>(function() {
+            function criaCampo(nome, valor, form) {
+                if (valor === null) return;
+
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = nome;
+                input.value = valor;
+
+                form.appendChild(input);
+            }
+
+            function param(name) {
+                var url = location.href;
+                name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+                var regexS = "[\\?&]"+name+"=([^&#]*)";
+                var regex = new RegExp( regexS );
+                var results = regex.exec( url );
+                return results == null ? null : results[1];
+            }
+
+            function showNewsletterError() {
+                document.querySelector('.newsletter-message-error').classList.remove('newsletter-message-error--disabled');
+            }
+
+            function valida() {
+                var isValid = true;
+                var inputList = document.querySelector('#newsletter-form__activecampaign')['list'];
+                var inputEmail = document.querySelector('#newsletter-form__activecampaign')['email'];
+
+                isValid = validaEmail(inputEmail.value) && validaList(inputList.value);
+
+                if(!isValid) {
+                    showNewsletterError();
+                }
+
+                return isValid;
+            }
+
+            function validaList(list) {
+                return list != '-1';
+            }
+
+            function validaEmail(email) {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+
+            var form = document.querySelector('#newsletter-form__activecampaign');
+            if(!form) return;
+
+            criaCampo('utm_source', param('utm_source'), form);
+            criaCampo('utm_campaign', param('utm_campaign'), form);
+            criaCampo('utm_medium', param('utm_medium'), form);
+            criaCampo('utm_term', param('utm_term'), form);
+            criaCampo('utm_content', param('utm_content'), form);
+            criaCampo('full_url', location.href, form);
+            criaCampo('user_agent', navigator.userAgent, form);
+            criaCampo('referral', document.referrer, form);
+
+            form.onsubmit = valida;
+
+        })();</script> <div class="footer-navegue empresa-governo"><h2 class="footer-navegacao-titulo">Aliados</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link --description">
+<img src="./queEsMaven_files/scale-up-endeavor.1686744883.png" alt="Programa de aceleração Scale-Up Endeavor" class="footer-navegue-lista__image" loading="lazy"></li><li class="footer-navegue-lista-link --description --partners">
+En Alura  somos unas de las Scale-Ups seleccionadas por Endeavor, programa de aceleración de las empresas que más crecen en el país.</li><li class="footer-navegue-lista-link --description">
+<img src="./queEsMaven_files/google-alumni-2021.1686744883.png" alt="Growth Academy 2021 do Google For Startups" class="footer-navegue-lista__image" loading="lazy"></li><li class="footer-navegue-lista-link --description --partners">
+Fuimos unas de las 7 startups seleccionadas por Google For Startups en participar del programa Growth Academy en 2021</li></ul></div></div><div class="footer-info"><div class="footer-logos">
+<a class="footer-logos-home" gtm-data="footer_primeira_secao_050" href="https://www.aluracursos.com/">
+<img src="./queEsMaven_files/alura-logo.1686744883.svg" alt="Alura" class="footer-logo" loading="lazy">
+</a></div>
+<a href="https://www.caelum.com.br/" gtm-data="footer_primeira_secao_051" class="footer-link-caelum"><h3 class="footer-powered-by">Powered by</h3>
+<img src="./queEsMaven_files/logo-grupo-alura.1686744883.svg" alt="Caelum" class="footer-caelumLogo">
+</a><div class="footer-card-hotLinks social-desktop"><p class="footer-navegue-lista-link --description">
+<span class="footer-empresa-item">AOVS Sistemas de Informática S.A</span>
+<span class="footer-empresa-item">CNPJ 05.555.382/0001-33</span></p><h2 class="footer-card-hotLinks-titulo">SÍGUENOS EN NUESTRAS REDES SOCIALES</h2><div class="footer-card-hotLinks-info footer-card-redes">
+<a href="https://www.youtube.com/channel/UCAy2irhcjZsOv1sWojOm_XQ/featured" gtm-data="footer_primeira_secao_065" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="YouTube da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-youtube"><use xlink:href="/svg,1686744883/footer#icon-footer-youtube"></use></svg>
+<span>YouTube</span>
+</a>
+<a href="https://www.facebook.com/aluracursoslatam/" gtm-data="footer_primeira_secao_066" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Facebook da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-facebook"><use xlink:href="/svg,1686744883/footer#icon-footer-facebook"></use></svg>
+<span>Facebook</span>
+</a>
+<a href="https://instagram.com/aluralatam" class="footer-card-hotLinks-link" gtm-data="footer_primeira_secao_073" target="_blank" rel="noopener" title="Instagram da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use xlink:href="/svg,1686744883/footer#icon-footer-instagram"></use></svg>
+<span>Instagram</span>
+</a>
+<a href="https://www.linkedin.com/company/alura-latam/" class="footer-card-hotLinks-link" gtm-data="footer_primeira_secao_073" target="_blank" rel="noopener" title="Linkedin da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use xlink:href="/svg,1686744883/footer#icon-footer-linkedin"></use></svg>
+<span>Linkedin</span>
+</a>
+<a href="https://wa.me/+573175685241" class="footer-card-hotLinks-link" gtm-data="footer_primeira_secao_073" target="_blank" rel="noopener" title="Whatsapp da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use xlink:href="/svg,1686744883/footer#icon-footer-whatsapp"></use></svg>
+<span>Whatsapp</span>
+</a></div></div></div></div></footer><section class="footer_categorias-formacoes"><div class="container"><div class="footer_categorias_wrapper"><h2 class="footer_categorias_title">Cursos</h2><div class="footer_categorias_categorias footer-navegue-lista-link"><div class="footer_categorias_categoria">
+<a href="https://www.aluracursos.com/cursos-online-programacao">Cursos de Programación</a><div class="footer_categorias_subcategorias">
+<a href="https://www.aluracursos.com/cursos-online-programacao/logica-de-programacion">
+Lógica de Programación										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-programacao/java">
+Java										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.aluracursos.com/cursos-online-front-end">Cursos de Front End</a><div class="footer_categorias_subcategorias">
+<a href="https://www.aluracursos.com/cursos-online-front-end/html-css">
+HTML y CSS										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-front-end/javascript">
+JavaScript										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-front-end/react">
+React										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.aluracursos.com/cursos-online-data-science">Cursos de Data Science</a><div class="footer_categorias_subcategorias">
+<a href="https://www.aluracursos.com/cursos-online-data-science/data-science">
+Data Science										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-data-science/machine-learning">
+Machine Learning										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-data-science/excel">
+Excel										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-data-science/base-datos">
+Base de Datos										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-data-science/data-visualization">
+Data Visualization										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-data-science/estadistica">
+Estadística										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.aluracursos.com/cursos-online-devops">Cursos de DevOps</a><div class="footer_categorias_subcategorias">
+<a href="https://www.aluracursos.com/cursos-online-devops/containers">
+Docker										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-devops/linux-comandos-y-procesos">
+Linux										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.aluracursos.com/cursos-online-inovacao-gestao">Cursos de Innovación y Gestión</a><div class="footer_categorias_subcategorias">
+<a href="https://www.aluracursos.com/cursos-online-inovacao-gestao/productividad-calidad-de-vida">
+Productividad y Calidad de Vida										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-inovacao-gestao/transformacion-agil">
+Transformación Ágil										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-inovacao-gestao/marketing-analytics">
+Marketing Analytics										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-inovacao-gestao/liderazgo-gestion-de-equipos">
+Liderazgo y Gestión de Equipos										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-inovacao-gestao/startups-emprendimiento">
+Startups y Emprendimiento										</a></div></div></div></div></div></section><style>@media not all and (min-width: 1024px) {
+			.grupoCaelum {
+				display: none;
+			}
+		}
+
+		.grupoCaelum {
+			background: #fff;
+			height: 400px;
+			border-top: 1px solid #EBEBEE;
+		}
+
+		.grupoCaelum .container {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			padding-top: 0;
+			padding-bottom: 0;
+			height: 100%;
+		}
+
+		.grupoCaelum-list {
+			display: flex;
+			list-style: none;
+			width: 80%;
+			justify-content: space-between;
+			align-items: flex-start;
+			margin-top: 1.25rem;
+		}
+
+		.grupoCaelum-title {
+			width: 20%;
+		}
+
+		.grupoCaelum-column {
+			display: inline-block;
+			padding-left: 1.1875rem;
+			width: 240px;
+			height: 350px;
+			min-width: 160px;
+		}
+
+		.grupoCaelum-column-title {
+			font-size: 0.625rem;
+			color: #d7e0e5;
+			text-transform: uppercase;
+			font-weight: 600;
+			margin-bottom: 1.1875rem;
+		}
+
+		.grupoCaelum-column-list {
+			list-style: none;
+		}
+
+		.column-item-title {
+			font-size: 0.6875rem;
+			text-align: center;
+			vertical-align: middle;
+			display: inline-block;
+			margin-left: 0.375rem;
+		}
+
+		.grupoCaelum-column:not(:first-child) {
+			border-left: solid 1px #e3e9ed;
+		}
+
+		.grupoCaelum-title {
+			display: inline-block;
+			text-decoration: none;
+			color: #657176;
+			letter-spacing: normal;
+			font-size: 1.125rem;
+			margin-top: 3.375rem;
+		}
+
+		.column-item-logo {
+			width: 30px;
+			height: 30px;
+			vertical-align: middle;
+			display: inline-block;
+		}
+
+		.column-item {
+			margin-bottom: 1.0625rem;
+		}
+
+		.column-item a {
+			text-decoration: none;
+			color: #657176;
+			display: flex;
+			align-items: center;
+		}</style><footer class="caelum-footer" id="caelum-footer"><div class="grupoCaelum"><div class="container"><p class="grupoCaelum-title">Alura</p><ul class="grupoCaelum-list"><li class="grupoCaelum-column"><p class="grupoCaelum-column-title">Educação em Tecnologia</p><ul class="grupoCaelum-column-list"><li class="column-item">
+<a target="_blank" href="https://www.fiap.com.br/">
+<img class="column-item-logo" src="./queEsMaven_files/fiap.svg" alt="logo fiap" loading="lazy">
+<span class="column-item-title">FIAP</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.casadocodigo.com.br/">
+<img class="column-item-logo" src="./queEsMaven_files/cdc.svg" alt="logo casa do codigo" loading="lazy">
+<span class="column-item-title">Casa do Código</span>
+</a></li><li class="column-item">
+<a target="_blank" style="fill: #657176" href="https://www.cursospm3.com.br/">
+<img class="column-item-logo" src="./queEsMaven_files/pm3.svg" alt="logo pm3" loading="lazy">
+<span class="column-item-title">PM3 - Cursos de Produto</span>
+</a></li></ul></li><li class="grupoCaelum-column"><p class="grupoCaelum-column-title">Mais Alura</p><ul class="grupoCaelum-column-list"><li class="column-item">
+<a target="_blank" href="https://www.alurastart.com.br/">
+<img class="column-item-logo" src="./queEsMaven_files/alurastart.svg" alt="logo alura start" loading="lazy">
+<span class="column-item-title">Alura Start</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.aluralingua.com.br/">
+<img class="column-item-logo" src="./queEsMaven_files/aluralingua.svg" alt="logo alura lingua" loading="lazy">
+<span class="column-item-title">Alura Língua</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.alura.com.br/empresas">
+<img class="column-item-logo" src="./queEsMaven_files/alura-empresas.svg" alt="logo alura para empresas" loading="lazy">
+<span class="column-item-title">Alura Para Empresas</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.aluracursos.com/">
+<img class="column-item-logo" src="./queEsMaven_files/alura.svg" alt="logo alura latam" loading="lazy">
+<span class="column-item-title">Alura LATAM</span>
+</a></li></ul></li><li class="grupoCaelum-column"><p class="grupoCaelum-column-title">Comunidade</p><ul class="grupoCaelum-column-list"><li class="column-item">
+<a target="_blank" href="https://techguide.sh/es">
+<img class="column-item-logo" src="./queEsMaven_files/techguide.svg" alt="logo tech guide" loading="lazy">
+<span class="column-item-title">Tech Guide</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://7daysofcode.io/">
+<img class="column-item-logo" src="./queEsMaven_files/7days.svg" alt="logo 7 days of code" loading="lazy">
+<span class="column-item-title">7 days of code</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://hipsters.jobs/">
+<img class="column-item-logo" src="./queEsMaven_files/hipstersjobs.svg" alt="logo Hipsters ponto Jobs" loading="lazy">
+<span class="column-item-title">Hipsters ponto Jobs</span>
+</a></li></ul></li><li class="grupoCaelum-column"><p class="grupoCaelum-column-title">Podcasts</p><ul class="grupoCaelum-column-list"><li class="column-item">
+<a target="_blank" href="https://hipsters.tech/">
+<img class="column-item-logo" src="./queEsMaven_files/hipsterstech.svg" alt="logo Hipsters ponto Tech" loading="lazy">
+<span class="column-item-title">Hipsters ponto Tech</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.devsemfronteiras.tech/">
+<img class="column-item-logo" src="./queEsMaven_files/devsemfronteiras.svg" alt="logo Dev sem fronteiras" loading="lazy">
+<span class="column-item-title">Dev sem Fronteiras</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://layerspontotech.com.br/">
+<img class="column-item-logo" src="./queEsMaven_files/layerstech.svg" alt="logo Layers ponto Tech" loading="lazy">
+<span class="column-item-title">Layers ponto Tech</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://scuba.dev.br/">
+<img class="column-item-logo" src="./queEsMaven_files/scubadev.svg" alt="logo Scuba Dev" loading="lazy">
+<span class="column-item-title">Scuba Dev</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://bolhadev.tech/">
+<img class="column-item-logo" src="./queEsMaven_files/bolhadev.svg" alt="logo bolha dev" loading="lazy">
+<span class="column-item-title">Bolha Dev</span>
+</a></li></ul></li></ul></div></div></footer> <script>(function() {
+            var match = location.pathname.match(/\/(bf-|blackfriday\/)([^\/]+)/);
+            if (match != null) {
+                var links = document.querySelectorAll('a[href]');
+                for (var i = 0; i < links.length; i++) {
+                    var href = links[i].getAttribute('href');
+                    if (href[0] === '/') {
+                        links[i].setAttribute('href', '/bf-' + match[2] + href);
+                    }
+                }
+            }
+        })();</script> <script src="./queEsMaven_files/svg4everybody.min.1686744883.js.descarga" async=""></script> <script src="./queEsMaven_files/menu.1686744883.js.descarga" async=""></script> <script src="./queEsMaven_files/busca.1686744883.js.descarga" async=""></script> <script src="./queEsMaven_files/cursos.1686744883.js.descarga" async=""></script> <script src="./queEsMaven_files/detect.1686744883.js.descarga" async=""></script> <script src="./queEsMaven_files/video.1686744883.js.descarga" async=""></script> <script src="./queEsMaven_files/footer.1686744883.js.descarga" async=""></script> <script src="./queEsMaven_files/convertImgToSVG.1686744883.js.descarga"></script> <script src="./queEsMaven_files/countdown.1686744883.js.descarga"></script> <script type="text/javascript">_linkedin_partner_id = "465017";
+			window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+			window._linkedin_data_partner_ids.push(_linkedin_partner_id);</script> <script type="text/javascript">(function(){var s = document.getElementsByTagName("script")[0];
+			var b = document.createElement("script");
+			b.type = "text/javascript";b.async = true;
+			b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+			s.parentNode.insertBefore(b, s);})();</script> <noscript>
+<img
+height="1" width="1" style="display:none;" alt=""
+src="https://dc.ads.linkedin.com/collect/?pid=465017&fmt=gif" />
+</noscript></body></html>

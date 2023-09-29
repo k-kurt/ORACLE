@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://www.aluracursos.com/blog/rest-concepto-y-fundamentos -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0"><title>REST: Concepto y Fundamentos | Alura Cursos Online</title><meta name="description" content=" REST (Representational State Transfer, que significa Transferencia Representacional de Estado) es un modelo de arquitectura y no un lenguaje o tecnología de p"><link rel="amphtml" href="https://www.aluracursos.com/blog/rest-concepto-y-fundamentos--amp"><link rel="canonical" href="https://www.aluracursos.com/blog/rest-concepto-y-fundamentos"><link rel="icon" href="https://www.aluracursos.com/assets/favicon.1686744883.ico"><link rel="preconnect" href="https://fonts.googleapis.com/"><link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin=""><link href="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/css2" rel="stylesheet"><link rel="stylesheet" href="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/titulos.1692056005.css"><link rel="stylesheet" href="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/artigos.1692056005.css"><link rel="stylesheet" href="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/highlight.1686744883.css"><meta property="og:locale" content="pt_BR"><meta property="og:description" content=" REST (Representational State Transfer, que significa Transferencia Representacional de Estado) es un modelo de arquitectura y no un lenguaje o tecnología de p"><meta property="og:title" content="REST: Concepto y Fundamentos | Alura Cursos Online"><meta property="og:site_name" content="Alura"><meta property="og:url" content="https://www.aluracursos.com/blog/rest-concepto-y-fundamentos"><meta property="og:image" content="https://www.aluracursos.com/blog/assets/https/portada.png"><meta property="og:image:alt" content="Alura logo"><meta property="fb:app_id" content="0"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#2A7AE4"><meta name="google-site-verification" content="e-ieHUO1JHyNyCZv0Z8Nu-R3ECPykHiNHHEhPdF35Bk"><meta name="thumbnail" content="https://www.aluracursos.com/blog/assets/https/portada.png"> <script type="text/javascript" async="" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/gtqukryqvi.js.descarga"></script><script type="text/javascript" async="" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/insight.min.js.descarga"></script><script async="" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/fbevents.js.descarga"></script><script src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/all.min.js.descarga"></script><script async="" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/qukryqvi.js.descarga"></script><script>;
+                (function(w, d, s, l, i) {
+                    w[l] = w[l] || [];
+                    w[l].push({
+                        'gtm.start': new Date().getTime(),
+                        event: 'gtm.js'
+                    });
+                    var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s),
+                        dl = l != 'dataLayer' ? '&l=' + l : '';
+                    j.async = true;
+                    j.src =
+                        'https://load.stape.alura.com.br/qukryqvi.js?id=' + i + dl;
+                    f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'dataLayerAlura', 'GTM-PFCN2KV');</script> <script>! function(a) {
+                    var b, c = "soclminer-jssdk",
+                        d = a.getElementsByTagName("script")[0];
+                    a.getElementById(c) || (b = a.createElement("script"), b.src = "https://plugins.soclminer.com.br/v3/sdk/all.min.js", d.parentNode.insertBefore(b, d))
+                }(document), window.soclInit = function() {
+                    socl.start("49a525fa-18fe-4032-ab66-f63315c9b1a6")
+                };</script> <script>window.setTimeout(function() {
+                    var e = /(smcid|smid_|smpid_|smpushoptin_|smtp|soclId|onsiteview_).*/g;
+
+                    function t(e) {
+                        for (var t = e + "=", i = decodeURIComponent(document.cookie).split(";"), o = 0; o < i.length; o++) {
+                            for (var a = i[o];
+                                " " == a.charAt(0);) a = a.substring(1);
+                            if (0 == a.indexOf(t)) return a.substring(t.length, a.length)
+                        }
+                        return ""
+                    }
+
+                    function i(e, i, o) {
+                        var a = "",
+                            n = new Date;
+                        n.setTime(n.getTime() + 864e5 * o);
+                        var r = t(e);
+                        if ("" == r) a = e + "=" + i + ";path=/;expires=" + n.toGMTString() + ";domain=" + /\..*/.exec(window.location.host)[0];
+                        else {
+                            var s = JSON.parse(r),
+                                c = JSON.parse(i),
+                                m = Object.assign(s, c);
+                            a = e + "=" + JSON.stringify(m) + ";path=/;expires=" + n.toGMTString() + ";domain=" + /\..*/.exec(window.location.host)[0]
+                        }
+                        document.cookie = a
+                    }
+                    var o = {};
+                    try {
+                        for (var a = 0, n = localStorage.length; a < n; a++) {
+                            var r = localStorage.key(a);
+                            r.match(e) && (o[r] = localStorage[r])
+                        }
+                    } catch (e) {
+                        o = {}
+                    }
+                    var s = {};
+                    try {
+                        var c = document.cookie.match(/(^|;) ?(smClosedOnSite_.*?|smClickOnSite_.*?|pagesview_.*?|onsiteview_.*?|onsiteview_.*?|onsiteview_.*?|smViewOnSite|smClickOnSite|smViewedPushOptin|smClosedPushOptin|smpushoptin_.*?)=([^;]*)(;|$)/g);
+                        c && (s = c.map(function(e) {
+                            return [e.match(/(^|;) ?.*=/)[0].replace(/^; /, "").replace(/=$/, ""), e.match(/=.*/)[0].replace(/;$/, "").replace(/^=/, "")]
+                        }).reduce(function(e, t) {
+                            return e[t[0]] = t[1], e
+                        }, {}))
+                    } catch (e) {
+                        s = {}
+                    }
+                    i("smDataLocalStorageCart", JSON.stringify(o), 2), i("smDataCookieCart", JSON.stringify(s), 2),
+                        function(e) {
+                            var i = JSON.parse(t(e));
+                            if (i)
+                                for (var o in i) localStorage.getItem(o) || localStorage.setItem(o, i[o])
+                        }("smDataLocalStorageCart")
+                }, 2e3);</script> <meta name="facebook-domain-verification" content="54emxndk85ngaqiydseadej06vtuvf">
+ <script async="" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/js"></script> <script>window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                gtag('js', new Date());
+                gtag('config', 'AW-586829347');</script> <script async="" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/analytics.js.descarga"></script> <script>var userId = (document.cookie.match('alura.userId=([^;]+)') || [null, null])[1];
+                window.ga = window.ga || function() {
+                    (ga.q = ga.q || []).push(arguments)
+                };
+                ga.l = +new Date;
+
+                                    ga(
+                        'create',
+                        'UA-42101548-21',
+                        'aluracursos.com',
+                        'tracker0', {
+                            'siteSpeedSampleRate': 50
+                        }
+                    );
+
+                    if (userId) ga('tracker0.set', 'userId', userId);
+
+                    ga('tracker0.require', 'displayfeatures');
+                    ga('tracker0.send', 'pageview');</script> <meta http-equiv="origin-trial" content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"></head><body class=""> <script async="" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/avatarOnError.1686744883.js.descarga"></script> <noscript><iframe
+src="https://www.googletagmanager.com/ns.html?id=GTM-PFCN2KV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>! function(f, b, e, v, n, t, s) {
+                        if (f.fbq) return;
+                        n = f.fbq = function() {
+                            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                        };
+                        if (!f._fbq) f._fbq = n;
+                        n.push = n;
+                        n.loaded = !0;
+                        n.version = '2.0';
+                        n.queue = [];
+                        t = b.createElement(e);
+                        t.async = !0;
+                        t.src = v;
+                        s = b.getElementsByTagName(e)[0];
+                        s.parentNode.insertBefore(t, s)
+                    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+                    fbq('init', '762861727832007');
+                    fbq('track', 'PageView');</script> <script>! function(f, b, e, v, n, t, s) {
+                    if (f.fbq) return;
+                    n = f.fbq = function() {
+                        n.callMethod ?
+                            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    };
+                    if (!f._fbq) f._fbq = n;
+                    n.push = n;
+                    n.loaded = !0;
+                    n.version = '2.0';
+                    n.queue = [];
+                    t = b.createElement(e);
+                    t.async = !0;
+                    t.src = v;
+                    s = b.getElementsByTagName(e)[0];
+                    s.parentNode.insertBefore(t, s)
+                }(window, document, 'script',
+                    'https://connect.facebook.net/en_US/fbevents.js');
+                fbq('init', '821937559664816');
+                fbq('track', 'PageView');</script> <noscript><img
+height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=821937559664816&ev=PageView&noscript=1" /></noscript> <script src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/courseIconFallback.1686744883.js.descarga"></script>  <script type="application/ld+json">{
+      "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https://www.aluracursos.com",
+          "name": "Alura Latam"
+        }
+      }   
+              ,{
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "https://www.aluracursos.com/blog",
+            "name": "Artigos"
+          }
+        }
+              ,{
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@id": "https://www.aluracursos.com/blog/rest-concepto-y-fundamentos",
+            "name": "REST: Concepto y Fundamentos"
+          }
+        }
+            ]
+    }</script> <link rel="stylesheet" href="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/headerGeral.1686744883.css"><link rel="stylesheet" href="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/dia-do-programador.css"><link rel="stylesheet" href="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/countdown.1686744883.css"><header class="header"><div class="container"><nav class="header__nav">
+<a href="https://www.aluracursos.com/" class="header__nav__link header__nav__link--logo">
+<img class="header__nav__link__logo" alt="Alura" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/alura-logo.1686744883.svg">
+</a><div class="header__nav__wrapper header__nav__wrapper--ctas"><div class="header-utilitario-busca" aria-label="Busca">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15">
+<g fill="none" fill-rule="evenodd" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(1 1)">
+<path d="M13.637 12.86l-3.526-3.527"></path>
+<circle cx="5.667" cy="5.667" r="5.667"></circle>
+</g>
+</svg></div>
+<a href="https://app.aluracursos.com/loginForm?urlAfterLogin=https://app.aluracursos.com/dashboard" class="header__nav__link header__nav__link--entrar">Iniciar Sesión</a>
+<a href="https://www.aluracursos.com/planos-cursos-online" class="header__nav__link header__nav__link--cta">Nuestros Planes</a></div><div class="header-barraBusca__wrapper"><div class="header-barraBusca"><div class="container"><form action="https://www.aluracursos.com/busca" class="header-barraBusca-form">
+<label for="header-barraBusca-form-campoBusca">¿Cuál curso estás buscando?</label>
+<input type="search" id="header-barraBusca-form-campoBusca" name="query" class="header-barraBusca-form-serch-input" placeholder="¿Cuál curso estás buscando?" required="">
+<button class="header-barraBusca-form-submit" type="submit"></button></form></div></div></div><div class="nav__courses__wrapper header__nav__wrapper header__nav__wrapper--menu"><div class="nav__courses__link header-navegacao-cursos">
+<svg class="header-navegacao-cursos-icone" xmlns:xlink="http://www.w3.org/1999/xlink">
+<use xlink:href="/svg,1605191409/header#icon-header-icon-arrow"></use>
+</svg>
+<span>Todos los</span>
+<span>Cursos</span></div>
+<a href="https://www.aluracursos.com/formaciones" class="nav__courses__link">
+<span>Formaciones</span>
+</a><a href="https://www.aluracursos.com/cursos" class="nav__courses__link">
+<span>Cursos</span>
+</a><a href="https://www.aluracursos.com/empresas" class="nav__courses__link">
+<span>Para </span>
+<span>Empresas</span>
+</a></div></nav></div><div class="--border-header-top"><div class="container"><ul class="header-navegacao-cursos-lista"><li class="header-cursos-lista-categoria ">
+<a href="https://www.aluracursos.com/cursos-online-programacao" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Programación</span></div>
+</a><div class="header-color--link" style="color: #00c86f;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.aluracursos.com/cursos-online-front-end" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Front End</span></div>
+</a><div class="header-color--link" style="color: #6bd1ff;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.aluracursos.com/cursos-online-data-science" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Data Science</span></div>
+</a><div class="header-color--link" style="color: #9cd33b;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.aluracursos.com/cursos-online-devops" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>DevOps</span></div>
+</a><div class="header-color--link" style="color: #f16165;"></div></li><li class="header-cursos-lista-categoria ">
+<a href="https://www.aluracursos.com/cursos-online-inovacao-gestao" class="unlinkify"><div class="header-lista-categoria-nome">
+<span>Innovación y Gestión</span></div>
+</a><div class="header-color--link" style="color: #ff8c2a;"></div></li></ul></div></div></header><div class="artigos-topo"><div class="container">
+<a href="https://www.aluracursos.com/blog" class="artigos-topo__label">
+Artículos de Tecnología
+</a></div></div> <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.aluracursos.com/blog/rest-concepto-y-fundamentos"
+  },
+  "headline": "REST: Concepto y Fundamentos",
+  "description": "",
+  "image": "https://www.aluracursos.com/blog/assets/https/portada.png",
+  "datePublished": "2022-11-18",
+      "author": {
+        "@type": "Organization",
+    "name": "Alura Latam",
+    "url": "https://www.aluracursos.com",
+    "logo": {
+      "@type": "ImageObject",
+    "url": "https://www.alura.com.br/assets/api/share/alura.jpg",
+      "height" : 60, 
+      "width" : 600,
+      "sameAs":["https://www.youtube.com/alura",
+               "https://www.facebook.com/AluraCursosOnline/",
+               "https://twitter.com/aluraonline",
+               "https://www.instagram.com/aluraonline/",
+               "https://play.google.com/store/apps/details?id=br.com.alura.mobi&hl=pt_BR&gl=US",
+               "https://apps.apple.com/br/app/alura-cursos-online/id1225776635"],
+      "contactPoint":{
+      "@type":"ContactPoint",
+     "email":"contato@alura.com.br",
+     "contactType":"customer support"
+     }},
+   "publisher": {
+    "@type": "Organization",
+    "name": "Alura Latam",
+    "url": "https://www.aluracursos.com",
+       "reviewedBy": {
+     "@type": "Person",
+     "name": "guilherme-lima",
+     "image": "https://cursos.alura.com.br/assets/images/forum/avatar_g.png"
+   }
+     }}}</script> <div class="cosmos-container cosmos-header"><h1>REST: Concepto y Fundamentos</h1><div class="cosmos-header-info"><div class="cosmos-author">
+<img class="cosmos-author-img" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/avatar_g.png" alt="guilherme-lima"><div class="cosmos-author-name">guilherme-lima</div>
+<time class="cosmos-author-date" datetime="2022-11-18 12:44">18/11/2022</time></div><link rel="stylesheet" href="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/cosmos-related-item.1692046561.css"></div></div><div class="cosmos-container cosmos-content">
+<img src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/portada.png" alt="img-portada" loading="lazy" class="cosmos-image"><p>REST (Representational State Transfer, que significa Transferencia Representacional de Estado) es un modelo de arquitectura y no un lenguaje o tecnología de programación, que proporciona pautas para que los sistemas distribuidos se comuniquen directamente utilizando principios y protocolos web existentes sin necesidad de <a href="https://es.wikipedia.org/wiki/Simple_Object_Access_Protocol" target="_blank" rel="noopener">SOAP</a> u otro protocolo sofisticado.</p><h3>El origen del termino REST</h3><p>Los conceptos de <strong>REST</strong> se presentaron en las tesis doctoral de <a href="https://en.wikipedia.org/wiki/Roy_Fielding" target="_blank" rel="noopener">Roy Fielding</a> en la década de los 2000, dónde el principio fundamental es utilizar el <a href="https://app.aluracursos.com/course/http-base-internet" target="_blank" rel="noopener">protocolo HTTP</a> para la comunicación de datos.</p><p>Puedes encontrar en este artículo:</p><ul><li>El origen del termino REST</li><li>Responsabilidades de REST</li><li>Solicitudes y comunicaciones</li><li>Métodos HTTP</li><li>Códigos de respuestas</li><li>Conclusión</li></ul><p>La arquitectura REST es simple y brinda acceso a los recursos para que el cliente REST acceda y represente los recursos en el lado del cliente. El estilo REST, URI o ID globales ayudan a identificar cada recurso.</p><p>Esta arquitectura utiliza varias representaciones de recursos para representar su tipo como XML, JSON, texto, imágenes,etc.</p><p>Vale la pena señalar que REST no se limita a registrar solicitudes y respuestas. También es posible insertar un nuevo registro o eliminar uno ya existente.</p><h3>Responsabilidad REST</h3><p>Existe un principio en REST llamado STATELESSNESS (sin estado), dónde el servidor no necesita saber en qué estado se encuentra el cliente y viceversa. Pero, ¿qué es un servidor y un cliente?</p><p><strong>Cliente:</strong> Es el componente solicitante de un servicio que envía solicitudes de varios tipos de servicios al servidor.</p><p><strong>Servidor:</strong> Es el componente que es el provedor de servicios y propociona continuamente servicios al cliente según las solicitudes.</p><p>En esta arquitectura el modelo, cliente-servidor ayuda en la separación de responsabilidades entre la interfaz de usuario y el almacenamiento de datos. Es decir, cuando se realiza una solicitud REST, el servidor envía una representación de los estados que se solicitaron.</p><p>No existe un límite tope en la cantidad de clientes que un solo servidor puede atender. Tampoco es obligatorio que el cliente y el servidor se encuentren en sistemas separados.</p><p>La comunicación entre el cliente y el servidor se lleva a cabo mediante el intercambio de mensajes utilizando un patrón de solicitud-respuesta. El cliente básicamente envía una solicitud de servicio y el servidor devuelve una respuesta.</p><h3>Solicitudes y comunicaciones</h3><p>REST requiere que un cliente realice una solicitud al servidor para enviar o modificar datos. Una solicitud consiste en:</p><ul><li>Un verbo o método HTTP que define qué tipo de operación realizará el servidor.</li><li>Un encabezado, con el encabezado de solicitud que pasa información sobre la solicitud.</li><li>Un camino o ruta al servidor, como por ej: <a href="https://app.aluracursos.com/course/http-base-internet" target="_blank" rel="noopener">https://app.aluracursos.com/course/http-base-internet</a></li><li>Información en el cuerpo de la solicitud, siendo esta información opcional.</li></ul><h3>Métodos HTTP</h3><p>En la aplicación REST, los métodos más utilizados son:</p><ul><li><p>El método GET es el método más común, generalmente se usa para solicitar a un servidor que envíe un recurso;</p></li><li><p>El método POST está diseñado para enviar datos de entrada al servidor. En la práctica, a menudo se usa para admitir formularios HTML;</p></li><li><p>El método PUT edita y actualiza documentos en un servidor;</p></li><li><p>El método DELETE que, como su nombre lo indica, elimina un determinado dato o colección del servidor.</p><p>En <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Methods" target="_blank" rel="noopener">este enlace</a> encontrarás la lista completa de todos los métodos.</p></li></ul><h3>Códigos de respuesta</h3><p>A cada respuesta que devuelve la aplicación REST se le envía un código que define el estado de la solicitud. Por ejemplo:</p><ul><li><p>200 (OK) solicitud cumplida con éxito.</p></li><li><p>201 (CREADO) objeto o recurso creado con éxito.</p></li><li><p>204 (SIN CONTENIDO) objeto o recurso eliminado con éxito.</p></li><li><p>400 (MALA SOLICITUD) ocurrió un error en la solicitud (puede haber numerosas causas).</p></li><li><p>404 (NO ENCONTRADO) ruta o colección no encontrada.</p></li><li><p>500 (ERROR INTERNO DEL SERVIDOR), se ha producido algún error del servidor.</p><p>Estos son los principales, no obstante en <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Status" target="_blank" rel="noopener">este enlace</a> encontrarás la lista completa del código de cada solicitud.</p></li></ul><h3>Conclusión</h3><p>En este artículo presentamos el origen, conceptos y fundamentos principales de REST. <a href="https://app.aluracursos.com/formacoes" target="_blank" rel="noopener">Los cursos de programación de Alura</a> pueden ayudarte a iniciarte, aprender y desarrollarte en tecnología y además, luego puedes profundizar y <a href="https://app.aluracursos.com/formacion-react" target="_blank" rel="noopener">utilizar esta arquitectura en la gestión de estados de React</a> por ejemplo.</p>
+<img src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/perfil-guilherme.png" alt="img-autor" loading="lazy" class="cosmos-image"><p><strong>Guilherme Lima</strong></p><p>Es desarrollador de software con título en Sistemas de Información y experiencia en programación usando diferentes tecnologías como Python, Javascript y Go. Creador de más de 30 cursos en diferentes áreas de la plataforma enfocados en la formación de profesionales de TI, como Data Science, Python para la web con Django y Django Rest, juegos con Javascript, Infraestructura como código con Terraform y Ansible, Orientación a objetos con Go. Además es instructor de Dev Immersion en Alura.</p><p>Traducido por <strong>Luis Puig</strong></p></div><div class="cosmos-container cosmos-header"></div><div class="artigos-topo"><div class="container"><a href="https://www.aluracursos.com/blog" class="artigos-topo__label">
+Artículos de Tecnología
+</a></div></div><link rel="stylesheet" href="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/planosPagamentoOld.1692056005.css"><section class="planos-pagamento" id="planos-cursos-online"><h2 class="planos-pagamento__titulo">
+En Alura encontrarás variados cursos sobre . ¡Comienza ahora!</h2><div class="container"><div class="planos-pagamento__planos "><div class="animation-trigger --animate"></div><div class="planos-pagamento__plano planos-pagamento__plano--semestral " data-payment-plan="" data-payment-plan-price="49,90"><div class="planos-pagamento__header"><h3 class="planos-pagamento__nome">
+Semestral</h3></div><ul class="planos-pagamento__vantagens"><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span class="planos-pagamento__label">247 cursos</span><div class="planos-pagamento__legenda-tooltip"><p class="planos-pagamento__legenda-descricao">Cursos de Programación, Front End, Data Science, Innovación y Gestión.</p></div></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Videos y actividades 100% en Español</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Certificado de participación</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Estudia las 24 horas, los 7 días de la semana</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Foro y comunidad exclusiva  para resolver tus dudas</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Acceso a todo el contenido de la plataforma por 6 meses</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li></ul><div class="planos-pagamento__precos "><div class="planos-pagamento__preco-total">
+<span class="planos-pagamento__valor-parcela">US$49,90</span></div><div class="planos-pagamento__preco-vista">
+<span class="planos-pagamento__label-vista">un solo pago de</span>
+<span class="planos-pagamento__valor-vista">US$49,90</span></div></div><a class="planos-pagamento__cta" href="https://www.aluracursos.com/compra/semestral/">
+¡QUIERO EMPEZAR A ESTUDIAR!
+</a><p id="myBtn" class="button-open-modal">Paga en moneda local en los siguientes países</p></div><div class="planos-pagamento__plano planos-pagamento__plano--anual planos-pagamento__plano--best" data-payment-plan="" data-payment-plan-price="79,90"><div class="planos-pagamento__header"><h3 class="planos-pagamento__nome">
+Anual</h3></div><ul class="planos-pagamento__vantagens"><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span class="planos-pagamento__label">247 cursos</span><div class="planos-pagamento__legenda-tooltip"><p class="planos-pagamento__legenda-descricao">Cursos de Programación, Front End, Data Science, Innovación y Gestión.</p></div></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Videos y actividades 100% en Español</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Certificado de participación</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Estudia las 24 horas, los 7 días de la semana</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Foro y comunidad exclusiva  para resolver tus dudas</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Acceso a todo el contenido de la plataforma por 12 meses</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li></ul><div class="planos-pagamento__precos "><div class="planos-pagamento__preco-total">
+<span class="planos-pagamento__valor-parcela">US$79,90</span></div><div class="planos-pagamento__preco-vista">
+<span class="planos-pagamento__label-vista">un solo pago de</span>
+<span class="planos-pagamento__valor-vista">US$79,90</span></div></div><a class="planos-pagamento__cta" href="https://www.aluracursos.com/compra/anual/">
+¡QUIERO EMPEZAR A ESTUDIAR!
+</a><p id="myBtn" class="button-open-modal">Paga en moneda local en los siguientes países</p></div><div class="planos-pagamento__plano planos-pagamento__plano--bootcampsds2 " data-payment-plan="" data-payment-plan-price="119,90"><div class="planos-pagamento__header"><h3 class="planos-pagamento__nome">
+Bootcamp Data Science 2</h3></div><ul class="planos-pagamento__vantagens"><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span class="planos-pagamento__label">247 cursos</span><div class="planos-pagamento__legenda-tooltip"><p class="planos-pagamento__legenda-descricao">Cursos de Programación, Front End, Data Science, Innovación y Gestión.</p></div></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Videos y actividades 100% en Español</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Certificado de participación</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Estudia las 24 horas, los 7 días de la semana</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Foro y comunidad exclusiva  para resolver tus dudas</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span class="planos-pagamento__label">Acceso a la Formación - Python para análisis de datos - Bootcamp DS2</span><div class="planos-pagamento__legenda-tooltip"><p class="planos-pagamento__legenda-descricao">Aprende como trabajar con Python a través de las principales bibliotecas enfocadas en Data Science.</p></div></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li><li class="planos-pagamento__vantagem__largest"><div class="planos-pagamento__wrapper ">
+<span class="planos-pagamento__label">Acceso a todo el contenido de la plataforma por 12 meses</span></div><div class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use xlink:href="/svg,1686744883/planosPagamento#icon-planosPagamento-checked"></use></svg></div></li></ul><div class="planos-pagamento__precos "><div class="planos-pagamento__preco-total">
+<span class="planos-pagamento__valor-parcela">US$119,90</span></div><div class="planos-pagamento__preco-vista">
+<span class="planos-pagamento__label-vista">un solo pago de</span>
+<span class="planos-pagamento__valor-vista">US$119,90</span></div></div><a class="planos-pagamento__cta" href="https://www.aluracursos.com/compra/bootcampsds2/">
+¡QUIERO EMPEZAR A ESTUDIAR!
+</a><p id="myBtn" class="button-open-modal">Paga en moneda local en los siguientes países</p></div></div></div><div id="modal-currency" class="modal-currency"><div class="modal-currency-content"><div><p class="modal-currency-title">Puedes realizar el pago de tus <span style="font-weight: bold">planes</span> en moneda local en los siguientes países:</p><div class="modal-table-currency-wrapper"><table class="modal-table"><tbody><tr><th style="background-color: #0076BA">País</th><th><img class="modal-currency-flags" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/argentina.1686744883.svg"></th><th><img class="modal-currency-flags" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/bolivia.1686744883.svg"></th><th><img class="modal-currency-flags" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/chile.1686744883.svg"></th><th><img class="modal-currency-flags" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/colombia.1686744883.svg"></th><th><img class="modal-currency-flags" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/ecuador.1686744883.svg"></th><th><img class="modal-currency-flags" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/peru.1686744883.svg"></th><th><img class="modal-currency-flags" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/mexico.1686744883.svg"></th><th><img class="modal-currency-flags" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/uruguay.1686744883.svg"></th></tr><tr><td class="modal-table-title">Plan Semestral</td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>39181.34</span>
+<span>ARS</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>369.04</span>
+<span>BOB</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>47638.00</span>
+<span>CLP</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>214394.72</span>
+<span>COP</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>49.90</span>
+<span>USD</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>200.35</span>
+<span>PEN</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>923.66</span>
+<span>MXN</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>2016.81</span>
+<span>UYU</span></div></td></tr><tr><td class="modal-table-title">Plan Anual</td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>62737.25</span>
+<span>ARS</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>590.90</span>
+<span>BOB</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>76278.09</span>
+<span>CLP</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>343289.35</span>
+<span>COP</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>79.90</span>
+<span>USD</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>320.80</span>
+<span>PEN</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>1478.97</span>
+<span>MXN</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>3229.32</span>
+<span>UYU</span></div></td></tr><tr><td class="modal-table-title">Plan Bootcamp Data Science 2</td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>94145.14</span>
+<span>ARS</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>886.73</span>
+<span>BOB</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>114464.87</span>
+<span>CLP</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>515148.85</span>
+<span>COP</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>119.90</span>
+<span>USD</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>481.41</span>
+<span>PEN</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>2219.38</span>
+<span>MXN</span></div></td><td class="modal-table-td"><div class="modal-table-td-wrapper">
+<span>4846.01</span>
+<span>UYU</span></div></td></tr></tbody></table></div></div>
+<span style="color: #abb0b5; float: right; font-size: 9px;">*valores aproximados calculados en función a la tasa de cambio</span></div></div><div class="planosPagamento-vantagens"><div class="container"><div class="planosPagamento-vantagens-vantagem acesso">
+<img src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/icon-plan-calendar.1686744883.svg"><p>Acceso a todos<br>los cursos</p></div><div class="planosPagamento-vantagens-vantagem horas">
+<img src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/icon-plan-moon.1686744883.svg"><p>Estudia las 24 horas,<br>dónde y cuándo quieras</p></div><div class="planosPagamento-vantagens-vantagem novos">
+<img src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/icon-plan-reload.1686744883.svg"><p>Nuevos cursos<br>cada semana</p></div></div></div></section> <script src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/planosPagamentoOld.1686744883.js.descarga"></script> <script src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/openModal.1686744883.js.descarga"></script> <link rel="stylesheet" href="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/footer.1686744883.css"><footer class="footer"><div class="container"><div class="footer-navegue"><h2 class="footer-navegacao-titulo">Navegación</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link"><a href="https://www.aluracursos.com/planos-cursos-online" gtm-data="footer_primeira_secao_053">Planes</a></li><li class="footer-navegue-lista-link"><a href="https://www.aluracursos.com/instrutores" gtm-data="footer_primeira_secao_056">Instructores</a></li><li class="footer-navegue-lista-link"><a href="https://www.aluracursos.com/blog" gtm-data="footer_primeira_secao_059">Blog</a></li><li class="footer-navegue-lista-link"><a href="https://www.aluracursos.com/politica-de-privacidade" gtm-data="footer_primeira_secao_061">Política de privacidad</a></li><li class="footer-navegue-lista-link"><a href="https://www.aluracursos.com/termos-de-uso" gtm-data="footer_primeira_secao_062">Términos de uso</a></li><li class="footer-navegue-lista-link"><a href="https://www.aluracursos.com/sobre" gtm-data="footer_primeira_secao_063">Sobre nosotros</a></li><li class="footer-navegue-lista-link"><a href="https://soporte.aluracursos.com/es-LA/support/home" gtm-data="footer_primeira_secao_064">Preguntas frecuentes</a></li></ul><h2 class="footer-navegacao-titulo">¡CONTÁCTANOS!</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link"><a href="https://www.aluracursos.com/contato">¡Quiero entrar en contacto!</a></li></ul><h2 class="footer-navegacao-titulo">Blog</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link">
+<a href="https://www.aluracursos.com/blog/programacao">
+Programación							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.aluracursos.com/blog/front-end">
+Front End							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.aluracursos.com/blog/data-science">
+Data Science							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.aluracursos.com/blog/inovacao-gestao">
+Innovación y Gestión							</a></li><li class="footer-navegue-lista-link">
+<a href="https://www.aluracursos.com/blog/devops">
+DevOps							</a></li></ul></div><div class="footer-card-hotLinks social-mobile"><p class="footer-navegue-lista-link --description">
+<span class="footer-empresa-item">AOVS Sistemas de Informática S.A</span>
+<span class="footer-empresa-item">CNPJ 05.555.382/0001-33</span></p><h2 class="footer-card-hotLinks-titulo">SÍGUENOS EN NUESTRAS REDES SOCIALES</h2><div class="footer-card-hotLinks-info footer-card-redes">
+<a href="https://www.youtube.com/channel/UCAy2irhcjZsOv1sWojOm_XQ/featured" gtm-data="footer_primeira_secao_065" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="YouTube da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-youtube"><use xlink:href="/svg,1686744883/footer#icon-footer-youtube"></use></svg>
+<span>YouTube</span>
+</a>
+<a href="https://www.facebook.com/aluracursoslatam/" gtm-data="footer_primeira_secao_066" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Facebook da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-facebook"><use xlink:href="/svg,1686744883/footer#icon-footer-facebook"></use></svg>
+<span>Facebook</span>
+</a>
+<a href="https://instagram.com/aluralatam" class="footer-card-hotLinks-link" gtm-data="footer_primeira_secao_073" target="_blank" rel="noopener" title="Instagram da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use xlink:href="/svg,1686744883/footer#icon-footer-instagram"></use></svg>
+<span>Instagram</span>
+</a>
+<a href="https://www.linkedin.com/company/alura-latam/" class="footer-card-hotLinks-link" gtm-data="footer_primeira_secao_073" target="_blank" rel="noopener" title="Linkedin da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use xlink:href="/svg,1686744883/footer#icon-footer-linkedin"></use></svg>
+<span>Linkedin</span>
+</a>
+<a href="https://wa.me/+573175685241" class="footer-card-hotLinks-link" gtm-data="footer_primeira_secao_073" target="_blank" rel="noopener" title="Whatsapp da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use xlink:href="/svg,1686744883/footer#icon-footer-whatsapp"></use></svg>
+<span>Whatsapp</span>
+</a></div></div><div class="footer-column footer-column-cards"><link rel="stylesheet" href="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/activeCampaignNewsletterForm.1686744883.css"><div class="newsletter"><h2 class="newsletter-titulo">NOVEDADES Y LANZAMIENTOS</h2><form id="newsletter-form__activecampaign" class="newsletter-form" action="https://www.aluracursos.com/api/activecampaign" method="POST"><input type="hidden" name="list" value="14">
+<input type="hidden" name="ac_tag" value="">
+<input type="hidden" name="ac_tag_id" value="">
+<input type="hidden" name="retorno" value="/newsletter-cadastrado"><label for="email-newsletter">Email</label>
+<input type="email" name="email" class="newsletter-input" placeholder="Su email" id="email-newsletter"><button type="submit" class="newsletter-button buttonForm">Recibir</button>
+<span class="newsletter-message-error newsletter-message-error--disabled">Não foi possível assinar a newsletter</span><input type="hidden" name="full_url" value="https://www.aluracursos.com/blog/rest-concepto-y-fundamentos"><input type="hidden" name="user_agent" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"><input type="hidden" name="referral" value="https://app.aluracursos.com/"></form></div> <script>(function() {
+            function criaCampo(nome, valor, form) {
+                if (valor === null) return;
+
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = nome;
+                input.value = valor;
+
+                form.appendChild(input);
+            }
+
+            function param(name) {
+                var url = location.href;
+                name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+                var regexS = "[\\?&]"+name+"=([^&#]*)";
+                var regex = new RegExp( regexS );
+                var results = regex.exec( url );
+                return results == null ? null : results[1];
+            }
+
+            function showNewsletterError() {
+                document.querySelector('.newsletter-message-error').classList.remove('newsletter-message-error--disabled');
+            }
+
+            function valida() {
+                var isValid = true;
+                var inputList = document.querySelector('#newsletter-form__activecampaign')['list'];
+                var inputEmail = document.querySelector('#newsletter-form__activecampaign')['email'];
+
+                isValid = validaEmail(inputEmail.value) && validaList(inputList.value);
+
+                if(!isValid) {
+                    showNewsletterError();
+                }
+
+                return isValid;
+            }
+
+            function validaList(list) {
+                return list != '-1';
+            }
+
+            function validaEmail(email) {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+
+            var form = document.querySelector('#newsletter-form__activecampaign');
+            if(!form) return;
+
+            criaCampo('utm_source', param('utm_source'), form);
+            criaCampo('utm_campaign', param('utm_campaign'), form);
+            criaCampo('utm_medium', param('utm_medium'), form);
+            criaCampo('utm_term', param('utm_term'), form);
+            criaCampo('utm_content', param('utm_content'), form);
+            criaCampo('full_url', location.href, form);
+            criaCampo('user_agent', navigator.userAgent, form);
+            criaCampo('referral', document.referrer, form);
+
+            form.onsubmit = valida;
+
+        })();</script> <div class="footer-navegue empresa-governo"><h2 class="footer-navegacao-titulo">Aliados</h2><ul class="footer-navegue-lista"><li class="footer-navegue-lista-link --description">
+<img src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/scale-up-endeavor.1686744883.png" alt="Programa de aceleração Scale-Up Endeavor" class="footer-navegue-lista__image" loading="lazy"></li><li class="footer-navegue-lista-link --description --partners">
+En Alura  somos unas de las Scale-Ups seleccionadas por Endeavor, programa de aceleración de las empresas que más crecen en el país.</li><li class="footer-navegue-lista-link --description">
+<img src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/google-alumni-2021.1686744883.png" alt="Growth Academy 2021 do Google For Startups" class="footer-navegue-lista__image" loading="lazy"></li><li class="footer-navegue-lista-link --description --partners">
+Fuimos unas de las 7 startups seleccionadas por Google For Startups en participar del programa Growth Academy en 2021</li></ul></div></div><div class="footer-info"><div class="footer-logos">
+<a class="footer-logos-home" gtm-data="footer_primeira_secao_050" href="https://www.aluracursos.com/">
+<img src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/alura-logo.1686744883.svg" alt="Alura" class="footer-logo" loading="lazy">
+</a></div>
+<a href="https://www.caelum.com.br/" gtm-data="footer_primeira_secao_051" class="footer-link-caelum"><h3 class="footer-powered-by">Powered by</h3>
+<img src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/logo-grupo-alura.1686744883.svg" alt="Caelum" class="footer-caelumLogo">
+</a><div class="footer-card-hotLinks social-desktop"><p class="footer-navegue-lista-link --description">
+<span class="footer-empresa-item">AOVS Sistemas de Informática S.A</span>
+<span class="footer-empresa-item">CNPJ 05.555.382/0001-33</span></p><h2 class="footer-card-hotLinks-titulo">SÍGUENOS EN NUESTRAS REDES SOCIALES</h2><div class="footer-card-hotLinks-info footer-card-redes">
+<a href="https://www.youtube.com/channel/UCAy2irhcjZsOv1sWojOm_XQ/featured" gtm-data="footer_primeira_secao_065" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="YouTube da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-youtube"><use xlink:href="/svg,1686744883/footer#icon-footer-youtube"></use></svg>
+<span>YouTube</span>
+</a>
+<a href="https://www.facebook.com/aluracursoslatam/" gtm-data="footer_primeira_secao_066" class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Facebook da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-facebook"><use xlink:href="/svg,1686744883/footer#icon-footer-facebook"></use></svg>
+<span>Facebook</span>
+</a>
+<a href="https://instagram.com/aluralatam" class="footer-card-hotLinks-link" gtm-data="footer_primeira_secao_073" target="_blank" rel="noopener" title="Instagram da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use xlink:href="/svg,1686744883/footer#icon-footer-instagram"></use></svg>
+<span>Instagram</span>
+</a>
+<a href="https://www.linkedin.com/company/alura-latam/" class="footer-card-hotLinks-link" gtm-data="footer_primeira_secao_073" target="_blank" rel="noopener" title="Linkedin da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use xlink:href="/svg,1686744883/footer#icon-footer-linkedin"></use></svg>
+<span>Linkedin</span>
+</a>
+<a href="https://wa.me/+573175685241" class="footer-card-hotLinks-link" gtm-data="footer_primeira_secao_073" target="_blank" rel="noopener" title="Whatsapp da Alura">
+<svg class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use xlink:href="/svg,1686744883/footer#icon-footer-whatsapp"></use></svg>
+<span>Whatsapp</span>
+</a></div></div></div></div></footer><section class="footer_categorias-formacoes"><div class="container"><div class="footer_categorias_wrapper"><h2 class="footer_categorias_title">Cursos</h2><div class="footer_categorias_categorias footer-navegue-lista-link"><div class="footer_categorias_categoria">
+<a href="https://www.aluracursos.com/cursos-online-programacao">Cursos de Programación</a><div class="footer_categorias_subcategorias">
+<a href="https://www.aluracursos.com/cursos-online-programacao/logica-de-programacion">
+Lógica de Programación										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-programacao/java">
+Java										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.aluracursos.com/cursos-online-front-end">Cursos de Front End</a><div class="footer_categorias_subcategorias">
+<a href="https://www.aluracursos.com/cursos-online-front-end/html-css">
+HTML y CSS										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-front-end/javascript">
+JavaScript										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-front-end/react">
+React										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.aluracursos.com/cursos-online-data-science">Cursos de Data Science</a><div class="footer_categorias_subcategorias">
+<a href="https://www.aluracursos.com/cursos-online-data-science/data-science">
+Data Science										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-data-science/machine-learning">
+Machine Learning										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-data-science/excel">
+Excel										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-data-science/base-datos">
+Base de Datos										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-data-science/data-visualization">
+Data Visualization										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-data-science/estadistica">
+Estadística										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.aluracursos.com/cursos-online-devops">Cursos de DevOps</a><div class="footer_categorias_subcategorias">
+<a href="https://www.aluracursos.com/cursos-online-devops/containers">
+Docker										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-devops/linux-comandos-y-procesos">
+Linux										</a></div></div><div class="footer_categorias_categoria">
+<a href="https://www.aluracursos.com/cursos-online-inovacao-gestao">Cursos de Innovación y Gestión</a><div class="footer_categorias_subcategorias">
+<a href="https://www.aluracursos.com/cursos-online-inovacao-gestao/productividad-calidad-de-vida">
+Productividad y Calidad de Vida										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-inovacao-gestao/transformacion-agil">
+Transformación Ágil										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-inovacao-gestao/marketing-analytics">
+Marketing Analytics										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-inovacao-gestao/liderazgo-gestion-de-equipos">
+Liderazgo y Gestión de Equipos										</a>
+|																			<a href="https://www.aluracursos.com/cursos-online-inovacao-gestao/startups-emprendimiento">
+Startups y Emprendimiento										</a></div></div></div></div></div></section><style>@media not all and (min-width: 1024px) {
+			.grupoCaelum {
+				display: none;
+			}
+		}
+
+		.grupoCaelum {
+			background: #fff;
+			height: 400px;
+			border-top: 1px solid #EBEBEE;
+		}
+
+		.grupoCaelum .container {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			padding-top: 0;
+			padding-bottom: 0;
+			height: 100%;
+		}
+
+		.grupoCaelum-list {
+			display: flex;
+			list-style: none;
+			width: 80%;
+			justify-content: space-between;
+			align-items: flex-start;
+			margin-top: 1.25rem;
+		}
+
+		.grupoCaelum-title {
+			width: 20%;
+		}
+
+		.grupoCaelum-column {
+			display: inline-block;
+			padding-left: 1.1875rem;
+			width: 240px;
+			height: 350px;
+			min-width: 160px;
+		}
+
+		.grupoCaelum-column-title {
+			font-size: 0.625rem;
+			color: #d7e0e5;
+			text-transform: uppercase;
+			font-weight: 600;
+			margin-bottom: 1.1875rem;
+		}
+
+		.grupoCaelum-column-list {
+			list-style: none;
+		}
+
+		.column-item-title {
+			font-size: 0.6875rem;
+			text-align: center;
+			vertical-align: middle;
+			display: inline-block;
+			margin-left: 0.375rem;
+		}
+
+		.grupoCaelum-column:not(:first-child) {
+			border-left: solid 1px #e3e9ed;
+		}
+
+		.grupoCaelum-title {
+			display: inline-block;
+			text-decoration: none;
+			color: #657176;
+			letter-spacing: normal;
+			font-size: 1.125rem;
+			margin-top: 3.375rem;
+		}
+
+		.column-item-logo {
+			width: 30px;
+			height: 30px;
+			vertical-align: middle;
+			display: inline-block;
+		}
+
+		.column-item {
+			margin-bottom: 1.0625rem;
+		}
+
+		.column-item a {
+			text-decoration: none;
+			color: #657176;
+			display: flex;
+			align-items: center;
+		}</style><footer class="caelum-footer" id="caelum-footer"><div class="grupoCaelum"><div class="container"><p class="grupoCaelum-title">Alura</p><ul class="grupoCaelum-list"><li class="grupoCaelum-column"><p class="grupoCaelum-column-title">Educação em Tecnologia</p><ul class="grupoCaelum-column-list"><li class="column-item">
+<a target="_blank" href="https://www.fiap.com.br/">
+<img class="column-item-logo" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/fiap.svg" alt="logo fiap" loading="lazy">
+<span class="column-item-title">FIAP</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.casadocodigo.com.br/">
+<img class="column-item-logo" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/cdc.svg" alt="logo casa do codigo" loading="lazy">
+<span class="column-item-title">Casa do Código</span>
+</a></li><li class="column-item">
+<a target="_blank" style="fill: #657176" href="https://www.cursospm3.com.br/">
+<img class="column-item-logo" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/pm3.svg" alt="logo pm3" loading="lazy">
+<span class="column-item-title">PM3 - Cursos de Produto</span>
+</a></li></ul></li><li class="grupoCaelum-column"><p class="grupoCaelum-column-title">Mais Alura</p><ul class="grupoCaelum-column-list"><li class="column-item">
+<a target="_blank" href="https://www.alurastart.com.br/">
+<img class="column-item-logo" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/alurastart.svg" alt="logo alura start" loading="lazy">
+<span class="column-item-title">Alura Start</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.aluralingua.com.br/">
+<img class="column-item-logo" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/aluralingua.svg" alt="logo alura lingua" loading="lazy">
+<span class="column-item-title">Alura Língua</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.alura.com.br/empresas">
+<img class="column-item-logo" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/alura-empresas.svg" alt="logo alura para empresas" loading="lazy">
+<span class="column-item-title">Alura Para Empresas</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.aluracursos.com/">
+<img class="column-item-logo" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/alura.svg" alt="logo alura latam" loading="lazy">
+<span class="column-item-title">Alura LATAM</span>
+</a></li></ul></li><li class="grupoCaelum-column"><p class="grupoCaelum-column-title">Comunidade</p><ul class="grupoCaelum-column-list"><li class="column-item">
+<a target="_blank" href="https://techguide.sh/es">
+<img class="column-item-logo" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/techguide.svg" alt="logo tech guide" loading="lazy">
+<span class="column-item-title">Tech Guide</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://7daysofcode.io/">
+<img class="column-item-logo" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/7days.svg" alt="logo 7 days of code" loading="lazy">
+<span class="column-item-title">7 days of code</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://hipsters.jobs/">
+<img class="column-item-logo" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/hipstersjobs.svg" alt="logo Hipsters ponto Jobs" loading="lazy">
+<span class="column-item-title">Hipsters ponto Jobs</span>
+</a></li></ul></li><li class="grupoCaelum-column"><p class="grupoCaelum-column-title">Podcasts</p><ul class="grupoCaelum-column-list"><li class="column-item">
+<a target="_blank" href="https://hipsters.tech/">
+<img class="column-item-logo" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/hipsterstech.svg" alt="logo Hipsters ponto Tech" loading="lazy">
+<span class="column-item-title">Hipsters ponto Tech</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://www.devsemfronteiras.tech/">
+<img class="column-item-logo" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/devsemfronteiras.svg" alt="logo Dev sem fronteiras" loading="lazy">
+<span class="column-item-title">Dev sem Fronteiras</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://layerspontotech.com.br/">
+<img class="column-item-logo" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/layerstech.svg" alt="logo Layers ponto Tech" loading="lazy">
+<span class="column-item-title">Layers ponto Tech</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://scuba.dev.br/">
+<img class="column-item-logo" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/scubadev.svg" alt="logo Scuba Dev" loading="lazy">
+<span class="column-item-title">Scuba Dev</span>
+</a></li><li class="column-item">
+<a target="_blank" href="https://bolhadev.tech/">
+<img class="column-item-logo" src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/bolhadev.svg" alt="logo bolha dev" loading="lazy">
+<span class="column-item-title">Bolha Dev</span>
+</a></li></ul></li></ul></div></div></footer> <script>(function() {
+            var match = location.pathname.match(/\/(bf-|blackfriday\/)([^\/]+)/);
+            if (match != null) {
+                var links = document.querySelectorAll('a[href]');
+                for (var i = 0; i < links.length; i++) {
+                    var href = links[i].getAttribute('href');
+                    if (href[0] === '/') {
+                        links[i].setAttribute('href', '/bf-' + match[2] + href);
+                    }
+                }
+            }
+        })();</script> <script src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/svg4everybody.min.1686744883.js.descarga" async=""></script> <script src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/menu.1686744883.js.descarga" async=""></script> <script src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/busca.1686744883.js.descarga" async=""></script> <script src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/cursos.1686744883.js.descarga" async=""></script> <script src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/detect.1686744883.js.descarga" async=""></script> <script src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/video.1686744883.js.descarga" async=""></script> <script src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/footer.1686744883.js.descarga" async=""></script> <script src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/convertImgToSVG.1686744883.js.descarga"></script> <script src="./REST_ Concepto y Fundamentos _ Alura Cursos Online_files/countdown.1686744883.js.descarga"></script> <script type="text/javascript">_linkedin_partner_id = "465017";
+			window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+			window._linkedin_data_partner_ids.push(_linkedin_partner_id);</script> <script type="text/javascript">(function(){var s = document.getElementsByTagName("script")[0];
+			var b = document.createElement("script");
+			b.type = "text/javascript";b.async = true;
+			b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+			s.parentNode.insertBefore(b, s);})();</script> <noscript>
+<img
+height="1" width="1" style="display:none;" alt=""
+src="https://dc.ads.linkedin.com/collect/?pid=465017&fmt=gif" />
+</noscript></body></html>

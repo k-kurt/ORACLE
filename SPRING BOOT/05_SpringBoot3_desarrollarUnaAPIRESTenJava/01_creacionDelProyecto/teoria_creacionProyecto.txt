@@ -1,0 +1,223 @@
+											
+											
+											01 Presentación
+											
+										Transcripción
+[00:00] Hola. Bienvenidos a su curso de Spring Boot 3, creando un API Rest en Java. Yo soy su instructor Diego Argüelles Rojas, quizás algunos ya me conozcan porque ya he dictado algunos cursos aquí en Alura en la formación básica de Java. Y ahora vamos a ver lo que es Spring Boot la versión 3 y cómo crear un API Rest.
+
+[00:21] En los objetivos este curso, bueno, valga la redundancia, es la creación de una API Rest. Para aquellos que de repente no están muy familiarizados con lo que es una API, con lo que son Rest services, no se preocupen, vamos a repasar todos esos conceptos aquí desde lo más básico hasta un nivel intermedio y quizás algunos tópicos más avanzados.
+
+[00:42] Después vamos a ver lo que es un CRUD, las operaciones básicas de todo API: create, read, update and delete para respectivamente crear, leer, actualizar y eliminar objetos o componentes de nuestra aplicación. Lo que son validaciones que, técnicamente ¿qué es una validación? Es verificar que el tipo de dato que yo quiero guardar, que yo quiero enviar a mi servicio web, a mi Rest service es el tipo de dato que mi base de datos acepta.
+
+[012:12] Por ejemplo, digamos que quiero guardar un número de teléfono, tengo que validar que lleguen solo números, no letras. Bueno, eso es también lo que vamos a ver aquí en este curso, paginación y orden, dicho sea de paso, por ejemplo cuando tú quieres mostrar una gran cantidad de datos no siempre vas a mostrar todos los datos en una sola vista.
+
+[01:36] Quizás es mucho mejor mostrarlos de 10 en 10, de 20 en 20, para que puedan entrar a la pantalla, la experiencia de usuario sea un poco más amena, más amigable y puedes ordenarlo también alfabéticamente, por número, por algún tipo de orden especial que quieras definir. Todo eso es posible también hacerlo aquí, a nivel de nuestro servicio web.
+
+[02:00] Y en la parte de tecnología, que es a lo que vinimos, quizá lo más importante, lo más interesante, Spring Boot 3 es la última versión, la última versión estable. Hay algunos releases después de esta versión, pero la versión 3 es una de las más usadas en el mercado.
+
+[02:17] Así como Java 17. Si bien ya tenemos una versiones más recientes de Java, Java 17 se está convirtiendo rápidamente en la más adoptada, muchas empresas están migrando de Java 11 a 17 directamente por el tipo de soporte a largo plazo que brinda. Entonces es la versión ideal para poder iniciar este curso.
+
+[02:36] También vamos a usar Lombok. Para quienes nunca han escuchado de Lombok, es una herramienta, una librería muy útil que te ayuda, por ejemplo, a abreviar código. Estás cansado de escribir getters y setters, estás cansado o aburrido de repetir constructores, de implementar el patrón builder por ti mismo, todo eso, Lombok va a ser tu mejor aliado para reducir tu escritura de código puesto que Lombok lo va a autogenerar.
+
+[03:04] Si no eres familiar con esto aun, no te preocupes, lo vamos a explorar muy bien en este curso y lo vas a amar después de esto. Después tenemos MySQL como base de datos, donde vamos a guardar todas nuestra información. Y Flyway.
+
+[03:16] Para quienes no son tan familiares con esto, Flyway es digamos un gestor de base de datos a nivel de la estructura y las tablas, declarar tus tablas como Scribd de SQL y el motor de Flyway lo ejecuta y va a crear tu estructura de datos en MySQL de tal forma que es mantenible en el futuro, es versionable y bueno puedes habilitar colaboración entre muchos desarrolladores.
+
+[03:44] Nuevamente si nunca lo han escuchado no se preocupen porque en este curso lo vamos a explorar muy bien. Para la capa de persistencia, cómo guardamos los datos, cómo interactuamos entre aplicación y base de datos, vamos a usar JPA y Hibernate.
+
+[03:57] JPA es la especificación de Java para lo que es persistencia y Hibernate es la implementación de esta especificación. Por ejemplo, ya no vas a tener que escribir todo tu prepare statement para ejecutar cualquier consulta en la base de datos, simplemente con Hibernate te vas a reducir unas cuantas líneas de código y lo vas a hacer de una forma un poco más óptima, también lo vamos a explorar en este curso.
+
+[04:20] Y Maven es un gestor de dependencias, al igual que Gradle. Con esto tú declaras tus dependencias en el archivo pom.xml, quizás algunos ya son familiares con esto y puedes controlar mejor las versiones, actualizar y no tienes que necesariamente tener el archivo jar y pegarlo en tu proyecto.
+
+[04:40] Y finalmente Insomnia. Dado que hasta ahora hemos hablado solo de tecnologías backend, necesitamos algo con que probar nuestra API. Y como este curso es sobre un API, es sobre backend, no vamos a enfocarnos para nada en lo que es una capa cliente, una capa web. ¿Entonces con qué probamos nuestra aplicación? Con Insomnia, que es una herramienta para este tipo de casos.
+
+[05:05] ¿Qué proyecto vamos a desarrollar? Vamos a ver lo que es una clínica médica. Nuestra Voll clinic. Como ustedes saben, en una clínica médica intervienen muchas cosas: pacientes, doctores, consultas, historias clínicas, etcétera y hay interacciones interesantes entre estos, por ejemplo, un paciente puede tener muchos doctores así como un doctor puede tener muchos pacientes.
+
+[05:32] Este tipo de relaciones y mapeamientos lo vamos a ver con Hybernate, por ejemplo. Podemos listar las historias clínicas, podemos listar los pacientes, podemos registrar nuevos pacientes, entonces va a ser un proyecto muy, muy interesante para implementar y por supuesto totalmente fiel a un proyecto que se pueden topar profesionalmente en la vida real. Me ha tocado. ¿Entonces qué dicen? ¿Vamos a comenzar? Nos vemos.	
+
+
+
+
+										02 Generando proyecto
+										
+Transcripción
+[00:00] Bien. Vamos a comenzar. Entonces, para crear nuestro proyecto en Spring le vamos a hacer mediante la herramienta que el mismo Spring nos está proporcionando, el cual es el Spring Initializr. Spring Initializr ustedes lo pueden poner en cualquier buscador, y en la primera opción start.spring.io, entramos aquí y vemos que es básicamente un formulario, un formulario que Spring nos da para elegir qué dependencias, qué características queremos que tenga nuestro proyecto.
+
+[00:28] Por ejemplo la parte de proyecto vemos que nos dice quieren que sea Gradle con lenguaje Groovy, Gradle con lenguaje Kotlin o Maven para lo que es gestión de dependencias, como ya les comenté en el video anterior, vamos a coger Maven y lenguaje, obviamente va a ser Java.
+
+[00:46] Para la versión de Spring Boot vamos a usar la 3.0.2, no necesitamos discutir sobre las versiones aquí. La versión 2.7 es un poco antiguo para lo que se usa actualmente, así que vamos a partir por la que está seleccionada por defecto en momento, inicio de 2023, es la 3.0.2.
+
+[01:04] En la metadata del proyecto es donde tenemos que comenzar a poner ya las características que tenga nuestro proyecto como nombre de paquetes, el nombre del artefacto, entre esas cosas. Por ejemplo, en el grupo le vamos a poner med.voll porque va a ser la clínica que vamos a usar. En el artefacto vamos a ponerle api. El nombre también va a ser api.
+
+[01:30] En la descripción de proyecto vamos a poner API rest para Voll clínica.Y el nombre del paq va a ser med.voll.api. Automáticamente lo generó, pero si yo quiero puedo cambiarlo, editarlo a como yo más lo prefiera. Por buena práctica, lo voy a mantener así, porque es como se debería llamar, entonces lo dejamos tal cual.
+
+[02:00] Y aquí en packaging la forma en que vamos a empaquetar nuestro proyecto nos dice un jar of un war. Antiguamente, teníamos lo que se llama servidores de aplicaciones. Ahí lo que tú hacías era coger el archivo .war, desplegarlo en el servidor de aplicaciones y solo en ese momento tu proyecto era accesible.
+
+[02:19] Pero ya que estamos tratando con Spring Boot, Spring Boot ya nos da la opción de un servidor dentro de la misma aplicación, por lo tanto no necesitamos que sea un archivo .war sino tranquilamente ejecutar un jar. Esto ya lo pueden saber, pero solamente para reforzar un poco la idea de Spring Boot.
+
+[02:37] Sobre Java la versión 17 es la más usada actualmente. Hay muchas empresas que están migrando de la 11 a la 17 por el soporte que está dando, es un tipo de soporte más largo de parte de Oracle, entonces vamos a quedarnos con la versión 17. La 19 es buena, es estable, pero no es la más usada en el mercado actualmente, como les repito, enero 2023. Entonces nos quedamos con la 17. No se preocupen.
+
+[03:02] La parte derecha del formulario ya contiene lo que son las dependencias. Esto quiere decir qué cosas va usar nuestro proyecto externas a lo que tenemos aquí. Si le ponemos aquí en agregar dependencias, vamos a ver un montón de opciones, que podemos agregarle a nuestro proyecto, por ejemplo, vemos que tenemos soporte para GraalVM, no vamos a usarlo. Spring Boot DevTools, esto sí lo vamos a usar porque nos va a dar la facilidad de modificar nuestro código y no tener que reiniciar el servidor.
+
+[03:33] Para que veamos los cambios en tiempo real. Entonces le damos que sí. Vemos que ya lo va agregando Spring Boot DevTools, nuevamente agregar dependencias. ¿Qué más deberemos agregar? Lombok, como les mencioné es una herramienta que la van a amar. Entonces sí, claro que sí, vamos con Lombok. ¿Y después que más le vamos a agregar?
+
+[03:51] Vamos por aquí Spring Web, que si bien no vamos hacer una aplicación web, ya lo explicamos en el video introducción, pero Spring Web nos da las librerías que necesitamos para exponer nuestros métodos de API Rest a través de post, get, put, delete, etcétera. Entonces vamos a usar en efecto Spring Web, seleccionamos.
+
+[04:11] Y ya tenemos tres dependencias, vamos a explorar las otras, por ejemplo, tenemos Spring Reactive, Spring for GraphQL y otras herramientas que por el momento me parece que no van a ser necesarias, Jersey no lo vamos a usar, porque ya tenemos Spring Web, entonces no se preocupen, no necesitamos Jersey.
+
+[04:31] Spring Security, vemos que tenemos una gran cantidad de opciones propias de Spring y librerías de terceros en algunos casos para poder generar nuestro proyecto. No vamos a marearnos más con cada una de estas opciones. Vamos a cerrar eso por el momento y finalmente generar nuestro proyecto.
+
+[04:55] Para eso podemos darle clic a generar o apretar “Command + Enter” si estás en una Mac o el atajo que te indique aquí si estás en una computadora Windows o Linux. En este caso yo voy a dar clic, damos a generar y lo que va a ser eso es descargar nuestro proyecto en nuestra computadora.
+
+[05:13] Como lo está descargando, lo que tengo que hacer ahora es acceder a finder y vemos que aquí está mi api.zip. Este es el proyecto que acaba de descargar de Spring Initializr. Lo que voy a hacer ahora es descomprimir. Entonces vamos a abrir con, esta es mi herramienta para descomprimir y vemos que aquí está ya API descomprimido.
+
+[05:41] Nuevamente exploren las opciones que tenemos aquí, si es que le resulta interesante. No olviden que la mejor forma de aprender es practicando. Entonces no se preocupen, no tengan miedo. Spring va a crearles un proyecto bien configurado, por el momento esto es lo que necesitamos, ya tenemos el proyecto. Ya lo tenemos en nuestra computadora. En el siguiente video vamos a para abrirlo y explorar cómo es la estructura que tiene esto. Nos vemos.
+
+
+
+
+
+											06 Estructura proyecto
+											
+Transcripción
+[00:00] Bien. Ya tenemos nuestro proyecto generado. Ahora vamos a explorar qué es lo que hay aquí dentro. Para eso necesitamos un editor de código, en este caso yo uso IntelliJ, uno de mis favoritos, y vamos a abrir proyecto que hemos generado justo ahora. Vamos a descargar y vemos aquí está nuestro API.
+
+[00:19] Damos abrir, le vamos a dar que sí, que confía en el proyecto porque lo ha generado el Spring, y vemos cómo aquí me sale mensaje de indexando dependencia, vamos a agrandar esto y vemos como IngelliJ automáticamente comienza ya a descargar las dependencias.
+
+[00:39] Por ejemplo aquí en Maven si nos damos cuenta aquí en API, tenemos todo un lifecycle de las operaciones de Maven pues el gestor de dependencias que hemos decidido utilizar para esto es obviamente Maven.
+
+[00:53] Vemos aquí que está sincronizando el API, está descargando las dependencias en este momento. Normalmente puede tomar algunos minutos, dependiendo cuántas dependencias tenga tu proyecto. Vamos a hacer una pausa en la grabación aquí y continuar en este punto cuando termine de descargar la dependencia.
+
+[01:17] Bien. Vemos que ya la descarga de dependencias ha terminado. Casi dos minutos en este caso. Y aquí ya tenemos una sección de plugins y una sección de dependencias. Aquí lo que vamos a ver es verificar si las dependencias que nosotros seleccionamos al momento que creamos el proyecto están aquí.
+
+[01:38] Por ejemplo, tenemos el spring-boot-starter-web, que es el que elegimos el Spring Web, el DevTools, que también es el que elegimos y la librería Lombok, que si bien no es propia de Spring, tenemos que ser muy claros en esto. Lombok no es propia de Spring pero Spring también lo integra de una forma muy fácil en el Initializr, porque es muy usada actualmente.
+
+[02:01] Entonces Spring considera que es simple de implementar con esto. Ahora también tenemos el spring-boot-starter-test, que ustedes preguntarán ¿nosotros no elegimos esto? Okay, no lo elegimos pero por buena práctica Spring ya nos da una librería para poder crear tests unitarios en nuestro proyecto.
+
+[02:19] Recuerden, todo código debe ser probado, testeado. Tenemos en los plugin el clean, compiler, deploy, install. Todos esos son plugins propios de Maven para los comandos en Maven que deseamos usar, eso lo podemos ver después, no se preocupen y finalmente, bueno, tenemos ya todo lo que necesitamos para explorar el proyecto.
+
+[02:39] Vamos a cerrar nuestra pestaña de Maven que está de este costado porque no vamos a explorar más por ahora. Y vemos qué tenemos por aquí por el lado de nuestro API, qué es lo que ha generado el Spring Initializr. Tenemos el archivo pom.xml, los que ya están familiarizados con Maven ya conocen este archivo. Tenemos los esquemas propios de Maven de donde él está heredando la estructura de este archivo de xml.
+
+[03:06] El parent, que tenemos aquí que es el spring-boot-starter-parent. ¿Qué significa esto de aquí? Si ustedes se dan cuenta al, usar Spring Boot nosotros no tenemos ninguna dependencia que sea, explícitamente Spring Boot como dependencia.
+
+[03:22] Por ejemplo en la sección de dependencias tenemos el web que ya lo vimos, el DevTools, Lombok y test. Y ahí termina nuestra relación de dependencia. Ustedes dirán: ¿Dónde está Spring Boot? Bueno, Spring Boot viene del parent. El parent es como que el padre en el como que el padre de este pom. Por lo tanto al especificar el parent, Spring Boot, esto quiere decir van a heredar todas las características que existen en el pom de Spring Boot.
+
+[03:54] Actualmente en Spring Boot ya tiene todo configurado. Tiene un pom entero con todas las dependencias que necesita para ser configurado, para ser ejecutado, por lo tanto tú no tienes que repetir todo ese código aquí. Por ejemplo, si tú vas a tener una aplicación que va a necesitar todas estas dependencias, y va a estar dentro de tu misma empresa, tu misma jerarquía, tu mismo artefacto.
+
+[04:19] Simplemente puedes definir este artefacto de aquí como el parent y no vas a tener que copiar nuevamente todas las recetas, digámoslo de esa forma, toda la receta de dependencias para este nuevo proyecto. ¿Qué más tenemos aquí? Bueno, tenemos la versión de Java, que tenemos 17, la descripción, el nombre, la versión versión 0.0.1, snapshot, la lista de dependencias que ya las vimos y los plugins que también ya los hemos visto.
+
+[04:47] En este caso estamos excluyendo Lombok de la lista de plugins para lo que es la generación del artefacto aquí. ¿Qué más tenemos por aquí? Tenemos los wrappers de Maven, para poder ejecutar Maven automáticamente vía wrapper. Tenemos el GitIgnore, que es simplemente para no commitear los archivos que vayamos generando. Perdón, los archivos autogenerados por el IDE, por ejemplo el idea.
+
+[05:18] Si damos doble clic aquí, vamos a ver pues que hay muchos activos autogenerados como los targets, donde se guardan los artefactos generados por el comando install por ejemplo. En fin, es una infidencia que podemos ignorar aquí, el vscode, si usas Visual Studio Code, aquí lo puedes agregar tranquilamente .idea para ignorar todos los archivos de este folder, idea, porque no es bueno compartirlo.
+
+[05:45] ¿Qué más tenemos aquí? Finalmente el source, la carpeta source. Entramos aquí y tenemos main y tenemos test. En main tenemos la parte de Java, med.voll.api. Y eso es lo que nosotros especificamos como nombre de paquete si ustedes lo recuerdan, el nombre del paquete allá en Spring Initializr. Y ya tenemos una clase Java llamada ApiApplication.
+
+[06:10] Este contiene un método main, que es el que se usa en Spring Boot para ejecutar vía esta aplicación como tal. No se preocupen, vamos a ejecutarla en un momento más. Primero hay que explorar a ver qué es lo que tenemos por aquí. En la parte de recursos o resources tenemos la carpeta static, que es para guardar archivos, JavaScript o .CSS para hojas de estilos en caso que estés creando una aplicación web.
+
+[06:39] Como no lo vamos a hacer, no tenemos nada que guardar aquí, entonces puedes tranquilamente saltarlo. La parte de templates es para guardar todo lo que son páginas HTML, todos los template.html. Tampoco lo vamos a utilizar, entonces no se preocupen, no hay ningún problema.
+
+[06:55] Y la application.properties es para almacenar propiedades del archivo. Por ejemplo, si tú quieres en tu código especificar una versión, alguna característica predeterminada nos puede ser útil crear en un archivo properties, no te preocupes. Igualmente vamos a ver todo esto muy a detalle a lo largo del curso porque es muy usado, no se preocupen por nada.
+
+[07:20] Y cerramos ya la carpeta main y entramos a test. ¿Qué tenemos en test? Tenemos la parte de Java. Es una estructura igual a la que tenemos en main pero tenemos una clase de test aquí ya creada, en la cual Spring nos dice: “bueno, esta clase de test es la que viene por defecto. Es un ejemplo para que tú implementes las próximas”.
+
+[07:43] No hay mucho más que decir aquí por ahora sobre la estructura del proyecto, vemos que ya el comando Maven está ejecutado, tenemos las dependencias tenemos la estructura creada, es un típico proyecto Maven, no hay nada nuevo aquí hasta el momento. En el próximo video vamos a ejecutar ya este proyecto creado.
+
+
+
+
+
+																			07 Hello World
+																			
+																			
+Transcripción
+[00:00] Bien, conocemos la estructura del proyecto. Ahora llegó la hora de ejecutarlo. Para eso tenemos aquí el botón de Play que es Run Application. Lo que esto va hacer es ejecutar este método main que tenemos aquí en nuestra clase Java que nos vino autogenerada.
+
+[00:19] Vamos a darle un vistazo aquí a esta clase. Primero que todo vemos la anotación Spring Boot Application. ¿Qué significa esto? Bueno, si tienen curiosidad como saben, apretando tecla “Command” y dándole clic, vamos a ir al código fuente de esta clase, de esta notación. Esta no es propiamente una interfase, es una notación, disculpen, no es una clase.
+
+[00:40] Vemos que esto hereda de diferentes anotaciones, por ejemplo de SpringBootConfiguration, EnableAutoConfiguración, ComponentScan. Si ustedes ya son familiares con Spring, propiamente dicho Spring sin Spring Boot sino Spring como tal, Spring puro, ya deben saber más o menos en qué consiste el Componente scan, aquí tú le específicas que paquetes quieres que sean escaneados por Spring al momento de inicializar la aplicación.
+
+[01:11] EnableAutoconfiguración si tú quieres ir más a profundidad le puedes dar también. Clic con Command y vas a ver que eso también jala de otra notación como AutoConfigurationPackage. Tú puedes ir mucho más adentro de la jerarquía de clases. Por ahora no lo vamos a hacer. No se preocupen. Es solo un vistazo.
+
+[01:31] Vemos que esta interfaz nos da algunos mitos como el exclude, excludeName, scanBasePackage, en caso necesitemos especificar qué paquetes queremos que sean escaneados o ignorados también.
+
+[01:46] Entonces por ejemplo, si tú quieres usar alguna de esas opciones, alguna de las opciones que están aquí, alguno de estos métodos, lo único que tienes que hacer es simplemente abres el paréntesis al costado de la aplicación, “Ctrl + espacio” y te van a salir ahí los mismos nombres de los métodos que has visto en el código fuente.
+
+[02:06] Entonces por ejemplo, si le quieres poner un exclude, te va a abrir y automáticamente puedes llenar los datos aquí. No lo vamos a hacer ahora, no lo necesitamos, solamente estamos explorando lo que hay. La magia de Spring Boot ocurre aquí. Como les expliqué anteriormente antes se usaba lo que es el servidor de aplicaciones. Esto era colocar tu archivo.war en un servidor aplicaciones, ejecutarlo ahí y una vez ahí, ya tu aplicación era accesible desde cualquier web browser.
+
+[02:38] Pero con Spring Boot esto es al revés, porque el servidor ya viene embebido, el servidor ya viene dentro de tu aplicación. Generalmente es Tomcat pero también puedes usar Jetty si quieres o algún otro servidor de aplicaciones ligero, no vamos a cambiar Tomcat desde que se usa por defecto aquí. Lo vamos a mantener. No necesitamos cambiarlo.
+
+[03:01] Y el método main que como ya les expliqué, otros cursos de Java básico es el método básico para ejecutar cualquier aplicación desde línea de comandos. El primer método que se ejecuta va a ser el main.
+
+[03:14] Desde aquí vemos que SpringApplication.run, run es un método estático, vamos a explorarlo. Entramos Y vemos que bueno, es un método sobrecargado, y tiene diferentes opciones como algunos argumentos que puede recibir, etcétera. Aquí por ejemplo en el run le estamos mandando el contexto de ApiApplication.class en los argumentos que le mandemos aquí.
+
+[03:42] No se preocupen, es un típico método main normal, es una típica clase aquí con un método estático normal, no hay nada del otro mundo, pero si tienen curiosidad por saber cómo funciona esto por detrás de las cortinas como quien dice, son libres, de explorar el código.
+
+[03:57] Sin más preámbulos vamos a darle play. Puede ser aquí o puede ser aquí también o puede ser aquí, el que más les guste. No se preocupen. Le damos play, vemos que está gustando y nos sale un error aquí Lombok requires enable annotation processing. Esto es porque Lombok lo que hace es generar los códigos usando annotations.
+
+[04:18] Hasta ahora no hemos hecho nada, pero como estamos utilizando Lombok tenemos que habilitar esta opción. Entonces, vamos a decir que sí. Queremos habilitar Lombok annotation processing. Vemos que aquí ya nos sale que Java Annotation processing ya fue habilitado. Vamos a ejecutar nuevamente proyecto para ver si este error ya no sale.
+
+[04:40] Ahora nos da otro error más que dice Upgrade Module SDK in project settings to 17 or higher. Esto me quiere decir que el módulo que yo estoy usando actualmente no está con Java 17, está con Java 11. Entonces lo que yo voy a hacer es actualizarlo a Java 17. Bien, ya tengo el JDK de Java 17, entonces aquí le voy a dar okay.
+
+[05:15] Y vemos que nuevamente comienza el proceso de reindex de mi proyecto. Reindexación completa nuevamente, vamos a ejecutar el proyecto que tengo aquí, entonces veo que Executing pre-compile, tareas, parsing Java y vemos aquí en nuestra terminal, déjenme agrandar esto un poquito y vemos aquí la terminal que comienza con algunos mensaje, por ejemplo aquí dice comenzando el ApiApplication usando Java 17 con PID alguna cosa. ¿Dónde está exactamente ahorita mi proyecto?
+
+[05:53] Inicializado por mi usuario, está bien. No active profile set, falling back to 1 “default”. Eso significa que como no has especificado un Sprint profile, automáticamente agarra el default. Eso está bien, no se preocupen, no es nada del otro mundo.
+
+[06:09] Devtools property defaults active Set ‘spring.devtools.add-properties’ to ‘false’ to disable. Esto es por la dependencia que acabamos de agregar devtools. Y bueno vemos que Tomcat ha inicializado en el puerto 8080, bueno, va a inicializar Tomcat. Inicializando server, inicializando WebApplicationContext de Spring Boot.
+
+[06:32] LiveReload está corriendo en este puerto, Tomcat inició satisfactoriamente en el puerto 8080 y la aplicación inició en 2.1 segundos. Son detalles de los logs, donde podemos ver todo lo que pasa dentro de Spring Boot, cómo es que genera el proyecto, cómo es que lo ejecuta y sin más que ver vamos ahora al browser, tenemos esto y vamos a entrar al localhost. Localhost:8080.
+
+[07:06] Y nos topamos con un página de error. Pero esta página de error no es una página de error cualquiera, es una página de Spring. Si volvemos aquí vamos a ver que no hay nada en los logs y tampoco tenemos nada a nivel de la aplicación. No hemos quedado nada, por lo tanto es bueno que tengamos este error aquí. Significa que la aplicación está viva, está corriendo.
+
+[07:33] Vamos entonces ahora a crear algún controller. Para eso creamos aquí una nueva clase, derecho new java class y le vamos a dar hello controller. Va a ser una clase solamente de ejemplo. Le damos aquí, perfecto y yo lo quiero en el paquete controllers. Me está marcando un error ahora. ¿Por qué? Porque obviamente el paquete controllers no existe.
+
+[08:00] Entonces le voy a dar clic en el foquito rojo y le voy a decir: mueve esto al paquete ‘med.voll.api.controller’ el cual no existe pero lo va a crear automáticamente. Entonces vemos que allí está el paquete controller, HelloController, le damos clic aquí y comenzamos con el código que queremos hacer.
+
+[08:30] Primero que todo, esto es un controller. Si no es familia con Spring Boot, no te preocupes, para decirle que es un controller, necesitamos primero anotarlo como controller. Controller y vemos automáticamente que jala de organización.springFramework.stereotype.
+
+[08:50] Si se dan cuenta controller está en el paquete stereotype porque todos jalan de components. Esto es un poco de Spring básico, solamente para que lo tengan en cuenta y ya le especificamos que es un controller, pero esto era hasta las versiones antiguas de Spring porque ahora lo que tú tienes es RestController porque estamos quedando un controller de Rest.
+
+[09:17] Y nuevamente si entramos aquí vemos RestController tiene también controller y ResponseBody, porque es un RestController. Como no retornamos HTML, ninguna página HTML, solo necesitamos retornar JSON, XML o texto o cualquier tipo de dato crudo. Entonces no necesitamos de un controller como tal, necesitamos también de ResponseBody para retornar ese tipo de datos.
+
+[09:45] Le damos que queremos RestController, borramos esto y RequestMapping. ¿Eso para qué es? Para decirle más o menos qué ruta de HTTP está siguiendo este método que vamos a crear aquí. Por ejemplo yo le voy a decir que va ser “/hello”. Entonces, cada vez que yo entré a local host:8080/hello, debería hacer algo. ¿Cómo le digo qué hacer? Bueno. Tengo que crear el método.
+
+[10:21] Eso va a ser un public String helloWorld() y retornamos un string que diga “Hello world!”; y finalmente su punto y coma. ¿Cómo esto va a funcionar? Porque aquí le voy a decir que esta ruta la mapea aquí con un método get. Si no están muy familiarizados aún con el tipo de métodos get, post, put, delete, no se preocupen. Vamos a aclararlo más a detalle en las siguientes clases.
+
+[10:59] Por el momento lo único que tenemos que saber es que con GetMapping vamos a mapear el método en esta ruta para esta aplicación y lo que debería darnos es un hello world! Entonces ahora voy a guardar. Si se dan cuenta guardé aquí. Voy a recargar aquí, sigue con el error. Ustedes me pueden preguntar: “Diego, ¿no se supone que hemos instalado DevTools y no deberíamos reiniciar la aplicación para que funcione? ¿Nos has engañado?” No, no es nada de eso, no se preocupen.
+
+[11:35] Lo que pasa es que tenemos que configurar el proyecto para que pueda usar DevTools. Para eso vamos a las configuraciones del proyecto settings. En settings nos vamos a build, execution, deployment y aquí nos vamos a ir a compiler. Aquí vamos a marcar la opción Build project automatically, le damos check, y finalmente me estaba olvidando, tengo que ir a advanced settings y allow auto-make to start even if developed application is currently running.
+
+[12:08] Esto va a habilitar que nuestra aplicación recargue automáticamente apenas guardamos, sin que tengamos que reiniciar el servidor. Entonces, le damos aquí, okay. Y debería ya estar listo. Para probar lo que voy a hacer aquí es detener mi servidor, ahora sí, manualmente lo detengo, vemos que el proceso ya tuvo un éxito. Ya terminó, ya está muerto, y voy a ejecutar nuevamente mi aplicación.
+
+[12:35] Vamos ahí. Vemos que ya comienza a generar nuevamente los mismos logs que vimos anteriormente. Recargamos la página y tenemos que ir a /hello. Vemos aquí que dice Hello World! Entonces el código funciona ¿y el DevTools está funcionando? Vamos a ponerle “Hello world…” Vamos a guardar, vamos a recargar. No funciona. Okay, tenemos que darle un tiempo.
+
+[13:17] Entonces, vamos otra vez y funcionó. Vamos a hacerlo otra vez solo para verificar que no pasó nada. Vamos a poner from Europe! Le damos a guardar. Le damos un tiempo. Yo no estoy haciendo absolutamente nada como pueden ver. Está aquí. Vemos que el servidor automáticamente reinició.
+
+[13:38] Voy a recargar aquí y el código está actualizado. Entonces ya vimos cómo generar primero que todo. El ejemplo hello world!, las anotaciones de Spring, cuál es la jerarquía entre estas anotaciones, ya vemos de dónde sale RestController, RequestMapping. Pueden estar confundidos ahora, pero no se preocupen.
+
+[13:59] Esto fue el Hello world. En las siguientes clases vamos a explorar cada uno de los métodos de Spring, como el get, post, put, delete. Así como hay GetMapping, tienes PostMapping, PutMapping, etcétera, y lo vamos a ver mucho más a detalle. Como siempre les digo practiquen mucho, nos vemos en la siguiente clase.
+
+
+
+
+¡Ahora está contigo! Haz el mismo procedimiento que hice en clase. Cree el proyecto inicial a través del sitio web Spring Initializr, importarlo en IntelliJ y finalmente cree una clase Controller como Hello World.
+
+
+@RestController
+@RequestMapping("hello")
+public class HelloController {
+
+    @GetMapping
+    public String holaMundo() {
+        return "Hello World Spring!";
+    }
+}
+
+
+
+
+
+En esta clase, aprendiste a:
+Crear un proyecto Spring Boot usando el sitio web Spring Initializr;
+Importar el proyecto a IntelliJ y ejecutar una aplicación Spring Boot a través de la clase que contiene el método main;
+Crear una clase Controller y mapear una URL en él usando las anotaciones @RestController y @RequestMapping;
+Realizar una solicitud de prueba en el navegador accediendo a la URL mapeada en el Controller.																				

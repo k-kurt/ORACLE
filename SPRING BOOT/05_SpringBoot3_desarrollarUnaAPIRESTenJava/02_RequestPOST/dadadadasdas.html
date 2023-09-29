@@ -1,0 +1,1272 @@
+
+<!-- saved from url=(0085)https://app.aluracursos.com/course/spring-boot-3-desarrollar-api-rest-java/task/83416 -->
+<html lang="pt-BR" data-product="alura_espanhol" style="scroll-behavior: smooth;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 56.25%
+      }
+    </style><style class="vjs-styles-dimensions">
+      .video-player-dimensions {
+        width: 1280px;
+        height: 720px;
+      }
+
+      .video-player-dimensions.vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 56.25%;
+      }
+    </style><link rel="stylesheet" type="text/css" href="./dadadadasdas_files/clipper.647d33f8.css">
+<link rel="stylesheet" href="./dadadadasdas_files/back-to-top.9a8b5967.css">
+<link rel="stylesheet" href="./dadadadasdas_files/videoShortcutsModal.e1c7fc31.css">
+<link rel="stylesheet" href="./dadadadasdas_files/modal.5da2b30a.css">
+<link rel="stylesheet" href="./dadadadasdas_files/modalCoursePreviewMode.fe9f769f.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+	
+
+	
+		
+
+
+
+
+    
+        
+        
+            <!-- Google Tag Manager -->
+            <script type="text/javascript" async="" src="./dadadadasdas_files/js"></script><script async="" src="./dadadadasdas_files/analytics.js.descarga"></script><script type="text/javascript" async="" src="./dadadadasdas_files/js(1)"></script><script async="" src="./dadadadasdas_files/gtm.js.descarga"></script><script>
+                ;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayerAlura','GTM-PFCN2KV');
+            </script>
+            <!-- End Google Tag Manager -->
+        
+    
+
+
+    <script>
+        let dataLayerAluraTest = window.dataLayerAluraTest || [];
+        let dataLayerAlura = window.dataLayerAlura || [];
+        dataLayerAlura.push({
+            'event': 'virtual_page_view',
+            'page_category': 'Aula',
+            
+            
+            
+                
+                    
+                    
+                        
+                        'user_id': '576082',
+                        'plan': 'Oracle Next Education F2 T5',
+                        'type': 'B2B',
+                        'company_id':'5013',
+                        'first_purchase_date': '2023-03-28',
+                        'last_purchase_date': '2023-03-28',
+                        'expiration_date': '2023-10-04',
+                        'email': 'b7a5de8d38d6e9c501dc677df972f9557de039ce9e8dc8976e0d6c048a508798'
+                    
+                
+            
+        });
+    </script>
+
+
+
+
+
+	
+
+	<title>Spring Boot 3: desarrollar una API Rest en Java: Aula 2 - Actividad 7 DTO Java Record #2 | Alura Latam - Cursos online de tecnologia</title>
+	
+	<link rel="shortcut icon" href="https://app.aluracursos.com/assets/images/aluraespanhol/favicon.ico">
+	
+	<link href="./dadadadasdas_files/css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+
+	<link rel="stylesheet" href="./dadadadasdas_files/video-js.7b9aee00.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/silvermine-videojs-quality-selector.min.de928d55.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/prettify.9c184279.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/github.754087c4.css">
+
+	<link rel="stylesheet" href="./dadadadasdas_files/base.f643e441.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/formattedText.e58775de.css">
+	
+	<link rel="stylesheet" href="./dadadadasdas_files/container.ca700c42.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/classPage.ee5a0101.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/menuSettings.825e8801.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/taskProgress.a5300583.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/taskMessageInfo.67eb9bc6.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/alternativeList.a80939d3.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/taskFeedback.4bda0782.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/markdown.3ec31c65.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/finishSection.bee005cf.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/phrase.6d459a32.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/hqexplanation.3ed41021.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/openquestion.2889f14f.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/textcontent.7298b79f.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/video.e82ab0eb.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/singlechoice.b545e19f.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/music.8fe6cab6.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/multiplechoice.70f60e4c.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/videodialog.36286910.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/fillintheblank.59273039.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/speakingpractice.13b2c5c5.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/pronunciationpractice.d512f574.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/repetition.492af846.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/genericVideo.4767d8de.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/projectSubmit.ce2f9d80.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/sortBlocks.7b9eb1fc.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/extraContentTask.b2d126e6.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/taskContent.1ef47209.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/taskButtons.ed4fd65b.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/alert.ec6bb786.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/markdownEditor.600de57a.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/audioPlayer.0a362c88.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/notes.867f62ab.css">
+	
+	
+	
+	<link rel="stylesheet" href="./dadadadasdas_files/successMessage.cb6c074e.css">
+
+	<link rel="stylesheet" href="./dadadadasdas_files/dark-mode.0598a04f.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/taskFeedbackAnswer.72669c00.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/theater-mode.91e2f524.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/autoplay-videojs.eefac430.css">
+	<link rel="stylesheet" href="./dadadadasdas_files/linkSubmit.ddbc8743.css">
+
+	
+	
+	<style type="text/css">
+		.task:before, .video-js .vjs-play-progress {
+			background-color: #2A7AE4;
+		}
+
+
+	</style>
+
+	<!-- Remove cookie banner from hubspot -->
+	<style>
+		div#hs-eu-cookie-confirmation {
+			display: none;
+		}
+	</style>
+
+	<meta http-equiv="origin-trial" content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"></head>
+
+
+
+
+<body class="darkmode theatermode">
+<script src="./dadadadasdas_files/avatarOnError.f8bd8956.js.descarga"></script>
+
+
+
+
+	
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+	<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFCN2KV"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+<section class="task  
+ menu--inactive" data-allow-answer="true" data-task-section-exam="false" data-task-type="video" data-task-id="83416" data-author-id="576082" data-course-code="spring-boot-3-desarrollar-api-rest-java" data-section-name="Requests POST" data-section-id="11351" data-section-number="2" data-domain="app.aluracursos.com" data-hasfeedbackanswer="false" data-url-prefix="/" data-already-seen-task="false" data-course-name="Spring Boot 3: desarrollar una API Rest en Java" data-category-name="Programación" data-subcategory-name="Java" data-workload="10" data-teachers="Diego Arguelles Rojas">
+
+	<section class="task-body">
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+<header class="task-body-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container">
+
+        
+            
+            <button title="" aria-label="" type="button" class="theatermode openMenu-button task-menu-button
+                    " id="menu-button-header">
+            </button>
+        
+
+        <h1 class="task-body-header-title">
+            
+            
+            <svg class="task-body-header-title-svg" aria-label="Actividad de Video">
+                <use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+            </svg>
+            <small>07</small>
+            <span class="task-body-header-title-text"> DTO Java Record #2</span>
+        </h1>
+        
+            <div class="task-body-header-actions">
+                <a href="https://app.aluracursos.com/course/spring-boot-3-desarrollar-api-rest-java/task/83416/next" aria-hidden="true" class="task-actions-button task-actions-button-next task-submit bootcamp-primary-button-theme" style="background-color: #2A7AE4">Próxima Actividad</a>
+            </div>
+        
+
+
+        
+            
+
+
+
+
+
+
+
+<div class="theater-video settings">
+	<button type="button" class="settings-button" aria-label="Configuraciones">
+		<svg class="settings-button-icon">
+			<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MENU_SETTINGS"></use>
+		</svg>
+	</button>
+	<div class="settings-box">
+		<ul class="settings-box-list">
+			
+				<li class="settings-box-item settings-box-item-darkmode">
+					<button class="dark-mode-action">
+						Modo nocturno
+					</button>
+				</li>
+			
+			
+				
+				
+				
+					
+						<li class="settings-box-item settings-box-item-player">
+							<a class="video-problems" href="https://app.aluracursos.com/video/diagnostic?taskId=83416" target="_blank">
+								¿Problemas con el video?
+								<span hidden="">indisponible</span>
+							</a>
+						</li>
+						<li class="settings-box-item settings-box-item-shortcuts">
+							<button class="shortcuts-action">
+								Atajos de teclado
+							</button>
+						</li>
+					
+					
+						
+							
+							
+								<li class="settings-box-item settings-box-item-suggestion"><a href="https://app.aluracursos.com/suggestions/new/spring-boot-3-desarrollar-api-rest-java/83416/question">Sugerir alteración</a></li>
+							
+						
+					
+				
+				
+			
+			
+		</ul>
+		<span class="settings-box-title"></span>
+	</div>
+</div>
+
+        
+    </div>
+</header>
+		<div class="task-body__wrapper">
+			
+
+
+
+<section class="class-notes">
+    <div class="class-notes-content">
+        <h2 class="class-notes-title">Mi cuaderno del curso (beta)</h2>
+        <p class="class-notes-description">Este es su cuaderno de anotaciones aquí en Alura Latam. Todo su contenido es visible apenas para tí.<a href="https://suporte.alura.com.br/article/308-meu-caderno-como-funciona" class="class-notes-faq-link">FAQ</a></p>
+        <textarea name="text" id="courseNotebook-text" class="class-notes-text" cols="30" rows="10" maxlength="60000"></textarea>
+        <div class="class-notes-save-wrapper">
+            <span>
+                <p class="class-notes-saved-text" aria-hidden="true" style="display: none">Notas guardadas</p>
+                <p class="class-notes-limit-text" aria-hidden="true" style="display: none">¡No se pudo guardar! ¡Límite de caracteres alcanzado ({max})!</p>
+            </span>
+            <span class="class-notes-save-button-wrapper">
+                <button class="class-notes-save-button" data-save-text="Guardar cuaderno" data-saving-text="Guardandando">
+                   Guardar cuaderno</button>
+            </span>
+        </div>
+        <button class="class-notes-close-button"></button>
+    </div>
+</section>
+			<main class="task-body-main container" data-should-warn="false">
+				
+
+
+
+
+
+
+
+	
+	
+	
+	
+		
+
+
+
+
+
+
+
+
+    
+    
+        <section class="video" id="task-content">
+            <div class="container theater-mode">
+                
+
+
+
+
+
+
+
+<div class="video settings">
+	<button type="button" class="settings-button" aria-label="Configuraciones">
+		<svg class="settings-button-icon">
+			<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MENU_SETTINGS"></use>
+		</svg>
+	</button>
+	<div class="settings-box">
+		<ul class="settings-box-list">
+			
+				<li class="settings-box-item settings-box-item-darkmode">
+					<button class="dark-mode-action">
+						Modo nocturno
+					</button>
+				</li>
+			
+			
+				
+				
+				
+					
+						<li class="settings-box-item settings-box-item-player">
+							<a class="video-problems" href="https://app.aluracursos.com/video/diagnostic?taskId=83416" target="_blank">
+								¿Problemas con el video?
+								<span hidden="">indisponible</span>
+							</a>
+						</li>
+						<li class="settings-box-item settings-box-item-shortcuts">
+							<button class="shortcuts-action">
+								Atajos de teclado
+							</button>
+						</li>
+					
+					
+						
+							
+							
+								<li class="settings-box-item settings-box-item-suggestion"><a href="https://app.aluracursos.com/suggestions/new/spring-boot-3-desarrollar-api-rest-java/83416/question">Sugerir alteración</a></li>
+							
+						
+					
+				
+				
+			
+			
+		</ul>
+		<span class="settings-box-title"></span>
+	</div>
+</div>
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="video" class="video-container">
+    <div id="video-container-data" data-max-playback-rate="" data-section-id="11351" data-course="spring-boot-3-desarrollar-api-rest-java" data-playback-rate="1.0" data-task-id="83416" data-quality="hd" data-course-id="1952" data-autoplay-type="NONE" data-autoplay-enabled="false" data-gnarus-name="alura_espanhol" data-error-message="&lt;p&gt;No fue posible reproducir el vídeo. =Para tener un diagnóstico más detallado, vaya al&lt;a href=&quot;/video/diagnostic?taskId=83416&quot;&gt;pagina de diagnóstico de video&lt;/a&gt;&lt;/p&gt;" data-error-label="Para tener un diagnóstico más detallado, vaya al la página de diagnóstico de video">
+
+        
+    
+          <video-js id="video-player" class="video-js vjs-big-play-centered vjs-default-skin video-player-frame video-player vjs-fluid video-player-dimensions vjs-controls-enabled vjs-workinghover vjs-v8 vjs-has-started vjs-paused vjs-ended vjs-user-inactive" oncontextmenu="return false;" preload="auto" controlslist="nodownload" tabindex="-1" role="region" lang="pt-br" translate="no" aria-label="Video Player"><video tabindex="-1" role="application" controlslist="nodownload" preload="auto" oncontextmenu="return false;" class="vjs-tech" id="video-player_html5_api" src="blob:https://app.aluracursos.com/954fff97-a50b-4d50-81f0-29eac957f9d9"></video>
+           <div class="vjs-poster vjs-hidden" aria-disabled="false"></div><div class="vjs-title-bar vjs-hidden"><div class="vjs-title-bar-title" id="vjs-title-bar-title-93"></div><div class="vjs-title-bar-description" id="vjs-title-bar-description-94"></div></div><div class="vjs-text-track-display" translate="yes" aria-live="off" aria-atomic="true"><div style="position: absolute; inset: 0px; margin: 1.5%;"></div></div><div class="vjs-loading-spinner" dir="ltr"><span class="vjs-control-text">Video Player is loading.</span></div><button class="vjs-big-play-button" type="button" title="Play Video" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Play Video</span></button><div class="vjs-control-bar" dir="ltr"><div class="vjs-progress-control vjs-control"><div tabindex="0" class="vjs-progress-holder vjs-slider vjs-slider-horizontal" role="slider" aria-valuenow="100.00" aria-valuemin="0" aria-valuemax="100" aria-label="Progress Bar" aria-valuetext="2:40 of 2:40"><div class="vjs-load-progress" style="width: 100%;"><span class="vjs-control-text"><span>Loaded</span>: <span class="vjs-control-text-loaded-percentage">100.00%</span></span><div data-start="69.002266" data-end="160.627132" style="left: 42.96%; width: 57.04%;"></div></div><div class="vjs-mouse-display" style="left: 965px;"><div class="vjs-time-tooltip" aria-hidden="true" style="right: -18px;">1:21</div></div><div class="vjs-play-progress vjs-slider-bar" aria-hidden="true" style="width: 100%;"><div class="vjs-time-tooltip" aria-hidden="true" style="right: -18px;">2:40</div></div></div></div><button class="vjs-play-control vjs-control vjs-button vjs-paused vjs-ended" type="button" title="Replay" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Replay</span></button><div class="vjs-volume-panel vjs-control vjs-volume-panel-horizontal"><button class="vjs-mute-control vjs-control vjs-button vjs-vol-3" type="button" title="Mute" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Mute</span></button><div class="vjs-volume-control vjs-control vjs-volume-horizontal"><div tabindex="0" class="vjs-volume-bar vjs-slider-bar vjs-slider vjs-slider-horizontal" role="slider" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Volume Level" aria-live="polite" aria-valuetext="100%"><div class="vjs-mouse-display"><div class="vjs-volume-tooltip" aria-hidden="true"></div></div><div class="vjs-volume-level"><span class="vjs-control-text"></span></div></div></div></div><div class="vjs-current-time vjs-time-control vjs-control"><span class="vjs-control-text" role="presentation">Current TimeÂ </span><span class="vjs-current-time-display" role="presentation">2:40</span></div><div class="vjs-time-control vjs-time-divider" aria-hidden="true"><div><span>/</span></div></div><div class="vjs-duration vjs-time-control vjs-control"><span class="vjs-control-text" role="presentation">DurationÂ </span><span class="vjs-duration-display" role="presentation">2:40</span></div><div class="vjs-playback-rate vjs-menu-button vjs-menu-button-popup vjs-control vjs-button"><div class="vjs-playback-rate-value" id="vjs-playback-rate-value-label-video-player_component_297">1x</div><button class="vjs-playback-rate vjs-menu-button vjs-menu-button-popup vjs-button" type="button" aria-disabled="false" title="Playback Rate" aria-haspopup="true" aria-expanded="false" aria-describedby="vjs-playback-rate-value-label-video-player_component_297"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Playback Rate</span></button><div class="vjs-menu"><ul class="vjs-menu-content" role="menu"><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">3x</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">2.5x</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">2x</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">1.75x</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">1.5x</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">1.25x</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item vjs-selected" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="true"><span class="vjs-menu-item-text">1x</span><span class="vjs-control-text" aria-live="polite">, selected</span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">0.75x</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">0.5x</span><span class="vjs-control-text" aria-live="polite"></span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">0.25x</span><span class="vjs-control-text" aria-live="polite"></span></li></ul></div></div><div class="vjs-subtitles-button vjs-menu-button vjs-menu-button-popup vjs-control vjs-button vjs-hidden"><button class="vjs-subtitles-button vjs-menu-button vjs-menu-button-popup vjs-button" type="button" aria-disabled="false" title="Subtitles" aria-haspopup="true" aria-expanded="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Subtitles</span></button><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="true"><span class="vjs-menu-item-text">subtitles off</span><span class="vjs-control-text" aria-live="polite">, selected</span></li></ul></div></div><div class="vjs-quality-selector vjs-menu-button vjs-menu-button-popup vjs-control vjs-button"><button class="vjs-menu-button vjs-menu-button-popup vjs-button" type="button" aria-disabled="false" aria-haspopup="true" aria-expanded="false" title="Open quality selector menu"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Open quality selector menu</span></button><div class="vjs-menu"><ul class="vjs-menu-content" role="menu"><li class="vjs-menu-item vjs-selected" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="true"><span class="vjs-menu-item-text">hd</span><span class="vjs-control-text" aria-live="polite">, selected</span></li><li class="vjs-menu-item" tabindex="-1" role="menuitemradio" aria-disabled="false" aria-checked="false"><span class="vjs-menu-item-text">sd</span><span class="vjs-control-text" aria-live="polite"></span></li></ul></div></div><button class="vjs-picture-in-picture-control vjs-control vjs-button" type="button" title="Picture-in-Picture" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Picture-in-Picture</span></button><button class="vjs-control vjs-button theater-mode-player-icon close" type="button" aria-disabled="false" title="Close Theater Mode"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Close Theater Mode</span></button><button class="vjs-fullscreen-control vjs-control vjs-button" type="button" title="Fullscreen" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Fullscreen</span></button></div><div class="vjs-error-display vjs-modal-dialog vjs-hidden " tabindex="-1" aria-describedby="video-player_component_567_description" aria-hidden="true" aria-label="Modal Window" role="dialog"><p class="vjs-modal-dialog-description vjs-control-text" id="video-player_component_567_description">This is a modal window.</p><div class="vjs-modal-dialog-content" role="document"></div></div><div class="vjs-modal-dialog vjs-hidden  vjs-text-track-settings" tabindex="-1" aria-describedby="video-player_component_573_description" aria-hidden="true" aria-label="Caption Settings Dialog" role="dialog"><p class="vjs-modal-dialog-description vjs-control-text" id="video-player_component_573_description">Beginning of dialog window. Escape will cancel and close the window.</p><div class="vjs-modal-dialog-content" role="document"><div class="vjs-track-settings-colors"><fieldset class="vjs-fg vjs-track-setting"><legend id="captions-text-legend-video-player_component_573">Text</legend><span class="vjs-text-color"><label id="captions-foreground-color-video-player_component_573" class="vjs-label">Color</label><select aria-labelledby="captions-text-legend-video-player_component_573 captions-foreground-color-video-player_component_573"><option id="captions-foreground-color-video-player_component_573-White" value="#FFF" aria-labelledby="captions-text-legend-video-player_component_573 captions-foreground-color-video-player_component_573 captions-foreground-color-video-player_component_573-White">White</option><option id="captions-foreground-color-video-player_component_573-Black" value="#000" aria-labelledby="captions-text-legend-video-player_component_573 captions-foreground-color-video-player_component_573 captions-foreground-color-video-player_component_573-Black">Black</option><option id="captions-foreground-color-video-player_component_573-Red" value="#F00" aria-labelledby="captions-text-legend-video-player_component_573 captions-foreground-color-video-player_component_573 captions-foreground-color-video-player_component_573-Red">Red</option><option id="captions-foreground-color-video-player_component_573-Green" value="#0F0" aria-labelledby="captions-text-legend-video-player_component_573 captions-foreground-color-video-player_component_573 captions-foreground-color-video-player_component_573-Green">Green</option><option id="captions-foreground-color-video-player_component_573-Blue" value="#00F" aria-labelledby="captions-text-legend-video-player_component_573 captions-foreground-color-video-player_component_573 captions-foreground-color-video-player_component_573-Blue">Blue</option><option id="captions-foreground-color-video-player_component_573-Yellow" value="#FF0" aria-labelledby="captions-text-legend-video-player_component_573 captions-foreground-color-video-player_component_573 captions-foreground-color-video-player_component_573-Yellow">Yellow</option><option id="captions-foreground-color-video-player_component_573-Magenta" value="#F0F" aria-labelledby="captions-text-legend-video-player_component_573 captions-foreground-color-video-player_component_573 captions-foreground-color-video-player_component_573-Magenta">Magenta</option><option id="captions-foreground-color-video-player_component_573-Cyan" value="#0FF" aria-labelledby="captions-text-legend-video-player_component_573 captions-foreground-color-video-player_component_573 captions-foreground-color-video-player_component_573-Cyan">Cyan</option></select></span><span class="vjs-text-opacity vjs-opacity"><label id="captions-foreground-opacity-video-player_component_573" class="vjs-label">Opacity</label><select aria-labelledby="captions-text-legend-video-player_component_573 captions-foreground-opacity-video-player_component_573"><option id="captions-foreground-opacity-video-player_component_573-Opaque" value="1" aria-labelledby="captions-text-legend-video-player_component_573 captions-foreground-opacity-video-player_component_573 captions-foreground-opacity-video-player_component_573-Opaque">Opaque</option><option id="captions-foreground-opacity-video-player_component_573-SemiTransparent" value="0.5" aria-labelledby="captions-text-legend-video-player_component_573 captions-foreground-opacity-video-player_component_573 captions-foreground-opacity-video-player_component_573-SemiTransparent">Semi-Transparent</option></select></span></fieldset><fieldset class="vjs-bg vjs-track-setting"><legend id="captions-background-video-player_component_573">Text Background</legend><span class="vjs-bg-color"><label id="captions-background-color-video-player_component_573" class="vjs-label">Color</label><select aria-labelledby="captions-background-video-player_component_573 captions-background-color-video-player_component_573"><option id="captions-background-color-video-player_component_573-Black" value="#000" aria-labelledby="captions-background-video-player_component_573 captions-background-color-video-player_component_573 captions-background-color-video-player_component_573-Black">Black</option><option id="captions-background-color-video-player_component_573-White" value="#FFF" aria-labelledby="captions-background-video-player_component_573 captions-background-color-video-player_component_573 captions-background-color-video-player_component_573-White">White</option><option id="captions-background-color-video-player_component_573-Red" value="#F00" aria-labelledby="captions-background-video-player_component_573 captions-background-color-video-player_component_573 captions-background-color-video-player_component_573-Red">Red</option><option id="captions-background-color-video-player_component_573-Green" value="#0F0" aria-labelledby="captions-background-video-player_component_573 captions-background-color-video-player_component_573 captions-background-color-video-player_component_573-Green">Green</option><option id="captions-background-color-video-player_component_573-Blue" value="#00F" aria-labelledby="captions-background-video-player_component_573 captions-background-color-video-player_component_573 captions-background-color-video-player_component_573-Blue">Blue</option><option id="captions-background-color-video-player_component_573-Yellow" value="#FF0" aria-labelledby="captions-background-video-player_component_573 captions-background-color-video-player_component_573 captions-background-color-video-player_component_573-Yellow">Yellow</option><option id="captions-background-color-video-player_component_573-Magenta" value="#F0F" aria-labelledby="captions-background-video-player_component_573 captions-background-color-video-player_component_573 captions-background-color-video-player_component_573-Magenta">Magenta</option><option id="captions-background-color-video-player_component_573-Cyan" value="#0FF" aria-labelledby="captions-background-video-player_component_573 captions-background-color-video-player_component_573 captions-background-color-video-player_component_573-Cyan">Cyan</option></select></span><span class="vjs-bg-opacity vjs-opacity"><label id="captions-background-opacity-video-player_component_573" class="vjs-label">Opacity</label><select aria-labelledby="captions-background-video-player_component_573 captions-background-opacity-video-player_component_573"><option id="captions-background-opacity-video-player_component_573-Opaque" value="1" aria-labelledby="captions-background-video-player_component_573 captions-background-opacity-video-player_component_573 captions-background-opacity-video-player_component_573-Opaque">Opaque</option><option id="captions-background-opacity-video-player_component_573-SemiTransparent" value="0.5" aria-labelledby="captions-background-video-player_component_573 captions-background-opacity-video-player_component_573 captions-background-opacity-video-player_component_573-SemiTransparent">Semi-Transparent</option><option id="captions-background-opacity-video-player_component_573-Transparent" value="0" aria-labelledby="captions-background-video-player_component_573 captions-background-opacity-video-player_component_573 captions-background-opacity-video-player_component_573-Transparent">Transparent</option></select></span></fieldset><fieldset class="vjs-window vjs-track-setting"><legend id="captions-window-video-player_component_573">Caption Area Background</legend><span class="vjs-window-color"><label id="captions-window-color-video-player_component_573" class="vjs-label">Color</label><select aria-labelledby="captions-window-video-player_component_573 captions-window-color-video-player_component_573"><option id="captions-window-color-video-player_component_573-Black" value="#000" aria-labelledby="captions-window-video-player_component_573 captions-window-color-video-player_component_573 captions-window-color-video-player_component_573-Black">Black</option><option id="captions-window-color-video-player_component_573-White" value="#FFF" aria-labelledby="captions-window-video-player_component_573 captions-window-color-video-player_component_573 captions-window-color-video-player_component_573-White">White</option><option id="captions-window-color-video-player_component_573-Red" value="#F00" aria-labelledby="captions-window-video-player_component_573 captions-window-color-video-player_component_573 captions-window-color-video-player_component_573-Red">Red</option><option id="captions-window-color-video-player_component_573-Green" value="#0F0" aria-labelledby="captions-window-video-player_component_573 captions-window-color-video-player_component_573 captions-window-color-video-player_component_573-Green">Green</option><option id="captions-window-color-video-player_component_573-Blue" value="#00F" aria-labelledby="captions-window-video-player_component_573 captions-window-color-video-player_component_573 captions-window-color-video-player_component_573-Blue">Blue</option><option id="captions-window-color-video-player_component_573-Yellow" value="#FF0" aria-labelledby="captions-window-video-player_component_573 captions-window-color-video-player_component_573 captions-window-color-video-player_component_573-Yellow">Yellow</option><option id="captions-window-color-video-player_component_573-Magenta" value="#F0F" aria-labelledby="captions-window-video-player_component_573 captions-window-color-video-player_component_573 captions-window-color-video-player_component_573-Magenta">Magenta</option><option id="captions-window-color-video-player_component_573-Cyan" value="#0FF" aria-labelledby="captions-window-video-player_component_573 captions-window-color-video-player_component_573 captions-window-color-video-player_component_573-Cyan">Cyan</option></select></span><span class="vjs-window-opacity vjs-opacity"><label id="captions-window-opacity-video-player_component_573" class="vjs-label">Opacity</label><select aria-labelledby="captions-window-video-player_component_573 captions-window-opacity-video-player_component_573"><option id="captions-window-opacity-video-player_component_573-Transparent" value="0" aria-labelledby="captions-window-video-player_component_573 captions-window-opacity-video-player_component_573 captions-window-opacity-video-player_component_573-Transparent">Transparent</option><option id="captions-window-opacity-video-player_component_573-SemiTransparent" value="0.5" aria-labelledby="captions-window-video-player_component_573 captions-window-opacity-video-player_component_573 captions-window-opacity-video-player_component_573-SemiTransparent">Semi-Transparent</option><option id="captions-window-opacity-video-player_component_573-Opaque" value="1" aria-labelledby="captions-window-video-player_component_573 captions-window-opacity-video-player_component_573 captions-window-opacity-video-player_component_573-Opaque">Opaque</option></select></span></fieldset></div><div class="vjs-track-settings-font"><fieldset class="vjs-font-percent vjs-track-setting"><legend id="captions-font-size-video-player_component_573" class="">Font Size</legend><select aria-labelledby="captions-font-size-video-player_component_573"><option id="captions-font-size-video-player_component_573-50" value="0.50" aria-labelledby="captions-font-size-video-player_component_573 captions-font-size-video-player_component_573-50">50%</option><option id="captions-font-size-video-player_component_573-75" value="0.75" aria-labelledby="captions-font-size-video-player_component_573 captions-font-size-video-player_component_573-75">75%</option><option id="captions-font-size-video-player_component_573-100" value="1.00" aria-labelledby="captions-font-size-video-player_component_573 captions-font-size-video-player_component_573-100">100%</option><option id="captions-font-size-video-player_component_573-125" value="1.25" aria-labelledby="captions-font-size-video-player_component_573 captions-font-size-video-player_component_573-125">125%</option><option id="captions-font-size-video-player_component_573-150" value="1.50" aria-labelledby="captions-font-size-video-player_component_573 captions-font-size-video-player_component_573-150">150%</option><option id="captions-font-size-video-player_component_573-175" value="1.75" aria-labelledby="captions-font-size-video-player_component_573 captions-font-size-video-player_component_573-175">175%</option><option id="captions-font-size-video-player_component_573-200" value="2.00" aria-labelledby="captions-font-size-video-player_component_573 captions-font-size-video-player_component_573-200">200%</option><option id="captions-font-size-video-player_component_573-300" value="3.00" aria-labelledby="captions-font-size-video-player_component_573 captions-font-size-video-player_component_573-300">300%</option><option id="captions-font-size-video-player_component_573-400" value="4.00" aria-labelledby="captions-font-size-video-player_component_573 captions-font-size-video-player_component_573-400">400%</option></select></fieldset><fieldset class="vjs-edge-style vjs-track-setting"><legend id="video-player_component_573" class="">Text Edge Style</legend><select aria-labelledby="video-player_component_573"><option id="video-player_component_573-None" value="none" aria-labelledby="video-player_component_573 video-player_component_573-None">None</option><option id="video-player_component_573-Raised" value="raised" aria-labelledby="video-player_component_573 video-player_component_573-Raised">Raised</option><option id="video-player_component_573-Depressed" value="depressed" aria-labelledby="video-player_component_573 video-player_component_573-Depressed">Depressed</option><option id="video-player_component_573-Uniform" value="uniform" aria-labelledby="video-player_component_573 video-player_component_573-Uniform">Uniform</option><option id="video-player_component_573-Dropshadow" value="dropshadow" aria-labelledby="video-player_component_573 video-player_component_573-Dropshadow">Dropshadow</option></select></fieldset><fieldset class="vjs-font-family vjs-track-setting"><legend id="captions-font-family-video-player_component_573" class="">Font Family</legend><select aria-labelledby="captions-font-family-video-player_component_573"><option id="captions-font-family-video-player_component_573-ProportionalSansSerif" value="proportionalSansSerif" aria-labelledby="captions-font-family-video-player_component_573 captions-font-family-video-player_component_573-ProportionalSansSerif">Proportional Sans-Serif</option><option id="captions-font-family-video-player_component_573-MonospaceSansSerif" value="monospaceSansSerif" aria-labelledby="captions-font-family-video-player_component_573 captions-font-family-video-player_component_573-MonospaceSansSerif">Monospace Sans-Serif</option><option id="captions-font-family-video-player_component_573-ProportionalSerif" value="proportionalSerif" aria-labelledby="captions-font-family-video-player_component_573 captions-font-family-video-player_component_573-ProportionalSerif">Proportional Serif</option><option id="captions-font-family-video-player_component_573-MonospaceSerif" value="monospaceSerif" aria-labelledby="captions-font-family-video-player_component_573 captions-font-family-video-player_component_573-MonospaceSerif">Monospace Serif</option><option id="captions-font-family-video-player_component_573-Casual" value="casual" aria-labelledby="captions-font-family-video-player_component_573 captions-font-family-video-player_component_573-Casual">Casual</option><option id="captions-font-family-video-player_component_573-Script" value="script" aria-labelledby="captions-font-family-video-player_component_573 captions-font-family-video-player_component_573-Script">Script</option><option id="captions-font-family-video-player_component_573-SmallCaps" value="small-caps" aria-labelledby="captions-font-family-video-player_component_573 captions-font-family-video-player_component_573-SmallCaps">Small Caps</option></select></fieldset></div><div class="vjs-track-settings-controls"><button type="button" class="vjs-default-button" title="restore all settings to the default values">Reset<span class="vjs-control-text"> restore all settings to the default values</span></button><button type="button" class="vjs-done-button">Done</button></div></div><button class="vjs-close-button vjs-control vjs-button" type="button" title="Close Modal Dialog" aria-disabled="false"><span class="vjs-icon-placeholder" aria-hidden="true"></span><span class="vjs-control-text" aria-live="polite">Close Modal Dialog</span></button><p class="vjs-control-text">End of dialog window.</p></div></video-js>
+        </div>
+</section>
+                
+                
+                    <section id="transcription" class="video-transcription transcription-toggle">
+                        
+                            <h2 class="video-transcription-title">Transcripción</h2>
+                        
+                        <div class="formattedText" data-external-links="">
+                                <p>[00:00] Entonces vamos a realizar el payload y vemos que aquí tenemos un error. Lo que vamos a hacer es, ahora ya no está apareciendo con error. Tenemos ya ortopedia mayúscula. Vamos a enviarlo ahora y vemos aquí te da un 200, 200 que es éxito. Aquí como puedes ver tienes el dato registro médico con un formato digamos de llave valor.</p>
+<p>[00:23] Nombre Rodrigo López, el email Rodrigo.lopez@voll.med y todos los datos que hemos enviado aquí desde nuestro front end, desde nuestro cliente, pero por ejemplo, ¿qué pasaría si yo no le envío calle, no le voy a enviar calle? Vamos a ver qué pasa. Me da 200, igual. Veo aquí y vemos que simplemente en calle si es que no recibe el parámetro a diferencia de en el primer caso ahora imprime null, porque simplemente el objeto string de calle está vacío. </p>
+<p>[00:58] No hay nada más que ver por ahora. Tienen que practicar mucho este mapeo de parámetros y el mapeo en los récords. Tenemos por ahora 2 DTO. Este tipo de patrón que estamos usando se llama patrón DTO, Data Transfer Object, que es básicamente usar a nivel de controller un objeto como intermediario para que mapee la información que nos llega desde nuestro cliente hacia nuestro API. </p>
+<p>[01:30] Por ejemplo, si yo le envío también algo que no está esperando mi API, si le envío, no sé, algo como tipo de sangre, entonces simplemente no va a ser recibido ni procesado aquí porque mi DTO, mi Data Transfer Object, no tiene mapeado ese parámetro. Entonces, este es un patrón muy utilizado.</p>
+<p>[01:50] Solo antes de irnos, DatosDirección, voy a hacer exactamente lo mismo que hice con datos med, voy a crear aquí un nuevo paquete llamado dirección, porque también va a ser usado por el paciente, entonces lo voy a mover a ese nuevo paquete, le doy okay. </p>
+<p>[02:05] Y tenemos nuestro paquete dirección, nuestro paquete médico, con los DatosRegistroMedico y la especialidad. Tienen alguna duda, pueden dejarla en el foro. Lo que viene a continuación son las validaciones. </p>
+<p>[02:18] Si volvemos aquí a nuestras reglas de negocio, bueno, en las consideraciones que debemos tener son que recibamos solo letras, no pueden llegar vacíos, dentro de él tiene que ser valores dentro de enum, aquí solo números Entonces, tenemos ese tipo de situaciones que las vamos a ver en la siguiente clase. Nos vemos.</p>
+                        </div>
+                    </section>
+                    
+                        <button class="video-transcription-button transcription-toggle" aria-hidden="true" style="display: none;">
+                            <span class="video-transcription-button-text">
+                                    continuar leyendo</span>
+                        </button>
+                    
+                
+            </div>
+        </section>
+    
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+				
+					
+
+
+
+
+
+
+	
+	
+		<section class="task-actions">
+			<div class="container">
+				
+
+
+
+
+
+
+    
+        
+        <a href="https://app.aluracursos.com/forum/curso-spring-boot-3-desarrollar-api-rest-java/exercicio-dto-java-record-2/83416/novo" class=" task-actions-button task-actions-button-forum bootcamp-secondary-button-theme" target="_blank">
+            
+                
+                
+                    Discutir en el Foro
+                
+            
+        </a>
+    
+
+
+
+				
+				
+				
+				
+					<a href="https://app.aluracursos.com/course/spring-boot-3-desarrollar-api-rest-java/task/83416/next" style="background-color: #2A7AE4" class="task-actions-button task-body-actions-button task-actions-button-next bootcamp-next-button bootcamp-primary-button-theme">Próxima Actividad</a>
+				
+			</div>
+		</section>
+	
+
+
+				
+				
+					
+
+
+
+
+<div class="modalContainer">
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-content">
+            <section class="modal-content-header">
+                <h4 class="modal-content-header-title">Atajos de teclado</h4>
+                <button type="button" class="modal-content-header-close" aria-label="Fechar modal"></button>
+            </section>
+            <section class="modal-body">
+                <div class="normal-shortcut-keys">
+                    <table class="dashboard-table bootcamp-text-color-gray shortcut-table">
+                        <tbody>
+                        <tr>
+                            <td><img src="./dadadadasdas_files/k-key.svg" alt="Letra k del teclado"> </td>
+                            <td>Reproducir / pausar el video</td>
+                        </tr>
+                        <tr>
+                            <td><img src="./dadadadasdas_files/m-key.svg" alt="Letra m del teclado"></td>
+                            <td>Silenciar / reactivar el video</td>
+                        </tr>
+                        <tr>
+                            <td><img src="./dadadadasdas_files/f-key.svg" alt="Letra f del teclado"></td>
+                            <td>Activar / desactivar pantalla completa (full screen)</td>
+                        </tr>
+                        <tr>
+                            <td><img src="./dadadadasdas_files/left-key.svg" alt="Flecha izquierda"></td>
+                            <td>Retrocede 10 segundos a la reproducción de video</td>
+                        </tr>
+                        <tr>
+                            <td><img src="./dadadadasdas_files/right-key.svg" alt="Flecha derecha"></td>
+                            <td>Avance rápido 10 segundos hasta la reproducción de video</td>
+                        </tr>
+                        <tr>
+                            <td><img src="./dadadadasdas_files/up-key.svg" alt="Flecha hacia arriba"></td>
+                            <td>Aumentar el volumen en un 5%</td>
+                        </tr>
+                        <tr>
+                            <td><img src="./dadadadasdas_files/down-key.svg" alt="Flecha hacia abajo"></td>
+                            <td>Disminuir el volumen en un 5%</td>
+                        </tr>
+                        <tr>
+                            <td><img src="./dadadadasdas_files/space-key.svg" alt="Tecla del espacio"></td>
+                            <td>Reproducir / pausar el video cuando ningún botón está enfocado (seleccionado).</td>
+                        </tr>
+                        <tr>
+                            <td><img src="./dadadadasdas_files/space-key.svg" alt="Tecla del espacio"></td>
+                            <td>Activar / desactivar la función del botón que está enfocado.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="function-shortcut-keys">
+                    <table class="dashboard-table bootcamp-text-color-gray shortcut-table">
+                        <caption class="shortcuts-keys-title">Teclas de función</caption>
+                        <tbody>
+                            <tr>
+                                <td><img src="./dadadadasdas_files/play-key.svg" alt="Tecla multimedia Play"></td>
+                                <td>Reproducir el video</td>
+                            </tr>
+                            <tr>
+                                <td><img src="./dadadadasdas_files/pause-key.svg" alt="Tecla multimedia Pause"></td>
+                                <td>Pausar el video</td>
+                            </tr>
+                            <tr>
+                                <td><img src="./dadadadasdas_files/stop-key.svg" alt="Tecla multimedia Stop"></td>
+                                <td>Detener el video</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+				
+			</main>
+		</div>
+	</section>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<button title="Abrir menú/Cerrar menú" aria-label="Abrir menú/Cerrar menú" type="button" class="openMenu-button task-body-button openMenu-button--inactive">
+</button>
+
+<aside class="task-menu task-menu-iframe" style="position: fixed;">
+	<section class="task-menu-header">
+		<button title="Abrir menú" aria-label="Abrir menú" type="button" class="openMenu-button task-menu-button openMenu-button--inactive"></button>
+		<div class="task-menu-header-info">
+			<a class="task-menu-header-info-title" href="https://app.aluracursos.com/course/spring-boot-3-desarrollar-api-rest-java" title="Ir para la página del curso">
+				
+					
+					
+						<img src="./dadadadasdas_files/spring-boot-3-desarrollar-api-rest-java.svg" alt="ícone Spring Boot 3: desarrollar una API Rest en Java" class="task-menu-header-info-title-icon " width="37.5px" height="37.5px">
+					
+				
+				<h2 class="task-menu-header-info-title-text">Spring Boot 3: desarrollar una API Rest en Java</h2>
+			</a>
+			
+				<div class="task-menu-header-info-progress">
+					
+					<span class="task-menu-header-info-progress-percentage ">25%</span>
+					
+						
+						
+						
+							
+						
+					
+					<span class="task-menu-header-info-progress-bar" style="background-image: linear-gradient(to right, #9de482, #9de482 25%, transparent 25%);"></span>
+				</div>
+			
+
+		</div>
+	</section>
+	
+		<form class="task-menu-header-search" target="_blank" action="https://app.aluracursos.com/search/course/spring-boot-3-desarrollar-api-rest-java" method="get">
+			<label class="task-menu-header-search-title" for="query">Buscar en este curso</label>
+			<input class="task-menu-header-search-input" name="query" id="query" type="text" required="">
+			<button class="task-menu-header-search-button">Buscar <img aria-hidden="true" class="task-menu-header-search-button-img" src="./dadadadasdas_files/icon-new-page.svg"></button>
+		</form>
+	
+	
+	<section class="task-menu-section sr-only">
+		<div class="task-menu-section-title">
+			<span class="task-menu-section-title-number ">Aula<strong>02</strong>
+				<span>de 05</span>
+			</span>
+			<h3 class="task-menu-section-title-text">
+				Requests POST
+			</h3>
+		</div>
+	</section>
+	<section class="task-menu-sections">
+		<h2 class="task-menu-sections-title">
+			Clase actual
+		</h2>
+		<select class="task-menu-sections-select" onchange="location.href=&#39;/course/spring-boot-3-desarrollar-api-rest-java/section/&#39;+this.value+&#39;/tasks&#39;;">
+			
+				<option value="11350">01. Creacion del proyecto</option>
+			
+				<option value="11351" selected="">02. Requests POST</option>
+			
+				<option value="11352">03. Spring Data JPA</option>
+			
+				<option value="11353">04. Request GET</option>
+			
+				<option value="11354">05. Request PUT y DELETE</option>
+			
+		</select>
+	</section>
+	<nav class="task-menu-nav">
+		<h2 class="task-menu-nav-title">
+			Actividades
+			<span>7 de 11</span>
+		</h2>
+		<ul class="task-menu-nav-list">
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-desarrollar-api-rest-java/task/84641" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Explicación completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">01</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Proyecto del aula anterior">
+							Proyecto del aula anterior
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-desarrollar-api-rest-java/task/83413" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Video completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">02</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Enviando datos">
+							Enviando datos
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para el Vídeo">09min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-desarrollar-api-rest-java/task/83414" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Video completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">03</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Recibiendo datos">
+							Recibiendo datos
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para el Vídeo">08min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-desarrollar-api-rest-java/task/83445" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Explicación completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#COMPLEMENTARY_INFORMATION"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">04</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Para saber más: JSON">
+							Para saber más: JSON
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-desarrollar-api-rest-java/task/83456" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Explicación completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#COMPLEMENTARY_INFORMATION"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">05</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Para saber más: tratando con CORS">
+							Para saber más: tratando con CORS
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-desarrollar-api-rest-java/task/83415" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Video completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">06</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="DTO Java Record #1">
+							DTO Java Record #1
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para el Vídeo">09min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item task-menu-nav-item--selected">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-desarrollar-api-rest-java/task/83416" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Video inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">07</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="DTO Java Record #2">
+							DTO Java Record #2
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para el Vídeo">03min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-desarrollar-api-rest-java/task/83446" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Actividad de Explicación inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#COMPLEMENTARY_INFORMATION"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">08</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Para saber más: Java Record">
+							Para saber más: Java Record
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-desarrollar-api-rest-java/task/83439" class="task-menu-nav-item-link task-menu-nav-item-link-SINGLE_CHOICE">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Actividad de Única opción inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#SINGLE_CHOICE"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">09</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="JSON y DTO">
+							JSON y DTO
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-desarrollar-api-rest-java/task/83457" class="task-menu-nav-item-link task-menu-nav-item-link-TEXT_CONTENT">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Actividad de Sin respuesta del estudiante inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#DO_AFTER_ME"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">10</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Haga lo que hicimos en el aula: controller de pacientes">
+							Haga lo que hicimos en el aula: controller de pacientes
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-desarrollar-api-rest-java/task/83458" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Actividad de Explicación inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#WHAT_WE_LEARNED"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">11</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Lo que aprendimos">
+							Lo que aprendimos
+						</span>
+						
+					</span></a>
+				</li>
+			
+			
+		</ul>
+	</nav>
+	<section class="task-menu-others">
+		<h2 class="task-menu-others-title ">
+			Otros Links
+		</h2>
+		
+			<a class="task-menu-others-link task-menu-others-link-discord" href="https://discord.com/invite/bts3Yzb9uk" target="_blank">
+				Discord Alura
+			</a>
+		
+		
+			
+			<a href="https://app.aluracursos.com/forum/curso-spring-boot-3-desarrollar-api-rest-java/todos" class="task-menu-others-link task-menu-others-link-forum" title="Ir para el foro do curso" target="_blank">
+				
+					
+					
+					
+						Foro del curso
+					
+				
+			</a>
+		
+		<a href="https://app.aluracursos.com/dashboard" class="task-menu-others-link task-menu-others-link-curso" title="Ir para la página principal">Volver al Dashboard</a>
+		
+		<section class="task-container-flex  --task-button-column">
+			
+				<div class="task-group-border  --task-closed-border">
+					<button class="task-edit-mode settings-box-item-darkmode">Modo nocturno</button>
+				</div>
+			
+		</section>
+	</section>
+	<section class="task-menu-footer">
+		<a class="task-menu-footer-user" href="https://app.aluracursos.com/user/sboboda1997" title="Ir para su página de usuario">
+			<img src="./dadadadasdas_files/k-kurt.png" alt="Gravatar de Kevin Sboboda" class="task-menu-footer-img" width="40px" height="40px">
+			
+				<p class="task-menu-footer-detalhes">
+					<span class="task-menu-footer-detalhes-nome">Kevin Sboboda</span>
+					<span class="task-menu-footer-detalhes-xp">
+						74.5k xp
+					</span>
+				</p>
+			
+			<input type="hidden" value="">
+			<input type="hidden" value="">
+		</a>
+		<a href="https://app.aluracursos.com/dashboard" class="task-menu-footer-logo">
+			<img src="./dadadadasdas_files/icon-menu-alura_espanhol.svg" alt="Logo da Alura Latam" class="task-menu-footer-logo-image" width="19px" height="32px" title="Ir para la página principal">
+		</a>
+	</section>
+</aside>
+
+
+
+
+    
+
+</section><div class="full-screen__panel" style="display: none;">
+				<img id="full-screen__image" class="full-screen__image" src="https://app.aluracursos.com/course/spring-boot-3-desarrollar-api-rest-java/task/83416" alt="">
+				<div class="full-screen__actions">
+				<button class="button buttonAction partitura-download">Anterior</button><button class="button buttonAction partitura-download">Sair</button><button class="button buttonAction partitura-download">Próximo</button></div> 
+			</div>
+
+
+
+
+
+
+
+
+
+
+	
+
+	<script src="./dadadadasdas_files/jquery-3.6.0.min.7c14a783.js.descarga"></script>
+	<script src="./dadadadasdas_files/buttonToggle.41524be9.js.descarga"></script>
+	<script src="./dadadadasdas_files/sectionMenu.2bb600e2.js.descarga" async=""></script>
+	<script src="./dadadadasdas_files/submitTaskVerifier.e6e3bd5f.js.descarga"></script>
+
+    <script src="./dadadadasdas_files/purify.min.bd253e08.js.descarga"></script>
+
+	<script src="./dadadadasdas_files/caret.2e5c0c9d.js.descarga" async=""></script>
+	<script src="./dadadadasdas_files/keydownWatchers.fdc4ec79.js.descarga" async=""></script>
+
+	<script src="./dadadadasdas_files/highlight.min.9b99da81.js.descarga" async=""></script>
+	<script src="./dadadadasdas_files/highlight.init.5870d8cf.js.descarga" async=""></script>
+
+	<script src="./dadadadasdas_files/preventsMultipleInteractions.19502e19.js.descarga" async=""></script>
+	<script src="./dadadadasdas_files/assessment.78d1fb98.js.descarga" async=""></script>
+
+	<script src="./dadadadasdas_files/menuSettings.fb011b3b.js.descarga"></script>
+	<script src="./dadadadasdas_files/aria.a82b16ad.js.descarga"></script>
+	<script src="./dadadadasdas_files/ProjectSubmit.1e34b47f.js.descarga"></script>
+	<script src="./dadadadasdas_files/LinkSubmit.60d53572.js.descarga"></script>
+	<script src="./dadadadasdas_files/classPage.fcad576a.js.descarga"></script>
+	<script src="./dadadadasdas_files/phrase.dfd04ee1.js.descarga"></script>
+	<script src="./dadadadasdas_files/feedback.7962df4a.js.descarga"></script>
+	<script src="./dadadadasdas_files/ExtraContentProgressRequest.aec577c3.js.descarga"></script>
+	
+	
+		<!-- video specific -->
+		<script src="./dadadadasdas_files/video.min.79654de2.js.descarga"></script>
+		<script src="./dadadadasdas_files/silvermine-videojs-quality-selector.min.a5df5b2a.js.descarga"></script>
+		<script src="./dadadadasdas_files/dash.all.min.831efc7a.js.descarga"></script>
+		<script src="./dadadadasdas_files/videojs-dash.min.a5cb38de.js.descarga"></script>
+		<script src="./dadadadasdas_files/transcriptionToggle.afde441e.js.descarga"></script>
+
+
+		
+			<script src="./dadadadasdas_files/TheaterMode.26066598.js.descarga"></script>
+			<script>new TheaterModeToggler().registerTheaterModeComponentOnVideoJS();</script>
+		
+		
+		<script src="./dadadadasdas_files/lastMomentManager.8a19ec28.js.descarga"></script>
+		<script src="./dadadadasdas_files/VideoPlayer.15742f4e.js.descarga"></script>
+		<script src="./dadadadasdas_files/scroll-top.acd0a474.js.descarga"></script>
+		<script>
+			new VideoPlayer().build();
+		</script>
+	
+
+	
+	
+	
+	
+	
+
+	<script src="./dadadadasdas_files/partitura.3e404a17.js.descarga"></script>
+	<script src="./dadadadasdas_files/audioProgress.049144a0.js.descarga"></script>
+	<script src="./dadadadasdas_files/audioPlayer.38483a63.js.descarga"></script>
+
+		
+	<script src="./dadadadasdas_files/VideoTranscription.60f380a7.js.descarga"></script>
+	<script src="./dadadadasdas_files/MarkdownProcessing.2cb5d893.js.descarga"></script>
+	<script src="./dadadadasdas_files/clipboard.min.af8ab365.js.descarga"></script>
+	<script src="./dadadadasdas_files/Clipper.5c96d26f.js.descarga"></script>
+	<script src="./dadadadasdas_files/scroll-to-top.373e0d1c.js.descarga"></script>
+	<script src="./dadadadasdas_files/shortcuts-action.eba8a7c6.js.descarga"></script>
+	<script src="./dadadadasdas_files/ModalAndAlertHandler.9c67ae4b.js.descarga"></script>
+    
+
+
+	<script>
+		new VideoTranscription();
+		new MarkdownProcessing("https://app.aluracursos.com").onLoad();
+		new Clipper("Copia el código", "Código copiado", "No se pudo copiar el código");
+		window.addEventListener('load', () => new BackToTopButton().init());
+		new ModalAndAlertHandler('spring-boot-3-desarrollar-api-rest-java').setupListeners();
+	</script>
+
+
+
+	
+
+	<script src="./dadadadasdas_files/darkMode.b7bc2dd7.js.descarga"></script>
+
+	
+		
+
+
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-42101548-21', 'aluracursos.com');
+
+    
+        ga('set', 'userId', '576082');
+    
+
+    ga('require', 'displayfeatures');
+    
+    ga('send', 'pageview');
+    
+    
+</script>
+	
+
+	<script>new DarkModeToggler().refreshListener()</script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="./dadadadasdas_files/uploadImages.7c1a29db.css" rel="stylesheet">
+
+<script src="./dadadadasdas_files/UploadProgress.098aba94.js.descarga"></script>
+<script src="./dadadadasdas_files/ImagesClient.f10726e3.js.descarga"></script>
+
+<script src="./dadadadasdas_files/marked.min.c69e14e8.js.descarga"></script>
+
+<script src="./dadadadasdas_files/enableForumButtons.1293253c.js.descarga"></script>
+
+<script>
+    var IMAGE_UPLOAD_MESSAGES = {
+        imageUploadMessageInit: `Adjunte archivos arrastrándolos y soltándolos`,
+        imageUploadMessageDragEnter: `Suelta la imagen para subir`,
+        imageUploadMessageDrop: `Subiendo la imagen #images_names#`,
+        imageUploadMessageProgress: `Subiendo la imagen #images_names#: #progress#%`,
+        imageUploadMessageUploaded: `¡Imagen enviada con éxito!`,
+        imageUploadMessageSizeUnits: `MB`,
+        imageUploadMessageTag: `![Ingrese aquí la descripción de esta imagen para ayudar con la accesibilidad](#url#) `
+    }
+</script>
+
+
+    
+        <link href="./dadadadasdas_files/hackeditor.min.fcf421a7.css" rel="stylesheet">
+        <link href="./dadadadasdas_files/hackeditor.custom.e0057fb6.css" rel="stylesheet">
+        <link href="./dadadadasdas_files/github.754087c4.css" rel="stylesheet">
+
+        <script src="./dadadadasdas_files/hackeditor.min.4c55d65b.js.descarga"></script>
+        <script src="./dadadadasdas_files/hackeditor.custom.b88c034d.js.descarga"></script>
+        <script src="./dadadadasdas_files/highlight.min.9b99da81.js.descarga"></script>
+        <script>
+            const setupEditorsOnPage = (e) => {
+                const toolbarActionsHints = {
+                    toggleHeadingActionHint: `Encabezado`,
+                    toggleBoldActionHint: `Negrito`,
+                    toggleItalicActionHint: `Cursiva`,
+                    toggleOrderedListActionHint: `Lista ordenada`,
+                    toggleUnorderedListActionHint: `Lista desordenada`,
+                    togglePreviewActionHint: `Alternar vista previa`,
+                    drawTableActionHint: `Insertar tabla`,
+                    drawCodeActionHint: `Insertar bloque de código`,
+                    drawLinkActionHint: `Insertar enlace`,
+                    drawImageActionHint: `Insertar imagen`,
+                    drawUploadedImageActionHint: `Carga de imagen`,
+                    undoActionHint: `Deshacer`,
+                    redoActionHint: `Rehacer`
+                }
+
+                const imageUploadErrors = {
+                    imageErrorLimit: `¡Solo puede insertar 5 imágenes a la vez!`,
+                    imageFileNotAllowed: `El archivo filename no está permitido, ¡solo imágenes!`,
+                    imageVeryLarge: `El archivo filename supera el límite de 2 MB.`,
+                    imageMaliciousFile: `El archivo filename contiene contenido malicioso.`
+                }
+
+                window.editors = window.editors || [];
+
+                const editorsElements = window.editors.map(ed => ed.element.id);
+
+                const textAreaEditors = Array.from(document.querySelectorAll('.hackeditor > textarea'));
+                textAreaEditors
+                    .filter(e => e.closest('.taskForms') == null)
+                    .filter(e => editorsElements.length == 0 ? true : !editorsElements.includes(e.id))
+                    .forEach(editorTextArea => {
+                        const editor = setupHackEditor({
+                            editorOptions: {
+                                element: editorTextArea,
+                                initialValue: editorTextArea.innerText,
+                                syncPreview: true,
+                                maxHeight: "300px",
+                                toolbarActionsHints,
+                                imageUploadMessages: IMAGE_UPLOAD_MESSAGES,
+                                imageUploadErrors,
+                                imageUploadClient: new ImagesClient(
+                                    'https://www.gnarususercontent.com.br/images',
+                                    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MTc4MDcxMzMsImtleSI6IjRiYWRlNDg1LTFjYjYtNDYzNy1iMTRlLWIxYTY2MzRhZDYyNyJ9.VHSsMMu_Qmm9G5HbJD9jA86B2hddM07XRbObvZRh0Ns',
+                                    6,
+                                    576082
+                                ),
+                                allowImageUpload: editorTextArea.dataset.allowImageUpload
+                            },
+                            extensions: {
+                                DOMPurify,
+                                marked,
+                                hljs
+                            }
+                        });
+
+                        window.editors.push({
+                            instance: editor,
+                            element: editorTextArea,
+                        });
+
+                        enableForumButtons();
+                });
+            }
+
+            window.addEventListener('DOMContentLoaded', setupEditorsOnPage);
+            document.addEventListener('change', setupEditorsOnPage);
+        </script>
+    
+    
+
+<script src="./dadadadasdas_files/IframeChecker.05103d26.js.descarga"></script>
+
+
+
+<button class="back-to-top" type="button" style="display: none;"><span class="back-to-top__text">Voltar ao topo</span></button></body></html>

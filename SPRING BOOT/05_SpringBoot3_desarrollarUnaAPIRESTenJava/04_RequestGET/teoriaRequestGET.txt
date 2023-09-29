@@ -1,0 +1,219 @@
+																
+																
+																
+																02 Produciendo datos
+																
+																
+Transcripción
+[00:00] Bienvenidos a la cuarta clase de su curso de Spring Boot Java API. En esta ocasión vamos a ver un nuevo caso de uso, ya vimos lo que es la creación de médicos, ya sabemos validar los datos que están llegando, ahora vamos a entender cómo listarlos.
+
+[00:18] Si ustedes recuerdan en la clase anterior para saber si el médico era guardado correctamente o no, entrábamos directamente a la base de datos y revisábamos si es que el registro había sido creado correctamente o no. En esta oportunidad ya no queremos usar más la base de datos directamente, no queremos tener interacción directa contra el motor de base de datos.
+
+[00:38] Queremos hacerlo todo a nivel de API, para esto tenemos el requerimiento del negocio del listado de médicos, que es algo muy parecido a lo que ven aquí en la pantalla. Es solo con fines genéricos referenciales, no es tal cual, pero, por ejemplo, un típico caso de uso podría ser deseamos que en el aplicativo móvil o en la web los médicos sean mostrados y yo pueda escoger a un médico o tener la lista completa de médicos que tengo disponibles.
+
+[01:09] Para esto tenemos una serie de consideraciones para esta lista. Por ejemplo, la información que debe ser mostrada es el nombre, especialidad el documento y el email. Entre las reglas del negocio. ¿Cuáles son? La primera debe ser ordenado ascendentemente, y esto quiere decir, yo debería ser capaz de ordenar por nombre o por código de forma ascendente.
+
+[01:34] Nuestra vista tiene que ser capaz de organizarse de esa forma. Y paginado máximo 10, registros por página. ¿Qué significa paginado? Normalmente, cuando ustedes reciben una lista de alguna aplicación, digamos si aplicación tiene 500 registros, ustedes no reciben los 500 registros en una sola request.
+
+[02:04] Normalmente ustedes tienen una serie de números abajo de la lista, diciendo que es la página 1, página 2, página 3, esto es para implementar mejor performance en las queries en cuanto a la base de datos, y también para una mejor experiencia de usuario. Entonces sin más que decir, vamos a comenzar con la parte interesante que es el código.
+
+[02:27] Vimos que el RequestMapping está apuntando a médicos, significa que en el pad, en la URL apuntamos a médicos, tenemos nuestro método RegistrarMédico y ahora vamos a implementar un nuevo método llamado listar. Para esto, aquí usamos un método del tipo void, que eso quiere decir un método que no retorna parámetros, pero esta vez yo voy a usar una lista.
+
+[02:54] ¿Por qué? Porque quiero retornar una lista de algo, pero obviamente la lista que voy a usar es la lista de Java-util, siempre, y por esta vez yo voy a retornar una lista de médico como entidad. Esto es por ahora solamente para que se entienda lo que quiero hacer, no va a quedar así finalmente.
+
+[03:15] Pero bueno, ponemos listadoMedicos sin parámetros, no vamos a considerar ni un solo parámetro. Y si aquí usamos un postMapping para el listado, aquí vamos a usar un putMapping. Perdón, no putMapping. GetMappint, porque el request es del tipo get, vamos a un getMapping, lo lista y todo bien. ¿Qué es lo que vamos a poner ahora dentro de este método?
+
+[03:44] Vamos a retornar una lista de médicos directamente, por lo tanto, vamos a decirle return medicoRepository.findAll() sin ningún tipo de parámetro. Y ustedes me preguntarán, pero Diego, en medicoRepository, si nosotros entramos no hay ni un solo método creado. El método findAll viene de la clase que estamos extendiendo, de JpaRepository. Esta es la magia de las interfaces que Spring nos brinda.
+
+[04:17] No necesitamos escribir este código porque finalmente ya Spring lo implementa por nosotros internamente, nosotros solamente tenemos que llamarlo. Y bien, ¿esto sería todo lo que necesitamos para poder retornar nuestra lista de médicos? Vamos a probarlo, entonces guardamos y ejecutamos nuestro servidor. Esperamos que compile, vemos que ya inicia.
+
+[04:49] Inició la aplicación correctamente, y nos vamos ahora para Insomnia. En Insomnia vamos a crear una nueva request, le damos clic aquí http request y le vamos a poner de nombre listado de médicos, vamos a renombrar y seguimos con listado médicos. Perfecto. Y la url sería la misma, sería http://localhost:8080 y también con /medicos porque es la url que estamos siguiendo.
+
+[05:24] Le voy a dar get porque yo estoy usando un getMapping en esta url y vamos a ver qué es lo que me he retorna. Vamos ahí y, en efecto, yo recibí aquí el listado de médicos que yo tengo en este momento. Tengo a Diego López, tengo a Diego López con otra dirección, con otro id, y a Erick Cárdenas, pero aquí entra nuestra primera constrain por regla del negocio.
+
+[05:50] Yo estoy listando los médicos, ¿pero debería mostrar todos estos datos? Si regresamos a nuestra lista de requerimientos, lo único que debemos mostrar es el nombre de la especialidad, el documento y el email. ¿Entonces, cómo es que vamos a conseguir restringir los demás valores? Eso lo vamos a ver en el siguiente video.
+
+
+
+
+																03 Probando lista #1
+																
+Transcripción
+[00:00] Bien, estamos aquí con los parámetros que hemos retornado de nuestro registros de la entidad médico que están en la base de datos, pero nuestro problema ahora es que estamos retornando más datos de los que deberíamos. Vamos paso a paso. ¿Qué tenemos aquí? Lo primero es que la URL de aquí, el request que hemos creado aquí es diferente el request que teníamos en post.
+
+[00:27] Porque primero el verbo es diferente. Este es un get, este es un post. Post es para salvar datos, el get es para traerlos. Segundo, vemos que no estamos enviando ningún tipo de body porque como estamos pidiendo datos, no tenemos que enviarle algún tipo de dato que vaya a persistir a nivel de base de datos.
+
+[00:49] Tercero, y no menos importante, vemos que la lista ya llega formateada en JSON, en formato JSON. Spring automáticamente entiende que por defecto necesitamos un JSON pero en configuraciones más avanzadas esto puede ser incluso formateado a XML, a texto, esos ya son pasos un poco más avanzados en Spring, por ahora estamos en lo básico.
+
+[01:11] Tenemos una lista que está llegando con todos los parámetros tal cual está en nuestro modelo de base de datos en nuestra entidad, y esto no es bueno. ¿Por qué? No es bueno porque estamos exponiendo más información de la que deberíamos y quizás por regla del negocio, por motivos de seguridad, algún tipo de información privilegiada por ejemplo, no deberíamos ser capaces de mostrar ciertos datos.
+
+[01:38] Por algo el negocio se toma el tiempo de definir las reglas y decirnos qué debería ser retornado. ¿Qué es lo que hacemos ahora? Bueno, de la misma forma en la que usamos un datosRegistroMedico para representar la información que llega a nuestra url, que no necesariamente es la misma que está en nuestro modelo de base de datos, para retornar esa información y para mostrarla podemos usar un DTO también.
+
+[02:08] Entonces vamos a crearle aquí un DTO. En este caso va a ser si aquí tengo datosRegistroMedico aquí voy a poner datosListadoMedicos. Ese DTO no existe entonces el control de espacio, vamos a darle aquí y le vamos a poner create record datosListadoMedico. Controller es directamente en médico. Punto médico, correcto.
+
+[02:34] Voy a ir. Creamos nuestro nuevo record, ya sabemos que internamente Java a crear una clase con esto, lo que tenemos que hacer aquí es especificar los parámetros que queremos que se muestren. Vamos de vuelta a nuestras reglas del negocio y necesitamos nombre, especialidad. Entonces vamos aquí, String nombre, String especialidad, String documento, String email. Todo separado por comas.
+
+[03:17] Y listo, venimos aquí y ahora vemos que datosListadoMedico ya está aquí presente, pero ahora no compila porque este medicoRepository.findAll retorna un listado de médico como entidad, no de datosListadoMedico. Para esto yo voy a hacer uso del API Stream de Java, entonces aquí le voy a dar stream.map y le voy a decir que use los datos de listadoMedicos y que me cree un nuevo datosListadoMedico con cada médico que me traiga de la base de datos.
+
+[04:00] Y a esto lo voy a poner un toList para que retorne en un objeto del tipo de lista. Vemos que no está compilando porque falta un constructor aquí, que use el parámetro del médico entidad para mapearlo a médico DTO. Vamos a crearlo, no hay ningún problema con eso. Venimos aquí y le vamos a dar un constructor. Entonces comenzamos aquí con el constructor.
+
+
+
+
+
+
+																04 Probando lista #2
+																
+Transcripción
+[00:00] Y creamos un constructor aquí, que ya lo tengo preparado, que reciba los datos del médico como entidad. Por ejemplo, tengo mi DatosListadoMedico, recibe médico entidad y automáticamente extrae el nombre, la especialidad a String, porque yo aquí le estoy mapeando como un simple string, no como mi enum, el documento y el email.
+
+[00:25] Por lo tanto, ahora vemos que ya compila porque él crea automáticamente un nuevo registro aquí por cada médico que llega de la lista, él lo mapea a un datoListadoMedico, que es mi DTO y lo recolecta todo en una lista, y eso es todo lo que necesito. Guardo aquí, vemos que ya refresca mi servidor y vamos a probar qué tal está esto.
+
+[00:52] Enviamos otra vez la request y ahora ya tenemos aquí los datos ya llegan más restringidos, vemos que solo llegan los cuatro parámetros que yo necesito que lleguen y nada más. Entonces check, tenemos el primer problema resuelto. ¿Qué es lo que falta ahora? Ahora falta la parte de orden. ¿Cómo ordenamos esta lista ascendentemente? Eso es un tema del siguiente video.
+
+
+
+
+
+
+																06 Paginación #1
+																
+Transcripción
+[00:00] Bien, ya estoy con los datos básicos para hacer mi listado y estoy consiguiendo traer los datos desde la base de datos, valga la redundancia, restringiendo los campos a los que el negocio me está pidiendo que son nombre, especialidad, documento e mail. Lo vemos aquí.
+
+[00:19] Entonces la base ya está hecha. Ahora necesitamos aplicar las reglas de negocio ordenadas ascendentemente y paginado. Ahora yo voy a invertir esto para trabajarlo porque primero quiero paginarlo, quiero limitar los registros que llegan de la base de datos, antes de aplicar alguna estrategia para ordenar estos registros. ¿Cómo hacemos esto? Bueno, primero un poco de historia.
+
+[00:50] Antes, antiguamente, hace unos cinco o siete años, para paginar, teníamos que enviar, digamos que los índices. Trabajábamos con las listas. La lista es esa estructura de datos que ven aquí y teníamos que enviar los índices de los elementos que quería mostrar. Por ejemplo, eran llamados offset y limit.
+
+[01:09] Por ejemplo, si quería la página 1 era el offset 0 al límite 4, si es que quería solamente 5 registros en la primera página y así ir incrementando manualmente estos parámetros hasta conseguir la paginación. Spring se dio cuenta que esto obviamente era muy tedioso y es un caso de uso muy común.
+
+[01:31] Por lo tanto, sprint decidió implementar y facilitarnos la vida en con una estrategia de paginación básicamente automática. ¿Cómo es esto? Bueno, lo que estoy retornando ahora aquí es una lista. Si me paro por aquí vemos que es una lista lo que retorna, pero ya les dije que yo no quiero trabajar con listas, yo quiero trabajar con páginas.
+
+[01:53] Entonces esto de aquí va a cambiar a Page, con mayúscula. Y escogemos Page Spring método main, y vemos que el código deja de compilar automáticamente. ¿Por qué? Porque lo que yo estoy dando aquí de respuesta es una lista y ahora debe ser una página. Bueno, un poco obvio.
+
+[02:14] Ahora, segunda cosa que tenemos que hacer. Cuando nosotros trabajamos con páginas, necesitamos trabajar con un parámetro que llega del front end llamado Pageable, es este de aquí. Con Pageable, de data domain, lo vamos a llamar paginación.
+
+[02:32] Este parámetro, que llega desde el cliente es opcional, va adentro del método findAll. Y ustedes me dirán: “pero antes findAll no usaba parámetros”. Okay, findAll es un método sobrecargado. Si vieron el curso de Java básico, van a ver que los métodos sobrecargados son método con el mismo nombre, pero que pueden aceptar diferentes parámetros.
+
+[02:53] Entonces mandamos paginación como parámetro al método. Y, finalmente, como paginación va a retornar en sí un page, ya no necesitamos del API String de Java. Tampoco necesitamos mapearlo a una lista. De este modo tenemos la paginación y estamos mapeando cada elemento a lo que necesitamos de datosListadoMedico.
+
+[03:22] Es decir, la paginación va a venir, Spring internamente va a ejecutar la misma query contra la base de datos, nos va a traer la entidad médico, un arreglo entidad médico, internamente Spring lo arregla bien bonito y lo transforma a datosListadoMédico, vamos a ver si es verdad todo esto, voy a darle clic y vemos ahora que el payload de respuesta es diferente. ¿Por qué?
+
+[03:49] Porque antes teníamos directamente la lista de elementos y no teníamos nada más, ¿pero ahora qué tenemos? La lista está contenida dentro de un content. El content y también pageable, que es un body de la página en sí. Por ejemplo, vemos que en sort, que es el atributo de ordenación, no tiene nada fuera de lo común, empty sort and sort no le hemos mandado ningún parámetro. Entonces, no hay ningún problema.
+
+[04:24] Tiene el offset. Recuerdan que les comenté sobre offset, limit. Vemos claramente entonces que el pageNumber es la página 0, el pageSize 20, por defecto nos trae 20 registros por cada paginación que hagamos. No tenemos 20, porque no hay 20 registros en la base de datos.
+
+[04:39] Pero vemos aquí toda la información con respecto a la página en sí, en pageable, en este objeto que estamos enviándole aquí, pageable, él nos dice toda la información con respecto a la página y esto es bueno para que el front end, nuestro cliente sepa en qué página estamos.
+
+[04:59] De modo que dinámicamente, por ejemplo, vimos que aquí no le agregamos ningún body, ningún parámetro porque automáticamente esto ya tiene valores por defecto. Puede sonar un poco confuso ahora, lo vamos a ver con más detalle en el siguiente video.
+
+
+
+
+																07 Paginación #2
+																
+																
+Transcripción
+[00:00] Entonces, ¿cómo sobrescribimos estos valores por defecto? Aquí viene la parte interesante, porque vamos a usar query params. ¿Qué es un query param? Son parámetros que van separados por signos de interrogación a nivel de la url.
+
+[00:14] Y aquí, por ejemplo, yo veo que hay un parámetro llamado size, que es el que les comenté hace un rato, size 20, que me dice que van a llegar 20 elementos en esa lista. Ahora yo le quiero decir, no quiero 20 elementos, ahora quiero size = 2. Lo voy a enviar y vemos ahora que la lista solo tiene dos elementos.
+
+[00:40] Eso es bueno, porque yo no necesito trabajar a nivel de base de datos, ordenando y extrayendo la información directamente allá porque Spring automáticamente, por ejemplo, si yo lo cambio para que me traiga solo un elemento de la lista él lo hace automáticamente por mí y aquí está el parámetro, “size”: 1.
+
+[01:02] Ese es uno de los beneficios de usar esta interfaz pageable para hacer la paginación, vemos que automáticamente él coge estos parámetros de los query params que están llegando en Spring. Y Spring hace todo el trabajo por mí. Ahora, si el tamaño de la lista es 1, yo quiero cambiar de página por ejemplo, puedo decirle: “okay, tráeme entonces, un elemento, por cada página”.
+
+[01:31] Vemos que, déjeme buscarlo por aquí, pageNumber es 0. Yo le voy a dar ahora un ampersand, que es el símbolo de aquí, para incluir un parámetro y le voy a decir que me incluya la página 1, lo mando y me manda otra página más. Le voy a cambiar a 2, a límite 2, y me manda otro registro más, que sería otra página.
+
+[01:54] Entonces ya estamos viendo claramente cómo Spring nos facilita mucho la vida a nivel de cliente, si el cliente nos manda a la página 2 de tamaño 2 cada uno. Por ejemplo, si aquí yo quiero recibir, vamos a decirle aquí, quiero la página 0, la envío, me retorna los dos primeros registros.
+
+[02:14] Si quiero la página 1, voy y me retorna el último registro que queda porque solo tengo tres en mi base de datos. De esta forma, entonces ya podemos ver cómo Spring nos facilita la vida y al cliente también a nivel de cliente, nuestro aplicativo front end, web, mobile, lo que sea, es solamente mandar un parámetro, y él define las reglas.
+
+[02:38] Nuestro API está listo para soportar todos estos tipos de paginación. Ahora solamente nos queda una sola regla que implementar y es ordenar nuestra lista, pero eso ya es un tema del siguiente video, nos vemos.
+
+
+
+
+
+
+																08 Ordenación #1
+																
+Transcripción
+[00:00] Bien, ya tenemos la funcionalidad básica para paginar. Para fines didácticos yo he creado unos registros más aquí en nuestro registro de médicos, para de esta forma ver el efecto de cómo podemos ordenarlo.
+
+[00:17] Yo he agregado algunos nombres más con otras letras diferentes, porque lo que yo quiero ahora, siguiendo las reglas del negocio, es ordenar, ya sea por documento o por nombre. Similar a la paginación, ordenación es también un caso de uso súper súper común y Spring también nos facilita la vida con ello.
+
+[00:39] Ustedes se preguntarán, ¿cómo? Simple. Agregamos un ampersand más a los query params o parámetros de query y le decimos sort. Sort significa orden en inglés. Si se dan cuenta, todos los atributos que estamos usando aquí del query params, que son los atributos de pageable, son en inglés.
+
+[00:58] De cierta forma, es muy bueno que se vayan familiarizando con que todo sea en inglés, incluso nombrar los aributos en inglés. Es como la documentación también la van a encontrar en todas partes. No nos vamos a a separar del tema, vamos a decirle que ahora lo queremos ordenado por nombre.
+
+[01:14] Le vamos a dar enviar y vemos que en efecto ahora está ordenado ascendentemente por nombre, vemos aquí a Ángela, Betty y Diego, dos veces repetido Erick y Oscar alfabéticamente por nombre. Si lo quiero por documento, entro aquí, envío y vemos que él cambia el orden porque ya está por número de documento.
+
+[01:38] Ahora, una cosa, un detalle que tienen que ver aquí. El atributo que estamos poniendo aquí debe ser el atributo como está registrado en nuestra entidad de la base de datos. ¿Qué quiere decir esto? Por ejemplo si yo en mi DTO vamos a suponer en mi DTO documento, yo lo he llamado código.
+
+[02:06] Yo le puse código y si yo aquí registro sort por código, entonces no va a funcionar porque internamente, ya que Spring está haciendo la paginación, Spring va a buscar por ese atributo código dentro de mi entidad médico y no lo va a encontrar porque yo acá tengo documento, entonces dato muy pero muy importante. El atributo de orden debe ser el mismo que tenemos en la entidad de la base de datos.
+
+[02:37] Eso es lo primero. Segundo, y esto es un dato importante y también puede ser un artificio, por así decirlo, porque supongamos que yo tengo un orden por defecto que yo quiero seguir y de repente ustedes me dicen: “Diego, si yo tengo un orden por default, ¿siempre tengo que enviar estos parámetros?”
+
+[03:03] Bueno, vamos por partes, primero estos parámetros, como ya lo vimos, no son obligatorios. Estos son parámetros, digamos para arreglar la lista que estamos recibiendo de vuelta de nuestro cliente.
+
+[03:15] Por ejemplo, si yo le quito todos los parámetros y envío esto, yo voy a recibir la lista entera y con los valores por defecto que, por ejemplo, la lista del valor por defecto es 20 y todas esas cosas. ¿Pero qué pasa si yo le digo no, pero yo quiero que por defecto no sea 20, por defecto, yo quiero que sea 10?
+
+[03:36] ¿Existirá forma de modificar esto o es que es Spring ya lo tiene todo cerrado y es imposible? Bueno, como le dije antes, Spring es muy flexible y sí, sí podemos modificar estos valores por defecto. Lo único que tenemos que hacer es volver a nuestro controller y trabajar a nivel de esta interfaz, pageable con una anotación que es PageableDefault, entonces le vamos a poner aquí PageableDefault.
+
+[04:06] Y aquí en PageableDefault vamos a abrir paréntesis. Y vemos aquí una serie de parámetros que nosotros podemos agregarle aquí a esta anotación. Por ejemplo, values, size, page, sort, direction. Por ejemplo, vamos a decirle size.
+
+[04:27] Vamos a decir size y queremos que el tamaño por defecto nos retorna solamente 2. Quiero solo 2 elementos en mi lista por defecto en este PageableDefault. El servidor ya recargó, esperamos un poco. Está listo y vamos a ver si es verdad, porque yo no le estoy enviando ningún parámetro. Le envío ahora.
+
+[04:48] Y, en efecto, miren ahora, no he enviado ningún solo parámetro. Recibo solamente los dos primeros elementos que tengo en la base de datos. Y aquí, en los detalles del pageable, ya veo que el size ahora es 2. ¿Por qué? Porque PageableDefault sobrescribe, perdón, PageableDefault ya me dice cuáles son los valores por defecto y sobrescribe los que Spring ya tiene por dentro.
+
+[05:17] Y si por ejemplo yo ahora hago el signo de interrogación para comenzar con los query params, y aquí hago size, el mismo que yo estoy estableciendo aquí, le digo: “No, yo, ahora quiero que me retornes 4”. Le envío y retorna 4. ¿Por qué? Porque ahora lo que yo envío, lo que mi cliente manda sobrescribe lo que PageableDefault tiene.
+
+[05:46] Entonces para resumir esto, pageable por sí solo tiene sus valores por defecto, que ya vimos que es 20, inicia en la página 0, etcétera, lo pueden ver más a detalle aquí, si yo quiero sobrescribir los valores por defecto en pageable, uso pageableDefault.
+
+[06:04] Con pageableDefault yo le específico los nuevos valores por defecto que va a tener. Y si yo especifico manualmente los valores a nivel de mi URL en mis query params vamos a ver que eso sobrescribe lo que yo puse en pageableDefault. ¿Se encuentra la jerarquía? Como siempre les digo, todo es cuestión de que sigan practicando.
+
+[06:30] Queda un par de temas más por ver, que son actualización y delete de lo que es nuestro API. Nos vemos en la siguiente clase.
+
+
+
+
+
+																09 Ordenación #2
+																
+Transcripción
+[00:00] Hay una última cosa que les quiero enseñar con respecto a esta clase. Por ejemplo, ya estamos viendo que podemos decirle a Spring que queremos que nos retorne la base de datos dependiendo de lo que lo enviemos.
+
+[00:17] Pero si por ejemplo alguna vez se topan con un problema y que necesitan ver las queries que Spring está haciendo, o bueno, mejor dicho, que JPA está ejecutado sobre la base de datos, yo puedo actualmente mostrar lo que está sucediendo.
+
+[00:34] Aquí en los logs ahora yo no tengo ninguna información de lo que pasa con la base de datos. ¿Qué hago para mostrar esa información? Bueno, Spring, como siempre, nos da la facilidad de configurar muchas cosas y aquí voy a darle un spring.jpa y el parámetro es show-sql que vemos que por defecto está post y le voy a dar true.
+
+[01:02] Vamos a guardar esta configuración, esperamos que el servidor reinicie. Con esto. ¿qué les quiero decir? Simplemente, Spring muéstrame los parámetros SQL o las queries SQL que se están ejecutando entre la aplicación y la base de datos. Como esto fue una modificación a nivel de las propiedades, yo voy a reiniciar el servidor manualmente. Vamos a esperar a que cargue.
+
+[01:31] Vemos que cargó y vamos a ejecutar nuevamente esto aquí. Vamos aquí y vemos en efecto que dice Hibernate. ¿Qué hizo Hibernate? Hizo un select. Hizo el select from médicos, limit, algún parámetro, etcétera. Esos son los parámetros que lleguen, este es el prepared statement que ya Hibernate hace por nosotros.
+
+[01:54] Y hace una query más, entonces nos dimos cuenta que ir Hibernate aquí se ejecuta dos queries diferentes en la cual ejecuta un count, donde médicos igual, todo esto que vemos aquí son alias, son alias que Hibernate le da a cada parámetro.
+
+[02:13] Internamente él ya mapea estos alias y nos crea la query dinámicamente. Pero de todas formas, personalmente a mí me parece muy difícil de leer. Imagínense si tuviéramos 15 campos en la base de datos, en nuestra entidad. No es un caso de uso difícil de encontrar en el mercado. 15 campos en una tabla es algo normal.
+
+[02:38] Imagínense hasta dónde llegaría la query. Sería muy difícil de leer. Entonces, existe también otra forma de formatear las queries que tenemos aquí y sería esta de aquí. Spring.jpa.hibernate, sería spring.jpa, no database, sería .properties.hibernate y aquí vemos que dentro de Hibernate yo tengo algunas otras propiedades.
+
+[03:14] Y la que yo voy a usar es format_sql. Y le voy a decir que sí quiero que formatees el SQL que estás generando y eso es propio de Hibernate, porque ya vimos que quien genera las queries es Hibernate como implementación de JPA.
+
+[03:33] JPA le da la especificación, Hibernate es la implementación, es quien hace el trabajo serio. Iniciamos nuevamente nuestro servidor. Vemos que inicia correctamente, limpiamos esto. Y ejecutamos nuevamente la query. Nada. No hay diferencias aquí, pero la diferencia ya viene aquí.
+
+[03:57] Observen ahora cómo está formateada la query con Hibernate. Vemos que es exactamente la misma que vimos hace un rato, pero es mucho más fácil de leer, y si estás haciendo algún debug o algún análisis de algún issue, sin duda esto sí te puede ayudar mucho.
+
+[04:18] No es recomendable tener todo esto en sistemas de producción, porque bueno, te va a costar un poco de performance y tus logs se van a ver muy contaminados con un montón de queries, pero si estás haciendo desarrollo a nivel de tu máquina y quieres saber qué es lo que está pasando.
+
+[04:35] Si quieres resolver un tema de performance, yo estoy seguro que estos dos parámetros de aquí, estas dos configuraciones te van a ayudar mucho para entender lo que Spring hace internamente. En este caso lo que Hibernate hace internamente.
+
+[04:49] La próxima clase va a estar mucho más interesante, vamos a aprender a editar y eliminar registros, entonces nos vemos.
+
+
+
+
+																En esta clase, aprendiste a:
+Usar la anotación @GetMapping para mapear métodos en los Controllers que producen datos;
+Usar la interfaz Pageable de Spring para realizar consultas con paginación;
+Controlar la paginación y el ordenamiento de los datos devueltos por la API con los parámetros page, size y sort;
+Configurar el proyecto para que los comandos SQL se visualicen en la consola.
