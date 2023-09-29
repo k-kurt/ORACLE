@@ -1,0 +1,396 @@
+
+
+
+													02 Testes con Spring Boot
+													
+Transcripción
+[00:00] Hola. En la parte anterior nosotros realizamos lo que sería la documentación para nuestro proyecto de clínica médica. Aplicamos springdoc de OpenAPI y vimos que teníamos una interfaz de usuario similar a Postman donde realizamos también unas ciertas pruebas similares a las que fueron hechas para la consulta del paciente.
+
+[00:24] Entonces, ahora el foco de este proyecto no es la parte de test automatizado, pero vamos a ver cómo funcionan los tests automatizados dentro del contexto de Spring Framework. Nosotros tenemos dos tipos de pruebas, tenemos las pruebas de caja negra, que fueron las que nosotros realizamos en Postman y tenemos también las que realizamos con swagger en la documentación de springdoc.
+
+[00:51] También tenemos las pruebas de caja blanca, que son pruebas más enfocadas a las que vamos a cerrar ahora dentro de los testes automatizados, que son pruebas donde nosotros tenemos acceso a la configuración interna, entonces en las pruebas de caja negra nosotros vamos a imaginar que tenemos una caja negra donde simplemente realizamos una acción y nosotros vamos a recibir una acción de retorno.
+
+[01:13] Nosotros no vamos a tener acceso a las configuraciones internas de esa caja. En las pruebas de caja blanca, si nosotros tenemos un acceso, tenemos más control sobre qué está haciendo realizado. Entonces, dentro de la estructura de nuestro proyecto, nosotros tenemos los controladores.
+
+[01:33] Tenemos la parte de los servicios que fueron todas las validaciones y tenemos lo que serían los repositorios. Dentro de los repositorios hay un conjunto de elementos que ya han sido aprobados por el Spring framework, como es el método findByActivoTrue, findById, findAll.
+
+[01:51] Entonces, todos esos métodos ya han sido probados, nosotros nos vamos a enfocar en cómo probar estas consultas que nosotros agregamos dentro del repositorio, que fueron consultas manuales y vamos a probar esta consulta simulando un conjunto de datos y configurando un banco de datos de prueba.
+
+[02:12] Otro candidato a las pruebas, a realizar testes automatizados, serían las validaciones, ya que en las validaciones nosotros podemos verificar las reglas de negocio, verificar que se estén cumpliendo, el tiempo en el que se están realizando y que los datos que estamos enviando y recibiendo sean correctos.
+
+[02:34] Sin embargo, por ser bastante simple, por no tener elementos tan complejos, nosotros vamos a dejar estas validaciones del lado. Vamos a enfocar en los repositorios y nos vamos a enfocar también en los controladores.
+
+[02:47] Entonces vamos a ver cómo utilizando algunas librerías como Mockito y JUnit nosotros podemos probar, los controladores de la consulta o de médico y verificar que los estados que estemos recibiendo, los parámetros, el valor de los parámetros, así como nosotros realizamos acá, nosotros estamos recibiendo un tipo de parámetro que es el tipo de string que los parámetros que estamos enviando en total sean la cantidad de parámetros correctos.
+
+[03:20] Así como el estado que nosotros recibimos cuando hacemos la petición, en este caso nosotros estamos recibiendo un Estado 403, ya que nosotros no tenemos el acceso al token, entonces tenemos que verificar ese retorno en el punto de entrada a la aplicación y punto de conexión con aplicaciones externas.
+
+[03:43] Entonces el foco de esta parte es lo que sería los testes automatizados dentro del contexto de Spring framework. En la siguiente parte nosotros vamos a configurar nuestro ambiente de prueba, todo lo que serían las configuraciones iniciales, y luego vamos a comenzar a testar lo que sería nuestros repositorios, que todas esas consultas que nosotros realizamos manualmente estén trayendo los datos correctos.
+
+
+
+													03 Configurando el banco de datos de test
+													
+Transcripción
+[00:00] Hola. Recapitulando el aula anterior, nosotros realizamos la documentación para nuestro proyecto, nosotros adaptamos que tenemos el proyecto corriendo en el puerto:8080 y realizamos algunas modificaciones adicionales dentro de nuestra interface, acá nosotros le agregamos alguna descripción, agregamos un título y agrupamos algunos de los elementos por tag.
+
+[00:26] Por ejemplo la consulta está un poco mejor documentada y realizamos otras alteraciones dentro de esta API que nos permite documentar la aplicación. Ahora, de vuelta en la aplicación, vamos a realizar el commit, vamos a enviar este proyecto el repositorio para mantener la versión.
+
+[00:43] Entonces, la versión anterior fue la versión 3, donde realizamos la documentación. Acá tenemos que colocar un mensaje, sería la tercera etapa del proyecto de clínica médica que era referente a la documentación. Acá yo voy a seleccionar todos los elementos que voy a enviar al repositorio que voy a commitar.
+
+[01:13] Y voy a realizar el commit y el push en el repositorio. Entonces está procesando la información. Él detectó algunas advertencias que podríamos revisar y corregirlas, entonces vamos a pasarlas por alto y vamos a enviar esas alteraciones al repositorio.
+
+[01:36] Acá me indica cuáles son los cambios que se están realizando. Yo puedo ver lado a lado las alteraciones que fueron realizadas. Aquí vemos la anotaciones que agregamos para colocar nuevas características dentro de la documentación. Luego de eso voy a realizar el push, todo eso dentro de la interfaz de IntelliJ.
+
+[02:07] Entonces, ahora de vuelta en el proyecto en también yo adicioné un cliente. Utilizando la aplicación de White Flag, entonces nosotros podemos crear las tablas. Podemos alterar alguna tabla de esas o también podemos insertar nuevos elementos.
+
+[02:23] Entonces, ya con la construcción de nuestra base de datos, podemos también traer valores iniciales. Ahora en esta parte, nosotros nos vamos a enfocar en la parte de testes unitarios, de testes automatizadas. Entonces, lo primero que nos viene a la mente es, cuál es la dependencia que vamos a utilizar.
+
+[02:39] Nosotros vamos a utilizar la dependencia de JUnit. Entonces tendríamos que ir al archivo pom donde nosotros agregamos la dependencia, ¿pero cuál es la dependencia que tendríamos que agregar? Entonces, si recordamos en la parte inicial, cuando nosotros creamos el proyecto, nosotros agregamos una dependencia que nos permite realizar los testes unitarios con JUnit, con Mockito y con otras librerías como AssertJ, que permiten realizar el estado del test unitario.
+
+[03:15] Verificar si el resultado es nulo, si el resultado tiene algún valor determinado. Entonces, cuando nosotros realizamos la creación inicial de nuestro proyecto en Spring Initializr la primera dependencia que nosotros estamos recibiendo era la dependencia de los test unitarios que es llamada Spring Boot Starter test.
+
+[03:44] Adicional de la dependencia de Spring, nosotros estamos teniendo una dependencia para realizar los testes unitarios, entonces si nosotros vamos a la aplicación en Maven, entonces, que nosotros deberíamos tener dentro de las dependencias, las aplicaciones que nos permiten realizar los tests unitarios.
+
+[04:03] Entonces acá en sprint test, nosotros vemos que tenemos JUnit, Mockito, tenemos algunas otras aplicaciones para realizar tests en archivos XML, en fin. Ahora vamos a comenzar a realizar los test unitarios, vamos a comenzar por los repositorios, vamos a ir al repositorio de médicos y vamos a revisar el primer método que nosotros encontramos en el repositorio.
+
+[04:31] Entonces, el primer método que nosotros encontramos es findByActivoTrue, que sigue la estructura, el patrón de JPA para repositorio, donde Spring framework se encarga de realizar de forma automática la consulta.
+
+[04:47] Entonces nosotros no necesitamos realizar una validación, ya que automáticamente Spring se encarga de realizar esa validación y en caso alguno de estas palabras claves, por así decirlo, no coincidan con los elementos dentro de las entidades, él va a mandar automáticamente un mensaje de error e impedir que la consulta sea realizada.
+
+[05:12] O en caso de que el error se encuentre en tiempo de ejecución, cuando él intente ejecutar el método, vamos a recibir un error. Entonces el siguiente método que es un candidato a realizar un test automatizado es findActivoById, donde nosotros consultábamos el estatus, el atributo activo del médico a partir del id del médico.
+
+[05:39] Entonces, como este método es bastante simple, no requerimos realizar un test automatizado, sin embargo, podemos dejarlo como como desafío realizar el test automatizado para este método. Entonces, nosotros nos vamos a enfocar en este método donde nosotros realizamos una consulta bastante extensa y nosotros realizamos una consulta, una sub consulta dentro de la consulta.
+
+[06:08] O sea, nosotros tenemos que verificar que los valores que estamos recibiendo a través de esta consulta sean correctos. Adicional, este es un método bastante importante, ya que es el que nos permite seleccionar los médicos dentro de ese intervalo de fecha.
+
+[06:26] Entonces, lo que voy a hacer es seleccionar el método y voy ya acá en refactorar, voy a seleccionar donde dice, acá en generar, disculpen, donde dice generar un test. Entonces, me va a dar una serie de opciones, incluso las librerías que puedo utilizar para realizar el test, en este caso voy a utilizar el texto unitario de JUnit5 y vamos a seleccionar el método que yo deseo testar.
+
+[07:04] Podría seleccionar los otros, pero como ya habíamos mencionado findByActivoTrue es un método que ya es validado por Spring framework. Y findActivoById lo podemos dejar como desafío, pero sin embargo es un método bastante simple para testar.
+
+[07:20] Entonces vamos a seleccionar acá OK y ya de forma automática él nos genera una clase, que se encuentra dentro de los paquetes de test. Entonces vemos que él ya crea automáticamente el nombre de la clase, que sería el médicoRepositoryTest y genera un método, un método de prueba.
+
+[07:44] Si yo intento ejecutar inicialmente este test, esta prueba, vamos a ver qué ocurre. Entonces nosotros vamos a tener que esa prueba pasa automáticamente. Nosotros no estamos realizando ninguna operación dentro de este método de prueba, entonces él va a pasar.
+
+[08:20] Nosotros incluso tenemos un método inicial que es generado en la construcción del proyecto, también como no tenemos nada dentro de él, él debería pasar. Nosotros vamos a eliminar ese test, ya que nosotros no lo estamos usando, método de prueba y lo siguiente que vamos a hacer, como nosotros deseamos testar el repositorio, nosotros necesitamos utilizar una anotación que nos permite testar las capas de persistencia.
+
+[08:52] Entonces, para eso vamos a utilizar la anotación @DataJpaTest que nos va a permitir utilizar algunos métodos, algunas modificaciones relacionadas a lo que sería la capa de persistencia. De esa forma si intento ejecutar esta vez el método de prueba, vamos a ver qué ocurre.
+
+[09:20] Entonces nosotros vemos que esta vez el método falla porque él está buscando dentro de la base de datos en memoria, y como no existe ninguna base por default spring, framework, cuando nosotros colocamos la anotación @DataJpaTest él entiende que nosotros estamos trabajando con una base de datos.
+
+[09:40] Como nosotros no hemos configurado una base de datos externa, él va a entender que la base de datos sería una base de datos en memoria. Y dentro de las bases de datos de memoria en las dependencias yo no configuré ninguna base de datos, algunas bases de datos alternativas, pero serían por ejemplo la base de datos H2.
+
+[10:03] Entonces, como esa base de datos no se encuentra dentro de mis dependencias, yo tendría que ir a Spring Initializr, buscar la dependencia para la base de datos H2, copiar esa dependencia, ir a mi proyecto y actualizar las dependencias.
+
+[10:25] Sin embargo, este no es el método que nosotros vamos a utilizar, sin embargo, vamos a probarlo, vamos a actualizar las dependencias. Y ahora, una vez finalizada las actualizaciones, vamos a ejecutar este método de nuevo. Entonces lo voy a dejar ejecutada la aplicación. Vemos que tenemos un error nuevamente.
+
+[10:48] Y eso se debe a que, a pesar de que nosotros ya tenemos la dependencia para esa base de datos en memoria, nosotros tendríamos que ir y configurar esa nueva base de datos con las configuraciones adecuadas para h2.
+
+[11:04] Entonces, como no es lo que nosotros vamos a utilizar para este caso, una base de datos de memoria sino una base de datos externa, voy a remover esa base de datos o vamos a dejar esa base de datos, más adelante voy a dejar una indicación.
+
+[11:21] Y lo que tendríamos que hacer es indicarle cuál es la base de datos que nosotros vamos a utilizar dentro de nuestros tests. Entonces, lo que yo quiero utilizar es utilizar una base de datos externa. Para eso voy a colocar la anotación @AutoConfigureTestDatabase.
+
+[11:42] Dentro de esa anotación yo voy a colocar replace = @AutoConfiguredTestDatabase.Replace.NONE. Entonces, con esto yo le estoy indicando que la base de datos que yo voy a utilizar va a ser una base de datos externa y que no voy a reemplazar la base de datos que estoy utilizando previamente.
+
+[12:10] Entonces, esa forma, si yo ejecuto de esta vez mi aplicación, ya le estoy indicando que no quiero utilizar la base de datos en memoria h2, que vamos a instalar, sino una base de datos externa. Entonces vemos que ahora si pasan nuestras pruebas, nuestros tests, porque yo he configurado para utilizar la base de datos que nosotros tenemos en MySQL.
+
+[12:41] Sin embargo, cuando nosotros estamos utilizando base de datos de prueba, tenemos que separar la base de datos de producción de la base de datos de book o para prueba, ya que podemos tener conflictos y precisamente la base de prueba es para realizar diferentes tests que pueden tener valores equivocados o valores que podemos incluso borrar la base de datos.
+
+[13:05] Y eso no lo queremos hacer con la base de datos real. Entonces, para nosotros configurar la base de datos de prueba, lo que tenemos que hacer es crear otro archivo, entonces, acá nosotros configuramos la base de datos, la base de datos real, la base de datos de producción, indicando la ruta, el usuario y la contraseña.
+
+[13:30] Lo que vamos a hacer es copiar este archivo donde dice copiar. Vamos a pegar también acá y la diferencia va a ser que vamos a cambiar acá el nombre de application por application trazo test. Entonces ese patrón se tiene que cumplir el trazo y el nombre que quieren colocarle al nuevo perfil de propiedades.
+
+[13:59] Entonces todos pueden aquí tener diversos perfiles, application-testimonio, application-production. En este caso vamos a utilizar el perfil de test. Para los que están utilizando la configuración anterior van a tener algo de este tipo. Va a tener aplication-testimonio.properties.
+
+[14:28] Y la configuración va a ser la misma que nosotros venimos realizando en proyectos anteriores. Entonces acá yo creo que tengo un ejemplo, vamos a continuar utilizando este padrón, entonces para los que están utilizando este formato que es el formato jam, vamos a escribirlo de esta forma y para los que están utilizando el formato antiguo se escribe de forma lineal. Voy a dejar los dos.
+
+[14:54] El formato que voy a dejar acá, voy a eliminar este archivo por ahora y vamos a mantener con el archivo del perfil de test. Acá voy a eliminar lo que no estoy utilizando, solamente voy a dejar la información para la base de datos. Acá vamos a sustituir este nombre de vollmed_api por vollmed_api_test.
+
+[15:23] Y acá ahora en la clase de repositorio de prueba, tengo que modificar, indicarle cuál va a ser el perfil que estamos utilizando. Entonces aquí tenemos que utilizar la actuación @ActiveProfiles(“test”). Entonces de esa forma nosotros vamos a recapitular. Tenemos la anotación @DataJpaTest con la que nosotros le indicamos que vamos a estar trabajando con persistencia de base de datos.
+
+[15:54] Es decir, la tiene que buscar dentro de una alguna de las bases de datos que esté utilizando y todo eso lo va a realizar con configuraciones internas de Spring. Lo segundo es colocar la anotación @AutoConfigureTestDatabase para realizar nuestras operaciones con una base de datos externa e indicarle que no vamos a reemplazar la base de datos que estamos utilizando.
+
+[16:19] Y la tercera es indicarle cuál va a ser el perfil que vamos a utilizar. Entonces en este caso nosotros vamos a utilizar el perfil de test, donde estamos configurando una base de datos de prueba nueva. Acá vamos a intentar ejecutar esta aplicación para ver si de hecho consigue esa base de datos. Vamos a ver qué ocurre.
+
+[16:45] Entonces nos ha generado un error, vamos a ver cuál es ese error. Él indica aquí lo siguiente, que la base de prueba vollmed_api_test no se encuentra, es desconocida. Entonces acá vamos a aplicar lo que yo tengo previamente copiado, una alternativa que nos va a permitir crear la base de datos de forma automática.
+
+[17:17] Entonces, dentro de la configuración de la ruta, yo voy a colocar este patrón que va a indicarle al archivo que si no encuentra la base de datos, que la cree con la zona de horario determinada. Entonces vamos a ejecutarla de nuevo. Y ahora, una vez que ha finalizado de cargar la información, vemos que esta es sí pasa la prueba.
+
+[17:41] Entonces ahora encontró la base de datos dentro de esta ruta y si nosotros quisiéramos utilizar la base de datos de memoria, voy a dejar acá una información. Es para saber más. Luego de haber configurado la dependencia, nosotros tenemos que colocar esta ruta. Entonces la ruta sería la base de datos de memoria con el nombre men:testdb.
+
+[18:08] Tendríamos que usar el driver de la base de datos h2, el usuario por default es so y la contraseña por default también es password. Entonces este sería la información que ustedes necesitarían en caso de configurar la base de datos de memoria y recordando que si van a utilizar la base de datos de memoria dentro del repositorio de médicos, tenemos que eliminar de acá esta notación.
+
+[18:36] Entonces, esta fue la configuración inicial. En la siguiente parte vamos a comenzar a construir nuestras pruebas para el repositorio de media.
+
+
+
+
+
+
+													04 Para saber más: pruebas con in-memory database
+PRÓXIMA ACTIVIDAD
+
+Como se mencionó en el video anterior, es posible realizar pruebas de interfaces de repositorio utilizando una base de datos en memoria, como H2, en lugar de utilizar la misma base de datos de la aplicación.
+
+Si desea utilizar esta estrategia para ejecutar las pruebas con una base de datos en memoria, será necesario incluir H2 en el proyecto, agregando la siguiente dependencia en el archivo pom.xml:
+
+<dependency>
+  <groupId>com.h2database</groupId>
+  <artifactId>h2</artifactId>
+  <scope>runtime</scope>
+</dependency>
+También debe eliminar las anotaciones @AutoConfigureTestDatabase y @ActiveProfiles en la clase de prueba, dejándola solo con la anotación @DataJpaTest:
+@DataJpaTest
+class MedicoRepositoryTest {
+//resto del código permanece igual
+}COPIA EL CÓDIGO
+También puede eliminar el archivo application-test.properties, ya que Spring Boot realiza la configuración de la URL, el nombre de usuario y la contraseña de la base de datos H2 de manera automática.
+
+
+
+
+
+
+														
+														05 Testando el repository
+														
+Transcripción
+[00:00] Hola. En la parte anterior, nosotros configuramos la base de datos para nuestras pruebas y seleccionamos el repositorio, el método que vamos a probar. Entonces en MedicoRepositorio nosotros vimos que tenemos el método findByActivo, que ya es validado por Spring framework, método que utiliza el patrón en patrones de consulta en inglés y él realiza automáticamente esa consulta SQL en la base de datos.
+
+[00:32] También tenemos el último método findActivoById, donde tenemos una consulta bastante simple para realizar esa prueba como desafío que nosotros por tener esta consulta un poco más compleja, consideramos interesante realizar las pruebas y verificar que el médico que estuviéramos obteniendo es que este método efectivamente nos dé cómo retorno un médico correcto.
+
+[01:00] Entonces, esta consulta se encarga de verificar si en la base de datos ese médico con esa especialidad y esa fecha se encuentra disponible. En caso que no se encuentre disponible retorna nulo y en caso de que se encuentre disponible, va a retornar el médico.
+
+[01:14] Entonces de vuelta en la clase de prueba, nosotros ya mencionamos que vamos a tener dos posibles casos. Entonces para clasificar cada uno de esos casos, vamos a colocar acá escenario 1 y vamos a colocar una descripción de que realiza esta primera prueba.
+
+[01:36] Entonces esta primera prueba acá, vamos a utilizar la anotación @DisplayName donde vamos a colocar la operación que va a realizar este método de prueba. Entonces acá vamos a colocar: “debería retornar nulo cuando el médico se encuentre en consulta con otro paciente en ese horario”.
+
+[02:10] Entonces, como va a depender del horario, lo primero que se nos viene a la cabeza es que vamos a tener que registrar un horario, entonces ese horario vamos a hacer, por ejemplo, el próximo lunes o el próximo martes con un horario dentro del horario de funcionamiento de la clínica.
+
+[02:27] Vamos a registrar esa hora acá para trabajar con ella, acá vamos a colocar próximo lunes a las 10:00 de la mañana. Vamos a utilizar la clase LocalDate y acá vamos a fijar el día de la semana, para fijar un horario o un día en específico. Nosotros utilizamos el método with.
+
+[03:00] Vamos a colocar TemporalAdjusters para ajustar el día de la semana y vamos a colocar que ese día de la semana va a ser el lunes. Lo siguiente sería colocar la hora, vamos a necesitar el día y la hora, y la hora va a ser a las 10:00 de la mañana.
+
+[03:17] Entonces ya tenemos el horario que vamos a colocar dentro de nuestro método de prueba. Nosotros vamos a necesitar la especialidad y la hora. Entonces, ya con eso, nosotros podemos llamar el médico del repositorio. Entonces vamos a colocar acá una variable var médicoLibre. Y para eso nosotros vamos a tener que utilizar el repositorio de médico.
+
+[03:46] Vamos a inyectar acá un atributo privado, va a ser MedicoRepository. Y para poder utilizarlo dentro de nuestra clase de prueba tenemos que inyectarlo con la anotación @autowored. De ese modo, nosotros vamos a instanciar ese repositorio dentro de nuestra clase de prueba.
+
+[04:10] Ya con ese atributo funcionando, nosotros vamos a hacer la consulta del médico, entonces para realizar esa consulta vamos a seleccionar un médico con especialidad en esa fecha. ¿Cuál va a ser los atributos? Los atributos son la especialidad que es un enumerador. Va a ser cardiología y la fecha en la que acabamos de escribir previamente, que sería el próximo lunes a las 10:00 horas.
+
+[04:36] Entonces ya tenemos y estamos obteniendo el método del repositorio. Para realizar las pruebas nosotros tenemos de JUnit las diferentes clases estáticas de las clases de assertion. Esas clases nos permiten hacer diferentes comparaciones y retorna verdadero o falso.
+
+[05:02] Eso en caso de que sea verdadero, de que se cumpla esa condición, esa assertion, la prueba pasa efectivamente, en caso de que no se cumpla esa prueba que estamos realizando con los assert, él va a fallar. Nosotros vamos a utilizar, vamos a probar que ese médico libre, sea nulo.
+
+[05:27] Entonces nosotros vamos a importar del paquete de assertion, todo lo que sería la librería que nos va a permitir hacer las diferentes comparaciones, entonces aquí estamos comparando ese valor de médico que estamos trayendo de la base de datos utilizando el repositorio, y vamos a verificar si ese valor es nulo.
+
+[05:51] Para verificar si es nulo, nosotros primero tenemos que registrar un médico, tenemos que registrar un paciente y tenemos que registrar una consulta, nosotros vamos a realizar toda la operación donde registramos un médico, registramos un paciente y vamos a crear una consulta con ese médico y con ese paciente para que ella, luego de que se encuentre en la base de datos cuando realice la búsqueda, se va a encontrar de que ese médico no se encuentra disponible y nos va a retornar nulo.
+
+[06:20] En el siguiente caso, vamos a probar el caso en el que no va a haber, no vamos a registrar la consulta y debería retornar el médico que estamos registrando. Entonces nosotros vamos a tener que registrar un médico, vamos a tener que registrar un paciente y por último vamos a registrar una consulta. RegistrarConsulta.
+
+[06:55] Entonces, yo acá ya tengo los métodos previamente diseñados que nos permiten hacer el registro de un médico, de un paciente y el método que registra la consulta. Lo voy a copiar acá. Y voy a ir describiendo lo que hacen esos métodos, entonces acá yo tengo el método de registrarConsulta.
+
+[07:22] Este método va a recibir el médico que estamos registrando, va a recibir también el paciente y la fecha que vamos a enviar. Entonces, acá yo voy a enviar un médico, voy a enviar el paciente y la fecha, que sería el próximo lunes.
+
+[07:41] Entonces en el método de registrar consulta voy a registrar en la base de datos ese médico, ese paciente y el horario que va a ser lo que vamos a buscar dentro en el repositorio y nos va a retornar para este caso particular nulo. Acá nos está dando un error, que es el error de entity manager.
+
+[08:02] El entity manager es el encargado de realizar el puente entre nuestra aplicación y la base de datos. Cuando nosotros utilizamos el entity manager en las aplicaciones, nosotros tenemos que instanciarlo a través de a través del Entity Manager Factory.
+
+[08:18] Pero acá, Spring framework nos permite utilizar el TestEntityManager, que él se va a autoinstanciar únicamente para realizar las pruebas. Entonces solamente para ambientes de prueba, nosotros vamos a tener este TestEntityManager que es un gerenciador que cuando nosotros ejecutemos la prueba él va a estar activo.
+
+[08:41] Él va a realizar todas las operaciones donde va a crear una instancia y va a hacer esa conexión con esa base de datos. Vamos a llamar a este EntityManager em y vamos a inyectarlo con la anotación @Autowired. Entonces ya tenemos el EntityManager funcionando.
+
+[09:00] Estamos realizando una persistencia para esa consulta, donde recibimos un médico, un paciente y la fecha, que sería el próximo lunes. Estamos registrando también un médico, acá en médico voy a registrar un médico y los valores para ese médico serían el nombre, el email, el documento y la especialidad.
+
+[09:20] El nombre vamos a coloca “Jose”. El email sería “j@gmail.com”. El documento voy a colocar un documento estándar “123456” y la especialidad de los enumeradores vamos a seleccionar CARDIOLOGIA para verificar efectivamente que esa especialidad que estamos buscando en el repositorio coincida con ese médico que estamos registrando en la base de datos.
+
+[09:55] Ahora necesitamos registrar a un paciente con un nombre, un email y un documento, entonces simplemente vamos a colocar registrarPaciente, vamos a colocar un nombre, vamos a colocar acá “Antonio”, acá va a ser “a@gmail.com” y el documento va a ser un documento estándar.
+
+[10:22] Ya hemos registrado el médico, el paciente, el horario en el que se va a realizar la consulta, registramos esa consulta entre ese médico y ese paciente y realizamos la búsqueda en la base de datos para un médico con esa especialidad y esa fecha. Entonces nosotros para esa consulta en el repositorio deberíamos obtener algún resultado. El que nosotros estamos esperando es que dé nulo.
+
+[10:49] Una vez que se han registrado los datos, solamente queda ejecutar nuestra prueba, vamos a ejecutarlo y vemos que esa prueba pasó efectivamente, entonces acá vemos la descripción, debería retornar nulo cuando el médico se encuentre con otro paciente en ese horario.
+
+[11:09] Si nosotros vemos los detalles, vemos que él realizó el registro en la base de datos para el médico, él realizó un insert de médico, realizó un insert para los pacientes para la consulta y luego que él realizó, él realizó acá una búsqueda. Entonces si nosotros vemos acá él intentó seleccionar un médico que se encontrase activo con esa especialidad y que no se encontrase con consulta y en esa fecha.
+
+[11:39] Entonces seleccionó un médico aleatorio dentro de la especialidad y vio cómo nosotros lo habíamos registrado, un médico con este paciente nos va a retornar nulo. Entonces el siguiente caso, vamos a copiar de acá, el siguiente caso es en el caso en el que el médico, el escenario 2 en el que el médico sí se encuentra disponible para ese paciente.
+
+[12:07] Para eso sencillamente nosotros tenemos que registrar un médico. No vamos a registrar el paciente ni vamos a registrar una consulta. Entonces, a la hora de nosotros realizar una búsqueda en la base de datos, deberíamos encontrar que el médico que estamos buscando, el médico libre, sea igual al médico que estamos instanciando.
+
+[12:35] Entonces ya registramos un médico. Vamos a cambiar, cambiar acá la descripción. Debería retornar un médico cuando realice la consulta en el repositorio. “Debería retornar un médico cuando realice la consulta en la base de datos para ese horario”.
+
+[13:09] Entonces, si nosotros probamos esta segunda prueba, este segundo test, deberíamos obtener en que pase esa prueba, ya que nosotros estamos comparando lo que estamos obteniendo del repositorio, que es un médico y tendría que ser igual esta vez no a un valor nulo, sino tienen que ser igual a un elemento del tipo médico.
+
+[13:35] Entonces vemos que efectivamente debería retornar un médico cuando realicé la consulta en la base de datos para ese horario. Entonces, esos son los dos casos para nuestra consulta de seleccionar el médico con especialidad en fecha para medico Repository. En la siguiente parte vamos a ver cómo testar los controladores y testar los estados 400 y 404.
+
+
+
+
+
+
+														06 Testando Error 400
+														
+Transcripción
+[00:00] Hola. En la parte anterior nosotros realizamos la prueba para el método de seleccionar médico en un cierto horario dentro del repositorio de médico y verificamos los dos posibles casos. El caso en el que el médico se encuentra ocupado con otro paciente y el caso en el que ese médico se encuentra disponible.
+
+[00:20] Cuando el médico se encontraba en consulta con otro paciente, nosotros íbamos a retornar nulo. Y cuando el médico se encontraba disponible para esa especialidad y en ese horario, nosotros retornábamos el médico que fue algún médico aleatorio, que en el caso sería el único médico que teníamos registrado.
+
+[00:41] Entonces vimos que las fases de una prueba son las siguientes, dado un conjunto de valores, cuando se realiza alguna acción, entonces tenemos que comparar que ese valor que estamos buscando en la base de datos efectivamente reciba el resultado de ese dato que en este caso sería nulo.
+
+[01:10] Entonces, dado el conjunto de valores iniciales, la fecha, el médico registrado del paciente registrado y la consulta para esos dos cuando busquemos en el repositorio en la base de datos, cuando realicemos esa búsqueda, entonces vamos a verificar con el método de hacer, que nos permite realizar las pruebas unitarias con JUnit, vamos a verificar que esa búsqueda en el en la base de datos tenga un cierto valor que para este caso en este escenario sería nulo.
+
+[01:41] Al igual que para el segundo caso, nosotros también, dado un conjunto de valores iniciales, cuando realizamos la búsqueda en la base de datos, nosotros verificamos que esa búsqueda era igual al médico, el único médico que teníamos registrado. Entonces hay dos formas de registrar ese médico.
+
+[02:03] Nosotros en este caso registramos el médico mediante la construcción de métodos internos en la clase de prueba, nosotros también podríamos utilizar flyway para registrar tanto el paciente como el médico y la consulta y tenerlo interno dentro de la base de datos de prueba, recordando que el nombre de la base de datos de prueba se guía por vollmed_api_test, diferente de la base de datos vollmed_api.
+
+[02:32] Y acá no puedo realizar esta modificación de este modo, ya que como yo comencé inicialmente con esta configuración, si yo altero las configuraciones de Wayfly tendría que ir a la base de datos y borrar los archivos y generarlos todos nuevamente. Entonces como yo comencé con esta configuración vamos a continuar con esa configuración sabiendo que podemos alterar estos valores para crear una base de datos de prueba.
+
+[03:05] Entonces, ahora el siguiente componente que tenemos que probar serían los controladores, y para eso nosotros vamos a seleccionar la consulta, el controlador de las consultas, específicamente el método agendarConsulta. Entonces nosotros vamos a verificar que a la hora de recibir los valores de la petición, cuáles son los estados que estamos retornando y que los valores que nosotros estemos recibiendo de esa requisición sean correctos.
+
+[03:35] Entonces para nosotros realizar esas pruebas vamos a hacer clic derecho dentro del controlador, vamos a ir a generar y vamos a seleccionar las pruebas, vamos acá a seleccionar el método de agendarConsulta y seleccionamos OK. Crea automáticamente el método.
+
+[03:54] En la parte interior nosotros habíamos trabajado con @DataJpaTest, que es la anotación, que nos permite trabajar con accesos a la base de datos y consultas. Acá vamos a trabajar con @SpringBootTest que es una anotación que nos permite trabajar con todos los componentes dentro del contexto de Spring, entonces acá nosotros podemos utilizar repositorios, los servicios y los controladores.
+
+[04:22] Ahora nosotros tenemos que verificar los diferentes estados de que nosotros podemos retornar cuando realizamos una petición.
+
+[04:30] Entonces, cuando nosotros realizamos una requisición, tenemos el estado 400 en caso de que los valores sean inválidos, el estado 404 en el caso de que el usuario no haya sido encontrado, el estado 403 cuando la autorización no ha sido pasada que es cuando nosotros no pasamos el token y el estado 200, que es cuando el usuario ha sido encontrado exitosamente.
+
+[04:54] Entonces yo voy a trabajar con el primer escenario, y para indicar cuál va a ser ese escenario voy a colocar acá escenario 1 y vamos a colocar la anotación @DisplayName una descripción de ese método. Entonces “Debería retornar estado http 400 cuando los datos ingresados sean inválidos”.
+
+[05:31] Entonces hay dos estrategias para nosotros realizar las pruebas para este controlador, una donde nosotros inyectamos un servidor y realizamos una requisición de verdad dentro de la aplicación, para eso tendríamos que utilizar la anotación @RestAndPlay donde vamos a tener un servidor creando una petición en nuestra aplicación.
+
+[05:55] El controlador va a recibir esa petición, va a realizar la búsqueda en el repositorio, va a realizar las validaciones con el componente de service y luego va a retornar el estado en caso de que sea encontrada o en caso de que los datos sean inválidos. Esa es una primera estrategia. La segunda estrategia es donde nosotros vamos a simular que se realizó la petición y nos vamos a enfocar únicamente en este componente, ignorando el resto de los componentes.
+
+[06:28] Entonces nosotros vamos a simular esa petición, no vamos a crear un servidor sino que es vamos a simularlo y vamos a ignorar el restante de los componentes que serían los repositorios, los servicios o cualquier otro componente, y vamos a ver el Estado que retorna cuando realizamos la petición con esos datos.
+
+[06:47] Entonces como nosotros vamos a hacer una simulación, vamos a hacer un mock, vamos a inyectar dentro de la clase de prueba el atributo MockMvc que lo vamos a llamar mvc. Para inyectarlo dentro de nuestra clase de prueba tenemos que recordar que hay que usar la anotación @Autowired y junto con esta, tenemos que colocar la anotación @AutoConfigureMockMvc.
+
+[07:17] De esa forma, esta anotación se encarga de configurar todos los componentes necesarios para realizar una simulación de una petición para ese controlador. Ahora, lo siguiente que nosotros tenemos que hacer es utilizar ese MockMvc para realizar una petición, o sea, la petición que nosotros estamos probando es la petición del tipo post.
+
+[07:44] Ahora la URL para ese post sería URL “consultas”. Vamos a ver la dirección de acceso, consultas. Y tenemos que retornar una respuesta. Entonces, si vemos acá, nosotros tenemos el dato que le estamos pasando, sería la ruta que sería post, un post consulta, vamos a realizar una petición del tipo post en la dirección consulta y tenemos que retornar cuando given, dado este valor, cuando generemos esa petición.
+
+[08:31] Entonces, hacer, aquí vamos a colocar //then. Ese then va a ser un una verificación assertThat. ¿Entonces, qué es lo que necesitamos verificar? Tenemos que verificar que el estado, la respuesta que estamos recibiendo de esta requisición, de esta petición, sea el estado 400.
+
+[09:02] Entonces acá yo tengo que guardar esta petición dentro de una variable que la voy a llamar response o respuesta. Acá aún me está generando un error, tenemos que importar los valores. Y el siguiente error es que nosotros, como nosotros estamos tratando las excepciones, tenemos que agregar un throw dentro de la firma de nuestro método.
+
+[09:28] Agregamos un throw. De esa forma queda corregido el error, la excepción que se estaba presentando. Y ahora vamos a colocar, vamos a importar, vamos a verificar que ese response, vamos a obtener el estado y que sea igual, isEqual. Vamos a colocar getStatus. Vamos a importar acá.
+
+[09:55] Tenemos que importar la librería y vamos a verificar que el estatus HttpStatus sea igual a BAD_REQUEST. Tenemos que obtener el valor y cerramos la verificación. Entonces acá vamos a colocar given, dados unos valores iniciales, y when. Nuestro when sería cuando se realiza la petición, entonces nosotros en esta parte estamos realizando esos dos primeros pasos.
+
+[10:36] Vamos a dar los valores iniciales que sería cuál es el tipo de consulta que vamos a hacer, el tipo de requisición y cuál va a ser la ruta. Y cuándo sería cuando realicemos la petición. Entonces, en ese caso tenemos que confirmar que el estado de la respuesta sea igual al estado 400, que es BAD_REQUEST.
+
+[11:00] Entonces vamos a ejecutar esta aplicación y ver qué obtenemos como retorno. Entonces, una vez que ya se cargaron los datos, vemos que el resultado esperado no, no fue el deseado. Nosotros estábamos esperando un estado 400. Esa prueba falló, acá cada indica, el símbolo amarillo indica que la prueba falló y dice que el estado esperado era el estado 400, pero recibimos el estado 403.
+
+[11:36] Entonces, recordando que nosotros teníamos que enviar el token antes de realizar cualquier petición, entonces nosotros tenemos que también simular el envío de ese token dentro de nuestra petición. Entonces para eso nosotros vamos a utilizar la anotación @WithMockUser y tenemos que importar la librería.
+
+[11:58] En este caso la librería no se encuentra, entonces cuando nosotros no encontramos la librería dentro de las dependencias podemos utilizar la herramienta de agregar la dependencia interna, queremos una herramienta que nos permite buscar dependencia de Maven o podemos simplemente ir a un navegador como Firefox o Google, buscar la dependencia para esa anotación, copiarla.
+
+[12:24] En este caso yo ya tengo esa anotación copiada. Copié mis dependencias y las voy a colocar en el archivo pom, donde está el resto de las dependencias, vamos a actualizar mis dependencias acá, con esa nueva dependencia. Vamos a revisar en Maven que se haya cargado efectivamente, entonces acá tengo la nueva dependencia sprint security para la parte de prueba.
+
+[12:51] Ahora, en mi clase de prueba para el controlador, yo voy a conseguir importar la clase @WithMockUser. Ahora vamos a ejecutar esa aplicación nuevamente, vemos que se modificó el resultado. Esta vez no fue un resultado inválido, nosotros tuvimos un resultado positivo para esa prueba. Los iconos se encuentran en verde indicando que el resultado esperado, que era el estado 400, nosotros recibimos el resultado esperado que fue el estado 400.
+
+[13:31] Entonces, en la siguiente parte, nosotros vamos a probar lo que sería el estado 404, que es el caso en el que nosotros recibimos los valores, pero ese usuario o ese ese médico no se encuentra registrado dentro de la base de datos.
+
+
+
+
+
+
+
+														07 Testando Response 200
+														
+Transcripción
+[00:00] Hola. Continuando con las pruebas para el controlador de las consultas, en la parte anterior nosotros probamos el estado 400 cuando los datos ingresados eran inválidos. Vimos que nosotros teníamos que hacer una simulación de la requisición para testar únicamente ese componente, obviando todos los componentes restantes, que serían el repositorio y los servicios donde realizábamos la validación.
+
+[00:27] Ahora vamos a probar el caso 200, que es cuando nosotros enviamos un JSON y vamos a retornar un JOON a la aplicación que está haciendo la petición. Entonces, para eso vamos a copiar acá esta primera prueba y la descripción para este caso, debería retornar http 200 cuando los datos ingresados son válidos.
+
+[00:57] Ahora esto va a ser el escenario 2 y gran parte de lo que nosotros estamos realizando acá se mantiene igual, nosotros vamos a enviar una respuesta, realizada por MockMvc, que es una simulación de lo que sería la consulta, la petición a través de una API externa.
+
+[01:17] Vamos a performar, vamos a desempeñar un una petición del tipo post en la dirección “consultas” y tenemos que retornar una respuesta. Entonces, esta vez el estado esperado va a ser el estado 200, que es equivalente a OK. Solo que esta vez nosotros en el perform vamos a agregar algunos valores.
+
+[01:45] Nosotros tenemos que agregar el contenido que vamos a enviar a la API que en el caso sería Postman. Entonces nosotros en la API de Postman nosotros enviamos un JSON. Entonces ese JSON, además de estar compuesto por los parámetros del detallamiento de consulta necesita algunos valores, como el encabezado, la fecha en la que se está realizando y el tipo de archivo que se está enviando.
+
+[02:18] Entonces, para evitar eso, ahí tenemos una serie de herramientas que nos provee los métodos de perform donde nosotros podemos especificar el tipo, que el tipo sería MediaType, vamos a enviar una aplicación del tipo JSON. Existen otras aplicaciones, como del tipo XML o un formato de imagen.
+
+[02:49] Entonces en este caso nosotros vamos a trabajar con las aplicaciones JSON. Caso de que ustedes quieran enviar una imagen, este formato tienes que cambiar ya que las imágenes están compuestas de bytecode, entonces la configuración en este caso sería diferente.
+
+[03:08] Ahora, adicionen ya que se ha especificado cuál es el tipo del contenido, tenemos que especificar el contenido en sí. Entonces el contenido, ya mencionamos, que es un elemento del tipo JSON. Nosotros tenemos que enviar un elemento del tipo JSON que es DatosDetalleConsulta, donde nosotros tenemos una serie de parámetros.
+
+[03:31] Esos parámetros serían el ID, el ID de paciente, el ID del médico y la fecha, entonces la fecha, recordando que la fecha que tenemos que colocar es una fecha con una hora de anticipación. Entonces, acá en la parte superior, vamos a colocar un parámetro llamado fecha, que va a ser del tipo LocalDate.now y vamos a colocar una hora después, haciendo la especificación de que la consulta que se va a realizar va a ser una hora después del momento actual.
+
+[04:08] Entonces ya tenemos la fecha aquí, el momento en que se va a realizar la consulta. Ahora tenemos que especificar los parámetros que serían el ID, vamos a suponer un ID del número 2. El ID del médico sería 5 y la fecha sería la fecha que estamos creando como parámetro.
+
+[04:30] Acabemos, que nos está generando un error y es porque este formato es un es un elemento del tipo OJO, que es un objeto de Java Object. Nosotros tenemos que convertir este objeto Java a un objeto del tipo JSON. Para eso nosotros vamos a inyectar dos atributos dentro de nuestra clase de prueba que se llaman JacksonTester.
+
+[05:00] Primero va a ser del tipo de DatosAgendarConsulta y lo vamos a llamar agendarConsultaJacksonTester. ¿Qué es lo que hace este atributo? Esta clase toma un objeto que es del tipo Java y lo va a transformar en un objeto del tipo JSON.
+
+[05:27] Entonces acá voy a inyectar esa propiedad con la anotación @Autowired y acá nosotros vamos a recibir un JSON también de respuesta, tenemos que hacer la transformación de JSON a un objeto del tipo Java. Entonces para eso voy a anotar JacksonTester solo que esta vez va a ser DatosDetalleConsulta y va a ser detalleConsultaJacksonTester.
+
+[05:56] Vamos a inyectarlo con la anotación @Autowired, entonces ya vemos que esta clase se encarga de transformar un objeto del tipo Java a un tipo de JSON y viceversa, transforma también un objeto del tipo de JSON al tipo Java. Entonces acá vamos a copiar esto temporalmente y vamos a colocar agendarConsultaJacksonTester y dentro de él vamos a escribir ese objeto.
+
+[06:31] Entonces, acá por último, vamos a decirle que queremos obtener el archivo JSON, aquí estamos teniendo un error. DatosDetalle y colocamos DatosDetalle, es DatosAgendar. DatosAgendarConsulta. Los parámetros para agendar consulta son el ID del paciente, que es el 2, el ID del médico y la especialidad.
+
+[07:04] La especialidad sería, vamos a colocar la especialidad también en un parámetro. Sería var especialidad y vamos a colocar acá la clase de numerador Especialidad.CARDIOLOGIA. Ahora vamos a pasar ese parámetro, vamos a ver y tenemos que pasar la fecha y la especialidad.
+
+[07:34] Entonces, ya con eso le indicamos a JacksonTester que escriba un elemento del tipo DatosAgendarConsulta y que obtenga el JSON que es el que se va a enviar dentro de la respuesta, dentro de la aplicación simulada para obtener una respuesta. Entonces ya tenemos la primera prueba realizada que es la prueba donde le indicamos cuál es el estado que queremos obtener.
+
+[08:01] También tenemos que indicarle cuál va a ser el JSON esperado. Entonces vamos a crear un parámetro acá, vamos a llamar JsonEsperado y esta vez vamos a utilizar detalleConsultaJacksonTester donde vamos a escribir un elemento del tipo DatosDetalleConsulta, que es el record que nos retorna la clase.
+
+[08:31] Entonces acá vamos a colocar los parámetros. Los parámetros que él requiere son el ID, el ID del paciente, el ID del médico y la fecha. Entonces aquí sería el ID del es nulo, el ID del paciente que es 2l, dos del tipo long, el ID del médico que es 5, la fecha. Eso es todo. Acá al final vamos a indicarle que queremos obtener el JSON.
+
+[09:02] Entonces vamos a hacer, vamos a verificar ahora, a verificar que ese JsonEsperado, vamos a copiar acá, sea igual al que vamos a obtener en la respuesta. No. Acá vamos a obtener que la respuesta response, vamos a obtener el contenido de la respuesta como string que sea igual al JsonEsperado.
+
+[09:47] ¿Entonces qué estamos describiendo acá? Estamos describiendo lo siguiente. Estamos enviando una fecha que va a ser una hora después de la hora actual en la que estamos realizando este procedimiento, estamos colocando el parámetro de la especialidad, estamos colocando la especialidad dentro de un parámetro y estamos generando una respuesta o una aplicación simulada.
+
+[10:09] Entonces esa aplicación va a enviar los datos que se encuentran en un archivo del tipo DatosAgendarConsulta, que son transformados a través de JacksonTester. Él va a retornar una respuesta y vamos a validar esa respuesta con el primer assert, la primera verificación. Tenemos que verificar que esa respuesta sea igual al estado 200.
+
+[10:33] Por último, tenemos que verificar el cuerpo del JSON que estamos retornando, para eso tenemos que escribir cuál es el cuerpo del JSON que deberíamos recibir. Sería JsonEsperado, y vamos a transformar ese elemento de tipo Java, un elemento del tipo JSON para poder compararlo con el JSON que estamos retornando en la respuesta de la aplicación simulada.
+
+[10:59] Entonces vamos a ejecutar este test a ver cuál es el resultado. Ahora, una vez que ya ha cargado la segunda prueba realizada, nosotros nos encontramos con un error. Ese error indica que no fue encontrado el JacksonTester para esta prueba. Entonces nosotros tenemos que colocar una anotación adicional a la parte superior de la clase, que es la anotación @AutoConfigureJsonTesters.
+
+[11:31] La anotación se encargará de hacer todas las configuraciones para esta clase de prueba relacionadas al parámetro JacksonTester que es el encargado de realizar esas transformaciones de elementos de tipo Java a tipo JSON. Ahora si ejecutamos nuevamente nuestra aplicación. Entonces, una vez que cargó este segundo intento de prueba, vemos que ya no entregó un error de compilación, sino que simplemente falló la prueba.
+
+[12:00] Entonces vamos a ver qué indica. Acá indica lo siguiente, está diciendo que estábamos esperando un estado de 200, pero recibimos el estado 400, recordando que el estado 400 es que las informaciones que fueron pasadas son inválidas. ¿Por qué ocurre esto?
+
+[12:17] Cuando nosotros estamos enviando el JSON dentro de nuestra aplicación simulada, él está realizando todo el proceso dentro de lo que sería la base de datos real, entonces nosotros estamos tomando este JSON y lo estamos enviando en la clase controlador, que es la que recibe los archivos de las API externas.
+
+[12:39] De allí lo estamos enviando a la clase de servicio, que a su vez lo envía la clase de repositorio para hacer una búsqueda en la base de datos y guardarlo. Luego, por último, va a retornar los valores que nosotros deseamos, que en este caso serían los detalles de la consulta con el ID de esa consulta que fue agendada.
+
+[13:03] Entonces, para eso nosotros tenemos que simular esa clase de servicio para indicarle a la aplicación que no tiene que hacer una búsqueda dentro de la base de datos real, sino le vamos a indicar directamente cuál va a ser el retorno.
+
+[13:19] Entonces acá vamos a inyectar un nuevo parámetro, que va a ser AgendaDeConsultaService y lo vamos a anotar con la anotación @MockBean siendo referencia de que vamos a simular esa clase de servicio.
+
+[13:37] Ahora, dentro de mi método de prueba voy a utilizar una comparación que es agendaDeConsultaService, y vamos a colocar una agenda. Entonces cuando se realice el asentamiento de esta consulta que sería esta de acá, DatosAgendarConsulta, acá podemos colocar esta o podemos colocar any, indicando que puede ser cualquier petición.
+
+[14:13] Entonces, cuando enviemos cualquier petición o esta que estamos colocando acá, nosotros tenemos que retornar lo siguiente, tenemos que retornar DatosDetalleConsulta. Entonces ahora como estamos utilizando DatosDetalleConsulta, podríamos colocarla dentro de una variable que se llame datos y pasar acá simplemente el parámetro datos.
+
+[14:47] Entonces, cuando se intente agendar cualquier JSON, nosotros vamos a retornar este parámetro. Entonces, acá vamos a reemplazar nuevo DatosDetalleConsulta por la variable datos. Vamos a intentar ejecutarlo de nuevo, para ver cuál es el resultado.
+
+[15:11] Esta vez tenemos que las pruebas pasaron para el estado 200 entonces acá estamos recibiendo que afirmativamente la prueba pasó. Nosotros ya con esto finalizamos lo que serían las pruebas, está faltando únicamente la prueba 404. Recordando que el estado 404 es cuando nosotros hacemos una petición en la base de datos buscando un valor y esa página no se encuentra o no existe.
+
+[15:41] Entonces, una forma de hacerlo es buscando alguna de esas consultas con el ID incorrecto que va a retornar el estado 404, entonces lo dejo como desafío. Acá también yo puedo ejecutar todas las pruebas. Nosotros teníamos que podíamos ejecutar las pruebas de forma individual, seleccionando el icono verde del lado del método o puedo ejecutar todas las pruebas, que es lo que vamos a hacer ahora, para ver que todas las pruebas estén pasando.
+
+[16:12] Entonces, vemos acá que se están realizando las pruebas para los controladores y para los repositorios. También dejamos como desafío hacer las pruebas para las validaciones y pueden realizar todas las secuencias de pruebas para las otras consultas, las consultas simples.
+
+[16:31] Entonces, mientras más pruebas tenga la aplicación, más estable y más confiable va a ser a la hora de hacer el deploy en el servidor. Entonces, en la siguiente parte vamos a ver cómo hacer ese deploy. Vamos a hablar de las variables de ambiente y de los diferentes perfiles con los que se está trabajando.
+
+
+
+
+
+
+
+
+														 10 Lo que aprendimos
+PRÓXIMA ACTIVIDAD
+
+Lo que aprendimos en esta aula:
+
+Escribir pruebas automatizadas en una aplicación con Spring Boot;
+Escribir pruebas automatizadas para una interfaz de Repositorio, siguiendo la estrategia de utilizar la misma base de datos que utiliza la aplicación;
+Sobreescribir las propiedades del archivo application.properties, creando otro archivo llamado application-test.properties que se carga solo cuando se ejecutan pruebas, usando la anotación @ActiveProfiles para eso;
+Escribir pruebas automatizadas para una clase de controlador, utilizando la clase MockMvc para simular solicitudes de API;
+Probar los escenarios de error 400 y código 200 al probar una clase de controlador.
+														
+														
+														
+														
+														
+														

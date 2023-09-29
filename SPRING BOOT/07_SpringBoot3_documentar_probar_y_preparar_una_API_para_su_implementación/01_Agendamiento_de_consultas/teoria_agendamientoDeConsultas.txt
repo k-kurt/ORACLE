@@ -1,0 +1,369 @@
+											
+											
+											
+											01 Presentación
+											
+Transcripción
+[00:00] Hola, bienvenidos una vez más a la tercera parte del desarrollo de la API de clínica médica con Java y Spring Boot en la versión 3. En esta parte vamos a dar continuidad al desarrollo de la aplicación que veníamos trabajando en los dos cursos anteriores.
+
+[00:14] Entonces en los cursos anteriores nosotros vimos cómo desarrollar una API Rest, vimos qué es una API Rest y cuáles son los componentes que en los que se estructura. Vimos que realizamos peticiones y recibimos respuestas a través de una API de la de API Insomnia. En esta parte usaremos la API de Postman.
+
+[00:33] Realizamos un CRUD donde permitía crear una entidad, una nueva entidad que era la entidad de médicos, así como la de pacientes, leer los registros existentes en la base de datos, actualizar los registros para alguno de esas entidades como médico paciente y eliminar de forma lógica o de forma permanente, utilizando los métodos internos de repositorio.
+
+[00:56] Realizamos validaciones para los campos ingresados, utilizando BIM Validation y acá nosotros al ingresar campos tenemos que verificar que esos campos no sean nulos, que no se encuentren vacíos o que contengan un cierto formato, ya sea como un formato numérico, un formato del tipo email.
+
+[01:14] Realizamos la paginación y el ordenamiento para el modo cómo íbamos a recibir los resultados de la lectura de la base de datos cuando nosotros realizamos una petición. Nosotros vamos a recibir ese resultado y lo podemos ordenar e indicarle a Sprint cuál va a ser la cantidad de valores que vamos a recibir por página.
+
+[01:36] Apliquemos las buenas prácticas en el desarrollo de API Rest, realizamos el tratamiento de errores, ya que cuando nosotros ingresamos un valor que no corresponda al formato deseado, nosotros tenemos que indicarle mediante un mensaje capturar ese error e indicarle al cliente que está enviando los datos de forma errónea, ya sea como nulo o un formato inadecuado.
+
+[02:05] Y por último, realizamos el control de acceso con Jason Web Token, lo que nos va a permitir darle más seguridad a nuestra aplicación al colocarle un acceso de usuario a todos estos endpoints o estas rutas de acceso.
+
+[02:22] Ahora, en esta nueva parte, nosotros vamos a agregar una nueva entidad que va a ser la entidad de consulta, la que nosotros vamos a permitir registrar una consulta con los médicos y pacientes existentes dentro de la base de datos, entonces nosotros vamos a agregar un nuevo componente que se va a relacionar internamente con esos elementos que ya existen dentro de la aplicación.
+
+[02:49] Ahora vamos a realizar una agendamiento de consulta y vamos a crear la documentación para esa nueva aplicación, eso lo vamos a realizar utilizando la API de Spring Doc, con la que nosotros vamos a poder entregar un formato agradable a la vista al cliente que nos está solicitando la API de forma que él no tiene necesidad de entender cuál es el desarrollo del código o puede que alguno de los que va a trabajar con la API no tenga conocimiento de Java con Spring.
+
+[03:19] Y esta documentación le va a facilitar cuál va a ser los parámetros y cuáles son las diferentes rutas con las que va a trabajar. Vamos a trabajar también con los tests automatizados, ya que al trabajar con Spring framework tenemos que vamos a tener una forma diferente de trabajar con JUnit.
+
+[03:43] Ahora nosotros vamos a simular estas entidades, estos componentes que existen en Spring framework y que son auto instanciadas, entonces vamos a ver cómo realizar estos tests unitarios con JUnit y Mockito dentro de El ambiente de Spring frame. Y por último, vamos a realizar el build del proyecto.
+
+[03:59] Nosotros ya hemos construido proyectos con Java, ahora vamos a ver cómo realizar ese build del proyecto con el Java Spring Framework y cómo hacer el deploy o cómo ejecutar ese archivo final dentro de un servidor externo o dentro de la nube.
+
+[04:19] Por último, vamos a continuar trabajando con la API de clínica médica, entonces vamos a disponibilizar una aplicación mobile donde vamos a ver los diferentes componentes de registro tanto para médicos como para pacientes y nos vamos a enfocar en la parte de consulta. Entonces, sin más que mencionar, vamos a darle continuidad al curso y nos vemos en la siguiente aula.
+
+
+
+
+
+
+																	02 Proyecto del curso anterior
+PRÓXIMA ACTIVIDAD
+
+¿Comenzando en esta etapa? Aquí puedes descargar los archivos del proyecto que hemos avanzado hasta el curso anterior.
+https://github.com/alura-es-cursos/1979-spring-boot-buenas-practicas-security/tree/clase-5
+
+
+
+
+
+
+														04 Nueva funcionalidad
+														
+Transcripción
+[00:00] Hola, para dar comienzo este tercera parte de la clínica médica, aquí nos encontramos con la diferenciador de actividades de Trello, donde podemos ver que ya nosotros tenemos en la parte de realizado lo que sería de los registros de médico, el listado de médicos, actualización, eliminación de médicos, así como para pacientes.
+
+[00:21] Y a cada vez tenemos lo que sería el agendamiento de consultas y el cancelamiento de consultas. Entonces vamos a mover por hacer a haciendo lo que sería el agendamiento de consulta y vamos a seleccionarlo. Y en la descripción tenemos lo siguiente. El sistema debe contar con una funcionalidad que permita agendar citas, en la cual se debe llenar la siguiente información.
+
+[00:42] Los datos del paciente, los datos del médico, la fecha en la que se va a realizar esa consulta y las siguientes reglas de negocio deben ser validadas por el sistema. Entonces, para indicar cuáles son los datos del paciente nosotros vamos a indicar el ID de ese paciente, el ID del médico y vamos a pasar la hora y la fecha en la que se va a realizar esa consulta.
+
+[01:14] Acá en el diseño de Trello, nosotros vemos que la aplicación mobile va a contar con los siguientes campos. Vamos a poder indicar cuál va a ser el nombre del paciente, vamos a indicar el nombre del médico, vamos a seleccionar la fecha y el horario y vamos a tener un botón que nos va a permitir realizar el agendamiento de esa consulta.
+
+[01:29] Entonces acá nos está indicando que algunos campos ya son obligatorios y únicamente el campo que no es obligatorio es el nombre del médico, entonces vamos a tener que el nombre del paciente es obligatorio, así como la fecha y hora de consulta. Acá tenemos un ejemplo de cómo se va a ver luego de haber llenado los campos, y luego de aplicar, de hacer el envío de esa petición, vamos a guardar esos datos en la base de datos.
+
+[02:02] Entonces acá vemos que tenemos unas reglas de negocio que son un poco diferentes a las que nosotros realizamos en las partes anteriores. Estas reglas de negocios son un poco más complejas de las que podemos resolver con bim validation, ya que se ajustan al a ciertas condiciones que fueron desarrolladas por el cliente.
+
+[02:20] Entonces, esas reglas de negocio están relacionadas al horario de atención de la clínica que es de lunes a sábado en el horario de 7:00 de la mañana, a 19:00 de la tarde, el horario, la duración del horario. El horario de anticipación con el que se deben realizar esas consultas, entonces nosotros vamos a tener un tiempo de al menos de 30 minutos de anticipación para realizar la cita.
+
+[02:46] No se puede permitir agendar con pacientes inactivos o con médicos inactivos, entonces acá vemos que nosotros habíamos validado para cuando el paciente, el ID del paciente se encontraba nulo o cuando los datos del médico se encontraba nulo. Acá vamos a ver cómo hacer cuando uno de los campos tiene un cierto valor, que en este caso va a hacer que se encuentre inactivo.
+
+[03:12] No podemos permitir programar más de una consulta para el mismo día para el mismo paciente, y podemos permitir una cita con un médico que ya se encuentra en cita con otro paciente. Como hemos mencionado en el diseño, la elección del médico es opcional, entonces vamos a ver cómo vamos a trabajar con eso.
+
+[03:33] Entonces, si nos fijamos, la estructura va a ser la misma que el desarrollo de los cursos anteriores. Nosotros vamos a tener un controlador que va a recibir los datos iniciales, vamos a tener un procesamiento de esos datos y vamos a buscar los valores en la base de datos, solo que ahora vamos a tener un nuevo campo donde vamos a realizar estas nuevas validaciones.
+
+[03:54] Entonces ahora sería un área de servicio o área simplemente donde vamos a colocar las reglas de negocio. Si nos fijamos nosotros vamos a tener una especie de receta, a la hora de aplicar nuevas funcionalidades, siempre vamos a tener un controlador, ya que ese es el lugar donde nosotros enviamos y recibimos peticiones. Esto es lo que conectan con la API de Postman o con Insomnia o con cualquier otra API externa.
+
+[04:25] Vamos a tener los DTOs, así como las entidades JPA. Nosotros vamos a tener elementos que representan esos médicos, esos pacientes, así como las entidades que son las que van a representar las tablas en la base de datos. Vamos a tener los repositorios, que es un elemento en Spring que se encarga de realizar todas las conexiones con la base de datos, incluso realizar algunas consultas por nosotros.
+
+[04:54] Hay algunas consultas más complejas que nosotros vamos a realizar. Eso lo vamos a ver acá en este curso. Vamos a tener la parte de migraciones en esta parte vamos a ver cómo utilizar Flyway para crear tablas y así como agregar nuevos registros de datos tanto para base de datos en la base de datos con la que vamos a estar trabajando a la hora de desarrollar nuestra aplicación, así como una base de datos de prueba.
+
+[05:20] Vamos a ver cómo trabajar con Spring Security a la hora de utilizar Spring Doc. Y vamos a tener esta nueva parte que serían las reglas de ese negocio, entonces, esta nueva parte se va a encontrar en un componente parte que va a ser el componente de servicios donde se van a encontrar todas esas validaciones que nosotros estábamos viendo en la tarjeta de train.
+
+[05:44] Entonces a continuación, vamos a ver lo que sería el desarrollo de todas estas actividades, comenzando por el desarrollo del controlador en Spring framework para el agendamiento de consultas.
+
+
+
+
+														05 Consulta controller
+														
+Transcripción
+[00:00] Entonces para comenzar el desarrollo de esta nueva funcionalidad, vamos a continuar con la aplicación de los cursos anteriores, donde registramos un médico y dejamos como desafío registrar pacientes. Y ya tenemos ese desafío ya elaborado.
+
+[00:18] Nosotros tenemos el paciente, tenemos el médico y vamos a crear esta nueva funcionalidad. Para implementar esta nueva funcionalidad, vamos a aplicar la receta creando una nueva clase que se llama ConsultaController y vamos a copiar las anotaciones de alguna de las otras clases.
+
+[00:40] Entonces de acá vamos a copiar la anotación @RestController y @RequestMapping. Entonces,o como habíamos mencionado, estas anotaciones lo que indica es que son componentes gerenciados por Spring. ¿Qué significa eso? Que ya no tenemos que usar la palabra new ConsultaController para poder hacer uso de esa clase, sino que, como ya no tenemos que realizar el uso de la palabra new, Spring automáticamente él instancia esa clase y la deja disponible para nuestro uso.
+
+[01:17] Entonces tenemos que anotarla con la anotación @RestController o con la anotación @Controller. @RequestMapping indicamos cuál va a ser la ruta, la URL “/consultas”. Al colocar @Controller tenemos que colocar @ResponseBody ya que todo @RestController está conformado por la anotación @Controller y @ResponseBody, y el controlador a su vez está conformado por la anotación @Component como nosotros habíamos mostrado en el diagrama.
+
+[01:50] Entonces yo podría acá reemplazar controlador por @Componen y funcionaría del mismo modo. Sin embargo, para indicar que es un controlador, un controlador Rest, vamos a dejar la opción controller y la anotación @ResponseBody. Lo siguiente es crear nuestro método, ese método va a retornar ResponseEntity que se va a llamar agendar.
+
+[02:25] Y va a tener los siguientes parámetros. @RequestMapping, @RequestBody y @Valid para validar los campos de bin validation. Entonces acá tenemos que poner el tipo que va a ser DatosAgendarConsulta y vamos a recibir parámetro datos.
+
+[02:59] Acá vamos a imprimir en la consola system.out.println(datos) y vamos a retornar new ResponseEntity.ok, vamos a pasar nuevo DatosDetalleConsulta. Todos los campos van a ser nulos por ahora, más adelante vamos a llenar esos campos. Ahora lo único que nosotros queremos es ver que se aplique esa funcionalidad.
+
+[03:41] Entonces vamos a crear, ya creamos el controlador, lo siguiente es crear ese record. Entonces vamos a ir a más acciones, crear record, vamos a crear un nuevo paquete dentro de dominio, se va a llamar consulta. Y dentro de él vamos a colocar los atributos (Long id, Long idPaciente, Long idMédico) por último LocalDateTime fecha.
+
+[04:23] La fecha no puede ser nula y tiene que ser una fecha posterior a la fecha actual, para eso vamos a utilizar la anotación @Future. Para pacientes, paciente tampoco puede ser nulo, eso ya tenemos el de DTO para agenda de consultas. Ahora vamos a crear DatosDetalleConsulta. Vamos a más acciones.
+
+[04:55] Crear record. Lo vamos a crear dentro del paquete consulta. El objeto va a ser Long id, Long idPaciente, Long idMedico y por último LocalDateTime la fecha, que es lo que vamos a retornar. Ya con eso tenemos el controlador funcionando correctamente. Tenemos que eliminar esto acá. Ya está funcionando todo y aquí está faltando, como esto es un post, vamos a colocar unas piernas acá, @PostMapping.
+
+[05:53] Vamos a colocarlo en Consulta. Y con eso está funcionando nuestro controlador. Lo siguiente, ya creamos los DTO, es crear la entidad @Consulta. Vamos a crear una nueva clase. Consulta. De la clase médico vamos a copiar las anotaciones, vemos que se sigue la receta, entonces esa receta se va a cumplir siempre que nosotros estemos creando nuevas entidades en nuestra base de datos utilizando Spring Framework.
+
+[06:31] Entonces dependiendo de todo del elemento que tengamos que agregar, nosotros podríamos agregar institutos, podemos agregar más pacientes, otro tipo de personal como personal de limpieza, personal de seguridad, aquí es “consulta”. Tenemos que colocar el ID. Vamos a copiar esta parte, acá la voy a copiar, si la tengo diseñada.
+
+[07:02] Tenemos que copiar el ID. Vamos a importar de JPA. Acá también vamos a importar de JPA. Tenemos que realizar una relación entre la entidad consulta y las tablas de médico y paciente. Entonces en el curso de JPA explico más a profundidad cómo se realizan esas relaciones entre diferentes tablas.
+
+[07:31] Nosotros vamos a tener la tabla consulta que se encuentra relacionada a través del atributo ID con la tabla médico, que es otra entidad dentro de la base de datos. Ahora nos falta agregar el repositorio, que es el responsable de comunicarse con la base de datos. Vamos a copiar médico repository y vamos a pegarla en las consultas.
+
+[07:55] Vamos acá a pegar. Buscamos médico, vamos a pegar y vamos a reemplazar el médico por consulta. Ahora eliminamos esto der acá y vamos a pasar en vez de médico una consulta. Entonces, como habíamos mencionado, todo repositorio también es un componente, entonces nosotros colocamos la anotación @Repository para indicar que esa interface va a representar un componente gerenciado por Spring Framework.
+
+[08:37] Entonces, si nosotros creamos una clase que implemente esta interface, automáticamente esa clase va a heredar esta anotación y se va a encontrar instanciada y gerenciada por los componentes de Spring framework. Entonces, ya creamos la entidad, creamos el repositorio. Lo siguiente es crear la migración, entonces vamos a crear acá la migración, vamos a pegarla.
+
+[09:07] La siguiente migración va a ser C. Vamos a crear la tabla consultas. Para eso, para evitar errores, vamos a copiar acá, porque yo tengo que realizar una restricción entre la tabla consultas_medico_id con la llave extranjera médico_id. Entonces, vamos acá, vamos a realizar otra restricción, ya que nosotros estamos relacionando la tabla consultas con la tabla médico y con la tabla pacientes.
+
+[09:40] Vamos a pasar el atributo id, vamos a crear la columna id, la columna médico_id, la columna paciente_id para relacionarlos dentro de una nueva tabla que se va a llamar consultas. Entonces esta forma ya tenemos todo funcionando, la aplicación ya está conectada con la base de datos. En teoría debería funcionar. Vamos a ver si está funcionando todo correctamente.
+
+[10:04] Aquí dice la base de datos no la hemos creado, creamos la base de datos. Y ejecutamos nuevamente. Entonces, luego que se ha ejecutado, el creó la sexta migración, él creó las migraciones 1, 2, 3, 4, 5 y 6. Está ocurriendo todo correctamente. Ahora aquí en el Postman nosotros vamos a realizar nuestra solicitud a nuestra API creando nuestra primera consulta.
+
+[10:38] Entonces para eso vamos a hacer una requisición del tipo POST. Vamos a colocar la URL, cambiar paciente por consultas. Y tenemos que enviar el cuerpo, el cuerpo va a ser del tipo JSON. En cursos anteriores creo que usaron la aplicación de Insomnia.
+
+[11:04] Aquí, para variar, vamos a usar Postman, simplemente para ver que funciona igual indiferentemente de la aplicación de test de API Rest. Acá tenemos que recordar que estamos utilizando Spring Security y vamos a tener un estado 403 si no pasamos el token. Entonces nosotros creamos esa base de datos desde cero.
+
+[11:24] Tenemos que ir a nuestra base de datos, a los usuarios y crear un nuevo usuario. Ese nuevo usuario, tiene que tener un nombre, vamos a colocar María. Y tenemos que pasar un generador de código, de has hecho. Ese hash va a ser 1, 2, 3, 4, 5, 6. Vamos a ir la base de datos y vamos a guardar ese hash.
+
+[11:55] Guardamos los registros y ahora sí, en el Postman vamos a ir al login, a generar ese nuevo token. Copiamos el token en nuestra nueva requisición, vamos a ir a la parte de autorizaciones, a token. Y vamos a copiar ese nuevo token. En el cuerpo que vamos a enviar, tenemos que colocar el id del paciente. Va a ser 1.
+
+[12:41] Vamos a colocar el id del médico que también va a ser 1. Y por último, tenemos que colocar la fecha. Tiene que tener un formato del tipo LocalDateTime. Ese formato está conformado por el año, que tiene que ser el futuro, en este momento nos encontramos en el 2023. Puede ser cualquier momento futuro a partir de la fecha actual, el mes y el día.
+
+[13:06] Entonces vamos a agendar para el mes 10, el día 10. Las horas y los minutos y los segundos se encuentran separados por la T. Entonces, de este lado vamos a tener meses, días y años, y del lado derecho vamos a tener las horas que vamos a agendar para las 10:30. Podríamos colocar los segundos, lo vamos a colocar simplemente con las horas y los minutos.
+
+[13:35] Le colocamos la autorización al token. Ahora vamos a realizar esta requisición. Vemos que tenemos el retorno, tiene un estado de status 200, HTTP, vamos a editar el nombre de esta consulta. Vamos a llamar agendarConsulta.
+
+[14:08] Y en nuestra aplicación vemos que se imprime en la consola los valores que recibió de Postman. Entonces recibió el valor de id 1, médico 1 y la fecha. Entonces como nosotros por ahora no estamos realizando alguna operación dentro de este método, él simplemente imprime en la consola y dio un retorno de nulo.
+
+[14:32] Más adelante vamos a ver cómo aplicar nuestra capa de servicios. Voy a eliminar ese de System.out y ver un nuevo componente de Spring Framework, que es la anotación @Server, que nos va a permitir realizar estas operaciones dentro de nuestra aplicación.
+
+
+
+
+
+
+
+														08 Clase Service
+														
+Transcripción
+[00:00] En la parte anterior nosotros realizamos todo el esqueleto de las consultas, le hicimos el controlador, las entidades, los DTOs que nos permiten enviar y recibir información dentro de nuestra API, los repositorios y la migración donde creamos la consulta relacionándola con llaves extranjeras, con la tabla de médicos y pacientes.
+
+[00:23] Como nosotros habíamos mostrado, es una especie de receta donde siempre vamos a tener todos esos elementos. Ahora, vamos continuando con las tarjetas de Trello, donde se encuentran los diferentes elementos del proyecto, nos vamos a encontrar con las validaciones, son un poco más complejas que las validaciones que ya venimos haciendo con bim validation, donde podemos colocar validaciones de campo obligatorio o un tipo de formato determinado.
+
+[00:53] Ahora las validaciones tienen, están relacionadas con el tiempo de anticipación, la duración de la consulta, si los pacientes se encuentran inactivos, si se pueden permitir en el sistema o no que está relacionado con la exclusión de pacientes y nos puede permitir agenda de consultas con un médico que ya tenga un paciente en ese horario.
+
+[01:19] Entonces, como vemos, estas validaciones son un poco más complejas y no las vamos a poder realizar con bim validation. Tenemos que implementar un servicio que realice todas esas condiciones. Entonces de vuelta en nuestra aplicación nos encontramos en la clase de ConsultasController. Y la finalidad de los controladores es gerenciar o administrar el flujo de información entre nuestra aplicación y las aplicaciones externas.
+
+[01:42] Nosotros podríamos colocar dentro de este método agendar, podríamos colocar esas validaciones que van a ser realizadas, como por ejemplo que es el médico y datos médicos, el id médico es diferente de nulo y que haga alguna opción.
+
+[02:03] Sin embargo, de esta forma nosotros estamos violando el principio de responsabilidad única ya que nosotros dentro de una clase que tiene como responsabilidad gerenciar flujo de información, estamos agregando una nueva responsabilidad que sería la responsabilidad de validación.
+
+[02:20] Entonces esa validación la vamos a crear dentro de otra clase, sería una clase de servicio. Vamos a crear dentro del paquete consulta, vamos a llamarla agenda de consultas service. AgendaDeConsultaService para indicar que es un servicio.
+
+[02:42] Como es un servicio, el servicio se tiene que encontrar disponible y tenemos que inyectarlo dentro de nuestro controlador. Recordando que para que una clase se encuentre disponible, nosotros lo podemos anotar con la anotación @Component o con alguna de sus anotaciones hijas, como serían @Service, @Repository o @Controller.
+
+[03:10] Entonces, eso va a depender de la de la funcionalidad, de la finalidad que tenga esa clase. En este caso sería un servicio, entonces nosotros lo vamos a anotar con la anotación @Service, vamos a remover estas anotaciones de acá. Y vamos a crear un método a va a ser el método agendar.
+
+[03:32] Va a ser del tipo público no va a retornar nada. La vamos a llamar agendar. Ese método va a recibir de DatosAgendarConsulta que era el record y el nombre de ese parámetro a se va a llamar datos también. ¿Entonces, qué es lo que yo quiero hacer en este nuevo método?
+
+[03:59] Lo que yo quiero hacer es, al igual que nosotros hacíamos para MédicoController, es guardar la información que está llegando de donde la API externa, de la aplicación externa, entonces nosotros vamos a recibir esos datos y, a través del repositorio, vamos a guardar esa información en la base de datos.
+
+[04:20] Entonces lo que yo tengo que hacer es inyectar un atributo, ConsultaRepository. Lo vamos a llamar ConsultaRepository también. Y recordando que para que Spring Boot sepa dónde inyectar el valor de ese repositorio, nosotros tenemos que colocar la anotación @Autowired.
+
+[04:43] Si nosotros no colocamos esta anotación, el valor de este atributo va a ser simplemente nulo. Entonces, como nosotros no necesitamos que sea nulo, nosotros queremos que tenga los diferentes métodos que se encuentran en el repositorio, nosotros vamos a colocar la natación @Autowired para poder usar los diferentes métodos que se encuentran internos dentro de esa interface.
+
+[05:07] Ahora sí, nosotros podemos usar el método de consultar el método save de la clase de ConsultaRepository que nos está solicitando una entidad. La entidad que nosotros tenemos que pasar acá es una entidad del tipo consulta. Entonces nosotros vamos a crear una variable, que se va a llamar consulta.
+
+[05:27] Y acá sí podemos colocar la palabra nuevo Consulta donde vamos a pasar los diferentes valores, el id va a ser nulo, acá tengo que pasar una clase de médico. Lo que tengo que pasar la clase paciente y por último, datos.fecha. Entonces, de esa forma, yo puedo pasar acá la clase consulta.
+
+[05:58] Ahora ya quiero inyectar este servicio dentro del controlador, para eso vamos a hacer lo mismo que hicimos con el repositorio, solo que lo vamos a hacer con el servicio, entonces vamos a colocar un atributo privado que se va a llamar AgendaDeConsultaService. El nombre de este parámetro se va a llamar servicio.
+
+[06:21] Y lo vamos a anotar con la anotación @Autowired para que Spring framework sepa dónde debe inyectar esa clase que está siendo instanciada. Ahora yo sí puedo usar la clase de servicio y llamar el método agendar para pasarle los datos que estamos recibiendo de Postman con el id del médico, el id del paciente y la fecha en la que se realiza esa consulta.
+
+[06:52] Ahora sí podemos realizar las diferentes validaciones, o podemos indicarle dónde van a ser las validaciones dentro de este nuevo método que va a ser un método de servicio. Sin embargo, yo estoy acá, instanciando un nuevo médico y un nuevo paciente.
+
+[07:08] Yo tengo los valores de esos médicos y de ese paciente dentro de la base de datos. Por lo tanto, yo tengo que buscar ese paciente y ese médico utilizando los repositorios de médico y paciente. Entonces vamos a copiar este consultaRepository dos veces y vamos a reemplazar acá PacienteRepository.
+
+[07:37] Le vamos a llamar paciente. Y acá se va a llamar MédicoRepository. De acá lo vamos a llamar, el valor de ese parámetro se va a llamar MédicoRepository. Ya tenemos inyectada nuestras clases de repositorio dentro de nuestro servicio, ahora sí podemos hacer una consulta en la base de datos a través de esos parámetros.
+
+[08:08] Entonces vamos a crear una variable, que vamos a llamar la paciente y vamos a utilizar pacienteRepository y vamos a buscar find, vamos primero a buscar simplemente findById. FindById vamos a colocar el ID del paciente. Ya con eso tenemos una variable del tipo paciente. Si vamos acá, esa variable es del tipo optional.
+
+[08:43] Para que esa variable sea del tipo paciente, yo tengo que aplicar el método get que se encuentra dentro del método findById. Ahora sí, yo estoy asignando un elemento del tipo paciente dentro de la variable paciente. Vamos a crear una nueva variable para médico, var medico. Y vamos a usar médicoRepository.findById.
+
+[09:18] Acá coloco datos.idMédico. Y voy a tener el valor de la base de datos. Ahora sí, yo puedo pasar el paciente, voy a reemplazar este nuevo paciente que va a tener todos los valores nulos por este nuevo paciente que nosotros hemos solicitado en la base de datos y acá vamos a inyectar dentro del constructor el médico que estamos buscando en la base de datos, en el constructor de la consulta que tenía un médico con todos los valores nulos.
+
+[09:54] Ahora nosotros sí podemos crear nuevas validaciones, acá nosotros simplemente estamos inyectando un paciente y un médico sin verificar si ese paciente o ese médico se encuentra activo. Más adelante vamos a ver cómo realizar esas validaciones, vamos a realizarlas en otras clases, pero hasta este momento tenemos nuestra clase de servicios funcionando.
+
+[10:20] Y si nosotros ejecutamos nuestra aplicación nuevamente, vamos que él está cargando los valores, él va a cargar sin errores. No encontró ningún error a la hora de cargar los valores. Y ya tenemos separadas las responsabilidades para los servicios y para el flujo de información entre aplicaciones externas y la aplicación que estamos desarrollando.
+
+[10:53] En la siguiente parte vamos a ver cómo crear esas validaciones para ajustarla a las necesidades del cliente que fueron marcadas en la tarjeta de Trello.
+
+
+
+
+
+
+														09 Validaciones de integridad
+														
+Transcripción
+[00:00] Hola. En el video anterior nosotros comenzamos a construir nuestro método de agendar, que es el que nos va a permitir agregar nuevos elementos en la base de datos.
+
+[00:07] Dentro de ese método nosotros estamos recibiendo los datos con el ID del paciente, el ID del médico y la fecha con hora de la consulta. Sin embargo, nosotros tenemos que verificar que esos datos que estamos recibiendo en nuestro proyecto sean válidos.
+
+[00:24] Si esos elementos son nulos o no se encuentran en la base de datos, nosotros tenemos que enviar un mensaje de error al elemento que esté consumiendo nuestra API. Puede ser el front end o puede ser directamente alguna otra API. Entonces, para eso yo voy a construir una serie de validaciones de integridad, a partir de la construcción de algunos if.
+
+[00:49] Entonces, el primer elemento que tengo que checar es el ID del paciente. Para eso tengo que comunicarme con la base de datos a través del pacienteRepository y vamos a usar primero el findById que me retorna un optional. En ese option voy a pasar el ID del paciente.
+
+[01:06] Y ese optional tiene algunas opciones como es el get, que me retorna un elemento del tipo paciente y tiene isPresent que retorna un evento booleano, que es true en caso de que sea encontrado y falso en caso de que no haya sido encontrado.
+
+[01:22] Voy a usar ese método. Entonces, en caso de que no haya sido encontrado el ID del paciente en la base de datos y voy a arrojar una nueva sección, entonces yo tengo algunas excepciones que ya fueron prediseñadas, sin embargo, acabamos de mostrar cómo crear una excepción que puede seguir reglas de negocio un poco diferentes.
+
+[01:44] Entonces vamos a llamar esta excepción validaciónDeIntegridad. Dentro de ella vamos a enviar un mensaje que se llama “id de paciente”. Vamos a colocar esto mejor. “Este id para el paciente no fue encontrado”. Entonces tenemos que crear esa nueva excepción, vamos a apretar al enter y vamos a crearla en el infra en la parte de error. Pueden colocarla en una clase de excepciones y lo voy a colocar en este paquete.
+
+[02:33] Entonces esa clase de validación de integridad está extendiendo, está heredando de la clase throwable. Entonces nosotros tenemos la clase throwable y tenemos la clase RunTimeException. La diferencia entre una y otra es que la clase throwable responde ante errores y excepciones, y RunTimeException solo responde ante excepciones.
+
+[02:55] Cuando nosotros usamos el Throwable, tenemos que agregar dentro del método un throw. Entonces, ahora, acá en este constructor, déjame mostrar ese throwable. Entonces, si coloco acá, voy a enviar ese mensaje a la clase madre utilizando la palabra super. Y acá vamos a ver lo que estoy diciendo del throwable.
+
+[03:28] Entonces, aquí si vemos me dice que tengo que agregar el throw dentro del método. Para evitar eso, como nosotros no vamos a responder a errores, vamos a cambiar el throwable por RunTimeException. Y de esa forma queda, no necesitamos agregar el throw. Sin embargo, es importante recordar que en caso de que queramos responder a errores, podemos usar el throwable.
+
+[03:55] Entonces ya con esto realizamos la validación de integridad para el paciente. Ahora, en las tarjetas de Trello, nosotros tenemos lo siguiente en caso de que la elección del médico es opcional y en caso de no se encuentre, el sistema de elegir aleatoriamente un médico que se encuentre disponible para la fecha y hora de ingresar.
+
+[04:18] Entonces esto no quiere decir que el ID del médico puede ser nulo o puede que en caso de que sea ingresado y no existe en la base de datos, él va a buscar médico que corresponda a las necesidades de ese paciente. Entonces, de vuelta en el proyecto, nosotros tenemos que colocar esas condiciones.
+
+[04:40] Vamos a agregar un if indicando primero que los datos, el ID del médico tiene que ser diferente de nulo. En caso de que sea nulo, yo puedo continuar y buscar un médico dentro de la base de datos. Y la segunda condición es que en la base de datos de médicoRepository vamos a usar ahora directamente el método existsById.
+
+[05:12] La diferencia entre este y el findById es que el findById retorna un optional. Nosotros del opcional usamos el método isPresent. Acá directamente estamos usando datos de ID médicos que me retornan un booleano. En caso que es true en caso de que se encuentren y es falso en caso de que no se encuentren.
+
+[05:32] Caso de que no se encuentren vamos a retornar una excepción y este ID para el médico no fue encontrado. Ahora nosotros habíamos colocado acá que en caso de que nosotros estuviésemos recibiendo el ID del médico, lo buscábamos en la base de datos con el optional y lo teníamos con el get.
+
+[05:56] Ahora vamos a modificar esto un poco y vamos a colocar acá un método que se va a llamar escogerMedico o seleccionarMedico. Acá vamos a colocar los datos. Entonces ahora vamos con “Alt + enter”, vamos a crear ese método dentro de nuestra clase.
+
+[06:24] Y ahora, en la siguiente parte, nosotros vamos, acá estamos recibiendo un error, nosotros tenemos que retornar acá un médico, y por ahora vamos a retornar null. En la siguiente parte, nosotros vamos a ver el cuerpo de este método que nos va a permitir crear el algoritmo para seleccionar un médico que sea aleatorio y que se encuentre disponible en la fecha y que atienda las necesidades de ese paciente.
+
+
+
+
+
+
+
+ 10 Para saber más: Service Pattern
+PRÓXIMA ACTIVIDAD
+
+El patrón Service es muy utilizado en la programación y su nombre es muy conocido. Pero a pesar de ser un nombre único, Service puede ser interpretado de varias maneras: puede ser un caso de uso (Application Service); un Domain Service, que tiene reglas de su dominio; un Infrastructure Service, que utiliza algún paquete externo para realizar tareas; etc.
+
+A pesar de que la interpretación puede ocurrir de varias formas, la idea detrás del patrón es separar las reglas de negocio, las reglas de la aplicación y las reglas de presentación para que puedan ser fácilmente probadas y reutilizadas en otras partes del sistema.
+
+Existen dos formas más utilizadas para crear Services. Puede crear Services más genéricos, responsables de todas las asignaciones de un Controller; o ser aún más específico, aplicando así la S del SOLID: Single Responsibility Principle (Principio de Responsabilidad Única). Este principio nos dice que una clase/función/archivo debe tener sólo una única responsabilidad.
+
+Piense en un sistema de ventas, en el que probablemente tendríamos algunas funciones como: Registrar usuario, Iniciar sesión, Buscar productos, Buscar producto por nombre, etc. Entonces, podríamos crear los siguientes Services: RegistroDeUsuarioService, IniciarSesionService, BusquedaDeProductosService, etc.
+
+Pero es importante estar atentos, ya que muchas veces no es necesario crear un Service y, por lo tanto, agregar otra capa y complejidad innecesarias a nuestra aplicación. Una regla que podemos utilizar es la siguiente: si no hay reglas de negocio, simplemente podemos realizar la comunicación directa entre los controllers y los repositories de la aplicación.
+
+
+
+
+
+
+														11 Selección medico aleatorio
+														
+Transcripción
+[00:00] Hola, en el video anterior nosotros comenzamos a construir lo que sería el cuerpo del método que nos va a permitir seleccionar un médico de forma aleatoria en la base de datos. Ahora en esta parte vamos a crear las validaciones para los datos, que nos van a permitir realizar el algoritmo dentro de la base de datos para seleccionar un médico.
+
+[00:24] En Trello vamos a ver las reglas de negocio nuevamente y vemos que las condiciones que se deben cumplir para el médico es que no se pueden permitir programar citas con médicos inactivos, es decir, ese médico tiene que tener estatus activo y la elección del médico es opcional, entonces podemos recibir un valor de nulo.
+
+[00:44] En caso de que no exista el ID, el sistema debe elegir de forma aleatoria un médico que se encuentre disponible en la fecha y hora ingresada. Sin embargo, cuando la persona ingresa el ID del médico, él ya está indicando cuál es el especialidad de ese médico que va a atender a ese paciente, esa persona sabe cuál es el médico que lo atiende es generalmente y va a indicarle el ID correcto.
+
+[01:10] En caso de que no indiquen un ID, ¿cuál va a ser la regla con la que vamos a seleccionar a ese médico? Entonces nosotros vamos a encontrarnos con ese problema y una tenemos que consultar con el cliente o con quien realizó las instrucciones para agregar un nuevo valor que nos permite resolver esa dificultad.
+
+[01:35] Entonces, una posible solución es indicar cuál va a ser la especialidad del médico, ya que no tendría mucha lógica indicarle al paciente que está yendo por un problema de piel, indicarle a un pediatra o un cardiólogo a un geriatra. Entonces nosotros tendríamos que asignar un dermatólogo y eso lo podríamos hacer a través de la especialidad.
+
+[01:59] Entonces nosotros tenemos que pasar dentro de los parámetros la especialidad, una vez que se haya confirmado esa nueva modificación, nosotros vamos a ir a nuestro proyecto, y vamos a comenzar a realizar las validaciones. La primera validación es que el médico, el ID del médico no sea nulo. Si es diferente de nulo vamos a seleccionar de la base de datos con el repositorio el médico con ese ID.
+
+[02:41] Entonces, datos.idMedico. Ya con eso vamos a retornar el ID del médico. En caso de que el ID sea nulo, nosotros tenemos que comenzar a trabajar con la especialidad, entonces acá estamos viendo que estamos utilizando el método getReferenceById, que es similar a existsById, un método que viene directamente del repositorio y acá nosotros utilizamos como alternativa del optional el get en el findById.
+
+[03:15] Entonces es una forma de simplificar, lo hace más rápido, ya que está evitando llamarlo directamente del findById. Entonces, de vuelta en las validaciones, vamos a realizar la validación de la especialidad.
+
+[03:31] Entonces, si los datos contienen la especialidad, ¿qué necesitamos que tenga la especialidad? Que sea igual a null, ya que si es igual a nulo, nosotros le vamos a enviar un mensaje de error, indicándole que la validación de integración que la especialidad debe seleccionar “debe seleccionarse una especialidad para el médico”.
+
+[04:07] Entonces, vemos acá que nos está arrojando un error, ya que esa especialidad no se encuentra dentro del record, dentro del DTO que nosotros asignamos. Entonces para retomar lo que habíamos mencionado, si el ID es diferente de null, nosotros vamos a retornar un ID dentro de la base de datos que se ajuste con ese ID.
+
+[04:28] En caso de que el ID sea nulo, tenemos que asegurarnos de que la especialidad no sea nula. Entonces, en caso de que esa especialidad sea nula, de que no haya asignado una especialidad, tenemos que mandarle un mensaje de error, una excepción diciéndole que le se debe seleccionar una especialidad para ese médico.
+
+[04:53] Acá para corregir esto vamos a ir a datos, a agendar consulta y vamos a agregar la especialidad. Yo podría colocar not null acá, pero utilizando esta validación de bim validation yo no voy a conseguir enviar un mensaje para el cliente, entonces yo lo voy a dejar de esta forma para conseguir enviar a través del throw un mensaje de error.
+
+[05:26] En caso de que la especialidad no sea nula ahí si vamos a conseguir realizar el algoritmo para enviar un médico de forma aleatoria, entonces ese algoritmo lo vamos a crear en el repositorio. Vamos a crear un método en la interface que se va a llamar seleccionarMedicoConEspecialidadEnFecha. ¿Cuáles son los parámetros que vamos a colocar?
+
+[06:00] Vamos a enviar la especialidad que no es nula y tenemos que enviar la fecha de la consulta. Ese método no existe. Lo vamos a crear. Entonces vemos que ya ha creado nuestro método. Si nosotros lo dejamos de esta forma, el método no va a funcionar, ya que para que funcione tener que cumplir este patrón, tener que escribirse en inglés y luego de que se escriba findBy, luego del By tiene que indicarse el atributo que existe en este caso dentro de la clase médico.
+
+[06:36] Entonces la clase médico podríamos colocar findById, findByActivo, findByEmail, o por cualquier otro de los parámetros o atributos dentro de la clase médico. Como esto es un poco más complejo, nosotros vamos a hacer uso de la anotación @Query en la que nosotros podemos escribir consultas en la base de datos.
+
+[07:00] Entonces en el curso de JPA que también se encuentra en Alura nosotros hablamos bastante sobre las consultas en JPA que les va a abrir un poco la mente sobre cómo realizar esas consultas utilizando JPA y se relaciona bastante con lo que vamos a hacer ahora.
+
+[07:18] Entonces, la forma de escribir esas consultas en la anotación @Query es tres comillas y cerramos con tres comillas. A partir de ahí, podemos comenzar a crear nuestra consulta. La consulta sería tenemos que seleccionar todos los elementos de la entidad médico con el parámetro m donde el atributo activo sea igual a 1.
+
+[07:52] En caso de que sea 0, es falso, entonces nosotros vamos a colocar 1, ya que ese es el valor booleano de forma numérica. La siguiente condición que tiene que cumplirse es que la especialidad sea igual a la especialidad que estamos enviando del parámetro, entonces este valor de acá es el que vamos a asignar desde luego de los dos puntos, especialidad.
+
+[08:28] Ya con eso estamos indicándole que seleccione todos los médicos que se encuentren disponibles, que se encuentren activos y que contengan esa especialidad. Para ordenarlos de forma aleatoria vamos a utilizar la palabra reservada order by rand. La palabra rand los ordena de forma aleatoria y la palabra limit one va a limitar a un único médico, entonces nosotros tenemos que retornar un único médico.
+
+[08:57] Acá estamos dejando la fecha sin usar. Esa fecha la vamos a utilizar dentro de las condiciones. Entonces, ¿cómo le indicamos al proyecto que ese médico se va a encontrar dentro de ese intervalo de tiempo? Entonces el ID, voy a colocar acá, el ID que nosotros estemos seleccionando tiene que encontrarse, el ID de ese médico tiene que encontrarse disponible.
+
+[09:26] Entonces todos los ID que tengan una fecha asignada no van a cumplir esa condición. Entonces vamos a colocar m.id no se encuentra, not in, y vamos a realizar una sub query o una sub consulta. Dentro de esa consulta vamos a retornar una tabla, de una única columna de la cual vamos a seleccionar el ID que no se encuentre en la condición que vamos a comenzar a escribir entonces.
+
+[09:59] Entonces esa sub query o esa sub consulta va a ser la siguiente: select c.medico.id, nosotros tenemos que hacer una consulta con parámetros, vamos a seleccionar un único parámetro del médico, médico.id from Consulta con el parámetro c. Entonces tienen que notar que acá yo usé el parámetro m para la consulta exterior y acá dentro utilicé el parámetro c.
+
+[10:40] Si yo acá, yo acá este parámetro puedo cambiarlo por cualquier letra o por cualquier nombre de la misma forma que hago con esta c. Lo importante es mantener la consistencia. Entonces seleccionar el ID dentro de la consulta, ¿entonces, cuáles son los parámetros de la consulta? Yo tengo el parámetro médico, los parámetros pacientes y los parámetros data que corresponden a la fecha.
+
+[11:10] O sea, que vamos a colocar, seleccionar c.data=:fecha. Entonces el parámetro que nosotros contamos colocando acá en la búsqueda del ID tiene que ser igual a la fecha, entonces todos los médicos que corresponden a esa fecha es porque ya están asignados a un valor, entonces vamos a seleccionar todos aquellos que no se encuentren asignados.
+
+[11:48] Entonces, todos los valores que se encuentran disponibles los va a seleccionar un médico que no se encuentra en ese valor y los va a ordenar de forma aleatoria. Si ya con eso queda elaborada nuestra consulta, que sería una consulta con una consulta interna.
+
+[12:09] Ahora vamos a ir a la AgendaDeConsultaService, vemos que ya está funcionando, en la siguiente parte, nosotros vamos a crear las validaciones, las validaciones que corresponden a la tarjeta de Trello, que son estas validaciones más compleja que nos van a permitir darle más definición a las necesidades del proyecto.
+
+[12:37] Ahora ya para finalizar vamos a subir nuestro proyecto al repositorio, para eso tenemos que descargar el software Git. Y una vez que lo hayan descargado van a seleccionar clic derecho dentro de la carpeta del proyecto. Van a seleccionar la opción Git Bash Here que va a abrir la consola donde vamos a inicializar nuestro repositorio local.
+
+[12:56] Para inicializar ese repositorio local, vamos a colocar el comando git init. Como ven, inicialicé el repositorio localmente dentro de su computador. Nosotros vamos a subir este proyecto a un repositorio en la web. Entonces vamos a utilizar el comando git status para ver cuál es la siguiente acción.
+
+[13:16] Ya nos indica que hay algunos archivos que deben ser commitados. Son los archivos relacionados al proyecto, y para eso vamos a listar los archivos que queremos commitar con el comando git add * y asterisco indicando que los queremos commitar todos.
+
+[13:32] En el comando git status vamos a ver ahora cuál es la siguiente instrucción. Entonces dice que los cambios ya fueron actualizados y los que vamos a enviar al repositorio local son los que se encuentran en verde. Vamos a seleccionar git commit, vamos a invitarlo al repositorio local.
+
+[13:53] Con el flag -m colocamos un mensaje para indicar primer commit. Luego que hayamos realizado en el primer commit vamos a conectar con el servidor remoto. Vamos a copiar el link y vamos a agregarlo el origen al servidor remoto. Seleccionamos enter y ahora tenemos que actualizar nuestra carpeta con los archivos que se encuentren dentro del repositorio. Pero
+
+[14:31] Para eso vamos a utilizar el comando git pull, vamos a copiar la ruta donde se encuentran esos archivos y vamos a colocar la flag --allow-unrelated-histories, ya que van a haber algunos archivos como el README que no se encuentran dentro de esta carpeta.
+
+[14:52] Seleccionamos enter y nos va a mostrar esta pantalla, donde vamos a colocar el mensaje del merge. No vamos a realizar ninguna modificación, vamos a colocar dos puntos wq. Ya se encuentran mergeados o combinado los archivos del repositorio externo con el repositorio local.
+
+[15:17] Y ahora, por último, vamos a realizar un push de este repositorio en la web. Vamos a utilizar git push. Eso nos está indicando que tenemos que modificar ese comando git push –set-upstream origin master. Ya con eso queda actualizado nuestro repositorio localmente y en la web. Ahora de vuelta en nuestro proyecto, si vemos ha cambiado un poco la estructura de IntellyJ.
+
+[16:03] Acá voy a tener una pestaña donde voy a poder ver los cambios que esté realizando. Acá voy a realizar un mensaje como primer cambio en intellij. Ahora vemos que tenemos algunos cambios. Vamos a seleccionar ese cambio que fue realizado y vamos a colocar un mensaje: commit from intellij.
+
+[16:37] Vamos a seleccionar commit and push. Vamos a seleccionar nuevamente. Él nos indica cuál es el cambio que se está realizando. Y vamos a realizar el push en ese repositorio externo. Vamos a utilizar log in vía GitHub. Va a colocar. Y con eso ha sido actualizado nuestro proyecto.
+
+[17:05] En la siguiente parte vamos a hablar sobre las validaciones y vamos a realizar las reglas de negocios un poco más complejas que se encuentran dentro de la tarjeta de Trello.
+
+
+
+
+
+
+														Lo que aprendimos en esta aula:
+
+Implementar una nueva funcionalidad en el proyecto;
+Evaluar cuando es necesario crear una clase de Servicio en la aplicación;
+Crear una clase de Servicio, con el objetivo de aislar códigos de reglas de negocio, utilizando para ello la anotación @Service;
+Implementar un algoritmo para la funcionalidad de programación de consultas;
+Realizar validaciones de integridad de la información que llega a la API;
+Implemente una consulta JPQL (Lenguaje de consulta de persistencia de Java) compleja en una interfaz de repositorio, utilizando la anotación @Query.
+
+
+
+
+
+									 01 Proyecto del aula anterior
+PRÓXIMA ACTIVIDAD
+
+¿Comenzando en esta etapa? Aquí puedes descargar los archivos del proyecto que hemos avanzado hasta el aula anterior.

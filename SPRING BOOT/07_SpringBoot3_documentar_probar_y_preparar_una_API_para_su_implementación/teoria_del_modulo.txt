@@ -1,0 +1,7 @@
+Realice este curso para Java y:
+Aprenda a aislar código de reglas de negocio en una aplicación
+Implementar principios SOLID
+Documentar una API siguiendo el estándar OpenAPI
+Aprenda a escribir pruebas automatizadas en una aplicación con Spring Boot
+Cree una aplicación con Spring Boot
+Use variables de entorno y prepare una aplicación para su implementación

@@ -1,0 +1,1191 @@
+
+<!-- saved from url=(0086)https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84608 -->
+<html lang="pt-BR" data-product="alura_espanhol" style="scroll-behavior: smooth;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" type="text/css" href="./haga_lo_que_hicimos_files/clipper.647d33f8.css">
+<link rel="stylesheet" href="./haga_lo_que_hicimos_files/back-to-top.9a8b5967.css">
+<link rel="stylesheet" href="./haga_lo_que_hicimos_files/videoShortcutsModal.e1c7fc31.css">
+<link rel="stylesheet" href="./haga_lo_que_hicimos_files/modal.5da2b30a.css">
+<link rel="stylesheet" href="./haga_lo_que_hicimos_files/modalCoursePreviewMode.fe9f769f.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+	
+
+	
+		
+
+
+
+
+    
+        
+        
+            <!-- Google Tag Manager -->
+            <script type="text/javascript" async="" src="./haga_lo_que_hicimos_files/js"></script><script async="" src="./haga_lo_que_hicimos_files/analytics.js.descarga"></script><script type="text/javascript" async="" src="./haga_lo_que_hicimos_files/js(1)"></script><script async="" src="./haga_lo_que_hicimos_files/gtm.js.descarga"></script><script>
+                ;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayerAlura','GTM-PFCN2KV');
+            </script>
+            <!-- End Google Tag Manager -->
+        
+    
+
+
+    <script>
+        let dataLayerAluraTest = window.dataLayerAluraTest || [];
+        let dataLayerAlura = window.dataLayerAlura || [];
+        dataLayerAlura.push({
+            'event': 'virtual_page_view',
+            'page_category': 'Aula',
+            
+            
+            
+                
+                    
+                    
+                        
+                        'user_id': '576082',
+                        'plan': 'Oracle Next Education F2 T5',
+                        'type': 'B2B',
+                        'company_id':'5013',
+                        'first_purchase_date': '2023-03-28',
+                        'last_purchase_date': '2023-03-28',
+                        'expiration_date': '2023-10-04',
+                        'email': 'b7a5de8d38d6e9c501dc677df972f9557de039ce9e8dc8976e0d6c048a508798'
+                    
+                
+            
+        });
+    </script>
+
+
+
+
+
+	
+
+	<title>Spring Boot 3: documentar, probar y preparar una API para su implementación: Aula 3 - Actividad 7 Haga lo que hicimos en aula | Alura Latam - Cursos online de tecnologia</title>
+	
+	<link rel="shortcut icon" href="https://app.aluracursos.com/assets/images/aluraespanhol/favicon.ico">
+	
+	<link href="./haga_lo_que_hicimos_files/css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/video-js.7b9aee00.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/silvermine-videojs-quality-selector.min.de928d55.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/prettify.9c184279.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/github.754087c4.css">
+
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/base.f643e441.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/formattedText.e58775de.css">
+	
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/container.ca700c42.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/classPage.ee5a0101.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/menuSettings.825e8801.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/taskProgress.a5300583.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/taskMessageInfo.67eb9bc6.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/alternativeList.a80939d3.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/taskFeedback.4bda0782.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/markdown.3ec31c65.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/finishSection.bee005cf.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/phrase.6d459a32.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/hqexplanation.3ed41021.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/openquestion.2889f14f.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/textcontent.7298b79f.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/video.e82ab0eb.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/singlechoice.b545e19f.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/music.8fe6cab6.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/multiplechoice.70f60e4c.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/videodialog.36286910.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/fillintheblank.59273039.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/speakingpractice.13b2c5c5.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/pronunciationpractice.d512f574.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/repetition.492af846.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/genericVideo.4767d8de.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/projectSubmit.ce2f9d80.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/sortBlocks.7b9eb1fc.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/extraContentTask.b2d126e6.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/taskContent.1ef47209.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/taskButtons.ed4fd65b.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/alert.ec6bb786.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/markdownEditor.600de57a.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/audioPlayer.0a362c88.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/notes.867f62ab.css">
+	
+	
+	
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/successMessage.cb6c074e.css">
+
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/dark-mode.0598a04f.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/taskFeedbackAnswer.72669c00.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/theater-mode.91e2f524.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/autoplay-videojs.eefac430.css">
+	<link rel="stylesheet" href="./haga_lo_que_hicimos_files/linkSubmit.ddbc8743.css">
+
+	
+	
+	<style type="text/css">
+		.task:before, .video-js .vjs-play-progress {
+			background-color: #2A7AE4;
+		}
+
+
+	</style>
+
+	<!-- Remove cookie banner from hubspot -->
+	<style>
+		div#hs-eu-cookie-confirmation {
+			display: none;
+		}
+	</style>
+
+	<meta http-equiv="origin-trial" content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"></head>
+
+
+
+
+<body class="darkmode ">
+<script src="./haga_lo_que_hicimos_files/avatarOnError.f8bd8956.js.descarga"></script>
+
+
+
+
+	
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+	<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFCN2KV"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+<section class="task  
+ menu--inactive" data-allow-answer="true" data-task-section-exam="false" data-task-type="textcontent" data-task-id="84608" data-author-id="576082" data-course-code="spring-boot-3-api-para-su-implementacion" data-section-name="Documentación de la API" data-section-id="11460" data-section-number="3" data-domain="app.aluracursos.com" data-hasfeedbackanswer="false" data-url-prefix="/" data-already-seen-task="true" data-course-name="Spring Boot 3: documentar, probar y preparar una API para su implementación" data-category-name="Programación" data-subcategory-name="Java" data-workload="12" data-teachers="jose viera">
+
+	<section class="task-body">
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+<header class="task-body-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container">
+
+        
+            
+            <button title="" aria-label="" type="button" class="theatermode openMenu-button task-menu-button
+                    " id="menu-button-header">
+            </button>
+        
+
+        <h1 class="task-body-header-title">
+            
+            
+            <svg class="task-body-header-title-svg" aria-label="Actividad de Sin respuesta del estudiante">
+                <use xlink:href="/assets/images/classPage/icon-menu-icons.svg#DO_AFTER_ME"></use>
+            </svg>
+            <small>07</small>
+            <span class="task-body-header-title-text"> Haga lo que hicimos en aula</span>
+        </h1>
+        
+            <div class="task-body-header-actions">
+                <a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84608/next" aria-hidden="true" class="task-actions-button task-actions-button-next task-submit bootcamp-primary-button-theme" style="background-color: #2A7AE4">Próxima Actividad</a>
+            </div>
+        
+
+
+        
+            
+
+
+
+
+
+
+
+<div class="theater-video settings">
+	<button type="button" class="settings-button" aria-label="Configuraciones">
+		<svg class="settings-button-icon">
+			<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MENU_SETTINGS"></use>
+		</svg>
+	</button>
+	<div class="settings-box">
+		<ul class="settings-box-list">
+			
+				<li class="settings-box-item settings-box-item-darkmode">
+					<button class="dark-mode-action">
+						Modo nocturno
+					</button>
+				</li>
+			
+			
+				
+				
+				
+				
+					
+						<li class="settings-box-item settings-box-item-suggestion"><a href="https://app.aluracursos.com/suggestions/new/spring-boot-3-api-para-su-implementacion/84608/question">Sugerir alteración</a></li>
+					
+				
+			
+			
+		</ul>
+		<span class="settings-box-title"></span>
+	</div>
+</div>
+
+        
+    </div>
+</header>
+		<div class="task-body__wrapper">
+			
+
+
+
+<section class="class-notes">
+    <div class="class-notes-content">
+        <h2 class="class-notes-title">Mi cuaderno del curso (beta)</h2>
+        <p class="class-notes-description">Este es su cuaderno de anotaciones aquí en Alura Latam. Todo su contenido es visible apenas para tí.<a href="https://suporte.alura.com.br/article/308-meu-caderno-como-funciona" class="class-notes-faq-link">FAQ</a></p>
+        <textarea name="text" id="courseNotebook-text" class="class-notes-text" cols="30" rows="10" maxlength="60000"></textarea>
+        <div class="class-notes-save-wrapper">
+            <span>
+                <p class="class-notes-saved-text" aria-hidden="true" style="display: none">Notas guardadas</p>
+                <p class="class-notes-limit-text" aria-hidden="true" style="display: none">¡No se pudo guardar! ¡Límite de caracteres alcanzado ({max})!</p>
+            </span>
+            <span class="class-notes-save-button-wrapper">
+                <button class="class-notes-save-button" data-save-text="Guardar cuaderno" data-saving-text="Guardandando">
+                   Guardar cuaderno</button>
+            </span>
+        </div>
+        <button class="class-notes-close-button"></button>
+    </div>
+</section>
+			<main class="task-body-main container" data-should-warn="false">
+				
+
+
+
+
+
+
+
+	
+	
+	
+		
+
+
+
+
+
+<section id="task-content" class="textContent">
+	
+	<div class="container">
+		
+
+
+
+
+
+
+
+<div class="video settings">
+	<button type="button" class="settings-button" aria-label="Configuraciones">
+		<svg class="settings-button-icon">
+			<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MENU_SETTINGS"></use>
+		</svg>
+	</button>
+	<div class="settings-box">
+		<ul class="settings-box-list">
+			
+				<li class="settings-box-item settings-box-item-darkmode">
+					<button class="dark-mode-action">
+						Modo nocturno
+					</button>
+				</li>
+			
+			
+				
+				
+				
+				
+					
+						<li class="settings-box-item settings-box-item-suggestion"><a href="https://app.aluracursos.com/suggestions/new/spring-boot-3-api-para-su-implementacion/84608/question">Sugerir alteración</a></li>
+					
+				
+			
+			
+		</ul>
+		<span class="settings-box-title"></span>
+	</div>
+</div>
+
+		<div class="formattedText" data-external-links="">
+			<p>Lo ideal sería proporcionar documentación para que los equipos puedan leer y entender cómo funciona el back-end y construir sus soluciones integradas correctamente.</p>
+<p>No lo haremos manualmente para enviarlo como un PDF, por ejemplo, porque es laborioso y, si tenemos algún cambio en la API, tendríamos que actualizar constantemente el documento.</p>
+<p>Es decir, nuestra idea es usar alguna herramienta que lo haga de forma automatizada, y existen varias que pueden leer el código de la aplicación del back-end para ponerlo a disposición de los equipos de front-end y móviles, que aún pueden usar automatizaciones en la integración.</p>
+<p>En nuestro caso, como estamos usando Java con Spring Boot, tendremos que usar una herramienta compatible, que será SpringDoc.
+En el navegador, buscaremos "springdoc" para buscar la biblioteca y entender cómo funciona. Como resultado, encontraremos la documentación de SpringDoc en este enlace <a href="https://springdoc.org/" rel="nofollow noopener" target="_blank">https://springdoc.org/</a>.</p>
+<p>En la página, tendremos explicaciones sobre lo que es, cómo funciona y cómo aplicar la biblioteca en el proyecto. En la sección "Introduction" o introducción, tendremos más información sobre las tecnologías involucradas que soporta, conteniendo una parte destacada por una alerta de "importante":</p>
+<p>Para soporte de spring-boot v3, asegúrese de usar springdoc-openapi v2 <a href="https://springdoc.org/v2/" rel="nofollow noopener" target="_blank">https://springdoc.org/v2/</a></p>
+<p>Es decir, si estamos usando spring-boot en la versión 3, se recomienda usar la versión 2 de springdoc-openapi, que es nuestro caso.</p>
+<p>Haciendo clic en el enlace de springdoc-openapi v2 aquí, tendremos la documentación según la versión correcta que necesitaremos.</p>
+<p>Más adelante, tendremos la sección "Getting Started" o "Dando inicio" en portugués, donde tenemos las instrucciones para usar la biblioteca, comenzando con la descarga de la dependencia de Maven con el siguiente código:</p>
+<pre class="prettyprint"><code class="hljs language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springdoc<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springdoc-openapi-starter-webmvc-ui<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.0.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code><button type="button" class="clipit">Copia el código</button></pre><p>Copiaremos el bloque y lo agregaremos a nuestro proyecto.</p>
+<p>Abriendo IntelliJ, abriremos el archivo pom.xml y navegaremos hasta la última dependencia que es la de java-jwt para pegar el código a continuación antes del cierre de <code>&lt;/dependencies&gt;</code>.</p>
+<pre class="prettyprint"><code class="hljs language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.auth0<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>java-jwt<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.2.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springdoc<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springdoc-openapi-starter-webmvc-ui<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.0.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code><button type="button" class="clipit">Copia el código</button></pre><p>Guardaremos y habremos descargado la biblioteca. Cada vez que incluyamos una nueva, es interesante detener el proyecto haciendo clic en el icono "pausa" representado por un cuadrado rojo en la esquina superior derecha de la pantalla, y luego hacer clic en la pestaña central "Maven" en el extremo derecho. Ampliándolo, seleccionaremos "Dependencies" y luego, en la esquina superior izquierda de esta pestaña, haremos clic en el icono "reload" representado por dos flechas circulares para recargar las dependencias y ver si se descargaron correctamente al final de la lista. Para usar la biblioteca, volveremos a la documentación y, justo después del bloque de código, nos dice que al instalar la dependencia en el proyecto, se crearán dos direcciones en la API: <a href="http://server:port/context-path/swagger-ui.html" rel="nofollow noopener" target="_blank">http://server:port/context-path/swagger-ui.html</a> y <a href="http://server:port/context-path/v3/api-docs" rel="nofollow noopener" target="_blank">http://server:port/context-path/v3/api-docs</a>. El primero es una documentación en una página web que podemos navegar y hacer pruebas, similar a lo que hacemos en Postman. La segunda URL genera un JSON con la documentación, y podemos usar herramientas que automatizan la creación del cliente de esta API basado en este JSON. Sin embargo, como estamos usando Spring Security, por defecto bloquea todas las URLs que tenemos en el proyecto, y necesitaremos estar logeados para acceder a ellas, excepto la URL de inicio de sesión. En este caso, queremos que ambas URL sean públicas y estén disponibles sin necesidad de iniciar sesión. Haremos esta configuración en el proyecto. Abriendo IntelliJ, cerraremos el pom.xml y abriremos "src &gt; main &gt; java", y en el paquete med.voll.api, accederemos a "infra &gt; security" y abriremos la clase SecurityConfigurations.java que contiene las configuraciones de seguridad del proyecto. En el método securityFilterChain() donde configuramos las URLs del proyecto, encontraremos la línea de requestMatchers() con .permitAll() que permite la URL de inicio de sesión. Al copiarlos, abriremos una nueva línea debajo y colocaremos las dos direcciones, eliminando el método HttpMethod.POST de los paréntesis de la copia, ya que en este caso la URL será para cualquier método, no necesitaremos filtrar por esto. Cambiaremos la URL a /v3/api-docs seguida de /** con los subdirecciones que también deben ser liberadas. Después de cerrar las comillas de la cadena, colocaremos otra en la misma línea con la segunda URL "/swagger-ui.html" en la documentación. También hay otra dirección de Swagger, que es la página HTML que tiene algunos CSS y JavaScript que deben descargarse para cargar la página correctamente. Entonces escribiremos <code>"/swagger-ui/**"</code> para que lo que está después de esta dirección sea liberado.</p>
+<pre class="prettyprint"><code class="hljs language-scss"><span class="hljs-comment">//código omitido</span>
+
+<span class="hljs-keyword">@Bean</span>
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    return http<span class="hljs-selector-class">.csrf</span>()<span class="hljs-selector-class">.disable</span>()
+        <span class="hljs-selector-class">.sessionManagement</span>()<span class="hljs-selector-class">.sessionCreationPolicy</span>(SessionCreationPolicy.STATELESS)
+        <span class="hljs-selector-class">.and</span>()<span class="hljs-selector-class">.authorizeHttpRequests</span>()
+        <span class="hljs-selector-class">.requestMatchers</span>(HttpMethod.POST, "/login")<span class="hljs-selector-class">.permitAll</span>()
+        <span class="hljs-selector-class">.requestMatchers</span>("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**")<span class="hljs-selector-class">.permitAll</span>()
+        <span class="hljs-selector-class">.anyRequest</span>()<span class="hljs-selector-class">.authenticated</span>()
+        <span class="hljs-selector-class">.and</span>()<span class="hljs-selector-class">.addFilterBefore</span>(securityFilter, UsernamePasswordAuthenticationFilter.class)
+        <span class="hljs-selector-class">.build</span>();
+}
+<span class="hljs-comment">//código omitido</span></code><button type="button" class="clipit">Copia el código</button></pre><p>De esta forma, guardaremos y tendremos las tres direcciones que necesitaremos dejar públicas para acceder a la documentación generada por SpringDoc.</p>
+<p>Ejecutaremos el proyecto haciendo clic en el icono de "play" representado por un triángulo verde en la esquina superior derecha de la pantalla y veremos si aparece algún error.</p>
+<p>Si se inicia correctamente, accederemos a la documentación directamente desde el navegador. En el navegador, abrimos una nueva pestaña, accederemos a la dirección de nuestro proyecto "localhost:8080/v3/api-docs" para ver la respuesta.</p>
+<p>Recibiremos un JSON que describe todos los endpoints de nuestra API. En el tema llamado paths: en la lista lateral izquierda, tendremos cada uno de ellos.</p>
+<p>"Detrás de escena", la biblioteca y los controladores, los métodos y toda la información se utilizan para crear un JSON que describe las funcionalidades.</p>
+<p>Este documento de API puede ser utilizado por equipos y clientes para automatizar la generación del código que consumirá la API.</p>
+<p>En una nueva pestaña del navegador, accederemos a "localhost:8080/swagger-ui/index.html" y abriremos la versión web como un sitio que representa la API.</p>
+<p>Es lo mismo que el JSON, pero en una página HTML más agradable y organizada, de modo que más personas puedan comprenderlo fácilmente.</p>
+<hr>
+<p>Ya hemos generado la documentación, pero aún no podemos "disparar" la solicitud enviando el encabezado con el token JWT.</p>
+<p>Deberemos crear un @Bean con la configuración y anotar los métodos y controladores que queremos proteger con el encabezado bearer.
+Crearemos una clase de configuración de estructura que recibirá el código proporcionado.</p>
+<p>En este nuevo paquete, crearemos una nueva clase Java llamada "SpringDocConfigurations" para contener las configuraciones de SpringDoc.</p>
+<pre class="prettyprint"><code class="hljs language-kotlin"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SpingDocConfigurations</span> {
+}</code><button type="button" class="clipit">Copia el código</button></pre><p>Es una clase Java desconocida, por lo que no podemos cargarla.</p>
+<p>Crearemos una anotación @Configuration para dejar claro que la clase hará configuraciones. Dentro de ella, pegaremos el código que copiamos de la documentación.</p>
+<pre class="prettyprint"><code class="hljs language-typescript"><span class="hljs-meta">@Configuration</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SpingDocConfigurations</span> {
+
+    <span class="hljs-meta">@Bean</span>
+     <span class="hljs-keyword">public</span> <span class="hljs-title class_">OpenAPI</span> <span class="hljs-title function_">customOpenAPI</span>(<span class="hljs-params"></span>) {
+         <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">OpenAPI</span>()
+                        .<span class="hljs-title function_">components</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Components</span>()
+                            .<span class="hljs-title function_">addSecuritySchemes</span>(<span class="hljs-string">"bearer-key"</span>,
+                            <span class="hljs-keyword">new</span> <span class="hljs-title class_">SecurityScheme</span>().<span class="hljs-title function_">type</span>(<span class="hljs-title class_">SecurityScheme</span>.<span class="hljs-property">Type</span>.<span class="hljs-property">HTTP</span>).<span class="hljs-title function_">scheme</span>(<span class="hljs-string">"bearer"</span>).<span class="hljs-title function_">bearerFormat</span>(<span class="hljs-string">"JWT"</span>)));
+    }
+}
+</code><button type="button" class="clipit">Copia el código</button></pre><p>Este método está exponiendo el objeto @Bean del tipo OpenAPI que será cargado por SpringDoc y seguirá las configuraciones definidas.</p>
+<p>Después de instanciar OpenAPI, llamamos al método que configura componentes que contiene .addSecuritySchemes() pasando el parámetro "bearer-key" y especificando que es del protocolo HTTP del esquema "bearer" en formato "JWT".</p>
+<p>Por lo tanto, es una configuración de acuerdo con la biblioteca, que contiene un encabezado para pasar la clave del token. Pero todavía no hemos dicho qué controladores también necesitamos pasar.</p>
+<p>Volviendo a la documentación, veremos que hay @Operation() en la que vamos a la operación donde queremos restringir y colocamos la anotación @SecurityRequirement(name = "bearer-key").</p>
+<p>La copiaremos y volveremos a IntelliJ para colocar la anotación en los controladores.</p>
+<p>Abriendo el paquete de controladores, accederemos a PacienteController.java y la colocaremos encima de un método para hacerlo restringido.</p>
+<p>Si todos lo son, para evitar mucha repetición en cada uno, podemos colocar la anotación encima de la clase para que se considere que todos los métodos necesitan "bearer-key".</p>
+<p>En el caso de PacienteController, todos los métodos deben tener autenticación.</p>
+<pre class="prettyprint"><code class="hljs language-less"><span class="hljs-variable">@RestController</span>
+<span class="hljs-variable">@RequestMapping</span>(<span class="hljs-string">"pacientes"</span>)
+<span class="hljs-variable">@SecurityRequirement</span>(name = <span class="hljs-string">"bearer-key"</span>)
+public class PacienteController {
+
+<span class="hljs-comment">//código omitido</span>
+}
+</code><button type="button" class="clipit">Copia el código</button></pre><pre class="prettyprint"><code class="hljs language-less"><span class="hljs-comment">//código omitido</span>
+
+<span class="hljs-variable">@RestController</span>
+<span class="hljs-variable">@RequestMapping</span>(<span class="hljs-string">"medicos"</span>)
+<span class="hljs-variable">@SecurityRequirement</span>(name = <span class="hljs-string">"bearer-key"</span>)
+public class MedicoController {
+
+<span class="hljs-comment">//código omitido</span>
+}
+</code><button type="button" class="clipit">Copia el código</button></pre><pre class="prettyprint"><code class="hljs language-less"><span class="hljs-comment">//código omitido</span>
+
+<span class="hljs-variable">@RestController</span>
+<span class="hljs-variable">@RequestMapping</span>(<span class="hljs-string">"consultas"</span>)
+<span class="hljs-variable">@SecurityRequirement</span>(name = <span class="hljs-string">"bearer-key"</span>)
+public class ConsultaController {
+
+<span class="hljs-comment">//código omitido</span>
+}</code><button type="button" class="clipit">Copia el código</button></pre><p>No haremos esto en AutenticationController.java porque no tiene token, ya que es el controlador para iniciar sesión. Notaremos que en autenticacao-controller no hay un ícono de candado porque no hay un encabezado en el token. Ejecutaremos nuevamente la solicitud de inicio de sesión haciendo clic en "Try Out". Pasaremos "maria@voll.med" y la contraseña 123456 que ya tenemos registrada. Haciendo clic en el botón azul "Execute", ejecutaremos y enviaremos la solicitud. Copiaremos el valor del token que aparece en el cuerpo de la respuesta y lo pegaremos en el ícono de candado de "/pacientes" en paciente-controller. También podemos hacer clic en el botón "Authorize" en la esquina superior derecha encima de paciente-controller, antes de todas las solicitudes. Al completar y guardar el campo "value", guardaremos el token y, en la solicitud GET de "/pacientes", haremos clic en "Try Out" y no tendremos que ingresar el token nuevamente, ya que ya está guardado y se enviará automáticamente por Swagger.</p>
+<pre class="prettyprint"><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+<span class="hljs-attr">"page"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
+<span class="hljs-attr">"size"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">20</span>
+<span class="hljs-punctuation">}</span></code><button type="button" class="clipit">Copia el código</button></pre><p>Al hacer clic en "Execute", veremos que devuelve el código 200 con todos los pacientes registrados en la base de datos.</p>
+		</div>
+		<div class="task-actions">
+			
+
+
+
+
+
+
+    
+        
+        <a href="https://app.aluracursos.com/forum/curso-spring-boot-3-api-para-su-implementacion/exercicio-haga-lo-que-hicimos-en-aula/84608/novo" class=" task-actions-button task-actions-button-forum bootcamp-secondary-button-theme" target="_blank">
+            
+                
+                
+                    Discutir en el Foro
+                
+            
+        </a>
+    
+
+
+
+			
+				
+					<button class="task-actions-button task-actions-button-answer task-body-actions-button task-actions-button-showOpinion bootcamp-primary-button-theme">Ver opinión del instructor</button>
+				
+				
+			
+		</div>
+		
+			
+
+
+
+
+
+<section id="task-feedback" class="task-feedback" aria-hidden="true">
+	<section class="task-feedback-banner">
+		<div class="container">
+			<h3 class="task-feedback-banner-title">
+				Opinión del instructor
+			</h3>
+		</div>
+		
+
+
+
+
+
+
+
+<div class="video settings">
+	<button type="button" class="settings-button" aria-label="Configuraciones">
+		<svg class="settings-button-icon">
+			<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MENU_SETTINGS"></use>
+		</svg>
+	</button>
+	<div class="settings-box">
+		<ul class="settings-box-list">
+			
+				<li class="settings-box-item settings-box-item-darkmode">
+					<button class="dark-mode-action">
+						Modo nocturno
+					</button>
+				</li>
+			
+			
+				
+				
+				
+				
+					
+						<li class="settings-box-item settings-box-item-suggestion"><a href="https://app.aluracursos.com/suggestions/new/spring-boot-3-api-para-su-implementacion/84608/opinion">Sugerir alteración</a></li>
+					
+				
+			
+			
+		</ul>
+		<span class="settings-box-title"></span>
+	</div>
+</div>
+
+	</section>
+	
+				<div class="formattedText" data-external-links="">
+					<p>Continúe con sus estudios, y si tiene alguna pregunta, ¡no dude en usar nuestro foro!</p>
+				</div>
+			
+</section>
+		
+	</div>
+</section>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+				
+					
+
+
+
+
+
+
+	
+	
+		<section class="task-actions">
+			<div class="container">
+				
+
+
+
+
+
+
+    
+        
+        <a href="https://app.aluracursos.com/forum/curso-spring-boot-3-api-para-su-implementacion/exercicio-haga-lo-que-hicimos-en-aula/84608/novo" class=" task-actions-button task-actions-button-forum bootcamp-secondary-button-theme" target="_blank">
+            
+                
+                
+                    Discutir en el Foro
+                
+            
+        </a>
+    
+
+
+
+				
+				
+				
+				
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84608/next" style="background-color: #2A7AE4" class="task-actions-button task-body-actions-button task-actions-button-next bootcamp-next-button bootcamp-primary-button-theme">Próxima Actividad</a>
+				
+			</div>
+		</section>
+	
+
+
+				
+				
+			</main>
+		</div>
+	</section>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<button title="Abrir menú/Cerrar menú" aria-label="Abrir menú/Cerrar menú" type="button" class="openMenu-button task-body-button openMenu-button--inactive">
+</button>
+
+<aside class="task-menu task-menu-iframe" style="position: fixed;">
+	<section class="task-menu-header">
+		<button title="Abrir menú" aria-label="Abrir menú" type="button" class="openMenu-button task-menu-button openMenu-button--inactive"></button>
+		<div class="task-menu-header-info">
+			<a class="task-menu-header-info-title" href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion" title="Ir para la página del curso">
+				
+					
+					
+						<img src="./haga_lo_que_hicimos_files/spring-boot-3-api-para-su-implementacion.svg" alt="ícone Spring Boot 3: documentar, probar y preparar una API para su implementación" class="task-menu-header-info-title-icon " width="37.5px" height="37.5px">
+					
+				
+				<h2 class="task-menu-header-info-title-text">Spring Boot 3: documentar, probar y preparar una API para su implementación</h2>
+			</a>
+			
+				<div class="task-menu-header-info-progress">
+					
+					<span class="task-menu-header-info-progress-percentage ">58%</span>
+					
+						
+						
+						
+							
+						
+					
+					<span class="task-menu-header-info-progress-bar" style="background-image: linear-gradient(to right, #9de482, #9de482 58%, transparent 58%);"></span>
+				</div>
+			
+
+		</div>
+	</section>
+	
+		<form class="task-menu-header-search" target="_blank" action="https://app.aluracursos.com/search/course/spring-boot-3-api-para-su-implementacion" method="get">
+			<label class="task-menu-header-search-title" for="query">Buscar en este curso</label>
+			<input class="task-menu-header-search-input" name="query" id="query" type="text" required="">
+			<button class="task-menu-header-search-button">Buscar <img aria-hidden="true" class="task-menu-header-search-button-img" src="./haga_lo_que_hicimos_files/icon-new-page.svg"></button>
+		</form>
+	
+	
+	<section class="task-menu-section sr-only">
+		<div class="task-menu-section-title">
+			<span class="task-menu-section-title-number ">Aula<strong>03</strong>
+				<span>de 05</span>
+			</span>
+			<h3 class="task-menu-section-title-text">
+				Documentación de la API
+			</h3>
+		</div>
+	</section>
+	<section class="task-menu-sections">
+		<h2 class="task-menu-sections-title">
+			Clase actual
+		</h2>
+		<select class="task-menu-sections-select" onchange="location.href=&#39;/course/spring-boot-3-api-para-su-implementacion/section/&#39;+this.value+&#39;/tasks&#39;;">
+			
+				<option value="11458">01. Agendamiento de consultas</option>
+			
+				<option value="11459">02. Reglas de negocio</option>
+			
+				<option value="11460" selected="">03. Documentación de la API</option>
+			
+				<option value="11461">04. Tests automatizados</option>
+			
+				<option value="11462">05. Build del proyecto</option>
+			
+		</select>
+	</section>
+	<nav class="task-menu-nav">
+		<h2 class="task-menu-nav-title">
+			Actividades
+			<span>7 de 8</span>
+		</h2>
+		<ul class="task-menu-nav-list">
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84632" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Explicación completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">01</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Proyecto del aula anterior">
+							Proyecto del aula anterior
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84352" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Video completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">02</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Documentando con SpringDoc">
+							Documentando con SpringDoc
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para el Vídeo">16min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84624" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Explicación completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#COMPLEMENTARY_INFORMATION"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">03</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Para saber más: OpenAPI Initiative">
+							Para saber más: OpenAPI Initiative
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84353" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Video completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">04</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="JWT en la documentación">
+							JWT en la documentación
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para el Vídeo">08min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84625" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Explicación completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#COMPLEMENTARY_INFORMATION"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">05</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Para saber más: personalizando la documentación">
+							Para saber más: personalizando la documentación
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84586" class="task-menu-nav-item-link task-menu-nav-item-link-MULTIPLE_CHOICE">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Opción múltiple completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MULTIPLE_CHOICE"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">06</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Ventajas de la documentación">
+							Ventajas de la documentación
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item task-menu-nav-item--selected">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84608" class="task-menu-nav-item-link task-menu-nav-item-link-TEXT_CONTENT">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Sin respuesta del estudiante completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#DO_AFTER_ME"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">07</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Haga lo que hicimos en aula">
+							Haga lo que hicimos en aula
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84638" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Actividad de Explicación inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#WHAT_WE_LEARNED"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">08</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Lo que aprendimos">
+							Lo que aprendimos
+						</span>
+						
+					</span></a>
+				</li>
+			
+			
+		</ul>
+	</nav>
+	<section class="task-menu-others">
+		<h2 class="task-menu-others-title ">
+			Otros Links
+		</h2>
+		
+			<a class="task-menu-others-link task-menu-others-link-discord" href="https://discord.com/invite/bts3Yzb9uk" target="_blank">
+				Discord Alura
+			</a>
+		
+		
+			
+			<a href="https://app.aluracursos.com/forum/curso-spring-boot-3-api-para-su-implementacion/todos" class="task-menu-others-link task-menu-others-link-forum" title="Ir para el foro do curso" target="_blank">
+				
+					
+					
+					
+						Foro del curso
+					
+				
+			</a>
+		
+		<a href="https://app.aluracursos.com/dashboard" class="task-menu-others-link task-menu-others-link-curso" title="Ir para la página principal">Volver al Dashboard</a>
+		
+		<section class="task-container-flex  --task-button-column">
+			
+				<div class="task-group-border  --task-closed-border">
+					<button class="task-edit-mode settings-box-item-darkmode">Modo nocturno</button>
+				</div>
+			
+		</section>
+	</section>
+	<section class="task-menu-footer">
+		<a class="task-menu-footer-user" href="https://app.aluracursos.com/user/sboboda1997" title="Ir para su página de usuario">
+			<img src="./haga_lo_que_hicimos_files/k-kurt.png" alt="Gravatar de Kevin Sboboda" class="task-menu-footer-img" width="40px" height="40px">
+			
+				<p class="task-menu-footer-detalhes">
+					<span class="task-menu-footer-detalhes-nome">Kevin Sboboda</span>
+					<span class="task-menu-footer-detalhes-xp">
+						77.4k xp
+					</span>
+				</p>
+			
+			<input type="hidden" value="">
+			<input type="hidden" value="">
+		</a>
+		<a href="https://app.aluracursos.com/dashboard" class="task-menu-footer-logo">
+			<img src="./haga_lo_que_hicimos_files/icon-menu-alura_espanhol.svg" alt="Logo da Alura Latam" class="task-menu-footer-logo-image" width="19px" height="32px" title="Ir para la página principal">
+		</a>
+	</section>
+</aside>
+
+
+
+
+    
+
+</section><div class="full-screen__panel" style="display: none;">
+				<img id="full-screen__image" class="full-screen__image" src="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84608" alt="">
+				<div class="full-screen__actions">
+				<button class="button buttonAction partitura-download">Anterior</button><button class="button buttonAction partitura-download">Sair</button><button class="button buttonAction partitura-download">Próximo</button></div> 
+			</div>
+
+
+
+
+
+
+
+
+
+
+	
+
+	<script src="./haga_lo_que_hicimos_files/jquery-3.6.0.min.7c14a783.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/buttonToggle.41524be9.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/sectionMenu.2bb600e2.js.descarga" async=""></script>
+	<script src="./haga_lo_que_hicimos_files/submitTaskVerifier.e6e3bd5f.js.descarga"></script>
+
+    <script src="./haga_lo_que_hicimos_files/purify.min.bd253e08.js.descarga"></script>
+
+	<script src="./haga_lo_que_hicimos_files/caret.2e5c0c9d.js.descarga" async=""></script>
+	<script src="./haga_lo_que_hicimos_files/keydownWatchers.fdc4ec79.js.descarga" async=""></script>
+
+	<script src="./haga_lo_que_hicimos_files/highlight.min.9b99da81.js.descarga" async=""></script>
+	<script src="./haga_lo_que_hicimos_files/highlight.init.5870d8cf.js.descarga" async=""></script>
+
+	<script src="./haga_lo_que_hicimos_files/preventsMultipleInteractions.19502e19.js.descarga" async=""></script>
+	<script src="./haga_lo_que_hicimos_files/assessment.78d1fb98.js.descarga" async=""></script>
+
+	<script src="./haga_lo_que_hicimos_files/menuSettings.fb011b3b.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/aria.a82b16ad.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/ProjectSubmit.1e34b47f.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/LinkSubmit.60d53572.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/classPage.fcad576a.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/phrase.dfd04ee1.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/feedback.7962df4a.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/ExtraContentProgressRequest.aec577c3.js.descarga"></script>
+	
+	
+
+	
+	
+	
+	
+	
+
+	<script src="./haga_lo_que_hicimos_files/partitura.3e404a17.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/audioProgress.049144a0.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/audioPlayer.38483a63.js.descarga"></script>
+
+		
+	<script src="./haga_lo_que_hicimos_files/VideoTranscription.60f380a7.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/MarkdownProcessing.2cb5d893.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/clipboard.min.af8ab365.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/Clipper.5c96d26f.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/scroll-to-top.373e0d1c.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/shortcuts-action.eba8a7c6.js.descarga"></script>
+	<script src="./haga_lo_que_hicimos_files/ModalAndAlertHandler.9c67ae4b.js.descarga"></script>
+    
+
+
+	<script>
+		new VideoTranscription();
+		new MarkdownProcessing("https://app.aluracursos.com").onLoad();
+		new Clipper("Copia el código", "Código copiado", "No se pudo copiar el código");
+		window.addEventListener('load', () => new BackToTopButton().init());
+		new ModalAndAlertHandler('spring-boot-3-api-para-su-implementacion').setupListeners();
+	</script>
+
+
+
+	
+
+	<script src="./haga_lo_que_hicimos_files/darkMode.b7bc2dd7.js.descarga"></script>
+
+	
+		
+
+
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-42101548-21', 'aluracursos.com');
+
+    
+        ga('set', 'userId', '576082');
+    
+
+    ga('require', 'displayfeatures');
+    
+    ga('send', 'pageview');
+    
+    
+</script>
+	
+
+	<script>new DarkModeToggler().refreshListener()</script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="./haga_lo_que_hicimos_files/uploadImages.7c1a29db.css" rel="stylesheet">
+
+<script src="./haga_lo_que_hicimos_files/UploadProgress.098aba94.js.descarga"></script>
+<script src="./haga_lo_que_hicimos_files/ImagesClient.f10726e3.js.descarga"></script>
+
+<script src="./haga_lo_que_hicimos_files/marked.min.c69e14e8.js.descarga"></script>
+
+<script src="./haga_lo_que_hicimos_files/enableForumButtons.1293253c.js.descarga"></script>
+
+<script>
+    var IMAGE_UPLOAD_MESSAGES = {
+        imageUploadMessageInit: `Adjunte archivos arrastrándolos y soltándolos`,
+        imageUploadMessageDragEnter: `Suelta la imagen para subir`,
+        imageUploadMessageDrop: `Subiendo la imagen #images_names#`,
+        imageUploadMessageProgress: `Subiendo la imagen #images_names#: #progress#%`,
+        imageUploadMessageUploaded: `¡Imagen enviada con éxito!`,
+        imageUploadMessageSizeUnits: `MB`,
+        imageUploadMessageTag: `![Ingrese aquí la descripción de esta imagen para ayudar con la accesibilidad](#url#) `
+    }
+</script>
+
+
+    
+        <link href="./haga_lo_que_hicimos_files/hackeditor.min.fcf421a7.css" rel="stylesheet">
+        <link href="./haga_lo_que_hicimos_files/hackeditor.custom.e0057fb6.css" rel="stylesheet">
+        <link href="./haga_lo_que_hicimos_files/github.754087c4.css" rel="stylesheet">
+
+        <script src="./haga_lo_que_hicimos_files/hackeditor.min.4c55d65b.js.descarga"></script>
+        <script src="./haga_lo_que_hicimos_files/hackeditor.custom.b88c034d.js.descarga"></script>
+        <script src="./haga_lo_que_hicimos_files/highlight.min.9b99da81.js.descarga"></script>
+        <script>
+            const setupEditorsOnPage = (e) => {
+                const toolbarActionsHints = {
+                    toggleHeadingActionHint: `Encabezado`,
+                    toggleBoldActionHint: `Negrito`,
+                    toggleItalicActionHint: `Cursiva`,
+                    toggleOrderedListActionHint: `Lista ordenada`,
+                    toggleUnorderedListActionHint: `Lista desordenada`,
+                    togglePreviewActionHint: `Alternar vista previa`,
+                    drawTableActionHint: `Insertar tabla`,
+                    drawCodeActionHint: `Insertar bloque de código`,
+                    drawLinkActionHint: `Insertar enlace`,
+                    drawImageActionHint: `Insertar imagen`,
+                    drawUploadedImageActionHint: `Carga de imagen`,
+                    undoActionHint: `Deshacer`,
+                    redoActionHint: `Rehacer`
+                }
+
+                const imageUploadErrors = {
+                    imageErrorLimit: `¡Solo puede insertar 5 imágenes a la vez!`,
+                    imageFileNotAllowed: `El archivo filename no está permitido, ¡solo imágenes!`,
+                    imageVeryLarge: `El archivo filename supera el límite de 2 MB.`,
+                    imageMaliciousFile: `El archivo filename contiene contenido malicioso.`
+                }
+
+                window.editors = window.editors || [];
+
+                const editorsElements = window.editors.map(ed => ed.element.id);
+
+                const textAreaEditors = Array.from(document.querySelectorAll('.hackeditor > textarea'));
+                textAreaEditors
+                    .filter(e => e.closest('.taskForms') == null)
+                    .filter(e => editorsElements.length == 0 ? true : !editorsElements.includes(e.id))
+                    .forEach(editorTextArea => {
+                        const editor = setupHackEditor({
+                            editorOptions: {
+                                element: editorTextArea,
+                                initialValue: editorTextArea.innerText,
+                                syncPreview: true,
+                                maxHeight: "300px",
+                                toolbarActionsHints,
+                                imageUploadMessages: IMAGE_UPLOAD_MESSAGES,
+                                imageUploadErrors,
+                                imageUploadClient: new ImagesClient(
+                                    'https://www.gnarususercontent.com.br/images',
+                                    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MTc4MDcxMzMsImtleSI6IjRiYWRlNDg1LTFjYjYtNDYzNy1iMTRlLWIxYTY2MzRhZDYyNyJ9.VHSsMMu_Qmm9G5HbJD9jA86B2hddM07XRbObvZRh0Ns',
+                                    6,
+                                    576082
+                                ),
+                                allowImageUpload: editorTextArea.dataset.allowImageUpload
+                            },
+                            extensions: {
+                                DOMPurify,
+                                marked,
+                                hljs
+                            }
+                        });
+
+                        window.editors.push({
+                            instance: editor,
+                            element: editorTextArea,
+                        });
+
+                        enableForumButtons();
+                });
+            }
+
+            window.addEventListener('DOMContentLoaded', setupEditorsOnPage);
+            document.addEventListener('change', setupEditorsOnPage);
+        </script>
+    
+    
+
+<script src="./haga_lo_que_hicimos_files/IframeChecker.05103d26.js.descarga"></script>
+
+
+
+<button class="back-to-top" type="button"><span class="back-to-top__text">Voltar ao topo</span></button></body></html>

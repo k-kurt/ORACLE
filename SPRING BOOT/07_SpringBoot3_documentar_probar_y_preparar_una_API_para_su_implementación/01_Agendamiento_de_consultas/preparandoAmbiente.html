@@ -1,0 +1,1161 @@
+
+<!-- saved from url=(0086)https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84629 -->
+<html lang="pt-BR" data-product="alura_espanhol" style="scroll-behavior: smooth;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" type="text/css" href="./preparandoAmbiente_files/clipper.647d33f8.css">
+<link rel="stylesheet" href="./preparandoAmbiente_files/back-to-top.9a8b5967.css">
+<link rel="stylesheet" href="./preparandoAmbiente_files/videoShortcutsModal.e1c7fc31.css">
+<link rel="stylesheet" href="./preparandoAmbiente_files/modal.5da2b30a.css">
+<link rel="stylesheet" href="./preparandoAmbiente_files/modalCoursePreviewMode.fe9f769f.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+	
+
+	
+		
+
+
+
+
+    
+        
+        
+            <!-- Google Tag Manager -->
+            <script type="text/javascript" async="" src="./preparandoAmbiente_files/js"></script><script type="text/javascript" async="" src="./preparandoAmbiente_files/js(1)"></script><script async="" src="./preparandoAmbiente_files/analytics.js.descarga"></script><script async="" src="./preparandoAmbiente_files/gtm.js.descarga"></script><script>
+                ;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayerAlura','GTM-PFCN2KV');
+            </script>
+            <!-- End Google Tag Manager -->
+        
+    
+
+
+    <script>
+        let dataLayerAluraTest = window.dataLayerAluraTest || [];
+        let dataLayerAlura = window.dataLayerAlura || [];
+        dataLayerAlura.push({
+            'event': 'virtual_page_view',
+            'page_category': 'Aula',
+            
+            
+            
+                
+                    
+                    
+                        
+                        'user_id': '576082',
+                        'plan': 'Oracle Next Education F2 T5',
+                        'type': 'B2B',
+                        'company_id':'5013',
+                        'first_purchase_date': '2023-03-28',
+                        'last_purchase_date': '2023-03-28',
+                        'expiration_date': '2023-10-04',
+                        'email': 'b7a5de8d38d6e9c501dc677df972f9557de039ce9e8dc8976e0d6c048a508798'
+                    
+                
+            
+        });
+    </script>
+
+
+
+
+
+	
+
+	<title>Spring Boot 3: documentar, probar y preparar una API para su implementación: Aula 1 - Actividad 3 Preparando el ambiente | Alura Latam - Cursos online de tecnologia</title>
+	
+	<link rel="shortcut icon" href="https://app.aluracursos.com/assets/images/aluraespanhol/favicon.ico">
+	
+	<link href="./preparandoAmbiente_files/css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com/">
+
+	<link rel="stylesheet" href="./preparandoAmbiente_files/video-js.7b9aee00.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/silvermine-videojs-quality-selector.min.de928d55.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/prettify.9c184279.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/github.754087c4.css">
+
+	<link rel="stylesheet" href="./preparandoAmbiente_files/base.f643e441.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/formattedText.e58775de.css">
+	
+	<link rel="stylesheet" href="./preparandoAmbiente_files/container.ca700c42.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/classPage.ee5a0101.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/menuSettings.825e8801.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/taskProgress.a5300583.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/taskMessageInfo.67eb9bc6.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/alternativeList.a80939d3.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/taskFeedback.4bda0782.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/markdown.3ec31c65.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/finishSection.bee005cf.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/phrase.6d459a32.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/hqexplanation.3ed41021.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/openquestion.2889f14f.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/textcontent.7298b79f.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/video.e82ab0eb.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/singlechoice.b545e19f.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/music.8fe6cab6.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/multiplechoice.70f60e4c.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/videodialog.36286910.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/fillintheblank.59273039.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/speakingpractice.13b2c5c5.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/pronunciationpractice.d512f574.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/repetition.492af846.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/genericVideo.4767d8de.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/projectSubmit.ce2f9d80.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/sortBlocks.7b9eb1fc.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/extraContentTask.b2d126e6.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/taskContent.1ef47209.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/taskButtons.ed4fd65b.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/alert.ec6bb786.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/markdownEditor.600de57a.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/audioPlayer.0a362c88.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/notes.867f62ab.css">
+	
+	
+	
+	<link rel="stylesheet" href="./preparandoAmbiente_files/successMessage.cb6c074e.css">
+
+	<link rel="stylesheet" href="./preparandoAmbiente_files/dark-mode.0598a04f.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/taskFeedbackAnswer.72669c00.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/theater-mode.91e2f524.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/autoplay-videojs.eefac430.css">
+	<link rel="stylesheet" href="./preparandoAmbiente_files/linkSubmit.ddbc8743.css">
+
+	
+	
+	<style type="text/css">
+		.task:before, .video-js .vjs-play-progress {
+			background-color: #2A7AE4;
+		}
+
+
+	</style>
+
+	<!-- Remove cookie banner from hubspot -->
+	<style>
+		div#hs-eu-cookie-confirmation {
+			display: none;
+		}
+	</style>
+
+	<meta http-equiv="origin-trial" content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"></head>
+
+
+
+
+<body class="darkmode ">
+<script src="./preparandoAmbiente_files/avatarOnError.f8bd8956.js.descarga"></script>
+
+
+
+
+	
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+	<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFCN2KV"
+				  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+<section class="task  
+ menu--inactive" data-allow-answer="true" data-task-section-exam="false" data-task-type="hqexplanation" data-task-id="84629" data-author-id="576082" data-course-code="spring-boot-3-api-para-su-implementacion" data-section-name="Agendamiento de consultas" data-section-id="11458" data-section-number="1" data-domain="app.aluracursos.com" data-hasfeedbackanswer="false" data-url-prefix="/" data-already-seen-task="true" data-course-name="Spring Boot 3: documentar, probar y preparar una API para su implementación" data-category-name="Programación" data-subcategory-name="Java" data-workload="12" data-teachers="jose viera">
+
+	<section class="task-body">
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+<header class="task-body-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container">
+
+        
+            
+            <button title="" aria-label="" type="button" class="theatermode openMenu-button task-menu-button
+                    " id="menu-button-header">
+            </button>
+        
+
+        <h1 class="task-body-header-title">
+            
+            
+            <svg class="task-body-header-title-svg" aria-label="Actividad de Explicación">
+                <use xlink:href="/assets/images/classPage/icon-menu-icons.svg#SETUP_EXPLANATION"></use>
+            </svg>
+            <small>03</small>
+            <span class="task-body-header-title-text"> Preparando el ambiente</span>
+        </h1>
+        
+            <div class="task-body-header-actions">
+                <a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84629/next" aria-hidden="true" class="task-actions-button task-actions-button-next task-submit bootcamp-primary-button-theme" style="background-color: #2A7AE4">Próxima Actividad</a>
+            </div>
+        
+
+
+        
+            
+
+
+
+
+
+
+
+<div class="theater-video settings">
+	<button type="button" class="settings-button" aria-label="Configuraciones">
+		<svg class="settings-button-icon">
+			<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MENU_SETTINGS"></use>
+		</svg>
+	</button>
+	<div class="settings-box">
+		<ul class="settings-box-list">
+			
+				<li class="settings-box-item settings-box-item-darkmode">
+					<button class="dark-mode-action">
+						Modo nocturno
+					</button>
+				</li>
+			
+			
+				
+				
+				
+				
+					
+						<li class="settings-box-item settings-box-item-suggestion"><a href="https://app.aluracursos.com/suggestions/new/spring-boot-3-api-para-su-implementacion/84629/question">Sugerir alteración</a></li>
+					
+				
+			
+			
+		</ul>
+		<span class="settings-box-title"></span>
+	</div>
+</div>
+
+        
+    </div>
+</header>
+		<div class="task-body__wrapper">
+			
+
+
+
+<section class="class-notes">
+    <div class="class-notes-content">
+        <h2 class="class-notes-title">Mi cuaderno del curso (beta)</h2>
+        <p class="class-notes-description">Este es su cuaderno de anotaciones aquí en Alura Latam. Todo su contenido es visible apenas para tí.<a href="https://suporte.alura.com.br/article/308-meu-caderno-como-funciona" class="class-notes-faq-link">FAQ</a></p>
+        <textarea name="text" id="courseNotebook-text" class="class-notes-text" cols="30" rows="10" maxlength="60000"></textarea>
+        <div class="class-notes-save-wrapper">
+            <span>
+                <p class="class-notes-saved-text" aria-hidden="true" style="display: none">Notas guardadas</p>
+                <p class="class-notes-limit-text" aria-hidden="true" style="display: none">¡No se pudo guardar! ¡Límite de caracteres alcanzado ({max})!</p>
+            </span>
+            <span class="class-notes-save-button-wrapper">
+                <button class="class-notes-save-button" data-save-text="Guardar cuaderno" data-saving-text="Guardandando">
+                   Guardar cuaderno</button>
+            </span>
+        </div>
+        <button class="class-notes-close-button"></button>
+    </div>
+</section>
+			<main class="task-body-main container" data-should-warn="false">
+				
+
+
+
+
+
+
+
+	
+		
+
+
+
+
+<section class="hqExplanation" id="task-content">
+	<div class="container">
+	
+
+
+
+
+
+
+
+<div class="video settings">
+	<button type="button" class="settings-button" aria-label="Configuraciones">
+		<svg class="settings-button-icon">
+			<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#MENU_SETTINGS"></use>
+		</svg>
+	</button>
+	<div class="settings-box">
+		<ul class="settings-box-list">
+			
+				<li class="settings-box-item settings-box-item-darkmode">
+					<button class="dark-mode-action">
+						Modo nocturno
+					</button>
+				</li>
+			
+			
+				
+				
+				
+				
+					
+						<li class="settings-box-item settings-box-item-suggestion"><a href="https://app.aluracursos.com/suggestions/new/spring-boot-3-api-para-su-implementacion/84629/question">Sugerir alteración</a></li>
+					
+				
+			
+			
+		</ul>
+		<span class="settings-box-title"></span>
+	</div>
+</div>
+
+		<div class="formattedText" data-external-links="">
+			<p>Para preparar el ambiente, necesitamos tener algunas cosas instaladas en la computadora, como:</p>
+<h3>IntelliJ</h3>
+<p>Para instalar IntelliJ, clique en el link y descargue la versión actual.</p>
+<p><a href="https://www.jetbrains.com/idea/download/#section=windows" rel="nofollow noopener" target="_blank">IntelliJ IDEA</a></p>
+<p><img src="./preparandoAmbiente_files/5.png" alt=""></p>
+<blockquote>
+<p>Alternativamente:</p>
+</blockquote>
+<p>1) Podemos trabajar con editores de código como Eclipse, visual studio code, pero estos tienen configuraciones diferentes a las que serán utilizadas en el video, sin embargo, es posible trabajar con ellos dejando como desafío usar otro editor de código.</p>
+<p><img src="./preparandoAmbiente_files/8.png" alt=""></p>
+<p><a href="https://www.eclipse.org/downloads/download.php?file=/oomph/epp/2022-12/R/eclipse-inst-jre-win64.exe&amp;mirror_id=576" rel="nofollow noopener" target="_blank">The Eclipse Foundation</a></p>
+<p><img src="./preparandoAmbiente_files/12.png" alt=""></p>
+<p><a href="https://code.visualstudio.com/Download" rel="nofollow noopener" target="_blank">Visual Studio Code</a></p>
+<p>Para comenzar esta tercera parte del curso necesitamos descargar la versión del curso anterior que podemos encontrar en el siguiente link  <a href="https://github.com/alura-es-cursos/1979-spring-boot-buenas-practicas-security/tree/clase-5" rel="nofollow noopener" target="_blank">click aqui</a>.</p>
+<p><img src="./preparandoAmbiente_files/4.png" alt=""></p>
+<p><img src="./preparandoAmbiente_files/10.png" alt=""></p>
+<blockquote>
+<p>En la imagen superior podemos ver como se encuentra el repositorio vamos a descargar el archivo .zip</p>
+</blockquote>
+<p><img src="./preparandoAmbiente_files/9.png" alt=""></p>
+<blockquote>
+<p>Luego vamos a extraer este archivo en la carpeta donde se encuentra el resto de las informaciones de spring para este curso.</p>
+</blockquote>
+<p><img src="./preparandoAmbiente_files/6.png" alt=""></p>
+<blockquote>
+<p>Luego de haber descargado la información del curso anterior vamos a abrir la IDE de eclipse, seleccionar en la pestaña de nuevo abrir un proyecto existente, seleccionamos el archivo del directorio y finalizar.</p>
+</blockquote>
+<blockquote>
+<p>Alternativamente podemos clonar el repositorio desde la consola de IntelliJ</p>
+</blockquote>
+<p><img src="./preparandoAmbiente_files/7.png" alt=""></p>
+<p>O utilizando git bash console.</p>
+<p><img src="./preparandoAmbiente_files/11.png" alt=""></p>
+<p>En estos links podemos encontrar el soporte visual de la aplicación mobile front end y las diferentes actividades que fueron realizada</p>
+<p><a href="https://www.figma.com/file/vgn35i1ErivIN8LJYEqxGZ/Untitled?node-id=0-223&amp;t=YNrx4H2YyxEWXQFb-0" rel="nofollow noopener" target="_blank">Aplicación mobile Front End</a></p>
+<p><a href="https://trello.com/b/yGQuuyVV/api-voll-med" rel="nofollow noopener" target="_blank">Solicitud del cliente para la API</a></p>
+		</div>
+	</div>
+</section>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+				
+					
+
+
+
+
+
+
+	
+	
+		<section class="task-actions">
+			<div class="container">
+				
+
+
+
+
+
+
+    
+        
+        <a href="https://app.aluracursos.com/forum/curso-spring-boot-3-api-para-su-implementacion/exercicio-preparando-el-ambiente/84629/novo" class=" task-actions-button task-actions-button-forum bootcamp-secondary-button-theme" target="_blank">
+            
+                
+                
+                    Discutir en el Foro
+                
+            
+        </a>
+    
+
+
+
+				
+				
+				
+				
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84629/next" style="background-color: #2A7AE4" class="task-actions-button task-body-actions-button task-actions-button-next bootcamp-next-button bootcamp-primary-button-theme">Próxima Actividad</a>
+				
+			</div>
+		</section>
+	
+
+
+				
+				
+			</main>
+		</div>
+	</section>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<button title="Abrir menú/Cerrar menú" aria-label="Abrir menú/Cerrar menú" type="button" class="openMenu-button task-body-button openMenu-button--inactive">
+</button>
+
+<aside class="task-menu task-menu-iframe" style="position: fixed;">
+	<section class="task-menu-header">
+		<button title="Abrir menú" aria-label="Abrir menú" type="button" class="openMenu-button task-menu-button openMenu-button--inactive"></button>
+		<div class="task-menu-header-info">
+			<a class="task-menu-header-info-title" href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion" title="Ir para la página del curso">
+				
+					
+					
+						<img src="./preparandoAmbiente_files/spring-boot-3-api-para-su-implementacion.svg" alt="ícone Spring Boot 3: documentar, probar y preparar una API para su implementación" class="task-menu-header-info-title-icon " width="37.5px" height="37.5px">
+					
+				
+				<h2 class="task-menu-header-info-title-text">Spring Boot 3: documentar, probar y preparar una API para su implementación</h2>
+			</a>
+			
+				<div class="task-menu-header-info-progress">
+					
+					<span class="task-menu-header-info-progress-percentage ">5%</span>
+					
+						
+						
+						
+							
+						
+					
+					<span class="task-menu-header-info-progress-bar" style="background-image: linear-gradient(to right, #9de482, #9de482 5%, transparent 5%);"></span>
+				</div>
+			
+
+		</div>
+	</section>
+	
+		<form class="task-menu-header-search" target="_blank" action="https://app.aluracursos.com/search/course/spring-boot-3-api-para-su-implementacion" method="get">
+			<label class="task-menu-header-search-title" for="query">Buscar en este curso</label>
+			<input class="task-menu-header-search-input" name="query" id="query" type="text" required="">
+			<button class="task-menu-header-search-button">Buscar <img aria-hidden="true" class="task-menu-header-search-button-img" src="./preparandoAmbiente_files/icon-new-page.svg"></button>
+		</form>
+	
+	
+	<section class="task-menu-section sr-only">
+		<div class="task-menu-section-title">
+			<span class="task-menu-section-title-number ">Aula<strong>01</strong>
+				<span>de 05</span>
+			</span>
+			<h3 class="task-menu-section-title-text">
+				Agendamiento de consultas
+			</h3>
+		</div>
+	</section>
+	<section class="task-menu-sections">
+		<h2 class="task-menu-sections-title">
+			Clase actual
+		</h2>
+		<select class="task-menu-sections-select" onchange="location.href=&#39;/course/spring-boot-3-api-para-su-implementacion/section/&#39;+this.value+&#39;/tasks&#39;;">
+			
+				<option value="11458" selected="">01. Agendamiento de consultas</option>
+			
+				<option value="11459">02. Reglas de negocio</option>
+			
+				<option value="11460">03. Documentación de la API</option>
+			
+				<option value="11461">04. Tests automatizados</option>
+			
+				<option value="11462">05. Build del proyecto</option>
+			
+		</select>
+	</section>
+	<nav class="task-menu-nav">
+		<h2 class="task-menu-nav-title">
+			Actividades
+			<span>3 de 14</span>
+		</h2>
+		<ul class="task-menu-nav-list">
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84343" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Video completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">01</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Presentación">
+							Presentación
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para el Vídeo">05min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84630" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Explicación completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#HQ_EXPLANATION"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">02</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Proyecto del curso anterior">
+							Proyecto del curso anterior
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item task-menu-nav-item--selected">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84629" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg task-menu-nav-item-svg--done" aria-label="Actividad de Explicación completada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#SETUP_EXPLANATION"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">03</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Preparando el ambiente">
+							Preparando el ambiente
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84344" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Actividad de Video inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">04</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Nueva funcionalidad">
+							Nueva funcionalidad
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para el Vídeo">06min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84345" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Actividad de Video inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">05</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Consulta controller">
+							Consulta controller
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para el Vídeo">15min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84620" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Actividad de Explicación inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#COMPLEMENTARY_INFORMATION"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">06</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Para saber más: anotacion @JsonAlias">
+							Para saber más: anotacion @JsonAlias
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84621" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Actividad de Explicación inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#COMPLEMENTARY_INFORMATION"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">07</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Para saber más: formatacion de fechas">
+							Para saber más: formatacion de fechas
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84346" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Actividad de Video inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">08</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Clase Service">
+							Clase Service
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para el Vídeo">12min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84347" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Actividad de Video inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">09</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Validaciones de integridad">
+							Validaciones de integridad
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para el Vídeo">08min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84622" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Actividad de Explicación inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#COMPLEMENTARY_INFORMATION"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">10</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Para saber más: Service Pattern">
+							Para saber más: Service Pattern
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84348" class="task-menu-nav-item-link task-menu-nav-item-link-VIDEO">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Actividad de Video inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#VIDEO"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">11</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Selección medico aleatorio">
+							Selección medico aleatorio
+						</span>
+						
+						<span class="task-menu-nav-item-infos">
+							
+								<span class="task-menu-nav-item-videoDuration" title="Ir para el Vídeo">18min</span>
+							
+						</span>
+					</span>
+					
+					</a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84570" class="task-menu-nav-item-link task-menu-nav-item-link-SINGLE_CHOICE">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Actividad de Única opción inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#SINGLE_CHOICE"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">12</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Consultas con @Query">
+							Consultas con @Query
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84601" class="task-menu-nav-item-link task-menu-nav-item-link-TEXT_CONTENT">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Actividad de Sin respuesta del estudiante inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#DO_AFTER_ME"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">13</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Haga lo que hicimos en aula">
+							Haga lo que hicimos en aula
+						</span>
+						
+					</span></a>
+				</li>
+			
+				
+				<li class="task-menu-nav-item ">
+					<a href="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84636" class="task-menu-nav-item-link task-menu-nav-item-link-HQ_EXPLANATION">
+						
+						
+					<svg class="task-menu-nav-item-svg " aria-label="Actividad de Explicación inacabada">
+						<use xlink:href="/assets/images/classPage/icon-menu-icons.svg#WHAT_WE_LEARNED"></use>
+					</svg>
+					<span class="task-menu-nav-item-number">14</span>
+					<span class="task-menu-nav-item-text">
+						<span class="task-menu-nav-item-title" title="Lo que aprendimos">
+							Lo que aprendimos
+						</span>
+						
+					</span></a>
+				</li>
+			
+			
+		</ul>
+	</nav>
+	<section class="task-menu-others">
+		<h2 class="task-menu-others-title ">
+			Otros Links
+		</h2>
+		
+			<a class="task-menu-others-link task-menu-others-link-discord" href="https://discord.com/invite/bts3Yzb9uk" target="_blank">
+				Discord Alura
+			</a>
+		
+		
+			
+			<a href="https://app.aluracursos.com/forum/curso-spring-boot-3-api-para-su-implementacion/todos" class="task-menu-others-link task-menu-others-link-forum" title="Ir para el foro do curso" target="_blank">
+				
+					
+					
+					
+						Foro del curso
+					
+				
+			</a>
+		
+		<a href="https://app.aluracursos.com/dashboard" class="task-menu-others-link task-menu-others-link-curso" title="Ir para la página principal">Volver al Dashboard</a>
+		
+		<section class="task-container-flex  --task-button-column">
+			
+				<div class="task-group-border  --task-closed-border">
+					<button class="task-edit-mode settings-box-item-darkmode">Modo nocturno</button>
+				</div>
+			
+		</section>
+	</section>
+	<section class="task-menu-footer">
+		<a class="task-menu-footer-user" href="https://app.aluracursos.com/user/sboboda1997" title="Ir para su página de usuario">
+			<img src="./preparandoAmbiente_files/k-kurt.png" alt="Gravatar de Kevin Sboboda" class="task-menu-footer-img" width="40px" height="40px">
+			
+				<p class="task-menu-footer-detalhes">
+					<span class="task-menu-footer-detalhes-nome">Kevin Sboboda</span>
+					<span class="task-menu-footer-detalhes-xp">
+						76.8k xp
+					</span>
+				</p>
+			
+			<input type="hidden" value="">
+			<input type="hidden" value="">
+		</a>
+		<a href="https://app.aluracursos.com/dashboard" class="task-menu-footer-logo">
+			<img src="./preparandoAmbiente_files/icon-menu-alura_espanhol.svg" alt="Logo da Alura Latam" class="task-menu-footer-logo-image" width="19px" height="32px" title="Ir para la página principal">
+		</a>
+	</section>
+</aside>
+
+
+
+
+    
+
+</section><div class="full-screen__panel" style="display: none;">
+				<img id="full-screen__image" class="full-screen__image" src="https://app.aluracursos.com/course/spring-boot-3-api-para-su-implementacion/task/84629" alt="">
+				<div class="full-screen__actions">
+				<button class="button buttonAction partitura-download">Anterior</button><button class="button buttonAction partitura-download">Sair</button><button class="button buttonAction partitura-download">Próximo</button></div> 
+			</div>
+
+
+
+
+
+
+
+
+
+
+	
+
+	<script src="./preparandoAmbiente_files/jquery-3.6.0.min.7c14a783.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/buttonToggle.41524be9.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/sectionMenu.2bb600e2.js.descarga" async=""></script>
+	<script src="./preparandoAmbiente_files/submitTaskVerifier.e6e3bd5f.js.descarga"></script>
+
+    <script src="./preparandoAmbiente_files/purify.min.bd253e08.js.descarga"></script>
+
+	<script src="./preparandoAmbiente_files/caret.2e5c0c9d.js.descarga" async=""></script>
+	<script src="./preparandoAmbiente_files/keydownWatchers.fdc4ec79.js.descarga" async=""></script>
+
+	<script src="./preparandoAmbiente_files/highlight.min.9b99da81.js.descarga" async=""></script>
+	<script src="./preparandoAmbiente_files/highlight.init.5870d8cf.js.descarga" async=""></script>
+
+	<script src="./preparandoAmbiente_files/preventsMultipleInteractions.19502e19.js.descarga" async=""></script>
+	<script src="./preparandoAmbiente_files/assessment.78d1fb98.js.descarga" async=""></script>
+
+	<script src="./preparandoAmbiente_files/menuSettings.fb011b3b.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/aria.a82b16ad.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/ProjectSubmit.1e34b47f.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/LinkSubmit.60d53572.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/classPage.fcad576a.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/phrase.dfd04ee1.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/feedback.7962df4a.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/ExtraContentProgressRequest.aec577c3.js.descarga"></script>
+	
+	
+
+	
+	
+	
+	
+	
+
+	<script src="./preparandoAmbiente_files/partitura.3e404a17.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/audioProgress.049144a0.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/audioPlayer.38483a63.js.descarga"></script>
+
+		
+	<script src="./preparandoAmbiente_files/VideoTranscription.60f380a7.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/MarkdownProcessing.2cb5d893.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/clipboard.min.af8ab365.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/Clipper.5c96d26f.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/scroll-to-top.373e0d1c.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/shortcuts-action.eba8a7c6.js.descarga"></script>
+	<script src="./preparandoAmbiente_files/ModalAndAlertHandler.9c67ae4b.js.descarga"></script>
+    
+
+
+	<script>
+		new VideoTranscription();
+		new MarkdownProcessing("https://app.aluracursos.com").onLoad();
+		new Clipper("Copia el código", "Código copiado", "No se pudo copiar el código");
+		window.addEventListener('load', () => new BackToTopButton().init());
+		new ModalAndAlertHandler('spring-boot-3-api-para-su-implementacion').setupListeners();
+	</script>
+
+
+
+	
+
+	<script src="./preparandoAmbiente_files/darkMode.b7bc2dd7.js.descarga"></script>
+
+	
+		
+
+
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-42101548-21', 'aluracursos.com');
+
+    
+        ga('set', 'userId', '576082');
+    
+
+    ga('require', 'displayfeatures');
+    
+    ga('send', 'pageview');
+    
+    
+</script>
+	
+
+	<script>new DarkModeToggler().refreshListener()</script>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="./preparandoAmbiente_files/uploadImages.7c1a29db.css" rel="stylesheet">
+
+<script src="./preparandoAmbiente_files/UploadProgress.098aba94.js.descarga"></script>
+<script src="./preparandoAmbiente_files/ImagesClient.f10726e3.js.descarga"></script>
+
+<script src="./preparandoAmbiente_files/marked.min.c69e14e8.js.descarga"></script>
+
+<script src="./preparandoAmbiente_files/enableForumButtons.1293253c.js.descarga"></script>
+
+<script>
+    var IMAGE_UPLOAD_MESSAGES = {
+        imageUploadMessageInit: `Adjunte archivos arrastrándolos y soltándolos`,
+        imageUploadMessageDragEnter: `Suelta la imagen para subir`,
+        imageUploadMessageDrop: `Subiendo la imagen #images_names#`,
+        imageUploadMessageProgress: `Subiendo la imagen #images_names#: #progress#%`,
+        imageUploadMessageUploaded: `¡Imagen enviada con éxito!`,
+        imageUploadMessageSizeUnits: `MB`,
+        imageUploadMessageTag: `![Ingrese aquí la descripción de esta imagen para ayudar con la accesibilidad](#url#) `
+    }
+</script>
+
+
+    
+        <link href="./preparandoAmbiente_files/hackeditor.min.fcf421a7.css" rel="stylesheet">
+        <link href="./preparandoAmbiente_files/hackeditor.custom.e0057fb6.css" rel="stylesheet">
+        <link href="./preparandoAmbiente_files/github.754087c4.css" rel="stylesheet">
+
+        <script src="./preparandoAmbiente_files/hackeditor.min.4c55d65b.js.descarga"></script>
+        <script src="./preparandoAmbiente_files/hackeditor.custom.b88c034d.js.descarga"></script>
+        <script src="./preparandoAmbiente_files/highlight.min.9b99da81.js.descarga"></script>
+        <script>
+            const setupEditorsOnPage = (e) => {
+                const toolbarActionsHints = {
+                    toggleHeadingActionHint: `Encabezado`,
+                    toggleBoldActionHint: `Negrito`,
+                    toggleItalicActionHint: `Cursiva`,
+                    toggleOrderedListActionHint: `Lista ordenada`,
+                    toggleUnorderedListActionHint: `Lista desordenada`,
+                    togglePreviewActionHint: `Alternar vista previa`,
+                    drawTableActionHint: `Insertar tabla`,
+                    drawCodeActionHint: `Insertar bloque de código`,
+                    drawLinkActionHint: `Insertar enlace`,
+                    drawImageActionHint: `Insertar imagen`,
+                    drawUploadedImageActionHint: `Carga de imagen`,
+                    undoActionHint: `Deshacer`,
+                    redoActionHint: `Rehacer`
+                }
+
+                const imageUploadErrors = {
+                    imageErrorLimit: `¡Solo puede insertar 5 imágenes a la vez!`,
+                    imageFileNotAllowed: `El archivo filename no está permitido, ¡solo imágenes!`,
+                    imageVeryLarge: `El archivo filename supera el límite de 2 MB.`,
+                    imageMaliciousFile: `El archivo filename contiene contenido malicioso.`
+                }
+
+                window.editors = window.editors || [];
+
+                const editorsElements = window.editors.map(ed => ed.element.id);
+
+                const textAreaEditors = Array.from(document.querySelectorAll('.hackeditor > textarea'));
+                textAreaEditors
+                    .filter(e => e.closest('.taskForms') == null)
+                    .filter(e => editorsElements.length == 0 ? true : !editorsElements.includes(e.id))
+                    .forEach(editorTextArea => {
+                        const editor = setupHackEditor({
+                            editorOptions: {
+                                element: editorTextArea,
+                                initialValue: editorTextArea.innerText,
+                                syncPreview: true,
+                                maxHeight: "300px",
+                                toolbarActionsHints,
+                                imageUploadMessages: IMAGE_UPLOAD_MESSAGES,
+                                imageUploadErrors,
+                                imageUploadClient: new ImagesClient(
+                                    'https://www.gnarususercontent.com.br/images',
+                                    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MTc4MDcxMzMsImtleSI6IjRiYWRlNDg1LTFjYjYtNDYzNy1iMTRlLWIxYTY2MzRhZDYyNyJ9.VHSsMMu_Qmm9G5HbJD9jA86B2hddM07XRbObvZRh0Ns',
+                                    6,
+                                    576082
+                                ),
+                                allowImageUpload: editorTextArea.dataset.allowImageUpload
+                            },
+                            extensions: {
+                                DOMPurify,
+                                marked,
+                                hljs
+                            }
+                        });
+
+                        window.editors.push({
+                            instance: editor,
+                            element: editorTextArea,
+                        });
+
+                        enableForumButtons();
+                });
+            }
+
+            window.addEventListener('DOMContentLoaded', setupEditorsOnPage);
+            document.addEventListener('change', setupEditorsOnPage);
+        </script>
+    
+    
+
+<script src="./preparandoAmbiente_files/IframeChecker.05103d26.js.descarga"></script>
+
+
+
+<button class="back-to-top" type="button" style="display: none;"><span class="back-to-top__text">Voltar ao topo</span></button></body></html>
