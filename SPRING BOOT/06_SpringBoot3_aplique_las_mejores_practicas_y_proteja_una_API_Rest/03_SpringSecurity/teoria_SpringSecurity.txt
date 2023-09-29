@@ -1,0 +1,383 @@
+
+
+
+													02 Autenticación y autorización
+													
+Transcripción
+[00:00] ¿Qué tal? Bienvenidos. En esta clase vamos a comenzar a entrar a lo que es el módulo de seguridad de Spring. Si bien hasta ahora, por ejemplo desde el curso anterior hasta ahora ya hemos visto lo que es Spring data, Spring MVC, y ahora también vamos a ver otro de los sub módulos de Spring llamado Spring Security.
+
+[00:20] Entre lo que vamos a ver en esta clase son conceptos de autenticación, vamos a revisarlo más a detalle con algunos ejemplos, procesos de autorización, cuando tú demuestras por ejemplo que tienes los accesos necesarios, los privilegios necesarios para acceder a ciertos recursos y finalmente protección contra algunos ciberataques.
+
+[00:40] Algunos de los más conocidos el Cross-site Request Forgery, que básicamente es suplantación de identidad con cookies y el clickjacking. Quizás cuando yo les mencioné autenticación y autorización, eso no sonó del todo claro y es normal, no se preocupen, son conceptos que de por sí no son tan comunes escuchar.
+
+[01:00] Vamos a ponerlo con un ejemplo claro. Supongamos que yo estoy yendo al aeropuerto y yo deseo viajar a Estados Unidos. Entonces lo primero que yo hago cuando voy al aeropuerto es autenticarme con el counter que está en el aeropuerto. En este caso, ¿cómo me voy a autenticar? Con mi pasaporte. Mi pasaporte es mi credencial que me va a dar acceso a la sala de embarque del aeropuerto.
+
+[01:27] Ahora, por ejemplo, si lo queremos trasladar a un lenguaje más técnico, podríamos decir que tu usuario y tu clave son las credenciales que definen que tú en efecto eres quien dice ser. Entonces autenticación se puede resumir como el proceso mediante el cual tú aseguras que eres la persona que dice ser.
+
+[01:28] Porque por ejemplo si mi usuario y mi clave la tienen otras personas pueden hacer operaciones en mi nombre, pero otros se pueden autenticar en mi nombre, es por eso que es tan importante que tengas cuidado con tus contraseñas.
+
+[02:01] Entonces, hablando más técnicamente la autenticación es el proceso mediante el cual tú haces un request o post hacia algún API Rest que en este caso va a ser nuestra clínica médica con tu login, con tu user y con tu clave que ya tienes guardada en la base datos.
+
+[02:23] El API va a buscar en la base de datos a ver si tienes tus credenciales guardadas y si es que es así, él te va a generar un JSON web token, No se preocupen si no entienden todavía lo que es un JSON web token. Vamos a resumirlo como que es un simple token o un string, es una serie caracteres alfanuméricos que están encriptados con algún algoritmo y que tienen tus datos de autenticación dentro, como por ejemplo de usuario, tu nombre de usuario.
+
+[02:54] Y finalmente una vez que el backend, que API Rest genera tu JSON web token devuelven el JSON web token a la aplicación cliente y de esta forma la aplicación cliente tiene que enviar ese token como llave para el siguiente paso, que es la autorización.
+
+[03:11] Este proceso vamos a volver un momento a la parte de autenticación. Este proceso de autenticación es muy diferente, quizás si alguno de ustedes tiene experiencia con lo que es Java EE, o Java Server Faces, JSF, es diferente, porque en este tipo de autenticación usamos autenticación stateless.
+
+[03:32] ¿Qué significa stateless? Que no tiene estado, no tiene estado significa que el servidor no conoce qué usuarios están logueados o no, a diferencia del approach que toma, por ejemplo Java Server Faces, que por cada usuario te crea una sesión de usuario. ¿Qué significa?
+
+[03:47] Que en el servidor, en un espacio de la memoria está en la sesión de usuario grabada. Es por eso que escalar ese tipo de aplicaciones es tan complicado, porque requieren en realidad que la máquina escale en sí. Pero bueno, ese no es el tópico de este curso.
+
+[04:01] Lo que vamos a ver ahora es la aplicación stateless, a diferencia de la aplicación stateful que es la que se maneja en ese tipo de frameworks. Stateful significa que maneja un estado. Entonces punto número uno, la autenticación que vamos a manejar en este curso es la autenticación stateless, en la cual nuestro servidor, nuestro API no conoce nada de las sesiones ni de los usuarios logueados.
+
+[04:26] Lo único que hace es validar el proceso de autenticación, es decir que si tu clave que has proporcionado aquí es la misma que yo tengo guardada en mi base de datos, entonces voy a generar un token de autenticación un JSON web token.
+
+[04:41] Y viniendo aquí, ¿a qué me refería yo con usarlo como llave? Antes de aplicar eso, vamos a entrar a lo que es autorización en sí. ¿Qué es autorización? Autorizaciones del proceso, por ejemplo, si yo hoy entré al aeropuerto a la sala de embarque y puedo entrar al avión, el proceso de autorización va a ser por ejemplo si yo cuento con autorización para entrar a los Estados Unidos.
+
+[05:03] Ustedes saben que yo necesito una visa. La visa es la autorización que yo necesito, en este caso sería el token, para poder entrar a los Estados Unidos. Si yo no tengo esa visa y yo no puedo entrar por nada del mundo. Entonces nuevamente trasladándolo a un lenguaje más técnico, ya les expliqué que el authorization, el JSON web token, viene en un header authorization y es enviado en cada request que mi aplicación cliente va a hacer hacia mi backend.
+
+[05:32] Dependiendo de este token si aún está válido, puede o liberar el acceso o me puede restringir el acceso a este recurso. Por ejemplo, vamos a venir aquí. Ustedes ya conocen esta colección de requests, es sobre mi API de médicos de la clínica y actualmente está abierto a todo el mundo.
+
+[05:57] Si yo ejecuto este request está completamente abierto, no tiene ningún tipo de mecanismo de autenticación o de autorización aquí dentro. Y obviamente dado que estamos trabajando o creando una clínica necesitamos comenzar a preocuparnos por el proceso de manejo y validación de usuarios.
+
+[06:16] Entonces lo que vamos a hacer ahora en el siguiente video es comenzar a instalar la dependencia que necesitamos, Spring Boot y Spring Security, perdón, vamos a comenzar a instalar Spring Security y comenzar a explorar cómo podemos hacer para que este request y todos mis requests ya no sean públicos sino ya me requieran algún tipo de autenticación. Nos vemos en el siguiente video.
+
+
+
+
+
+														03 Agregando Spring Security
+														
+Transcripción
+[00:00] Bien, llegó la hora más interesante, vamos a entrar a la parte técnica en este momento. Como les dije, lo primero que vamos a hacer ahora es instalar mi módulo de Spring Security.
+
+[00:10] Al igual que yo lo hice por ejemplo con mis otras dependencias como devtools, Spring starter web, ahora también necesito instalar mi módulo de Spring Security aquí en mi API. ¿Recuerdan el truco que les mostré en el curso anterior para instalar dependencias aquí? Bueno, por si no lo vieron lo vamos a ver en este momento.
+
+[00:32] Para eso es lo que voy a hacer es entrar aquí a Spring initializr, en start.spring.io, y de aquí me interesa, aquí voy a seleccionar Maven y voy a agregar una dependencia. Doy clic aquí, tengo mi lista de dependencias aquí en Spring Initializr y yo voy a buscar por security.
+
+[00:54] Observen allí, Spring Security es la primera opción. Tengo otras opciones también como el OAuth2 Client, en caso yo desee autenticar usando un third party por ejemplo, como puede ser Microsoft, GitHub, Google, no se preocupen, eso no lo vamos ahora.
+
+[01:12] Okta, Spring LDAP, eso es para otro tipo de autenticación con un servidor. No se preocupen, no se marean vamos de frente a Spring Security. Entramos aquí. ¿Y en qué consiste el truco? En lugar de generar el proyecto lo que yo voy a hacer es darle a Explore para ver cómo es que me generaría el proyecto aquí en la web, y dentro de aquí del pom.xml, yo voy a buscar por el módulo Spring Security que está aquí.
+
+[01:44] Spring-boot-starter-security. Entonces voy a copiar esto, vuelvo a mi proyecto y recuerden siempre: dentro del arreglo de dependencias siempre guíense por el IDE o como los ayude, esta línea me dice hasta dónde llega mi arreglo de dependencias, aquí al final voy a agregar mi dependencia de Spring Security y lo que falta hacer ahora ¿qué es?
+
+[02:09] Refrescar mis dependencias, porque yo aún no las he instalado. Lo que voy a hacer es ejecutar este botón de Maven para que comience a resolver las dependencias y voy a revisar aquí en mi lista si ya tengo la dependencia de Security. Y observen aquí al final, springframework.boot-spring-boot-starter-security.
+
+[02:33] Entonces ya tengo todo por ahora, ya tengo mi Spring Security, ya tengo la dependencia instalada y ya la tengo descargada de Maven Repository. Voy a cerrar esto de aquí y lo que voy a hacer ahora es iniciar mi servidor para ver qué novedades trae. Estaba cargando hasta hace un momento, vamos a ver si sale algo diferente ahora.
+
+[02:53] Esperamos un momento que cargue, vemos que está cargando. Y hay algo muy interesante aquí que quiero que observen, miren aquí. Acá dice usando contraseña generada, contraseña generada y me da un carácter alfanumérico un poco grande, me dice “esta clave es generada solo para uso de desarrollo”.
+
+[03:19] Mi configuración de seguridad debe ser autorizada antes de correr la aplicación en producción. ¿Qué significa esto? No se preocupen, lo vamos a ver más adelante, pero ya vemos que solamente con instalar el módulo de Spring Security ya nos está generando una contraseña, aún no sabemos para qué, y ya nos está diciendo que bueno, parece que nuestros recursos si me está generando una contraseña de alguna forma mis recursos ya deben estar protegidos.
+
+[03:44] Voy a venir a Insomnia y voy a volver a pedir mi lista de médicos que está funcionando hasta hace un momento, voy a entrar y me da un 401 unauthorized. El código unauthorized significa que mi usuario o yo no tengo acceso a este recurso, entonces si se dan cuenta aquí, por ejemplo también para obtener datos de médico, ese no existía, pero vamos a poder uno que existe creo que número 9. Igual. Unauthorized.
+
+[04:14] Entonces, de por sí solamente instalando la dependencia de Spring Security ya me dice que automáticamente por default todos mis requests están bloqueados. Esto en el browser lo vamos a poder ver un poco mejor porque hay una cosa que les quiero mostrar. Voy a copiar esto. Voy a venir a mi browser y voy a copiar esta dirección.
+
+[04:40] Voy a entrar y observen, miren cómo entrando a la dirección automáticamente me manda a /login. Yo no he creado eso, yo no tengo ningún controller con /login. Observen en mi carpeta de controllers, yo no tengo ninguna con login. Solo tengo Médico y HelloControllers que lo creamos en el curso anterior y me da una página en HTML y pide por favor que accese.
+
+[05:09] Entonces aquí entra algo curioso. ¿Por qué? Este tipo de autenticación es autenticación por defecto para aplicaciones web. Aplicaciones web que por defecto me van a generar una sesión del recibidor, una aplicación ¿cómo se llamaban? Stateful, exacto, autenticación stateful.
+
+[05:29] Pero ya hemos quedado que nosotros vamos a hacer stateless, vamos a trabajar con la autenticación a nivel del API. Por lo tanto este login a mí no me sirve para nada, es autogenerado por Springs, sí, es completamente autogenerado por Spring Boot, yo no he hecho nada.
+
+[05:49] Él me da por defecto esto porque automáticamente todos mis recursos dentro de mi API ya están protegidos. Ahora ustedes preguntarán: “Okay, ¿y cómo me logueo entonces? ¿Cuál es la clave por defecto?” Ahí es donde entra esta clave de aquí. Vamos a copiar esta clave, "Ctrl + C".
+
+[06:05] Y el nombre de usuario por defecto aquí en Spring Security se llama user. Entonces user, esta es su contraseña, entramos, le voy a decir que no quiero guardar la página y me dice que okay, no me muestra una página de login, no me está mostrando lo que yo le pedí porque no está digamos completando con el request de médicos.
+
+[06:37] Entonces lo que voy a hacer es venir aquí, copiar y vemos que tengo todo mi arreglo de médicos. ¿Por qué me salió la página anterior de error? Porque yo no tengo ninguna página configurada a nivel de Spring que me diga: “okay, Diego después de loguearte, cuando sea exitoso, la siguiente página es esta de aquí”.
+
+[07:04] Por defecto cuando te logueas vía web que muestra un home de algún dashboard, alguna cosa así. Yo no tengo nada de eso configurado, porque solo son mis recursos de Spring Boot auto generados por Spring Security pero ya vemos que ahora sí tengo acceso porque ya estoy autenticado.
+
+[07:21] Ya tengo acceso a mis recursos, a mi arreglo de JSON porque simplemente ya me autentiqué usando la clave por defecto, generada aquí. Nuevamente este no es el tipo de autenticación que nosotros queremos.
+
+[07:35] Lo que nosotros queremos es hacer una aplicación stateless que funcione a nivel de API en el cual obviamente yo no voy a necesitar una página de login porque mis clientes, ya sea aplicación web, mobile o incluso mi cliente Insomnia deberían poder generar la autenticación, mi token, loguearme vía API, generar mi token de autorización para yo conseguir hacer los requests enviando ese token en cada request que yo haga.
+
+[08:06] ¿Suena confuso? No se preocupen, lo vamos a ver poco a poco, paso a paso, en los siguientes videos de esta clase. Nos vemos.
+
+
+
+															04 Las entidades usuario y migration
+															
+Transcripción
+[00:00] ¿Qué tal? Ya vimos cómo es el comportamiento por defecto de Spring Security, vimos que ya nos está generando esa contraseña y por defecto también nos genera una página de login, en caso trabajemos con aplicaciones web, entonces el trabajo ya está hecho pero en nuestro caso que estamos trabajando con API hay un cierto trabajo por hacer y ese trabajo no es como cambiar un valor en el archivo properties.
+
+[00:29] Recuerdan que tenemos es archivo properties y por ejemplo para mostrar el SQL solo cambiamos un flag a true. Esta vez no va a ser así. Requiere una serie de pasos que tenemos que hacer a nivel de código y los vamos a ejecutar uno a uno para que quede muy claro para todos. No es tan sencillo que digamos.
+
+[00:51] Lo primero que tenemos que ver, quiero que recuerden el gráfico que les mostré antes de dónde salen los usuarios en Spring de la base de datos. Se supone que si yo me quiero lograr con mi API, mi API tiene que saber mi usuario y mi clave. Mi nombre de usuario y mi clave para poder comparar y si mi clave es la misma, devolverme mi token.
+
+[01:16] Si yo les digo que necesito eso, ¿qué es lo primero que ustedes pensarían qué debo crear aquí en mi API? Mi migration con mi entidad JPA para mis usuarios. Vamos a crear ahora aquí en mi estructura de mi proyecto, tengo mi dominio y aquí voy a crear un nuevo paquete. Le voy a dar a new package y le voy a poner usuarios.
+
+[01:46] Aquí se me fue un typo. Voy a corregirlo con refactor, rename, y le voy a borrar esta e que no viene al caso, refactorizamos y listo. Y aquí yo le voy a crear una clase, new java class llamado usuarios, una clase normal, aún no la voy a agregar a Git y voy a decirle que tiene atributos private Long id; private String login; que va a ser mi nombre de usuario, private es con minúscula y private String clave.
+
+[02:29] Y todavía tengo mi entidad creada de usuarios. ¿Para que sea una entidad JPA qué más necesito? Necesito las anotaciones de JPA. Entonces voy a entrar A médico y para ahorrar un poco de tiempo lo que voy a hacer es copiar todo esto, vengo aquí y lo pego, pero el nombre de la tabla obviamente va a cambiar. Aquí va a ser “usuarios” y mi entidad va a ser “Usuario”.
+
+[03:00] Aquí hay un error. Yo cometí un error, porque ya el nombre en la clase debería ser en singular, entonces voy a renombrarlo a usuario refactor, listo. Allí tengo mi usuario con mi entidad mapeada, mi tabla. Aquí está correcto @EqualsAndHashCode, generar un getter. Listo.
+
+[03:24] Está todo bien. Y vamos a copiar también los atributos para mi llave primaria de usuarios aquí en el id. Listo, vemos que ya no me da error en usuario porque ya tengo mapeado mi atributo de llave primaria. Esto sería todo lo que tengo que hacer para tener mi entidad usuario ya mapeada en JPA.
+
+[03:49] ¿Qué es lo siguiente que debo hacer? Exacto, el migration. Ahora vengo aquí a los recursos, voy a db.migration y voy a ver que aquí tengo un create-table-medicos, voy a copiar este mismo migration, le voy a pegar aquí, va a ser la versión 4 aquí, porque tengo hasta la versión 3. Yo voy a hacer versión 4: create-table-usuarios.
+
+[04:16] Le voy a dar okay. No lo voy a agregar a Git, ya tengo esto copiado, le voy a decir adiós con id, login y clave, con llave primaria que sea el id, y en el caso de la clave yo le voy a incrementar a 300 caracteres porque yo voy a usar un algoritmo de Hashing para guardar la clave. No se preocupe, yo se los voy a explicar muy bien luego.
+
+[04:48] No le voy a poner unique porque pueden haber usuarios con la misma clave, entonces no quiero eso por ahora, pero bueno, tengo en login, tengo la clave, not null, otro increment y sería todo lo que yo necesito por ahora. Voy a parar mi aplicación. Creo que ustedes ya saben que cuando trabajamos con migration es bueno detener mi aplicación para ejecutarla.
+
+[05:08] Y eso sería todo lo que tengo que hacer para crear mi entidad usuario. Tengo la entidad de JPA y tengo el migration de usuario. ¿Qué voy a hacer ahora? Voy a ejecutar el migration, Entonces le doy play y vamos a ver qué nos sale aquí en la pantalla.
+
+[05:33] Tengo otra clave generada y vamos a ver. Miren aquí. Satisfactoriamente validadas cuatro migraciones, perfecto, entonces mis migrations fueron ejecutadas. Se aplicó un migration. Ahora está en la versión 4. Parece que me tabla sí fue creado en efecto. Voy a entrar aquí a mi base de datos. Voy a refrescar.
+
+[06:01] Y aquí en mi lista de tablas, esperemos a que refresque, yo debería ver, aquí está mi tabla de usuarios con mi columnitas que yo acabo de crear. Listo. Y eso es todo lo que yo necesitaba hacer como primer paso para transformar mi tipo de autenticación de stateful, stateless. En el siguiente video, vamos a ver un poco más sobre este proceso. Nos vemos.
+
+
+
+
+
+															 05 Para saber más: hash de contraseña
+PRÓXIMA ACTIVIDAD
+
+Al implementar una funcionalidad de autenticación en una aplicación, independientemente del lenguaje de programación utilizado, deberá tratar con los datos de inicio de sesión y contraseña de los usuarios, y deberán almacenarse en algún lugar, como, por ejemplo, una base de datos.
+
+Las contraseñas son información confidencial y no deben almacenarse en texto sin formato, ya que si una persona malintencionada logra acceder a la base de datos, podrá acceder a las contraseñas de todos los usuarios. Para evitar este problema, siempre debe usar algún algoritmo hash en las contraseñas antes de almacenarlas en la base de datos.
+
+Hashing no es más que una función matemática que convierte un texto en otro texto totalmente diferente y difícil de deducir. Por ejemplo, el texto “Mi nombre es Rodrigo” se puede convertir en el texto 8132f7cb860e9ce4c1d9062d2a5d1848, utilizando el algoritmo hash MD5.
+
+Un detalle importante es que los algoritmos de hash deben ser unidireccionales, es decir, no debe ser posible obtener el texto original a partir de un hash. Así, para saber si un usuario ingresó la contraseña correcta al intentar autenticarse en una aplicación, debemos tomar la contraseña que ingresó y generar su hash, para luego compararla con el hash que está almacenado en la base de datos.
+
+Hay varios algoritmos hashing que se pueden usar para transformar las contraseñas de los usuarios, algunos de los cuales son más antiguos y ya no se consideran seguros en la actualidad, como MD5 y SHA1. Los principales algoritmos actualmente recomendados son:
+
+Bcrypt
+Scrypt
+Argon2
+PBKDF2
+A lo largo del curso utilizaremos el algoritmo BCrypt, que es bastante popular hoy en día. Esta opción también tiene en cuenta que Spring Security ya nos proporciona una clase que lo implementa.
+
+
+
+
+
+
+
+																06 Repository Service
+																
+Transcripción
+[00:00] Listo, tenemos migración y tenemos entidad. ¿Qué es lo que necesitamos ahora? Si queremos traer objetos desde la base de datos, en este caso quiero traer usuarios de la base datos necesito un repositorio. Entonces voy a entrar aquí a usuarios y voy a crear una nueva interfaz llamada usuariosRepository.
+
+[00:29] Tengo ya mi interfaz aquí de repositorio de usuarios. Lo dejo aquí. No lo agrego a Git aún y aquí lo que voy a hacer es extender de Repository y como primer parámetro tengo que decirle que es usuario, que es el tipo de objeto que va a manejar, y el tipo de dato de la llave primaria exactamente igual que en el caso de médicos.
+
+[00:59] Fue mi error, no es CrudRepository, es JpaRepository. Eso lo arreglamos en este momento. Ambas interfaces son muy similares, tienden aplicaciones similares pero JpaRepository tiene métodos un poco más óptimos. No se preocupen. Bueno, ya tengo mi interfaz nuevamente, pues en plural, creo que me está completando el computador, lo que voy a hacer es renombrarlo a singular nada más. Y listo.
+
+[01:30] Perfecto, UsuarioRepository extendiendo de JpaRepository y usuario long. Perfecto. Nada más. ¿Qué más necesito aquí? Aquí necesito ahora una capa intermedia que es mi capa de service, porque yo voy ejecutar cierta lógica en ese servicio para que Spring tome ese servicio y busque aquí en mi repositorio por los usuarios. Para eso aquí en infra yo tengo mi tratador de errores.
+
+[02:00] Lo que yo quiero hacer aquí ahora es crear un servicio de autenticación de usuarios. Pero no quiero que se mezcle con mi tratador de errores, entonces lo que voy a hacer aquí es crear un nuevo paquete llamado errores, este va a ir aquí y voy a crear otro paquete llamado Security. Entonces mi tratador de errores ahora va a ir aquí en este paquete, voy a refactorizar y en Security yo voy a crear una nueva clase llamada AutenticaciónService.
+
+[02:42] Esta clase es la que va a tener la lógica de autenticación dentro de mi aplicación. Ahora como siempre, si yo deseo decirle a Spring: “por favor Spring escanea esta clase, porque es un servicio que yo quiero abastecer para mi aplicación”, ¿qué es lo que tengo que hacer? Exacto, tengo que marcarla con el estereotipo service.
+
+[03:06] Este estereotipo va a decirle a Spring: “Spring, escanea esta clase porque es un servicio de esta aplicación”. ¿Qué más necesito hacer ahora? Aora es lo que tengo que hacer es extender, acá comienza ya la magia. Perdón, extender no. Es implementar porque es una interfaz, puede haber implement, de una interfaz propia de Spring que Spring utiliza para efectuar su login.
+
+[03:29] Que es nada más y nada menos que el UserDetailsService. Ahora vemos que marqué en rojo porque me pide que implemente los métodos de esa interfaz, pero ya dense cuenta como por ejemplo ya con esta clase nosotros implementamos una interfaz propia de Spring que él utiliza internamente, está internamente cableado digamos para lo que es el proceso de autenticación del usuario.
+
+[04:00] Voy a implementar los métodos, voy a dar okay, y listo, aquí tengo un objeto de tipo UserDetails y me dice loadUserByUsername. Significa cargar usuario por nombre de usuario. Aquí lo que me está pidiendo es, en este método lo que yo le tengo que decir es de qué forma yo voy a cargar ese usuario y de dónde, porque a Spring no le interesa el datasource o la fuente de datos de la cual yo obtengo el usuario.
+
+[04:30] A Spring le interesa, que yo le dé el usuario, dependiendo del username que estaba buscando. ¿Esto a qué les suena? Exacto. A un método que yo tengo que crear aquí en mi repositorio, entonces para esto, lo que yo tengo que hacer primero es venir aquí y declarar mi repositorio.
+
+[04:50] Entonces, voy a decirle UsuarioRepository usuarioRepository; recuerden para inyectarlo con @Autowired, yo lo voy a hacer aquí a nivel del campo, pero recuerden que para métodos de testing esto no es recomendado, pero como no es el objetivo del curso enfocarnos ahí, vamos a dejarlo en @Autowired. Puede ser un setter o puede ser un constructor, no se preocupen.
+
+[05:13] Y aquí le voy a decir que retorne usuarioRepository.findBy y lo tengo Username. Le voy a decir Username. Y como parámetro el Username. Me está dando rojo porque no existe. ¿Lo que hago ahora qué es? Crearlo. Y listo. Vemos que con un objeto del tipo UserDetails me va a encontrar mi usuario por nombre de usuario en mi interfaz usuarioRepository.
+
+[05:48] Terminamos este segundo paso. Entonces recapitulando, tenemos la entidad usuario, tenemos la migración que crea la tabla para mis usuarios en mi base de datos. Y ahora yo tengo el repositorio con mi servicio de autenticación que implementa esta interfaz propia de Spring userDetailsService para comenzar a decirle a Spring que yo quiero personalizar el flujo de autenticación que tiene por defecto. Nos vemos en el siguiente video.
+
+
+
+
+																 07 Para saber más: documentación de Spring Data
+PRÓXIMA ACTIVIDAD
+
+Como aprendimos en videos anteriores, Spring Data usa su propio patrón de nomenclatura de métodos que debemos seguir para que pueda generar consultas SQL correctamente.
+
+Hay algunas palabras reservadas que debemos usar en los nombres de los métodos, como findBy y existBy, para indicarle a Spring Data cómo debe ensamblar la consulta que queremos. Esta característica es bastante flexible y puede ser un poco compleja debido a las diversas posibilidades existentes.
+
+Para conocer más detalles y comprender mejor cómo ensamblar consultas dinámicas con Spring Data, acceda a su documentación oficial.
+
+https://docs.spring.io/spring-data/jpa/docs/current/reference/html/
+
+
+
+																		
+																		
+																		
+																		08 Configuración de seguridad #1
+																		
+																		
+Transcripción
+[00:00] Listo. Ya tengo casi todo para decirle a Spring que yo quiero que mi proceso de autenticación sea stateless y no stateful. Ahora solo falta una cosa y es una configuración en específico. Como les dije, en este caso las configuraciones que estamos realizando no son configuraciones digamos a nivel de archivos properties en el cual yo le puedo decir true o false, si quiero cambiar el comportamiento de Spring.
+
+[00:27] En este caso es implementar interfaces propias de Spring como estamos haciendo acá, para yo personalizar el comportamiento por defecto que Spring Security tiene. Entonces, para esto yo en mi paquete de Security que he creado, voy a crear una nueva clase para mis configuraciones y aquí voy a seguir SecurityConfigurations.
+
+[00:58] No lo agregó aun. Y como toda configuración que yo quiero que sea escaneada por Spring, yo le voy a marcar como @Configuration que está aquí.
+
+[01:10] Entonces Spring con esta anotación al igual que aquí con service, Spring va a venir aquí y va a decir: “Esta es una configuración, entonces la voy a escanear, porque en el orden de creación de los objetos de Spring, primero se escanean los que están anotados con @Configuration porque se sobreentiende que son prerrequisitos para que la aplicación para que otros objetos de la aplicación puedan ser creados”. Esto es solo un dato curioso.
+
+[01:37] Bueno, ¿qué más necesitamos? Necesitamos un tipo de objeto que me retorne aquí para que implemente una autenticación stateless aquí en Spring. ¿A qué me refiero con un tipo de objeto? Lo que necesito es un tipo de objeto public, tengo que declarar este método, que va a ser mi securyFilterChain, de aquí de Springframe, esto de aquí. Nombre, el mismo y ya está.
+
+[02:12] Esto me tiene que retornar un objeto del tipo SecurityFilterChain. Como parámetro lo que él va a recibir es un objeto del tipo httpSecurity, vamos a dejarlo con httpSecurity. Para que Spring sepa que esta es una configuración del contexto de seguridad, yo aquí lo que tengo que decirle es @EnableWebSecurity.
+
+[02:41] Entonces con estas dos configuraciones yo le digo a Spring primero que todo: esta es una clase de configuración; segundo: habilítame módulo WebSecurity para esta clase de configuración. ¿Por qué? Porque con el @EnableWebSecurity yo le voy a decir que este método de aquí está siendo implementado para sobrescribir el comportamiento de autenticación que yo quiero. ¿Qué necesito ahora?
+
+[03:06] Segundo, voy a retornar mi httpSecurity.csrf(). Vemos que tenga la terminación aquí del csrf. ¿Qué significa esto? El Cross-site request forgery y método de protection. Esto es para evitar suplantación de identidad, pero como no estoy usando autenticación stateful no lo necesito por ahora, no se preocupen. Entonces era solo para mostrarles dónde está este tipo de seguridad que Spring provee, está implementando seguridad de una aplicación web.
+
+[03:41] Llamen este método de aquí porque es el que les va a proporcionar ese tipo de protección. Entonces yo no lo voy a llamar por ahora, entonces lo que voy a decirle aquí es que lo quiero deshabilitado, porque como ya tengo autenticación vía token o mi autenticación y autorización va ser vía web token no tengo por qué tener una protección de Cross-site request forgery, no tiene sentido.
+
+[04:11] La autenticación stateless ya me protege contra ese tipo de ataques. Entonces no hay problema. ¿Qué más necesito aquí? Aquí lo que necesito es decirle con sesión, sessionManagement.
+
+
+
+
+
+
+																		09 Configuración de seguridad #2
+																		
+Transcripción
+[00:00] Seguido de sessionManagement, sin parámetros, porque había otro método con parámetros, no se preocupen, y aquí es donde va a ocurrir la magia de Spring, porque en este parámetro de aquí, en sessionCreationPolicy, lo que yo le voy a decir es que quiero que me póliza de creación de mi sesión sea completamente stateless.
+
+[00:28] Finalmente para cerrar le voy a decir que .and().build(); eso sería todo lo que tengo que hacer para especificar que mi sesión va hacer stateless. Me está dando un error de compilación aquí a nivel del scrf, porque no estoy atrapado una excepción. Tengo dos opciones: o con try catch o en la firma del método.
+
+[00:52] Yo voy a escoger la segunda, la más sencilla y listo, no tengo nada más que hacer por ahora. Voy a iniciar mi servidor, vamos a agrandar esto un poco para ver la terminal y vamos a probar los cambios. En este punto ya deberíamos tener algunos cambios en la aplicación.
+
+[01:14] Tengo una excepción aquí y me dice que no hay propiedad username para el tipo usuario. Es por esto. Recordemos que yo estoy identificando find by username que me dejé ya por el nombre del parámetro, pero en mi entidad usuario el parámetro es login.
+
+[01:36] ¿Entonces esto cómo debería ser? Debería ser findByLogin. Aquí le voy a hacer un refactor, voy a renombrar y le voy a decir que es un findByLoging. Enter y listo, ya está refactorizado, reviso aquí mi AutenticacionService. También está listo. Inicio nuevamente mi servidor, ese era el error que yo estaba teniendo.
+
+[02:07] Perfecto. Aplicación inicializada correctamente y venimos a nuestro listado de médicos que me estaba dando Unauthorized hace un momento. Voy a enviar aquí mi request, y miren, ya tengo ahora sí mis accesos normales como estaban antes. ¿Por qué? Porque mi autenticación ya es stateless, es decir, ya no maneja por defecto una autenticación a nivel de Spring Security, que me cierra todo por defecto y que me da una página de login por defecto autogenerada.
+
+[02:39] Sino que ahora yo tengo el control sobre mí autenticación, y parece que volvimos a donde comenzamos porque nuevamente tengo todos mis recursos abiertos, expuestos, en ninguna parte me piden que me loguee y no tengo digamos cómo loguearme en mi aplicación, porque no tengo dónde poner mi usuario y mi clave para generar mi token. Eso lo vamos a descubrir en el próximo video.
+
+
+
+
+
+																		11 Controller de autenticación
+																		
+Transcripción
+[00:00] Ya vimos cómo configurar Spring para que utilice el tipo de autenticación stateless, ahora es lo que nos está faltando aquí es ver nuestro método de login. Para esto voy a copiar esta request, lo voy a duplicar mejor dicho, pero aquí le voy a decir login usuario.
+
+[00:25] Entonces head aquí, le aquí vamos a crear y en este login vamos a decirle que va a ser en el endpoint login y va a ser un método del tipo post. Perfecto. En la parte del body yo le voy a agregar un JSON con lo que yo quiero que tenga mi método de login, por ejemplo, mi login va a tener exactamente igual que lo definí en mi interfaz, va a tener “login”, va a ser mi usuario, vamos a hacer de cuenta que es el mío.
+
+[00:54] “diego.rojas”, y mi clave que va a ser digamos del 1 al 6, mi clave del 1 al 6. Y listo, esto sería todo por ahora. Si yo disparo este método lo más seguro es que me retornen un 404, porque no existe aún, vamos a crearlo. Para esto vamos a cerrar un poco esto, venimos a nuestro controller y vamos a crear aquí nuevo AutenticaciónController.
+
+[01:36] Vamos a recordar un poco de cómo configurar un controller. Lo primero que tengo que hacer es decirle que es un @RestController, tengo que hacer @RequestMapping, ¿con qué va a ser el @RequestMapping? Con “/login” porque estamos apuntando aquí a este path, a este recurso y ahora vamos a tener nuestro método de login, por ejemplo, ya vimos que en lugar de retornar void, vamos a retornar ResponseEntity.
+
+[02:01] Entonces vamos a decirle public ResponseEntity login autenticación usuario mejor, autenticarUsuario y listo, eso debía retornar algo. Perfecto. Este va hacer un @PostMapping y esto es solo un repaso de lo que hemos visto en el curso anterior y como parámetro yo voy a recibir un body, como estoy diciendo aquí, un body con un login y una clave.
+
+[02:34] Si yo voy a recibir parámetros de mi cliente ¿qué necesito? Necesito un DTO, perfecto. Entonces le voy a decir aquí datos autenticación usuario y obviamente me va a dar un error de compilación porque no existe, lo que voy a hacer es crear mi récord como ya lo sabemos y lo voy a crear en mi paquete usuario.
+
+[03:00] Vamos a decirle que pase a nivel de usuario. Déjame buscar aquí, me voy a crear aquí, no se ocupen y después le voy a cambiar aquí, va a ser med.voll.api.domain.usuarios. Va a ir aquí. Y ahora lo que voy a hacer aquí es moverlo al paquete usuarios y listo, ya está.
+
+[03:28] Entonces si ven aquí mi dominio usuarios ya está mi nuevo DTO. En este DTO yo le voy a declarar los parámetros string login, string clave. Y eso sería todo con respecto a mi usuario. Aquí ya tengo mi DTO, datosAutenticacionUsuario, ya está listo. ¿Qué más sigue ahora? Para digamos disparar el proceso de autenticación en Spring existe una clase en específico que inicia todo este proceso. Esta es el autenticationManager.
+
+[04:05] ¿Cómo funciona? Declaramos aquí como para un servicio private authenticationManager de Spring, recuerden con @Autowired vamos a inyectarlo, Spring la debe tener en su contexto en alguna parte y como está inyectando su authenticationManager, y aquí lo que yo le voy a decir es autenthicationManager.authenticate.
+
+[04:34] Y aquí él está esperando algo. Está esperando un objeto del tipo authentication. ¿Y este objeto qué va a ser? Va a ser nada más ni nada menos que mi token que yo tengo aquí en mi método de login.
+
+[04:54] Entonces lo que yo voy a crear aquí va a ser una variable, digamos, token, que no existe obviamente, entonces voy a crear esta variable local aquí y va a ser el token. Y perfecto, con esto ya debería ser suficiente. Como toquen es una interfaz, lo que yo tengo que hacer aquí es usar una implementación de esta interfaz, la cual es la primera que nos sale aquí, UsernamePasswordAuthenticationToken.
+
+[05:25] Y para esto él me va a pedir dos cosas aquí. Me va a pedir mis datosUsuario.login y mis datosAutenticacionUsuario.clave. Nada más, es lo único que necesito, UsernamePasswordAuthenticationToken con mis datos de autenticación de usuario: en este caso mi login y mi clave, nada más. ¿Ahora qué tengo que hacer?
+
+[05:52] Solamente para fines didácticos lo que voy a hacer aquí es retornar un ResponseEntity.ok() Listo y con esto sale un error aquí, porque no está como ResponseEntity, a ver, este ResponseEntity salió de otra parte pareces. Vamos a ver de dónde salió ResponseEntity, y el otro. Faltaba el build. Listo, perfecto.
+
+[06:20] Y listo, eso sería todo lo que yo necesito por ahora para hacer ese trigger digamos de alguna forma de mi método de login generando con mis datosAutenticacionUsuario, un token que es este de aquí que va a ser usado por AuthenticationManager para autenticar. Entonces voy a mi servidor.
+
+[06:54] Vemos que aquí falló porque aquí no estaba compilando por un tema que no está consiguiendo hacer una inyección. Y lo que me dice aquí es el campo authenticationManager en la clase authenticationController requiere un objeto del tipo AuthenticationManager que no puede ser encontrado. ¿Qué significa esto?
+
+[07:13] Que si yo quiero inyectar un objeto del tipo AuthenticationManager que Spring no lo tiene su contexto entonces mi código no va a compilar. El IDE ya me estaba avisando sobre este error, yo lo ignoré intencionalmente para poder mostrarles este tipo de error que sale cuando tienes un bean declarado en tu contexto.
+
+[07:33] ¿Qué tenemos que hacer entonces? Vamos a nuestro paquete de infra, a nuestro paquete security, y en nuestra configuración si nos está pidiendo un objeto del tipo AuthenticatinManager tenemos que dárselo a Spring. Entonces lo que voy a hacer es venir aquí a mis configuraciones y de la misma forma que declaro mi SecurityFilterChain, yo voy a dar aquí un public AuthenticationManager de Sprint, authenticationManager, y esto me va a retornar, vamos a ver.
+
+[08:09] Estoy recibe como parámetro un AuthenticationConfiguration. Vamos a dejarlo como AuthenticationConfiguration y lo que le vamos a decir es que retorne AuthenticationConfiguration.getAuthenticationManager. Acá nos va a pedir que lancemos una excepción, la dejamos aquí en la firma el método, le damos un enter para que sea más legible y lo único que falta para que Spring la tenga en su contexto es anotarlo con @Bean.
+
+[08:45] Listo. Ya tenemos entonces el AuthenticationManager, nuestro SecurityFilterChain, entonces borramos esto y reiniciamos nuestro servidor. Vamos a ver qué sale ahora. Digo que la aplicación inicializó, vamos a Insomnia, como este endpoint ya existe, deberíamos hacer algo, vamos a enviar y me sale 403 forbidden. ¿Qué es lo que sucedió aquí?
+
+[09:17] Y en efecto miren aquí, vamos a agrandar esto un poco más. Vimos que ya se hizo un query en la base de datos. ¿Esto qué quiere decir? Que satisfactoriamente todo mi proceso que he hecho, todos mis beans, mis declaraciones que he hecho han ido por mi controller, déjenme llegar a controller. Han venido por el controller, por aquí, en efecto entró aquí en UsernamePasswordAuthenticationToken, intentó encontrar mi usuario y mi clave en mi base de datos.
+
+[09:50] O sea, llegó desde el controller, hasta mi repository, intentó encontrarlo por login, ¿pero qué pasó? No encontró nada. ¿Por qué? Porque ese usuario y esa clave no existen aún en mi base de datos. Entonces yo estoy preguntando por un usuario que es inexistente. En el siguiente video ya vamos a aprender cómo guardar este usuario en la base de datos y generar ya nuestros tokens JWT. Nos vemos.
+
+
+
+
+
+
+																		12 Retornando usuarios mysql #1
+																		
+Transcripción
+[00:00] Ahora lo que vamos a ver es cómo guardar nuestro usuario en la base de datos, y ahora sí en efecto disparar nuestro request y hacer la validación de mi login contra mi base de datos. Para esto lo primero que yo voy a hacer es abrir mi base de datos con el cliente de base datos que ustedes estén usando, voy a abrirlo aquí y voy a agregarle un registro nuevo.
+
+[00:26] Para esto voy al más, el id va a ser autogenerado, mi nombre usuario va a ser el que yo marqué anteriormente: diego.rojas y mi clave, aquí entra algo curioso, porque mi clave yo te estoy mandando aquí como número del 1 al 6. Entonces hubiera guardado del 1 al 6 aquí, pero esto es muy inseguro.
+
+[00:48] Las claves normalmente se guardan en algún formato encriptado o hasheado. Nosotros vamos a usar el formato de Hash Bcrypt. Entonces por ejemplo en esta página web que yo entré internet, si yo quiero saber cuál es el hash en Bcrypt, en algoritmo Bcrypt del 1 al 6, me va a dar este hash aquí.
+
+[01:11] No vamos a entrar aun en detalle sobre lo que es has hecho y lo que es encriptación, pero lo que yo voy a hacer es copiar este string grande de aquí, que es el hash de este string de aquí del 1 al 6. Regreso aquí y es lo que yo voy a guardar aquí en mi base datos.
+
+[01:29] Le voy a dejar a guardar y listo, todavía tengo mi usuario y tengo mi clave guardada en mi base datos. Como bien tengo guardado entonces yo debería ser capaz de acceder ahora sí a mi login. Vamos a dispararlo, y ahora recibo 403 forbidden. ¿Por qué? Aquí entra otro dato curioso.
+
+[01:50] Vemos que de todas formas Hybernate lanzó la query para intentar descubrir cuál es mi usuario. Pero tampoco lo encontró, ahora lo debería encontrar porque mi login es el mismo, “diego.rojas” y aquí es “diego.rojas”, pero las claves no son las mismas. ¿Y eso es por qué?
+
+[02:12] Voy a cerrar esto aquí. Y aquí entra una cosa también interesante yo tengo aquí mi entidad usuario. ¿Pero ustedes se han preguntado como Spring sabe el campo clave, significa que aquí está la clave? Lo que quiero decir es para comenzar Spring está escrito en inglés y nosotros no estamos especificando nada de password o algo así, esta es nuestra clave y este es nuestro login. Son nombres completamente diferentes a lo que Spring pueda conocer.
+
+[02:46] Y esto es porque si bien Spring puede sonar a que es mágico, no lo es. Spring por dentro necesita que nosotros le digamos cuál es el atributo que él va usar como username, cuál es el atributo que él va a usar para comparar la clave, y también necesita saber cuál es el algoritmo de hashing que hemos usado para que él sea capaz de comparar el tipo de contraseña que le hemos mandado.
+
+[03:18] Entonces son dos cosas que tenemos que hacer. Perdón, tres cosas que tenemos que hacer. Indicarle el tipo de encriptación de nuestra clave, indicarle nuestro campo user, indicarle nuestro campo password. Vamos a comenzar primero por la configuración. Venimos aquí a la configuración de Spring y lo que necesitamos aquí es un password encoder: PasswordEncoder.
+
+[03:47] Y esto va a retornar BCryptPasswordEncoder. Nada más. Vamos a decirle esto, olvidé de declararlo. Listo. Y recuerden como siempre. @Bean para que esté disponible en mi contexto de Spring y listo, ya tengo mi BCryptPasswordEncoder. ¿Qué más necesito ahora?
+
+[04:16] Ahora necesito decirle a mi usuario, que este es un usuario de Spring. Para esto implemento una interfaz llamada UserDetails, esta de aquí abajo. UserDetails me va a pedir que yo implemente una serie de métodos, que son todos estos de aquí.
+
+[04:37] Ustedes saben que en una interfaz yo debo implementar todos, pero no se preocupen, porque no tiene nada del otro mundo como quien dice. Si vemos aquí, por ejemplo lo que me dice es por defecto si la credencial está expirada, si la cuenta está bloqueada, si el usuario está habilitado. Entonces por defecto yo le voy a decir que sí.
+
+[04:54] Copio aquí, veo que sí, la cuenta no está bloqueada, es verdad, la cuenta no está bloqueada, la cuenta no está expirada, es verdad, no estamos expirados. Y aquí entra lo que es la implementación mediante la cual nosotros le decimos que el username es el campo login y el password es mi campo clave. De esta forma yo ya le digo a Spring internamente por si acaso cuando valides la clave hazlo con este campo y usando este PasswordEncoder.
+
+[05:28] Aquí no este de aquí, aquí es PasswordEncoder. Entonces, guardamos y vamos a ver qué tal va ahora. Es por eso que si se dan cuenta, aquí en el repositorio, si alguno de ustedes se dio cuenta que yo estaba retornando un objeto diferente al que yo declaré aquí inicialmente, y pensó que iba a saltar de un error, mis felicitaciones porque estás muy atento.
+
+[05:53] En efecto este findByLogin nunca me iba a recordar un usuario porque lo que él busca es un objeto del tipo UserDetails, que es exactamente el que yo le estoy dando aquí a UserDetails en este momento, a mi usuario.
+
+[06:10] Mi usuario ahora es un objeto del tipo UserDetails. Acabo de ver un campo que yo olvidé actualizar y es este de aquí, que es el GrantedAuthority. ¿Por qué? Lo vamos a dejar venir primero en null, porque quiero ver qué es lo que Spring me va a dar ahora que yo aún no implemento esto.
+
+[06:28] Yo ya le dije dónde está la clave, dónde está el nombre de usuario, pero por alguna razón no le estoy especificando el Authority, estos roles que tiene. Le vuelvo a dar y me sigue dando 403 en efecto. ¿Por qué? Porque Authorities significa el rol que va a tener este usuario dentro de mi aplicación.
+
+[06:49] Si no tiene ningún rol asignado automáticamente Spring le bloquea el acceso y me dice: “no puedes entrar porque tú no tienes ningún tipo de rol asignado para ti.” ¿Qué debo hacer ahora? Lo que yo voy a hacer una lista, una lista de SimpleGrantedAuthority y esta lista va a ser de “ROLE_USER” y voy a inicializarlo obviamente.
+
+[07:27] Ahora sí. Perfecto. Entonces lo que le estoy diciendo aquí es que este rol de usuario va a ser el que tenga por defecto mis usuarios que entren aquí. Voy a darle guardar. Voy a limpiar mi terminal. Esperamos que reinicie mi servicio porque tengo el web tools activado y me da una excepción. Me dio un exception primero, pero ahora no. Vamos a ver, quizás fue un reload tardío. Vamos a entrar.
+
+[07:55] Y sigue con el 403 aquí a pesar de que yo le estoy dando mi nombre usuario y mi clave. ¿Cuál es el error que estoy teniendo? Vamos a ver aquí y de todas formas no es posible que encuentre mi usuario. ¿Esto por qué es? Vamos a explorar un poco más lo que tenemos aquí.
+
+
+
+
+
+																		13 Retornando usuarios mysql #2
+
+
+Transcripción
+[00:00] Ejecutamos este request y seguimos con el 403 forbidden que estamos teniendo aquí. ¿Cuál puede ser nuestro problema? Vamos a revisar el código en nuestro AuthenticationController que está recibiendo los datos de autenticación.
+
+[00:14] Aquí está el detalle, no estamos recibiendo en este caso el request body que necesitamos y no está siendo validado, y el body. Guardamos esto, limpiamos nuestra terminal. El problema era este que no estábamos recibiendo ningún dato aquí para validar en contra, entonces la validación no estaba haciendo ella contra ningún objeto en mi base de datos.
+
+[00:40] Limpio esto de aquí y ejecutamos ahora. Y listo. Vemos que ya nos está retornando un código 200 ok. Entonces mi usuario ya está logueado y se supone que yo tengo mi token aquí listo para ser usado. ¿Ahora deberíamos retornar un 200 o deberíamos retornar un token?
+
+[01:05] Todo eso lo vamos a explorar en la siguiente clase. Por ahora yo sé que han sido muchos conceptos nuevos, sobre todo en la parte de configurar Spring, esta clase fue un poco larga, sobre todo por toda la facilidad que tiene Spring para ser personalizado. Les recomiendo practicar mucho, cualquier duda pueden ponerla en el foro y nos vemos en la siguiente clase.
+
+
+
+
+
+													15
+Lo que aprendimos
+PRÓXIMA ACTIVIDAD
+
+En esta clase, aprendiste a:
+
+Identificar cómo funciona el proceso de autenticación y autorización en una API Rest;
+Agregar Spring Security al proyecto;
+Cómo funciona el comportamiento padrón de Spring Security en una aplicación;
+Implementar el proceso de autenticación en la API, de forma Stateless, utilizando clases y configuraciones de Spring Security.
+
+
+
+
+

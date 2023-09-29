@@ -1,0 +1,212 @@
+								
+								
+								
+								02 Tratando los errores de API
+								
+Transcripción
+[00:00] ¿Qué tal? Bienvenidos a la segunda clase de su curso. En el video anterior, en la clase anterior ya hemos visto cómo poner un poco mejor nuestra aplicación a nivel de código, siguiendo ya buenas prácticas, ya siguiendo más los estándares que se manejan normalmente en este mundo de Java y Spring.
+
+[00:18] Por ejemplo, damos un vistazo al código, vamos a ver que ahora tenemos el ResponseEntity regresar los médicos. Ya no devolvemos directamente void, sino ahora usamos ResponseEntity, que es un wrapper para digamos encapsular la respuesta que le vamos a dar a nuestro servidor, por ejemplo aquí el ResponseEntity de la lista de los médicos.
+
+[00:39] Aquí también de los datosRespuestaMedico, creamos nuestro DTO. Nuestra aplicación ya está conforme a algunas de las buenas prácticas que hay en el desarrollo de APIs usando Spring Boot, pero no es todo lo que tienen que aprender aún, porque si bien ya estamos siguiendo buenas prácticas, aun falta mucho, mucho, mucho por mejorar. Pero para eso estamos aquí.
+
+[01:04] Ahora vamos a volver aquí a nuestro método. Y ya sabemos nuestro básico método para registrar, listar, actualizar, borrar y obtener. Pero la pregunta que yo les hago a ustedes aquí. ¿Qué pasaría si por ejemplo? Sabemos que el mundo no es perfecto, si yo tengo mi id 10, Spring me va a retornar el médico con el id 10.
+
+[01:28] Pero como nada es perfecto en esta vida, ¿qué pasaría si yo le doy un id que no existe? Por ejemplo este de aquí. Para eso voy a encender mi servidor, porque aún no está corriendo, ejecuto mi servidor, perfecto, inicializa y ahora vamos a ver qué pasaría si yo ejecutó está llamada.
+
+[01:53] Vemos que en efecto me está dando un error. ¿Pero qué error? Aquí dice 500 internal server error. Y de hecho 500 es uno de los códigos de error de HTTP. Como le comenté en el primer curso, en el rango de los 200 son los códigos de éxito, de 400 son errores de nivel de usuario o del cliente y de 500 para arriba son errores ya del lado del servidor.
+
+[02:19] Ahora mi pregunta es ¿será bueno devolver toda esta información? ¿Y por qué se los pregunto? Miren aquí, tenemos información del timestamp. ¿Esto qué quiere decir? Hora y fecha en la que este error fue lanzado. ¿Esta información es buena? Sí, es buena, y me sirve. El estado: 500. El error fue un error interno del servidor ¿Por qué? Porque este id de médico no existe, entendible, pero la parte delicada comienza en el trace.
+
+[02:49] ¿Qué es el stacktrace? Básicamente toda la excepción. ¿Por qué? Porque si seguimos aquí todo lo que nos dice él stacktrace al final lo que nos dice fue la excepción que lanzada a nivel de mi servidor. Incluso al final me dice: unable to find el médico, la entidad médico incluso me está revelando aquí el nombre de mi entidad que yo tengo con este id y el path que fue llamado.
+
+[03:17] Entonces ahora yo tengo información sensible que está expuesta directamente a mi cliente, información a nivel de las clases que estoy usando, como mi clase médico como ya lo vi ahí y también aquí sobre el tipo de backend que yo estoy implementando. Yo puedo aquí saber que estoy usando JPA, puedo saber que estoy usando Spring y algunas otras cosas, me dan un vistazo de lo que está internamente en mi servidor.
+
+[03:47] ¿Y esto en qué se traduce? En problemas de seguridad en información. Exacto. Son brechas de seguridad que quedan abiertas y cualquier hacker puede explotar. Entonces aquí ya es nuestro primer contacto con lo que sería seguridad en sí, cómo podemos hacer para ocultar todo este stacktrace de la excepción a mi cliente de forma que no quede público.
+
+[04:12] Ojo, yo no quiero decir que está mal devolver la información del error, lo que está mal devolver todo este stacktrace. Para mí, por ejemplo está perfecto devolver el timestamp, el status, el error y bueno el mensaje, pero el mensaje hasta podría ser un poco más personalizado también. ¿No les parece?
+
+[04:30] Entonces vamos a personalizar esto un poco. Como les dije aquí el problema más grave es este stacktrace que está devolviendo aquí. Ahora yo necesito decirle a mi aplicación: “por favor, no devuelvas todo el stacktrace porque me estás exponiendo a futuras brechas de seguridad.” ¿Cómo puedo hacer eso?
+
+[04:52] Spring también nos da una facilidad para poder configurar esto. Si venimos al código, vamos a dar nuestro método para el get vamos a analizar un poquito qué es lo que hay. Por ejemplo, tenemos en nuestro ResponseEntity los datos, lo que él hace es llamar medicoRepository.getReferenceById.
+
+[05:12] Y después en el dato médicos, lo que hacemos es copiar los datos en nuestra entidad para nosotros y retornar el DTO. Ya dijimos que lo que no queremos nosotros es devolver justo este estado de la excepción. ¿Qué hacemos para eso? Es una propiedad de Spring que tenemos que configurar.
+
+[05:34] Y si les digo que es una propiedad de Spring que hay que configurar, ¿qué se les viene a la mente? Dónde es el mejor lugar para configurar propiedades a nuestro proyecto, el archivo application.properties.
+
+[05:47] Entramos aquí y en esta oportunidad, por ejemplo, yo no recuerdo bien el nombre de la propiedad, porque tampoco es algo que se use todos los días. Entonces para eso, ¿qué hago? Voy a mi browser, está aquí, y voy a buscar aquí Spring Boot properties en Google.
+
+[06:05] Digito Spring Boot properties, le doy enter y aquí vemos que la primera opción en este caso, a mí me sale la primera opción como Application Properties - Spring Boot, en docs.spring.io. Entro aquí y vemos aquí que tenemos todos los tipos de propiedades que Spring Boot maneja.
+
+[06:28] Por ejemplo, tenemos propiedades sobre configurar JSON, por ejemplo, sobre spring data para distintos tipos de bases de datos, ustedes pueden darle un vistazo aquí a todos los tipos de properties que Spring está manejando, para manejo de transacciones, por ejemplo, para manejo de propiedades web y aquí está lo que nos interesa a nosotros: server properties. ¿Por qué?
+
+[06:57] Porque a nivel de servidor lo que yo no quiero es mostrar mi stacktrace. Entonces voy a buscar aquí todo lo correspondiente a server.error, porque lo que yo quiero es tratar el error que mi server está retornando a mi cliente, y allí está, miren server.error.stacktrace. Entonces voy a copiar esta propiedad tal cual, tal cual está aquí.
+
+[07:22] Regreso al proyecto, lo copio aquí y lo que aquí le voy a asignar siguiendo la documentación es never. ¿Por qué? Porque significa que yo no deseo nunca compartir el stacktrace con mi cliente. Voy a guardar aquí y voy a ver si mi aplicación va a cargar automáticamente. Sí, cargó automáticamente perfecto, por el web tools que tengo, y vamos a ver qué es lo que sucede ahora.
+
+[07:52] Voy a buscar nuevamente por este ahí y que no existe y perfecto, miren, ya el stacktrace ya no aparece. Me sale el error de mensaje, unable to find la entidad médico. Quizás es algo que yo estoy dispuesto a aceptar este tipo de error, porque es más o menos entendible lo que me está diciendo, pero ya no sale el tacktrace el error. Entonces, primera parte de nuestra resolución de errores completa.
+
+[08:21] ¿Qué es lo que está faltando aquí? Lo que está faltando aquí es tratar este código de aquí, porque como les dije, errores en el rango de 500 son errores a nivel de mi servidor, pero si yo busco por algún médico que no existe, ¿es error del cliente que pregunta por algo que no existe o es que mi servidor ha fallado por buscar un médico que no existe? Vamos a responder esa pregunta en el siguiente video.
+
+
+
+
+
+
+
+								03 Tratando el error 404 #1
+								
+Transcripción
+[00:00] Bien, entonces ya vimos aquí que el problema que tenemos ahora es este código de estado. ¿Y por qué? Porque 500 no es el mejor código para retornar en este caso. Si yo te dijera que está en el rango de errores del servidor, esto no es un error de mi servidor en realidad porque el recurso no existe.
+
+[00:21] Debería ser un error de que el recurso no fue encontrado. Y si yo te digo que es un error relativo a que un recurso no fue encontrado, ¿cuál error de HTTPS te viene a la mente? Exacto el 404. El error 404 not found sería el error más ideal para este tipo de casos. ¿Cómo hacemos para que Spring me regrese un 404 y no un 500?
+
+[00:46] Vamos al código. Primero vamos a ver lo que está pasando aquí. Aquí en mi terminal puedo ver que la excepción que está haciendo lanzada por Spring data es EntityNotFoundException. ¿Por qué? Porque Spring data lo que dice es select from, como lo vemos aquí, cuando el id sea tal.
+
+[01:08] Y si es que no lo encuentra, lanza una excepción. Esta excepción es atrapada por Spring en un nivel un poco más alto y por lo tanto nos retorna 500, porque para Spring es un error de servidor, y en parte es cierto porque es una excepción que está siendo lanzada, pero nosotros podemos controlar esa excepción porque sabemos qué excepción está siendo lanzada por Spring.
+
+[01:35] Por lo tanto cómo puedo basado en una excepción lanzada por alguna parte de mi API tratar el error y devolver lo que yo quiero. Control tryCatch es una buena opción, pero no es la más ideal en este caso. ¿Por qué? Miren aquí. El método que está lanzando esta excepción es este de aquí: medicoRepository.getReferenceById.
+
+[02:03] Si yo uso try catch puedo usarlo para tratar el error en este nivel de mi método pero tendría que copiar el mismo try catch en el eliminar médico y en el actualizar médico. Esto ya no es muy inteligente que digamos. ¿Por qué? Porque simplemente no es lo más ideal para hacer, repetir ese código una, una y otra vez.
+
+[02:28] Spring nos da una forma un poco más sencilla y dinámica digamos de poder ejecutar un tratamiento de errores. Para eso necesitamos crear una clase que nos permita mapear los errores que queremos tratar. Regresamos a la estructura de mi proyecto que está aquí, por ejemplo tengo de aquí med.voll controller dirección médico y aquí hay una cosa que yo quisiera que vean aquí, dirección y médico.
+
+[02:55] Y si es que hicieron las actividades del curso anterior, tienen paciente aquí también. Ya no están, digamos, relacionados directamente con el API sino son más entidades de mi dominio, no pertenecen directamente al API sino pertenecen al dominio de mi API.
+
+[03:11] Entonces lo que yo voy a hacer aquí es darle un refactor y las voy a mover a un paquete que se va a llamar domain, dominio. Como fue aquí, hago refactor, y ahora tengo mi dominio con mis dos entidades aquí, están apareciendo algunos errores aquí en mi controller. ¿Esto por qué es?
+
+[03:40] Porque este import que estaba aquí de médico ya no existe, entonces lo único que tengo que hacer es borrarlo y ya el error ya debería desaparecer, vamos a ver dónde más está dando el error. Aquí en datosRegistroMédico, porque déjame ver aquí, exacto. Voy a “Ctrl + Espacio” y ya lo importó correctamente.
+
+[04:04] Entonces ya mis errores están resueltos, ya mi código está compilando nuevamente. Lo único que he hecho como les comenté es crear mi paquete dominio y mover mis dos entidades médico y dirección dentro del paquete dominio. ¿Qué más voy a hacer como parte de mi refactor y para crear la nueva clase que necesito?
+
+[04:30] Voy a darle clic derecho, new package y lo voy a llamar infra, dentro de med.voll.api. Tengo infra, y aquí en infra lo que voy a hacer es crear una nueva clase y esta clase se va a llamar tratadorDeErrores. Lo creo, no lo agrego todavía a Git y listo, por ahora eso es lo que necesito. ¿Por qué?
+
+[04:58] Porque yo quiero tratar mis errores globalmente a nivel de mi controller, de mi proyecto, no a nivel de cada método en específico.
+
+
+
+
+								04 Tratando el error 404 #2
+								
+Transcripción
+[00:00] ¿Qué más? Necesito también anotarlo con restControllerAdvice y cuando ya comiencen a ver un poco más de Spring Open, todo lo que es de programación orientada a aspectos, van a entender mejor lo que es un Advice.
+
+[00:22] Por ahora, lo que les voy a decir es que esto actúa como una especie de proxy para todos nuestros controllers, por algo está como rest controller, para interceptar las llamadas en caso suceda algún tipo de excepción. Ya si ustedes ya conocen o exploran un poco de programación orientada a aspectos, van a entenderlo mucho mejor. Por ahora lo vamos a dejar así porque no es el propósito del curso.
+
+[00:43] Y bueno, por el momento esto es suficiente como para interceptar nuestros métodos de controller y atrapar alguna excepción que sea lanzada. Ahora, si yo quiero devolver un código de error en específico y yo ya sé que ResponseEntity es la entidad que tienen los tipos de error mapeados dentro y qué hace un wrapper de esta respuesta y la retorna cliente, ¿qué es lo que necesito aquí? Exacto.
+
+[01:18] Un public ResponseEntity. No voy a poner ningún tipo de dato en el generic, porque este sí es genérico, y especies genérico no necesita especificar un tipo de objeto especial y le voy a poner tratarError404. Y lo que le voy a decir aquí es return ResponseEntity.notFound. Y eso debería ser todo.
+
+[01:48] Bueno, me está dando un error y es porque falta el .build al final. Ahora al igual que los métodos en el controller, que lo vemos aquí, yo necesito avisarle a Spring, que este método tiene que ser llamado en caso alguna excepción de algún tipo sea detectada, para eso es una anotación llamada @ExceptionHandler.
+
+[02:20] Y en @ExceptionHandler lo que yo le voy a decir es el tipo de excepción que yo quiero tratar. En este caso es esta de aquí: EntityNotFoundException, un espacio para importarlo .class. Entonces con eso le digo “ExceptionHandler, cuando tú en este RestControllerAdvice identifiques que EntityNotFoundException es lanzado, como estás anotado como @ExceptionHandler, entonces vas a retornar este código de aquí, esta respuesta de aquí, con notFound.
+
+[02:58] Vamos a esperar que recargue nuestro servidor, parece que ya recargó. Ahora sí cargó, estoy seguro, y regreso aquí. Vieron que estaba con 500 internal server error, vamos a ver qué sucede ahora y en efecto ahora tenemos 404 not found y obviamente ningún tipo de contenido porque no encontró nada. Pero de esta forma ya pueden ver cómo usando el @ExceptionHandler, con un controllerAdvice, ya podemos ya personalizar mucho más el comportamiento de nuestra aplicación.
+
+[03:35] Ahora ya sabemos que este error no es un error de servidor. Es un error que es simplemente porque tu registro no existe y es por una excepción en específico. ¿Qué otro tipo de errores ustedes creen que podemos encontrar aquí en nuestra aplicación?
+
+[03:47] Yo les doy uno. Cuando hacemos la validación, estamos muy propensos a tener errores porque los campos que ingresamos o no son válidos o los que son requeridos no están presentes. Y eso nos retorna muchas veces un bad request. Vamos aprender cómo tratar ese tipo de errores en el siguiente video.
+
+
+
+
+
+								05 Tratando el error 400
+								
+								
+Transcripción
+[00:00] Ya aprendimos cómo tratar un error y retornar un 404 en lugar de un 500 internal server error. Pero como les comenté, en el caso de registrar esto puede ser un poco diferente. ¿Por qué? Vamos a ver primero qué es lo que pasa, cómo es que Spring automáticamente mapea este error si yo lo que hago es quitarle estos tres parámetros a mi payload cuando yo intento registrar un médico, un recurso médico.
+
+[00:29] Voy a enviarlo, e igual que en el caso anterior, me manda un timestamp, manda status 400, bad request. Hasta ahí estamos bien, porque si este es un bad request, es un request incorrecto, el payload es incorrecto. Entonces con el status code yo no tengo ningún problema, está perfecto. Pero el problema para mí comienza en esta parte de aquí.
+
+[00:53] El array, el arreglo de errores. ¿Por qué? Si se dan cuenta, no es muy amigable y no es tan fácil de entender qué es lo que ha sucedido mal aquí, para nuestro cliente, nuestra aplicación cliente, sea móvil, sea web, en realidad es difícil entender qué es lo que ha pasado aquí. Por ejemplo aquí vemos que recién aquí “defaultMessage”: “no debe estar vacío”.
+
+[01:18] ¿Qué es lo que no debe estar vacío? Documento. Y en el campo “documento” que está aquí. Entonces, vamos a intentar hacer esto un poco más amigable para nuestro cliente y porque ya estamos de acuerdo que el error que retorna es el correcto. Es un bad request, eso está fuera de discusión, pero el problema está a nivel del arreglo de errores que estamos retornando. ¿Cómo es, qué solucionamos eso?
+
+[01:43] Venimos aquí. Y si yo les digo entonces que tenemos que tratar este tipo de excepción, ¿que se les viene a la mente a ustedes? Un exceptionHandler, entonces, vamos a repetir lo mismo que ya hemos hecho antes. Lo que voy a hacer, voy a copiar, voy a pegar y le voy a decir aquí tratarError400.
+
+[02:08] Y aquí lo que le voy a decir que haga es un bad request. Y está bien, ¿dónde es la diferencia? En el tipo de excepción. Y si yo deseo saber el tipo de excepción que fue lanzado, voy a los logs y veo que el tipo de excepción lanzado es este de aquí: MethodArgumentNotValidException. Voy a ver si es verdad.
+
+[02:32] Voy a venir aquí, voy a copiar aquí. Como ustedes pueden ver, toda la información que necesitan para tratamiento de excepciones la van a encontrar siempre en sus logs. Es muy importante que practiquen y aprendan a interpretar estos logs para saber qué es lo que está sucediendo en realidad, cuando tienen que debugear algún código o tratar algún tipo de error.
+
+[02:53] Esto es solamente con la práctica, no se preocupen, poco a poco van a desarrollar esta habilidad. Bueno, vamos a guardar. Vamos a esperar a que se refresque nuestro servidor. Listo. Y vamos a ejecutarlo otra vez de la llamada. Vamos aquí y listo.
+
+[03:16] Bad request. Hasta acá todo muy bien, retorna un bad request, pero ahora no estoy recibiendo ninguna información sobre cuál fue el parámetro que yo o no ingresé o ingresé mal, cierto, porque está siendo validado. Y esto sería un gran dolor de cabeza para nuestro cliente si solo le decimos tu payload está incorrecto pero no te digo en qué parte está incorrecto, entonces no puedes avanzar, ahí estaría bloqueado.
+
+[03:44] ¿Cuál es el siguiente paso? Vamos a tratar de decirle a nuestro cliente en qué parte se ha equivocado. ¿Y esto que les dice? Que vamos a retornar algún tipo de cosa a nuestro cliente en esta parte aquí, vamos a retornar a algún body. Para esto quiero decir body. Necesito saber, con body no necesitamos el .build porque automáticamente lo mapea, y aquí dentro debería haber alguna información para nuestro cliente.
+
+[04:14] Segundo. Si la información cuando esta excepción era lanzada directamente y nos daba los detalles de los campos que habían fallado, eso me dice a mí que el lugar donde yo puedo encontrar esa información es en el mensaje de error de la excepción en sí. Quien contiene todos los errores encontrados es el mensaje dentro de esta excepción que está siendo lanzada por mi Bean Validator.
+
+[04:48] Entonces, para yo obtener los datos de esta excepción aquí al método yo le puedo mandar un argumento del mismo tipo de la excepción que yo estoy lanzando aquí, esto tiene que ser exactamente igual. Con igual me refiero a la misma excepción, no puedo yo pretender hacer tratamiento de una excepción aquí y recibir como parámetro una excepción diferente. Eso no va a funcionar.
+
+[05:18] ¿Entonces, qué más necesito? Yo necesito el mensaje de esta excepción.¿La lista de errores de esta excepción, ¿cómo voy a hacer esto? Yo voy a crear aquí var errores y esto va a ser igual a e.getFieldError() Y errores, lo que yo voy a hacer es mandarlo aquí dentro del body.
+
+[05:48] Voy a darle guardar. Voy a esperar que mi servidor refresque y vamos a ver qué es lo que vamos a obtener ahora. Vemos que ya refrescó, mandamos. Y nuevamente miren aquí, miren lo que tengo aquí. Tengo que en documento, en “datosRegistroMedico.documento” el error que fue lanzado, pero yo no solo tengo del documento, yo necesito los otros códigos de error.
+
+[06:17] Entonces yo necesito acceder a la lista de errores que ha sido lanzada, entonces necesito ir a un nivel más arriba. ¿Dónde encuentro esa información? Aquí en getAllErrors. Punto y coma. Guardo ahora, reinicio mi servidor. Intentamos, y ahora sí, ya tenemos mi lista de errores que hay.
+
+[06:50] Y si se dieron cuenta nuevamente tenemos el mismo error que no queríamos tener al inicio, una lista muy detallada y difícil de leer. Si yo quiero intervenir aquí y personalizar el tipo de respuesta que quiero dar a mi cliente, ¿qué necesito? Un DTO. Entonces vengo aquí y como ese DTO va a ser usado solo aquí, a este nivel, yo lo voy a crear internamente aquí.
+
+[07:16] Le voy a decir aquí a private record DatosErrorValidacion. Este DTO quiero que tenga un string llamado campo y el string llamado error. Es lo único que yo quiero que tenga mi DTO y nada más. Guardo aquí y por lo tanto lo que yo le voy a decir ahora es que a mis errores, errores en todo caso va a ser igual a punto.stream.map y voy a crear un (DatosErrorValidacion::new).toList().
+
+[08:04] Porque yo quiero que de esta parte automáticamente sea mapeado a mis DatosErrorValidación y que esto se vuelva una lista. ¿Por qué no está compilando? Porque necesito aquí un constructor. Para eso le voy a hacer aquí un public DatosErrorValidacion.
+
+[08:22] Y si se dieron cuenta, voy a dar un paso atrás en este momento porque si yo le digo que de mi excepción, el fieldError, ¿recuerdan el primer campo que vimos? Era un getFieldError. El tipo, el tipo de objeto es fieldError. Por lo tanto, el arreglo que yo tengo aquí en este momento es un arreglo de fieldErrors, entonces yo aquí voy a recibir un fieldError error.
+
+[08:57] Y esto lo voy a mapear a simplemente error.getField() y error.getDefaultMessage(), acá está. Punto y coma al final. ¿Por qué? Porque yo ya sé que cada elemento de esta lista va a ser un elemento del campo fieldError. Eso lo descubrí porque primero llamé al método getFieldError para obtener solamente uno de los errores.
+
+[09:38] Regresamos, le damos enviar. ¿Qué me dice? “Bad Requeest” “Validation failed for object”, no funcionó en este caso y me sigue retornando en mismo array de siempre. ¿Por qué? Porque nuestro método y nuestra validación falló en una parte aquí. Vamos a entender por qué.
+
+[09:57] Me devuelve objetos según me dice aquí el error, voy a dar “Ctrl + Z”. GetAllErrors es una lista de objeto. Pero yo no necesito una lista de objetos, yo necesito una lista de FieldError. Yo podría usar objeto, pero objeto, sabemos que es la clase padre y no tiene ningún campo digamos personalizado, porque es la más grande de todas.
+
+[10:28] Entonces aquí yo necesito un arreglo de fieldErrors, que es este de aquí. Entonces, aquí es aquí getFieldErrors. Y aquí yo atrapo un FieldError. Le voy a dar "Ctrl + S" para guardar. Espero un poco que inicialice mi servidor nuevamente.
+
+[10:52] Como pueden ver, hay muchos métodos aquí y a veces tenemos que ir buscando entre los distintos métodos que podemos tener aquí de esta excepción en particular para encontrar el que más nos convenga, de acuerdo a lo que queramos implementar.
+
+[11:08] Le voy a dar send y vemos ahora finalmente “campo”: “documento”, que “no debe estar vacío”, “campo”: “nombre”, “no debe estar vacío” y el “campo”: “email”, que “no debe estar vacío”. Quiero probar si esto funciona, entonces lo que voy a hacer aquí es agregar, por ejemplo “Jimena Flores”, por ejemplo, con su nombre aquí.
+
+[11:33] “Jimena.flores”, con un documento que no existe y con un teléfono ficticio también. Le voy a dar enviar. Y vemos que, en efecto, sigue funcionando mi método de crear, me retorna un 201 created con los datos correctos. Y si yo decido quitarle los parámetros obligatorios, me va a decir el “campo”: “email” “no debe estar vacío” y el “nombre” tampoco debe estar vacío.
+
+[12:02] Y bien, ¿qué les parece lo que hemos aprendido ahora? Ya sabemos cómo tratar correctamente nuestros errores en nuestra aplicación. Ahora, en los siguientes cursos vamos a seguir trabajando sobre lo que aprendimos en este proyecto, con algunos tópicos ya más avanzados en lo que es seguridad en sí. Nos vemos.
+
+
+
+
+
+													A lo largo de los cursos, tuvimos que agregar algunas propiedades al archivo application.properties para hacer configuraciones en el proyecto, como, por ejemplo, configuraciones de acceso a la base de datos.
+
+Spring Boot tiene cientos de propiedades que podemos incluir en este archivo, por lo que es imposible memorizarlas todas. Por ello, es importante conocer la documentación que enumera todas estas propiedades, ya que eventualmente necesitaremos consultarla.
+
+Puede acceder a la documentación oficial en el enlace: Common Application Properties.
+
+https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html
+
+
+
+
+
+														Por defecto, Bean Validation devuelve mensajes de error en inglés, sin embargo, hay una traducción de estos mensajes al español ya implementada en esta especificación.
+
+En el protocolo HTTP hay un encabezado llamado Accept-Language, que sirve para indicar al servidor el idioma preferido del cliente que activa la solicitud. Podemos utilizar esta cabecera para indicarle a Spring el idioma deseado, para que en la integración con Bean Validation pueda buscar mensajes según el idioma indicado.
+
+En Insomnia, y también en otras herramientas similares, existe una opción llamada Header en la que podemos incluir cabeceras a enviar en la petición. Si agregamos el encabezado Accept-Language con el valor es, los mensajes de error de Bean Validation se devolverán automáticamente en español.
+
+Nota: Bean Validation solo traduce los mensajes de error a unos pocos idiomas.
+
+
+
+
+
+
+																
+																En esta clase, aprendiste a:
+
+Crear una clase para aislar el manejo de excepciones de API, utilizando la anotación @RestControllerAdvice;
+Utilizar la anotación @ExceptionHandler, de Spring, para indicar qué excepción debe capturar un determinado método de la clase de manejo de errores;
+Manejar errores 404 (Not Found) en la clase de manejo de errores;
+Manejar errores 400 (Bad Request), para errores de validación de Bean Validation, en la clase de manejo de errores;
+Simplificar el JSON devuelto por la API en casos de error de validación de Bean Validation.
+																
+																
+																
+																	
