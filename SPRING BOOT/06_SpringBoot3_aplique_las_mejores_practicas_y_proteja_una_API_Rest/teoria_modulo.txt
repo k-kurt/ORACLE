@@ -1,0 +1,5 @@
+Realice este curso para Java y:
+Aprenda buenas practicas en diseño de API
+Aprenda fundamentos basicos de autenticación y autorización
+Aprenda a retornar codigos de error HTTP
+Aprenda fundamentos de Spring Security
