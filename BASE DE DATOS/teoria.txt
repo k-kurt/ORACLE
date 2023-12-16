@@ -1,0 +1,25 @@
+01Consultas SQL: Avanzando en SQL con MySQL
+01.01.03preparandoElAmbiente
+[00:00] Bien, ahora vamos entonces a proceder a preparar nuestro ambiente y para eso es necesario que descarguemos e instalemos Workbench, que es el IDE que estaremos utilizando para el desarrollo de nuestro curso aquí en nuestros equipos.
+
+[00:16] En el curso Introducción a SQL con MySQL nosotros creamos un video en el cual se muestra un paso a paso de cómo se realiza la instalación, de modo que si ustedes vieron el curso anterior, no se preocupen, aquí ya ustedes cuentan con el programa que necesitamos.
+
+[00:36] Pero si ustedes no hicieron el curso anterior, los invito para que vean este video, es el video 1.4 del curso anterior, y lo ven rápidamente y vuelven acá. Van a tardar algunos minutos, entonces yo los espero hasta que hagan su instalación y la configuración de sus ambientes. Entonces ya nos vemos.
+
+[00:56] Va a abrir nuestra base de datos. Ustedes ya tienen su conexión local, que es la instancia local, que es la conexión entre nuestro cliente y nuestro servidor que está en nuestro mismo computador. Entonces le damos clic a nuestra instancia local. Tal vez les pida su contraseña, tal vez no. En mi caso yo ya la había guardado previamente, entonces no necesito digitarla de nuevo.
+
+[01:22] Entonces, vamos a crear aquí con clic derecho un esquema o una base de datos, clic derecho, create schema y vamos a llamarlo jugos ventas, así, jugos ventas. Le vamos a dar apply, recordemos que esto nos trae a un pequeño asistente, le damos apply y finish, ya lo tenemos aquí nuestro schema.
+
+[01:52] Vamos entonces a proceder a importar nuestros archivos. Hay una carpeta que nosotros disponibilizamos para ustedes, un archivo comprimido que ustedes van a descargar y lo van a abrir. El archivo se va a ver como un punto zip, y ustedes van entonces al lugar donde lo hayan descargado. Se llama RecuperacionAmbiente, y fue extraído a esta carpeta.
+
+[02:22] RecuperacionAmbiente, le damos doble clic, y el que queremos es este archivo que tiene una carpeta que dice dump y que tiene los siguientes archivos de SQL. Entonces, lo que vamos a hacer a continuación es ir aquí a donde dice administration y le vamos a dar donde dice Data Import/Restore. Clic allí.
+
+[02:44] Y aquí nos dice: import from dump project/folder. Entonces le damos a estos tres puntos y buscamos dónde es que lo tenemos guardados. Yo lo tengo en mi OneDrive y entonces ustedes lo buscan en la carpeta donde esté, en el caso de ustedes. Yo lo tengo aquí en RecuperacionAmbiente.
+
+[03:00] Y escogemos el que dice DumpJugosVentas. Seleccionamos, le damos okay, y entonces aquí tenemos que ejecutar este comando, pero para ello tenemos que disminuir esta ventana hasta encontrar el que dice aquí Start Import, este botoncito.
+
+[03:16] Le damos clic y él va a importar nuestro dump, que es donde están todas nuestras tablas referentes a la base de datos de jugos_ventas. Y dice aquí que ha finalizado, perfecto. Está todo en orden. Volvemos aquí a nuestro query, y si ustedes ven en schemas, por ejemplo si le damos aquí para seleccionar la base de datos de jugos_ventas, entonces le podemos dar o doble clic a jugos_ventas o USE jugos_ventas. Ese sería el comando.
+
+[03:48] Presionamos el rayo y aquí tenemos que están las tablas. Entonces si queremos ver, le damos aquí a SELECT * FROM, buscamos una de esas tablas, facturas. Punto y coma. Seleccionamos o le damos aquí al rayo, no hay ningún problema.
+
+[04:14] Seleccionamos y le damos al rayo, y efectivamente está nuestro output como lo queríamos ver. Entonces está todo en orden, está todo listo para comenzar a trabajar.
